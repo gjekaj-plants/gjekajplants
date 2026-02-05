@@ -9,10 +9,14 @@
   <meta name="keywords" content="pemë dekorative, bimë dekorative, fidane, shkurre dekorative, Dajç Shkodër, katalog bimësh, Gjekaj Plants" />
   <meta name="google-site-verification" content="9bmY4UyP5oEu3VLcx3YxR3rDEG9NLXB3CVVJ_g5JsaA" />
 
-  <meta property="og:title" content="Gjekaj Plants — Katalogu i Bimëve Dekorative" />
-  <meta property="og:description" content="Pamje e pemëve dekorative dhe bimëve. Zgjidh sasinë dhe dërgo kërkesën në WhatsApp." />
+  <!-- Social preview -->
+  <meta property="og:title" content="Gjekaj Plants — Katalogu i Bimëve" />
+  <meta property="og:description" content="Shiko katalogun e bimëve dekorative dhe dërgo porosinë në WhatsApp." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://gjekajplants.tiiny.site/" />
+  <!-- Këtu vendos URL e GitHub Pages kur ta kesh gati -->
+  <meta property="og:url" content="https://gjekaj-plants.github.io/gjekajplants/" />
+  <!-- Nëse ke logo publike, vendos link këtu -->
+  <!-- <meta property="og:image" content="https://gjekaj-plants.github.io/gjekajplants/logo.png" /> -->
 
   <style>
     :root{
@@ -25,12 +29,14 @@
       --radius: 18px;
       --accent:#b91c1c;
       --green:#16a34a;
+      --dark1:#0b1220;
+      --dark2:#111827;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
 
     header{
-      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
+      background: linear-gradient(180deg, var(--dark1) 0%, var(--dark2) 100%);
       color:#fff;
       padding: 20px 14px 14px;
       position: sticky;
@@ -59,12 +65,13 @@
       margin-top:14px;
     }
 
+    /* RRESHTI SIPËR: search + kategori + kursi */
     .grid-controls{
       display:grid;
       grid-template-columns: 1.2fr .8fr .6fr;
       gap:10px;
+      align-items:end;
     }
-    @media (max-width:820px){ .grid-controls{grid-template-columns:1fr;} }
 
     label{font-size:12px;font-weight:900;color:var(--muted);display:block;margin:6px 0 6px;}
     input, select, textarea{
@@ -75,29 +82,45 @@
       border-color:#93c5fd;box-shadow:0 0 0 4px rgba(59,130,246,.12);
     }
 
+    /* LAYOUTI: majtas produktet, djathtas shporta (si tiiny) */
+    .mainGrid{
+      display:grid;
+      grid-template-columns: 1fr 320px; /* shporta me përmasë fikse */
+      gap:14px;
+      margin-top:14px;
+      align-items:start;
+    }
+    @media (max-width:960px){
+      .mainGrid{grid-template-columns:1fr;}
+    }
+
     .bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px;}
     .count,.status{font-size:13px;color:var(--muted);font-weight:900;}
 
-    
-    /* SHPORTA POSHT KURSIT + STICKY */
+    /* SHPORTA DJATHTAS - STICKY me madhësi konstante */
     .cartSticky{
       position: sticky;
-      top: 96px; /* poshtë header-it */
+      top: 96px; /* poshtë header */
       z-index: 200;
-      margin-top: 12px;
     }
-    @media (max-width:820px){
-      .cartSticky{ top: 92px; }
+    @media (max-width:960px){
+      .cartSticky{ position: static; }
     }
 
     .cart{
-      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
+      background: linear-gradient(180deg, var(--dark1) 0%, var(--dark2) 100%);
       color:#fff;
       border-radius: 18px;
       box-shadow: var(--shadow);
       border: 1px solid rgba(255,255,255,.06);
       overflow:hidden;
+      width: 320px;
+      max-width: 100%;
     }
+    @media (max-width:960px){
+      .cart{width:100%;}
+    }
+
     .cartHead{padding:14px 14px 10px;font-weight:1000;font-size:20px;}
     .cartBody{padding:0 14px 14px;}
     .cartEmpty{opacity:.9;font-weight:900;margin-bottom:10px;}
@@ -157,11 +180,11 @@
       color:#fff;font-weight:1000;padding:12px 14px;border-radius:14px;cursor:pointer;
     }
 
+    /* PRODUKTET */
     .cards{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap:14px;
-      margin-top:14px;
     }
     @media (max-width:960px){ .cards{grid-template-columns:repeat(2, minmax(0,1fr));} }
     @media (max-width:640px){ .cards{grid-template-columns:1fr;} }
@@ -186,13 +209,13 @@
     .qty{width:90px;padding:12px;border:1px solid var(--border);border-radius:12px;font-weight:900;text-align:center;}
     .addbtn{
       flex:1;padding:12px 14px;border-radius:12px;border:0;font-weight:1000;
-      background:#0b1220;color:#fff;cursor:pointer;
+      background:var(--dark1);color:#fff;cursor:pointer;
     }
     .addbtn:hover{opacity:.92;}
     .addbtn:active{transform:translateY(1px);}
 
     footer{
-      position:fixed;left:0;right:0;bottom:0;background:#111827;color:#fff;
+      position:fixed;left:0;right:0;bottom:0;background:var(--dark2);color:#fff;
       padding:12px 14px;text-align:center;font-weight:1000;z-index:2000;
     }
   </style>
@@ -210,7 +233,6 @@
   <div class="wrap">
     <div id="err" class="error"></div>
 
-    <!-- FILTERAT + SHPORTA (poshtë kursit, sticky) -->
     <div class="panel">
       <div class="grid-controls">
         <div>
@@ -231,7 +253,18 @@
         </div>
       </div>
 
-      <!-- SHPORTA POSHT KURSIT -->
+      <div class="bar">
+        <div class="count" id="count">0 artikuj</div>
+        <div class="status" id="status">Duke u lidhur…</div>
+      </div>
+    </div>
+
+    <!-- MAJTAS PRODUKTET / DJATHTAS SHPORTA -->
+    <div class="mainGrid">
+      <div>
+        <div class="cards" id="cards"></div>
+      </div>
+
       <div class="cartSticky">
         <div class="cart">
           <div class="cartHead">Shporta</div>
@@ -255,15 +288,8 @@
           </div>
         </div>
       </div>
-
-      <div class="bar">
-        <div class="count" id="count">0 artikuj</div>
-        <div class="status" id="status">Duke u lidhur…</div>
-      </div>
     </div>
 
-    <!-- PRODUKTET -->
-    <div class="cards" id="cards"></div>
   </div>
 
   <footer>Gjekaj Plants • WhatsApp: 0697232425</footer>
@@ -272,18 +298,19 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
+    // === SUPABASE SETTINGS ===
     const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_Ll_tV3Hs9MmMO54DaDWGiQ_KRpED8xd";
     const TABLE_NAME = "products";
 
+    // kolonat (duhet të ekzistojnë në Supabase)
+    const COL_NAME     = "name";
+    const COL_DESC     = "description";
+    const COL_IMAGE    = "photo_url";
     const COL_CATEGORY = "category";
     const COL_CODE     = "code";
     const COL_STOCK    = "stock";
     const COL_PRICELEK = "price_lek";
-
-    const NAME_KEYS = ["name","title","emri"];
-    const DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
-    const IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
 
     const WA_NUMBER  = "355697232425";
 
@@ -313,13 +340,6 @@
         .replaceAll(">","&gt;")
         .replaceAll('"',"&quot;")
         .replaceAll("'","&#039;");
-    }
-
-    function firstExisting(row, keys){
-      for (const k of keys){
-        if (row && row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== "") return row[k];
-      }
-      return "";
     }
 
     function toNumber(v){
@@ -357,7 +377,7 @@
     }
 
     function renderCart(){
-      const rate = Math.max(1, toNumber(elRate.value || 100));
+      const rate = Math.max(1, toNumber(elRate.value || 97));
       const items = Object.values(CART);
 
       const totalLek = cartTotalLek();
@@ -413,12 +433,12 @@
     window.__setCartQty = (code, qty) => setCartQty(code, qty);
     window.__removeCart = (code) => { delete CART[String(code)]; renderCart(); };
 
-    function addToCart(item, qty){
+    function addToCart(row, qty){
       qty = Math.max(1, Math.floor(toNumber(qty)));
-      const code = String(item?.[COL_CODE] ?? item.code ?? item.id ?? "").trim() || ("ID" + Math.random());
-      const name = firstExisting(item, NAME_KEYS) || "(pa emër)";
-      const category = (item?.[COL_CATEGORY] ?? "").toString();
-      const priceLek = toNumber(item?.[COL_PRICELEK]);
+      const code = String(row?.[COL_CODE] ?? row?.id ?? "").trim() || ("ID" + Math.random());
+      const name = String(row?.[COL_NAME] ?? "(pa emër)");
+      const category = String(row?.[COL_CATEGORY] ?? "");
+      const priceLek = toNumber(row?.[COL_PRICELEK]);
 
       if (!CART[code]) CART[code] = { code, name, category, priceLek, qty };
       else CART[code].qty += qty;
@@ -432,7 +452,7 @@
     }
 
     function buildWhatsAppMessage(){
-      const rate = Math.max(1, toNumber(elRate.value || 100));
+      const rate = Math.max(1, toNumber(elRate.value || 97));
       const items = Object.values(CART);
       const totalLek = cartTotalLek();
       const totalEur = totalLek / rate;
@@ -480,26 +500,26 @@
 
       const q = elQ.value.trim().toLowerCase();
       const cat = elCat.value.trim();
-      const rate = Math.max(1, toNumber(elRate.value || 100));
+      const rate = Math.max(1, toNumber(elRate.value || 97));
 
       const filtered = ALL.filter(r => {
         if (cat && String(r?.[COL_CATEGORY] ?? "").trim() !== cat) return false;
         if (!q) return true;
-        const name = firstExisting(r, NAME_KEYS).toString().toLowerCase();
-        const category = (r?.[COL_CATEGORY] ?? "").toString().toLowerCase();
-        const code = (r?.[COL_CODE] ?? "").toString().toLowerCase();
+        const name = String(r?.[COL_NAME] ?? "").toLowerCase();
+        const category = String(r?.[COL_CATEGORY] ?? "").toLowerCase();
+        const code = String(r?.[COL_CODE] ?? "").toLowerCase();
         return name.includes(q) || category.includes(q) || code.includes(q);
       });
 
       elCount.textContent = ${filtered.length} artikuj;
 
       elCards.innerHTML = filtered.map(r => {
-        const name = firstExisting(r, NAME_KEYS) || "(pa emër)";
-        const desc = firstExisting(r, DESC_KEYS) || "";
-        const img = firstExisting(r, IMG_KEYS) || "";
-        const category = (r?.[COL_CATEGORY] ?? "").toString();
-        const code = (r?.[COL_CODE] ?? "").toString();
-        const stock = (r?.[COL_STOCK] ?? "").toString();
+        const name = String(r?.[COL_NAME] ?? "(pa emër)");
+        const desc = String(r?.[COL_DESC] ?? "");
+        const img = String(r?.[COL_IMAGE] ?? "");
+        const category = String(r?.[COL_CATEGORY] ?? "");
+        const code = String(r?.[COL_CODE] ?? "");
+        const stock = String(r?.[COL_STOCK] ?? "");
 
         const priceLek = toNumber(r?.[COL_PRICELEK]);
         const priceEur = priceLek / rate;
@@ -562,10 +582,10 @@
         elStatus.textContent = "Gati.";
         return;
       }catch(e){
-        console.warn("Supabase-js dështoi, po provoj fetch direkt…", e);
+        console.warn("Supabase-js dështoi, po provoj REST…", e);
       }
 
-      // 2) fallback REST
+      // 2) fallback REST (me headers)
       try{
         const url = ${SUPABASE_URL}/rest/v1/${encodeURIComponent(TABLE_NAME)}?select=*;
         const res = await fetch(url, {
@@ -579,7 +599,7 @@
 
         if (!res.ok){
           const t = await res.text().catch(()=> "");
-          throw new Error(HTTP ${res.status} ${res.statusText}${t ? (" — " + t.slice(0,160)) : ""});
+          throw new Error(HTTP ${res.status} ${res.statusText}${t ? (" — " + t.slice(0,200)) : ""});
         }
 
         const data = await res.json();
@@ -590,8 +610,8 @@
       }catch(e){
         console.error(e);
         showError(
-          "Nuk u lidh me Supabase. Nëse po e hap brenda WhatsApp/Instagram, hape në Safari/Chrome. " +
-          "Kontrollo RLS policy (SELECT për anon). Mesazh: " + (e?.message || e)
+          "Nuk u lexuan artikujt nga Supabase. Kontrollo: (1) key, (2) RLS public read, (3) kolonat. " +
+          "Mesazh: " + (e?.message || e)
         );
         elStatus.textContent = "Gabim lidhjeje";
       }
