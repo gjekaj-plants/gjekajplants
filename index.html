@@ -78,15 +78,16 @@
     .bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px;}
     .count,.status{font-size:13px;color:var(--muted);font-weight:900;}
 
-    /* ✅ SHPORTA POSHT KURSIT + STICKY (tani funksionon edhe kur scroll-on artikujt) */
+    
+    /* SHPORTA POSHT KURSIT + STICKY */
     .cartSticky{
       position: sticky;
-      top: 110px; /* poshtë header-it */
-      z-index: 1200;
+      top: 96px; /* poshtë header-it */
+      z-index: 200;
       margin-top: 12px;
     }
     @media (max-width:820px){
-      .cartSticky{ top: 100px; }
+      .cartSticky{ top: 92px; }
     }
 
     .cart{
@@ -209,7 +210,7 @@
   <div class="wrap">
     <div id="err" class="error"></div>
 
-    <!-- FILTERAT (panel) -->
+    <!-- FILTERAT + SHPORTA (poshtë kursit, sticky) -->
     <div class="panel">
       <div class="grid-controls">
         <div>
@@ -230,34 +231,34 @@
         </div>
       </div>
 
+      <!-- SHPORTA POSHT KURSIT -->
+      <div class="cartSticky">
+        <div class="cart">
+          <div class="cartHead">Shporta</div>
+          <div class="cartBody">
+            <div id="cartEmpty" class="cartEmpty">Shporta është bosh.</div>
+
+            <div class="totRow">
+              <div class="totLek" id="totLek">0 Lekë</div>
+              <div class="totEur" id="totEur">0.00 €</div>
+            </div>
+
+            <div class="cartList" id="cartList"></div>
+
+            <div class="noteLabel">Shënim (opsionale)</div>
+            <textarea id="note" class="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
+
+            <div class="cartActions">
+              <button id="btnClear" class="btnGray" type="button">Pastro shportën</button>
+              <button id="btnWA" class="btnGreen" type="button" disabled>Dërgo në WhatsApp</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="bar">
         <div class="count" id="count">0 artikuj</div>
         <div class="status" id="status">Duke u lidhur…</div>
-      </div>
-    </div>
-
-    <!-- ✅ SHPORTA (tani jashtë panelit, sticky gjatë artikujve) -->
-    <div class="cartSticky">
-      <div class="cart">
-        <div class="cartHead">Shporta</div>
-        <div class="cartBody">
-          <div id="cartEmpty" class="cartEmpty">Shporta është bosh.</div>
-
-          <div class="totRow">
-            <div class="totLek" id="totLek">0 Lekë</div>
-            <div class="totEur" id="totEur">0.00 €</div>
-          </div>
-
-          <div class="cartList" id="cartList"></div>
-
-          <div class="noteLabel">Shënim (opsionale)</div>
-          <textarea id="note" class="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
-
-          <div class="cartActions">
-            <button id="btnClear" class="btnGray" type="button">Pastro shportën</button>
-            <button id="btnWA" class="btnGreen" type="button" disabled>Dërgo në WhatsApp</button>
-          </div>
-        </div>
       </div>
     </div>
 
