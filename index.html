@@ -5,22 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gjekaj Plants — Katalogu i Bimëve</title>
 
+  <!-- SEO bazë -->
   <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre. Shiko katalogun, filtro sipas emrit/kategorisë. Porosi online dhe dërgo në WhatsApp +355697232425." />
   <meta name="keywords" content="pemë dekorative, bimë dekorative, fidane, shkurre dekorative, Dajç Shkodër, katalog bimësh, Gjekaj Plants" />
-
-  <!-- Google Search Console verification (mos e ndrysho) -->
   <meta name="google-site-verification" content="9bmY4UyP5oEu3VLcx3YxR3rDEG9NLXB3CVVJ_g5JsaA" />
 
-  <!-- Open Graph për rrjete sociale -->
-  <meta property="og:title" content="Gjekaj Plants — Katalogu i Bimëve Dekorative" />
+  <!-- Open Graph (për shpërndarje në rrjete sociale) -->
+  <meta property="og:title" content="Gjekaj Plants — Katalogu i Bimëve" />
   <meta property="og:description" content="Pamje e pemëve dekorative dhe bimëve. Zgjidh sasinë dhe dërgo kërkesën në WhatsApp." />
   <meta property="og:type" content="website" />
-  <!-- vendose URL-në e GitHub Pages -->
+  <!-- Vendose URL e GitHub Pages kur ta kesh (shembull më poshtë) -->
   <meta property="og:url" content="https://gjekaj-plants.github.io/gjekajplants/" />
-  <!-- vendose logon tënde këtu kur ta kesh: p.sh. /gjekajplants/logo.png -->
-  <meta property="og:image" content="https://gjekaj-plants.github.io/gjekajplants/logo.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <!-- Nëse ke logo, vendose këtu p.sh. /gjekajplants/og.jpg -->
+  <!-- <meta property="og:image" content="https://gjekaj-plants.github.io/gjekajplants/og.jpg" /> -->
 
   <style>
     :root{
@@ -56,7 +53,6 @@
       display:none;margin:14px 0 0;background:#fff;border:1px solid #fecaca;
       border-left:6px solid #b91c1c;border-radius:14px;padding:12px 12px;
       font-weight:900;color:#7f1d1d;
-      white-space:pre-wrap;
     }
 
     .panel{
@@ -87,15 +83,25 @@
     .bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px;}
     .count,.status{font-size:13px;color:var(--muted);font-weight:900;}
 
-    /* SHPORTA sticky */
+    /* ===== SHPORTA NË TË DJATHTË (SI TE TIINY) ===== */
+    .cartRow{
+      display:flex;
+      justify-content:flex-end;
+      margin-top:12px;
+    }
     .cartSticky{
       position: sticky;
-      top: 96px;
+      top: 96px;          /* poshtë header-it */
       z-index: 200;
-      margin-top: 12px;
+      width: 360px;       /* përmasa fikse */
+      flex: 0 0 360px;
     }
     @media (max-width:820px){
-      .cartSticky{ top: 92px; }
+      .cartSticky{
+        top: 92px;
+        width: 100%;
+        flex: 1 1 auto;
+      }
     }
 
     .cart{
@@ -105,7 +111,6 @@
       box-shadow: var(--shadow);
       border: 1px solid rgba(255,255,255,.06);
       overflow:hidden;
-      max-width: 460px;  /* e mban me përmasa të qëndrueshme */
     }
     .cartHead{padding:14px 14px 10px;font-weight:1000;font-size:20px;}
     .cartBody{padding:0 14px 14px;}
@@ -166,6 +171,7 @@
       color:#fff;font-weight:1000;padding:12px 14px;border-radius:14px;cursor:pointer;
     }
 
+    /* ===== PRODUKTET ===== */
     .cards{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -239,25 +245,28 @@
         </div>
       </div>
 
-      <div class="cartSticky">
-        <div class="cart">
-          <div class="cartHead">Shporta</div>
-          <div class="cartBody">
-            <div id="cartEmpty" class="cartEmpty">Shporta është bosh.</div>
+      <!-- SHPORTA NË TË DJATHTË -->
+      <div class="cartRow">
+        <div class="cartSticky">
+          <div class="cart">
+            <div class="cartHead">Shporta</div>
+            <div class="cartBody">
+              <div id="cartEmpty" class="cartEmpty">Shporta është bosh.</div>
 
-            <div class="totRow">
-              <div class="totLek" id="totLek">0 Lekë</div>
-              <div class="totEur" id="totEur">0.00 €</div>
-            </div>
+              <div class="totRow">
+                <div class="totLek" id="totLek">0 Lekë</div>
+                <div class="totEur" id="totEur">0.00 €</div>
+              </div>
 
-            <div class="cartList" id="cartList"></div>
+              <div class="cartList" id="cartList"></div>
 
-            <div class="noteLabel">Shënim (opsionale)</div>
-            <textarea id="note" class="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
+              <div class="noteLabel">Shënim (opsionale)</div>
+              <textarea id="note" class="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
 
-            <div class="cartActions">
-              <button id="btnClear" class="btnGray" type="button">Pastro shportën</button>
-              <button id="btnWA" class="btnGreen" type="button" disabled>Dërgo në WhatsApp</button>
+              <div class="cartActions">
+                <button id="btnClear" class="btnGray" type="button">Pastro shportën</button>
+                <button id="btnWA" class="btnGreen" type="button" disabled>Dërgo në WhatsApp</button>
+              </div>
             </div>
           </div>
         </div>
@@ -269,31 +278,34 @@
       </div>
     </div>
 
+    <!-- PRODUKTET -->
     <div class="cards" id="cards"></div>
   </div>
 
   <footer>Gjekaj Plants • WhatsApp: 0697232425</footer>
 
+  <!-- Supabase JS (v2) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
-    // ✅ Zëvendëso këto 2 vlera me të tuat
-    const SUPABASE_URL = "PASTE_SUPABASE_URL_HERE";
-    const SUPABASE_ANON_KEY = "PASTE_SUPABASE_ANON_KEY_HERE";
-
+    /* ========= KONFIGURIMI SUPABASE ========= */
+    const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_Ll_tV3Hs9MmMO54DaDWGiQ_KRpED8xd";
     const TABLE_NAME = "products";
 
-    // Kolonat standard
-    const COL_NAME     = "name";
+    /* Kolonat e tua (siç i kishe) */
     const COL_CATEGORY = "category";
     const COL_CODE     = "code";
     const COL_STOCK    = "stock";
     const COL_PRICELEK = "price_lek";
-    const COL_DESC     = "description";
-    const COL_PHOTO    = "photo_url";
+
+    const NAME_KEYS = ["name","title","emri"];
+    const DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
+    const IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
 
     const WA_NUMBER  = "355697232425";
 
+    /* ========= ELEMENTET ========= */
     const elErr = document.getElementById("err");
     const elCards = document.getElementById("cards");
     const elCount = document.getElementById("count");
@@ -322,6 +334,13 @@
         .replaceAll("'","&#039;");
     }
 
+    function firstExisting(row, keys){
+      for (const k of keys){
+        if (row && row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== "") return row[k];
+      }
+      return "";
+    }
+
     function toNumber(v){
       if (v === null || v === undefined) return 0;
       const s = String(v).replaceAll(".", "").replaceAll(",", ".").replace(/[^\d.]/g, "");
@@ -348,7 +367,9 @@
       }
       const cats = Array.from(set).sort((a,b)=>a.localeCompare(b));
       const current = elCat.value;
-      elCat.innerHTML = <option value="">Të gjitha kategoritë</option> + cats.map(c => <option value="${escapeHtml(c)}">${escapeHtml(c)}</option>).join("");
+      elCat.innerHTML =
+        <option value="">Të gjitha kategoritë</option> +
+        cats.map(c => <option value="${escapeHtml(c)}">${escapeHtml(c)}</option>).join("");
       if (cats.includes(current)) elCat.value = current;
     }
 
@@ -415,8 +436,8 @@
 
     function addToCart(item, qty){
       qty = Math.max(1, Math.floor(toNumber(qty)));
-      const code = String(item?.[COL_CODE] ?? "").trim() || ("ID" + Math.random());
-      const name = (item?.[COL_NAME] ?? "(pa emër)").toString();
+      const code = String(item?.[COL_CODE] ?? item.code ?? item.id ?? "").trim() || ("ID" + Math.random());
+      const name = firstExisting(item, NAME_KEYS) || "(pa emër)";
       const category = (item?.[COL_CATEGORY] ?? "").toString();
       const priceLek = toNumber(item?.[COL_PRICELEK]);
 
@@ -483,22 +504,20 @@
       const rate = Math.max(1, toNumber(elRate.value || 100));
 
       const filtered = ALL.filter(r => {
-        const rCat = String(r?.[COL_CATEGORY] ?? "").trim();
-        if (cat && rCat !== cat) return false;
+        if (cat && String(r?.[COL_CATEGORY] ?? "").trim() !== cat) return false;
         if (!q) return true;
-
-        const name = String(r?.[COL_NAME] ?? "").toLowerCase();
-        const category = String(r?.[COL_CATEGORY] ?? "").toLowerCase();
-        const code = String(r?.[COL_CODE] ?? "").toLowerCase();
+        const name = firstExisting(r, NAME_KEYS).toString().toLowerCase();
+        const category = (r?.[COL_CATEGORY] ?? "").toString().toLowerCase();
+        const code = (r?.[COL_CODE] ?? "").toString().toLowerCase();
         return name.includes(q) || category.includes(q) || code.includes(q);
       });
 
       elCount.textContent = ${filtered.length} artikuj;
 
       elCards.innerHTML = filtered.map(r => {
-        const name = (r?.[COL_NAME] ?? "(pa emër)").toString();
-        const desc = (r?.[COL_DESC] ?? "").toString();
-        const img = (r?.[COL_PHOTO] ?? "").toString();
+        const name = firstExisting(r, NAME_KEYS) || "(pa emër)";
+        const desc = firstExisting(r, DESC_KEYS) || "";
+        const img = firstExisting(r, IMG_KEYS) || "";
         const category = (r?.[COL_CATEGORY] ?? "").toString();
         const code = (r?.[COL_CODE] ?? "").toString();
         const stock = (r?.[COL_STOCK] ?? "").toString();
@@ -506,7 +525,7 @@
         const priceLek = toNumber(r?.[COL_PRICELEK]);
         const priceEur = priceLek / rate;
 
-        const safeId = q_${escapeHtml((code || String(r.id || Math.random())).replaceAll('.','_'))};
+        const safeId = q_${escapeHtml(code || String(r.id || Math.random()).replaceAll('.','_'))};
 
         const imgTag = img
           ? `<img class="img" src="${escapeHtml(img)}" alt="${escapeHtml(name)}" loading="lazy"
@@ -552,6 +571,7 @@
       clearError();
       elStatus.textContent = "Duke lexuar nga Supabase…";
 
+      // 1) supabase-js
       try{
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         const { data, error } = await supabase.from(TABLE_NAME).select("*");
@@ -561,13 +581,37 @@
         buildCategories(ALL);
         render();
         elStatus.textContent = "Gati.";
+        return;
+      }catch(e){
+        console.warn("Supabase-js dështoi, po provoj fetch direkt…", e);
+      }
+
+      // 2) fallback REST (nëse supabase-js bllokohet nga ndonjë browser)
+      try{
+        const url = ${SUPABASE_URL}/rest/v1/${encodeURIComponent(TABLE_NAME)}?select=*;
+        const res = await fetch(url, {
+          method: "GET",
+          headers: {
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: Bearer ${SUPABASE_ANON_KEY},
+            Accept: "application/json"
+          }
+        });
+
+        if (!res.ok){
+          const t = await res.text().catch(()=> "");
+          throw new Error(HTTP ${res.status} ${res.statusText}${t ? (" — " + t.slice(0,160)) : ""});
+        }
+
+        const data = await res.json();
+        ALL = Array.isArray(data) ? data : [];
+        buildCategories(ALL);
+        render();
+        elStatus.textContent = "Gati.";
       }catch(e){
         console.error(e);
         showError(
-          "Nuk u lidh me Supabase.\n\n" +
-          "Kontrollo:\n" +
-          "1) SUPABASE_URL dhe ANON_KEY\n" +
-          "2) RLS policy SELECT për anon\n\n" +
+          "Nuk u lidh me Supabase. Kontrollo: (1) RLS policy SELECT për anon, (2) tabela quhet 'products', (3) kolonat ekzistojnë. " +
           "Mesazh: " + (e?.message || e)
         );
         elStatus.textContent = "Gabim lidhjeje";
