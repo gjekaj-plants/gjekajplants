@@ -1,669 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sq">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
   <title>Gjekaj Plants — Katalogu i Bimëve</title>
-
-  <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre në Dajç, Shkodër. Katalog online dhe porosi në WhatsApp +355697232425." />
-  <meta name="keywords" content="pemë dekorative, bimë dekorative, fidane, shkurre dekorative, Dajç, Shkodër, Gjekaj Plants, katalog bimësh" />
-
-  <meta property="og:title" content="Gjekaj Plants — Katalogu i Bimëve" />
-  <meta property="og:description" content="Zgjidh sasinë dhe dërgo kërkesën në WhatsApp." />
-  <meta property="og:type" content="website" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    :root{
-      --bg:#f3f5f8;
-      --card:#ffffff;
-      --text:#0f172a;
-      --muted:#64748b;
-      --border:#e5e7eb;
-      --shadow: 0 10px 30px rgba(2,6,23,.08);
-      --radius: 18px;
-      --accent:#b91c1c; /* e kuqe për çmimet */
-      --dark:#111827;   /* e zezë për butonat */
-      --green:#16a34a;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
+    body { font-family: Arial, sans-serif; background:#f6f7f9; margin:0; }
+    header { background:#0f172a; color:#fff; padding:16px; text-align:center; }
+    #status { margin:12px; padding:10px; border-radius:6px; }
+    .ok { background:#dcfce7; color:#065f46; }
+    .err { background:#fee2e2; color:#7f1d1d; }
 
-    header{
-      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
-      color:#fff;
-      padding: 18px 14px 14px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      text-align:center;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    header h1{margin:0;font-size:clamp(20px,3.4vw,32px);font-weight:900;line-height:1.1;}
-    header .sub{margin-top:6px;opacity:.92;font-size:14px;font-weight:800;}
-
-    .wrap{max-width:1200px;margin:14px auto 90px;padding:0 14px;}
-
-    .error{
-      display:none;margin-top:14px;background:#fff;border:1px solid #fecaca;
-      border-left:6px solid #b91c1c;border-radius:14px;padding:12px 12px;
-      font-weight:900;color:#7f1d1d;white-space:pre-wrap;
-    }
-
-    .panel{
-      background:var(--card);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      border-radius:var(--radius);
-      padding:14px;
-      margin-top:14px;
-    }
-
-    /* Layout: majtas produktet / djathtas shporta */
-    .layout{
+    .grid {
       display:grid;
-      grid-template-columns: 1fr 360px;
-      gap: 14px;
-      align-items:start;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:16px;
+      padding:16px;
     }
-    @media (max-width: 980px){
-      .layout{grid-template-columns:1fr;}
-    }
-
-    /* Filterat lart (brenda kolonës majtas) */
-    .filters{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr .6fr;
-      gap:10px;
-    }
-    @media (max-width: 980px){
-      .filters{grid-template-columns:1fr;}
-    }
-
-    label{font-size:12px;font-weight:900;color:var(--muted);display:block;margin:6px 0 6px;}
-    input, select, textarea{
-      width:100%;padding:12px 12px;border:1px solid var(--border);border-radius:12px;
-      font-size:15px;outline:none;background:#fff;
-    }
-    input:focus, select:focus, textarea:focus{
-      border-color:#93c5fd;box-shadow:0 0 0 4px rgba(59,130,246,.12);
-    }
-
-    .bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px;flex-wrap:wrap;}
-    .count,.status{font-size:13px;color:var(--muted);font-weight:900;}
-
-    /* Produktet */
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:14px;
-      margin-top:14px;
-    }
-    @media (max-width:1100px){ .cards{grid-template-columns:repeat(2, minmax(0,1fr));} }
-    @media (max-width:640px){ .cards{grid-template-columns:1fr;} }
-
-    .card{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .img{width:100%;aspect-ratio:16/10;background:#e5e7eb;display:block;object-fit:cover;}
-    .content{padding:12px 12px 14px;}
-    .name{margin:0;font-size:20px;font-weight:1000;}
-    .meta{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.35;font-weight:700;}
-    .price{margin-top:10px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
-    .lek{color:var(--accent);font-weight:1000;font-size:26px;}
-    .eur{color:#334155;font-weight:900;font-size:18px;}
-    .desc{margin-top:8px;color:#334155;font-size:13px;line-height:1.35;font-weight:650;opacity:.95;}
-
-    .buyrow{display:flex;gap:10px;margin-top:12px;align-items:center;}
-    .qty{width:90px;padding:12px;border:1px solid var(--border);border-radius:12px;font-weight:900;text-align:center;}
-    .addbtn{
-      flex:1;padding:12px 14px;border-radius:12px;border:0;font-weight:1000;
-      background: var(--dark); color:#fff; cursor:pointer;
-    }
-    .addbtn:hover{opacity:.92;}
-    .addbtn:active{transform:translateY(1px);}
-
-    /* SHPORTA DJATHTAS (sticky) */
-    .cartSticky{
-      position: sticky;
-      top: 92px; /* poshtë header */
-      z-index: 300;
-    }
-    @media (max-width: 980px){
-      .cartSticky{ position: relative; top:auto; }
-    }
-
-    .cart{
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .cartHead{
-      padding:14px 14px 10px;
-      font-weight:1000;
-      font-size:20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-    }
-    .cartHead small{
-      font-weight:900;
-      color:var(--muted);
-      font-size:12px;
-    }
-    .cartBody{padding:0 14px 14px;}
-    .cartEmpty{color:var(--muted);font-weight:900;margin:10px 0;}
-
-    .totRow{
-      display:flex;justify-content:space-between;gap:10px;align-items:baseline;
-      padding:10px 0 8px;border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);margin:10px 0 10px;
-    }
-    .totLek{font-weight:1000;font-size:20px;color:var(--accent);}
-    .totEur{font-weight:1000;font-size:16px;color:#334155;}
-
-    .cartList{
-      display:flex;flex-direction:column;gap:10px;
-      max-height: 320px;
-      overflow:auto;
-      padding-right:4px;
-    }
-    .cartItem{
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 10px;
-    }
-    .ciTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
-    .ciName{font-weight:1000;line-height:1.15;font-size:14px;}
-    .ciMeta{color:var(--muted);font-weight:800;font-size:12px;margin-top:6px;line-height:1.3;}
-    .ciRight{display:flex;flex-direction:column;gap:8px;align-items:flex-end;min-width:120px;}
-    .ciQty{
-      width:78px;
-      border:1px solid var(--border);
-      color:var(--text);
-      text-align:center;
-      font-weight:1000;
-      border-radius:12px;
-      padding:8px 8px;
-      outline:none;
+    .card {
       background:#fff;
+      border-radius:8px;
+      padding:12px;
+      box-shadow:0 2px 6px rgba(0,0,0,.08);
     }
-    .ciBtn{
-      background: rgba(185,28,28,.10);
-      border:1px solid rgba(185,28,28,.25);
-      color:#7f1d1d;
-      font-weight:1000;
-      padding:8px 10px;border-radius:12px;cursor:pointer;
-      width:100%;
-    }
-
-    .noteLabel{font-weight:900;color:var(--muted);margin:10px 0 6px;font-size:13px;}
-    .note{
-      width:100%;
-      min-height:70px;
-      border-radius:14px;
-      padding:10px 10px;
-      resize:vertical;
-    }
-
-    .cartActions{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
-    .btnGreen{
-      background: var(--green);border:0;color:#fff;font-weight:1000;
-      padding:12px 14px;border-radius:14px;cursor:pointer;
-      font-size:15px;
-    }
-    .btnGreen[disabled]{opacity:.45;cursor:not-allowed;}
-    .btnGray{
-      background: #fff;
-      border:1px solid var(--border);
-      color:var(--text);
-      font-weight:1000;
-      padding:12px 14px;border-radius:14px;cursor:pointer;
-      font-size:15px;
-    }
-
-    footer{
-      position:fixed;left:0;right:0;bottom:0;background:#111827;color:#fff;
-      padding:12px 14px;text-align:center;font-weight:1000;z-index:2000;
-    }
+    .price { font-weight:bold; color:#166534; }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Gjekaj Plants — Katalogu i Bimëve</h1>
-    <div class="sub">Dajç, Shkodër, Albania • Tel / WhatsApp: +355697232425</div>
-  </header>
 
-  <div class="wrap">
-    <div id="err" class="error"></div>
+<header>
+  <h2>Gjekaj Plants — Katalogu i Bimëve</h2>
+</header>
 
-    <div class="layout">
+<div id="status">Duke u lidhur me Supabase…</div>
+<div class="grid" id="products"></div>
 
-      <!-- MAJTAS: FILTER + PRODUKTET -->
-      <div>
-        <div class="panel">
-          <div class="filters">
-            <div>
-              <label>Kërko (emër / kategori / kod)</label>
-              <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
-            </div>
+<script type="module">
+  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-            <div>
-              <label>Kategori</label>
-              <select id="cat">
-                <option value="">Të gjitha kategoritë</option>
-              </select>
-            </div>
+  // 🔑 SUPABASE SETTINGS (TUAJAT)
+  const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
 
-            <div>
-              <label>Kursi € → Lek (1€ = 100)</label>
-              <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="100" />
-            </div>
-          </div>
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-          <div class="bar">
-            <div class="count" id="count">0 artikuj</div>
-            <div class="status" id="status">Duke u lidhur…</div>
-          </div>
-        </div>
+  const statusEl = document.getElementById("status");
+  const grid = document.getElementById("products");
 
-        <div class="cards" id="cards"></div>
-      </div>
+  async function loadProducts() {
+    const { data, error } = await supabase
+      .from("products")
+      .select("*");
 
-      <!-- DJATHTAS: SHPORTA -->
-      <div class="cartSticky">
-        <div class="cart">
-          <div class="cartHead">
-            <div>Shporta</div>
-            <small id="cartCount">0 artikuj</small>
-          </div>
-
-          <div class="cartBody">
-            <div id="cartEmpty" class="cartEmpty">Shporta është bosh.</div>
-
-            <div class="totRow">
-              <div class="totLek" id="totLek">0 Lekë</div>
-              <div class="totEur" id="totEur">0.00 €</div>
-            </div>
-
-            <div class="cartList" id="cartList"></div>
-
-            <div class="noteLabel">Shënim (opsionale)</div>
-            <textarea id="note" class="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
-
-            <div class="cartActions">
-              <button id="btnClear" class="btnGray" type="button">Pastro shportën</button>
-              <button id="btnWA" class="btnGreen" type="button" disabled>Dërgo kërkesën në WhatsApp</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <footer>Gjekaj Plants • WhatsApp: +355 69 723 2425</footer>
-
-  <!-- Supabase JS (v2) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script>
-    // =========================
-    //  SUPABASE (me ANON KEY legacy që më dërgove)
-    // =========================
-    const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
-    const TABLE_NAME = "products";
-
-    // Kolonat (siç i ke)
-    const COL_CATEGORY = "category";
-    const COL_CODE     = "code";
-    const COL_STOCK    = "stock";
-    const COL_PRICELEK = "price_lek";
-
-    // fushat opsionale
-    const NAME_KEYS = ["name","title","emri"];
-    const DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
-    const IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
-
-    // WhatsApp (pa +)
-    const WA_NUMBER = "355697232425";
-
-    // UI
-    const elErr = document.getElementById("err");
-    const elCards = document.getElementById("cards");
-    const elCount = document.getElementById("count");
-    const elStatus = document.getElementById("status");
-    const elQ = document.getElementById("q");
-    const elCat = document.getElementById("cat");
-    const elRate = document.getElementById("rate");
-
-    const elCartEmpty = document.getElementById("cartEmpty");
-    const elCartList = document.getElementById("cartList");
-    const elTotLek = document.getElementById("totLek");
-    const elTotEur = document.getElementById("totEur");
-    const elCartCount = document.getElementById("cartCount");
-    const elNote = document.getElementById("note");
-    const btnWA = document.getElementById("btnWA");
-    const btnClear = document.getElementById("btnClear");
-
-    function showError(msg){ elErr.style.display="block"; elErr.textContent=msg; }
-    function clearError(){ elErr.style.display="none"; elErr.textContent=""; }
-
-    function escapeHtml(s){
-      return String(s ?? "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-    }
-    function firstExisting(row, keys){
-      for (const k of keys){
-        if (row && row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== "") return row[k];
-      }
-      return "";
-    }
-    function toNumber(v){
-      if (v === null || v === undefined) return 0;
-      const s = String(v).replaceAll(".", "").replaceAll(",", ".").replace(/[^\d.]/g, "");
-      const n = Number(s);
-      return Number.isFinite(n) ? n : 0;
-    }
-    function formatLek(n){
-      const x = Math.round(n);
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    }
-    function formatEuro(n){
-      return (Math.round(n * 100) / 100).toFixed(2);
+    if (error) {
+      statusEl.className = "err";
+      statusEl.textContent =
+        "❌ Gabim Supabase: " + error.message;
+      console.error(error);
+      return;
     }
 
-    let ALL = [];
-    const CART = {};
+    statusEl.className = "ok";
+    statusEl.textContent = ✅ U ngarkuan ${data.length} produkte;
 
-    function buildCategories(rows){
-      const set = new Set();
-      for (const r of rows){
-        const c = (r?.[COL_CATEGORY] ?? "").toString().trim();
-        if (c) set.add(c);
-      }
-      const cats = Array.from(set).sort((a,b)=>a.localeCompare(b));
-      const current = elCat.value;
-      elCat.innerHTML = <option value="">Të gjitha kategoritë</option> + cats.map(c => <option value="${escapeHtml(c)}">${escapeHtml(c)}</option>).join("");
-      if (cats.includes(current)) elCat.value = current;
+    if (data.length === 0) {
+      grid.innerHTML = "<p>Nuk ka produkte.</p>";
+      return;
     }
 
-    function cartTotalLek(){
-      return Object.values(CART).reduce((s,it)=> s + (it.priceLek * it.qty), 0);
-    }
+    grid.innerHTML = "";
+    data.forEach(p => {
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `
+        <h4>${p.name ?? "Pa emër"}</h4>
+        <div>Kategori: ${p.category ?? "-"}</div>
+        <div class="price">${p.price_lek ?? 0} Lekë</div>
+      `;
+      grid.appendChild(div);
+    });
+  }
 
-    function renderCart(){
-      const rate = Math.max(1, toNumber(elRate.value || 100));
-      const items = Object.values(CART);
+  loadProducts();
+</script>
 
-      elCartCount.textContent = ${items.length} artikuj;
-
-      const totalLek = cartTotalLek();
-      const totalEur = totalLek / rate;
-
-      elTotLek.textContent = ${formatLek(totalLek)} Lekë;
-      elTotEur.textContent = ${formatEuro(totalEur)} €;
-
-      if (items.length === 0){
-        elCartEmpty.style.display = "block";
-        elCartList.innerHTML = "";
-        btnWA.disabled = true;
-        return;
-      }
-
-      elCartEmpty.style.display = "none";
-      btnWA.disabled = false;
-
-      elCartList.innerHTML = items.map(it => {
-        const subLek = it.priceLek * it.qty;
-        const subEur = subLek / rate;
-
-        return `
-          <div class="cartItem">
-            <div class="ciTop">
-              <div>
-                <div class="ciName">${escapeHtml(it.name)}</div>
-                <div class="ciMeta">
-                  ${it.category ? Kategoria: <b>${escapeHtml(it.category)}</b><br> : ``}
-                  ${it.code ? Kodi: <b>${escapeHtml(it.code)}</b><br> : ``}
-                  Çmimi: <b>${formatLek(it.priceLek)} Lekë</b> (${formatEuro(it.priceLek / rate)} €)<br>
-                  Nën-total: <b>${formatLek(subLek)} Lekë</b> (${formatEuro(subEur)} €)
-                </div>
-              </div>
-              <div class="ciRight">
-                <input class="ciQty" type="number" min="1" step="1" value="${it.qty}"
-                  onchange="window.__setCartQty('${escapeHtml(it.codeKey)}', this.value)" />
-                <button class="ciBtn" type="button" onclick="window.__removeCart('${escapeHtml(it.codeKey)}')">Hiq</button>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function setCartQty(codeKey, qty){
-      qty = Math.max(0, Math.floor(toNumber(qty)));
-      if (!CART[codeKey]) return;
-      if (qty === 0) delete CART[codeKey];
-      else CART[codeKey].qty = qty;
-      renderCart();
-    }
-    window.__setCartQty = (codeKey, qty) => setCartQty(codeKey, qty);
-    window.__removeCart = (codeKey) => { delete CART[String(codeKey)]; renderCart(); };
-
-    function addToCart(item, qty){
-      qty = Math.max(1, Math.floor(toNumber(qty)));
-      const code = String(item?.[COL_CODE] ?? item.code ?? item.id ?? "").trim();
-      const codeKey = code || String(item?.id ?? Math.random());
-      const name = firstExisting(item, NAME_KEYS) || "(pa emër)";
-      const category = (item?.[COL_CATEGORY] ?? "").toString();
-      const priceLek = toNumber(item?.[COL_PRICELEK]);
-
-      if (!CART[codeKey]) CART[codeKey] = { codeKey, code, name, category, priceLek, qty };
-      else CART[codeKey].qty += qty;
-
-      renderCart();
-    }
-
-    function clearCart(){
-      for (const k of Object.keys(CART)) delete CART[k];
-      elNote.value = "";
-      renderCart();
-    }
-
-    function buildWhatsAppMessage(){
-      const rate = Math.max(1, toNumber(elRate.value || 100));
-      const items = Object.values(CART);
-      const totalLek = cartTotalLek();
-      const totalEur = totalLek / rate;
-
-      const lines = [];
-      lines.push("Përshëndetje, dua të porosis:");
-      lines.push("");
-
-      for (const it of items){
-        const subLek = it.priceLek * it.qty;
-        const subEur = subLek / rate;
-        lines.push(• ${it.name}${it.code ? " (Kodi: " + it.code + ")" : ""});
-        if (it.category) lines.push(`  Kategoria: ${it.category}`);
-        lines.push(`  Sasia: ${it.qty}`);
-        lines.push(`  Nën-total: ${formatLek(subLek)} Lekë (${formatEuro(subEur)} €)`);
-        lines.push("");
-      }
-
-      lines.push(TOTALI: ${formatLek(totalLek)} Lekë (${formatEuro(totalEur)} €));
-      lines.push(Kursi: 1€ = ${rate} Lek);
-
-      const note = (elNote.value || "").trim();
-      if (note){
-        lines.push("");
-        lines.push("Shënim:");
-        lines.push(note);
-      }
-      return lines.join("\n");
-    }
-
-    function sendToWhatsApp(){
-      const items = Object.values(CART);
-      if (items.length === 0) return;
-      const text = buildWhatsAppMessage();
-      const url = https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)};
-      window.open(url, "_blank");
-    }
-
-    function renderProducts(){
-      clearError();
-
-      const q = elQ.value.trim().toLowerCase();
-      const cat = elCat.value.trim();
-      const rate = Math.max(1, toNumber(elRate.value || 100));
-
-      const filtered = ALL.filter(r => {
-        if (cat && String(r?.[COL_CATEGORY] ?? "").trim() !== cat) return false;
-        if (!q) return true;
-        const name = firstExisting(r, NAME_KEYS).toString().toLowerCase();
-        const category = (r?.[COL_CATEGORY] ?? "").toString().toLowerCase();
-        const code = (r?.[COL_CODE] ?? "").toString().toLowerCase();
-        return name.includes(q) || category.includes(q) || code.includes(q);
-      });
-
-      elCount.textContent = ${filtered.length} artikuj;
-
-      elCards.innerHTML = filtered.map((r, idx) => {
-        const name = firstExisting(r, NAME_KEYS) || "(pa emër)";
-        const desc = firstExisting(r, DESC_KEYS) || "";
-        const img = firstExisting(r, IMG_KEYS) || "";
-        const category = (r?.[COL_CATEGORY] ?? "").toString();
-        const code = (r?.[COL_CODE] ?? "").toString();
-        const stock = (r?.[COL_STOCK] ?? "").toString();
-
-        const priceLek = toNumber(r?.[COL_PRICELEK]);
-        const priceEur = priceLek / rate;
-
-        const qtyId = qty_${idx};
-
-        const imgTag = img
-          ? `<img class="img" src="${escapeHtml(img)}" alt="${escapeHtml(name)}" loading="lazy"
-              onerror="this.style.display='none'; this.parentNode.style.background='#e5e7eb';" />`
-          : <div class="img"></div>;
-
-        return `
-          <article class="card">
-            ${imgTag}
-            <div class="content">
-              <h3 class="name">${escapeHtml(name)}</h3>
-
-              <div class="meta">
-                ${category ? Kategoria: <b>${escapeHtml(category)}</b><br> : ``}
-                ${code ? Kodi: <b>${escapeHtml(code)}</b><br> : ``}
-                ${stock ? Stok: <b>${escapeHtml(stock)}</b> : ``}
-              </div>
-
-              <div class="price">
-                <div class="lek">${formatLek(priceLek)} Lekë</div>
-                <div class="eur">${formatEuro(priceEur)} €</div>
-              </div>
-
-              ${desc ? <div class="desc">${escapeHtml(desc)}</div> : ``}
-
-              <div class="buyrow">
-                <input class="qty" id="${qtyId}" type="number" min="1" step="1" value="1" />
-                <button class="addbtn" type="button"
-                  onclick="window.__addToCart(${idx}, document.getElementById('${qtyId}').value)">
-                  Shto në shportë
-                </button>
-              </div>
-            </div>
-          </article>
-        `;
-      }).join("");
-
-      window.__addToCart = (i, qty) => {
-        const row = filtered[i];
-        if (row) addToCart(row, qty);
-      };
-
-      renderCart();
-    }
-
-    async function load(){
-      clearError();
-      elStatus.textContent = "Duke lexuar nga Supabase…";
-
-      // 1) supabase-js
-      try{
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        const { data, error } = await supabase.from(TABLE_NAME).select("*");
-        if (error) throw error;
-
-        ALL = Array.isArray(data) ? data : [];
-        buildCategories(ALL);
-        renderProducts();
-        elStatus.textContent = "Gati.";
-        return;
-      }catch(e){
-        console.warn("Supabase-js dështoi, po provoj REST…", e);
-      }
-
-      // 2) fallback REST (shumë i dobishëm në GitHub Pages)
-      try{
-        const url = ${SUPABASE_URL}/rest/v1/${encodeURIComponent(TABLE_NAME)}?select=*;
-        const res = await fetch(url, {
-          method: "GET",
-          headers: {
-            apikey: SUPABASE_ANON_KEY,
-            Authorization: Bearer ${SUPABASE_ANON_KEY},
-            Accept: "application/json"
-          }
-        });
-
-        if (!res.ok){
-          const t = await res.text().catch(()=> "");
-          throw new Error(HTTP ${res.status} ${res.statusText}${t ? (" — " + t.slice(0,200)) : ""});
-        }
-
-        const data = await res.json();
-        ALL = Array.isArray(data) ? data : [];
-        buildCategories(ALL);
-        renderProducts();
-        elStatus.textContent = "Gati.";
-      }catch(e){
-        console.error(e);
-        showError(
-          "NUK u lidh me Supabase.\n\n" +
-          "Kontrollo këto 3 gjëra:\n" +
-          "1) RLS policy: duhet SELECT për anon\n" +
-          "2) tabela quhet 'products'\n" +
-          "3) kolona e çmimit quhet 'price_lek'\n\n" +
-          "Mesazh: " + (e?.message || e)
-        );
-        elStatus.textContent = "Gabim";
-      }
-    }
-
-    // Events
-    elQ.addEventListener("input", renderProducts);
-    elCat.addEventListener("change", renderProducts);
-    elRate.addEventListener("input", () => { renderProducts(); renderCart(); });
-
-    btnWA.addEventListener("click", sendToWhatsApp);
-    btnClear.addEventListener("click", clearCart);
-
-    // Start
-    load();
-  </script>
 </body>
 </html>
