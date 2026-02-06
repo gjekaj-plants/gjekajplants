@@ -1,87 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sq">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gjekaj Plants — Katalogu i Bimëve</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre. Katalog me kërkim dhe filtër. Porosit në WhatsApp." />
 
   <style>
-    body { font-family: Arial, sans-serif; background:#f6f7f9; margin:0; }
-    header { background:#0f172a; color:#fff; padding:16px; text-align:center; }
-    #status { margin:12px; padding:10px; border-radius:6px; }
-    .ok { background:#dcfce7; color:#065f46; }
-    .err { background:#fee2e2; color:#7f1d1d; }
-
-    .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-      gap:16px;
-      padding:16px;
-    }
-    .card {
-      background:#fff;
-      border-radius:8px;
-      padding:12px;
-      box-shadow:0 2px 6px rgba(0,0,0,.08);
-    }
-    .price { font-weight:bold; color:#166534; }
+    body{margin:0;font-family:Arial,sans-serif;background:#f3f5f8;color:#0f172a}
+    header{background:#111827;color:#fff;padding:18px;text-align:center}
+    .wrap{max-width:1100px;margin:16px auto;padding:0 12px}
+    .panel{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    input,select{padding:10px;border:1px solid #e5e7eb;border-radius:10px;font-size:14px}
+    #q{flex:1;min-width:220px}
+    #cat{min-width:220px}
+    .status{margin-top:10px;font-weight:bold;color:#64748b}
+    .error{margin-top:10px;background:#fee2e2;border:1px solid #fecaca;border-left:6px solid #b91c1c;
+      color:#7f1d1d;border-radius:12px;padding:10px;display:none;white-space:pre-wrap}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+    @media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:600px){.cards{grid-template-columns:1fr}}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px}
+    .name{font-size:18px;font-weight:bold;margin:0 0 6px}
+    .meta{color:#64748b;font-size:13px;line-height:1.35}
+    .price{margin-top:8px;font-size:20px;font-weight:bold;color:#b91c1c}
   </style>
 </head>
+
 <body>
+  <header>
+    <h2 style="margin:0">Gjekaj Plants — Katalogu i Bimëve</h2>
+    <div style="opacity:.9;margin-top:6px;font-size:13px">Dajç, Shkodër • Tel: +355697232425</div>
+  </header>
 
-<header>
-  <h2>Gjekaj Plants — Katalogu i Bimëve</h2>
-</header>
+  <div class="wrap">
+    <div class="panel">
+      <div class="row">
+        <input id="q" placeholder="Kërko (emër / kategori / kod)..." />
+        <select id="cat">
+          <option value="">Të gjitha kategoritë</option>
+        </select>
+      </div>
 
-<div id="status">Duke u lidhur me Supabase…</div>
-<div class="grid" id="products"></div>
+      <div id="status" class="status">Duke u lidhur me Supabase…</div>
+      <div id="err" class="error"></div>
+    </div>
 
-<script type="module">
-  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+    <div id="cards" class="cards"></div>
+  </div>
 
-  // 🔑 SUPABASE SETTINGS (TUAJAT)
-  const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
-  const SUPABASE_ANON_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
+<script>
+  // ✅ SUPABASE SETTINGS
+  var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
+  var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
 
-  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  var TABLE = "products"; // emri i tabelës
+  var ALL = [];
 
-  const statusEl = document.getElementById("status");
-  const grid = document.getElementById("products");
+  var elQ = document.getElementById("q");
+  var elCat = document.getElementById("cat");
+  var elCards = document.getElementById("cards");
+  var elStatus = document.getElementById("status");
+  var elErr = document.getElementById("err");
 
-  async function loadProducts() {
-    const { data, error } = await supabase
-      .from("products")
-      .select("*");
-
-    if (error) {
-      statusEl.className = "err";
-      statusEl.textContent =
-        "❌ Gabim Supabase: " + error.message;
-      console.error(error);
-      return;
-    }
-
-    statusEl.className = "ok";
-    statusEl.textContent = ✅ U ngarkuan ${data.length} produkte;
-
-    if (data.length === 0) {
-      grid.innerHTML = "<p>Nuk ka produkte.</p>";
-      return;
-    }
-
-    grid.innerHTML = "";
-    data.forEach(p => {
-      const div = document.createElement("div");
-      div.className = "card";
-      div.innerHTML = `
-        <h4>${p.name ?? "Pa emër"}</h4>
-        <div>Kategori: ${p.category ?? "-"}</div>
-        <div class="price">${p.price_lek ?? 0} Lekë</div>
-      `;
-      grid.appendChild(div);
-    });
+  function showError(msg){
+    elErr.style.display = "block";
+    elErr.textContent = msg;
   }
+  function clearError(){
+    elErr.style.display = "none";
+    elErr.textContent = "";
+  }
+  function esc(s){
+    s = (s===null || s===undefined) ? "" : String(s);
+    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  function buildCategories(rows){
+    var map = {};
+    for (var i=0;i<rows.length;i++){
+      var c = rows[i] && rows[i].category ? String(rows[i].category).trim() : "";
+      if (c) map[c] = true;
+    }
+    var cats = [];
+    for (var k in map) cats.push(k);
+    cats.sort();
+
+    var current = elCat.value;
+    var html = '<option value="">Të gjitha kategoritë</option>';
+    for (var j=0;j<cats.length;j++){
+      html += '<option value="'+esc(cats[j])+'">'+esc(cats[j])+'</option>';
+    }
+    elCat.innerHTML = html;
+    if (current) elCat.value = current;
+  }
+
+  function render(){
+    clearError();
+    var q = (elQ.value || "").toLowerCase().trim();
+    var cat = (elCat.value || "").trim();
+
+    var out = [];
+    for (var i=0;i<ALL.length;i++){
+      var r = ALL[i] || {};
+      var name = r.name ? String(r.name) : "";
+      var category = r.category ? String(r.category) : "";
+      var code = r.code ? String(r.code) : "";
+      if (cat && category !== cat) continue;
+
+      if (q){
+        var hay = (name+" "+category+" "+code).toLowerCase();
+        if (hay.indexOf(q) === -1) continue;
+      }
+      out.push(r);
+    }
+
+    var html = "";
+    for (var j=0;j<out.length;j++){
+      var p = out[j] || {};
+      html += '<div class="card">'
+        + '<p class="name">'+esc(p.name || "(pa emër)")+'</p>'
+        + '<div class="meta">'
+        + (p.category ? ('Kategoria: <b>'+esc(p.category)+'</b><br>') : '')
+        + (p.code ? ('Kodi: <b>'+esc(p.code)+'</b><br>') : '')
+        + (p.stock!==undefined && p.stock!==null ? ('Stok: <b>'+esc(p.stock)+'</b>') : '')
+        + '</div>'
+        + '<div class="price">'+esc(p.price_lek || 0)+' Lekë</div>'
+        + '</div>';
+    }
+
+    elCards.innerHTML = html || "<div style='padding:12px;color:#64748b;font-weight:bold'>Nuk ka produkte për këtë filtër.</div>";
+    elStatus.textContent = "Gati. (" + out.length + " artikuj)";
+  }
+
+  function loadProducts(){
+    clearError();
+    elStatus.textContent = "Duke u lidhur me Supabase…";
+
+    var url = SUPABASE_URL + "/rest/v1/" + TABLE + "?select=*";
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.setRequestHeader("apikey", SUPABASE_ANON_KEY);
+    xhr.setRequestHeader("Authorization", "Bearer " + SUPABASE_ANON_KEY);
+    xhr.setRequestHeader("Accept", "application/json");
+
+    xhr.onreadystatechange = function(){
+      if (xhr.readyState !== 4) return;
+
+      if (xhr.status >= 200 && xhr.status < 300){
+        try{
+          ALL = JSON.parse(xhr.responseText) || [];
+        }catch(e){
+          showError("Gabim te JSON: " + e);
+          elStatus.textContent = "Gabim";
+          return;
+        }
+
+        buildCategories(ALL);
+        render();
+        return;
+      }
+
+      // nëse ka gabim
+      var msg = "Gabim Supabase ("+xhr.status+").\n\n" + (xhr.responseText || "");
+      showError(msg);
+      elStatus.textContent = "Gabim";
+    };
+
+    xhr.onerror = function(){
+      showError("Gabim rrjeti. Kontrollo internetin / SSL / bllokime.");
+      elStatus.textContent = "Gabim";
+    };
+
+    xhr.send();
+  }
+
+  elQ.oninput = render;
+  elCat.onchange = render;
 
   loadProducts();
 </script>
