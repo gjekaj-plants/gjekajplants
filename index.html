@@ -4,864 +4,755 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gjekaj Plants — Katalogu i Bimëve</title>
-  <meta name="description" content="Gjekaj Plants — Katalogu i bimëve. Kërko, filtro dhe dërgo porosinë në WhatsApp." />
+
+  <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre. Shiko katalogun, filtro sipas emrit/kategorisë. Dërgo kërkesën në WhatsApp +355697232425." />
+  <meta name="keywords" content="pemë dekorative, bimë dekorative, fidane, shkurre dekorative, Dajç Shkodër, katalog bimësh, Gjekaj Plants" />
 
   <style>
     :root{
-      --bg:#f4f6f8;
+      --bg:#f3f5f8;
       --card:#ffffff;
       --text:#0f172a;
       --muted:#64748b;
-      --header:#0b1220;
+      --accent:#b91c1c;
       --border:#e5e7eb;
       --shadow: 0 10px 30px rgba(2,6,23,.08);
-      --btn:#0b1220;          /* butoni “Shto në shportë” i zi */
-      --btnText:#ffffff;
-      --price:#b91c1c;        /* çmimi i kuq */
-      --chip:#eef2f7;
-      --link:#2563eb;
-      --danger:#b91c1c;
-      --ok:#16a34a;
+      --radius: 18px;
     }
-
-    *{ box-sizing:border-box; }
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      background:var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
     }
 
-    /* Header */
     header{
-      background:linear-gradient(180deg, rgba(11,18,32,1), rgba(11,18,32,.92));
+      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
       color:#fff;
-      padding:22px 14px 18px;
-      position:sticky;
-      top:0;
-      z-index:50;
-      box-shadow: 0 8px 24px rgba(2,6,23,.18);
-    }
-    .brand{
-      max-width:1200px;
-      margin:0 auto;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:6px;
+      padding: 22px 16px 18px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255,255,255,.08);
       text-align:center;
     }
-    .brand h1{
+    header h1{
       margin:0;
-      font-size:clamp(22px, 3.2vw, 38px);
-      letter-spacing:.2px;
+      font-size: clamp(20px, 3.6vw, 32px);
+      font-weight: 900;
+      line-height: 1.15;
     }
-    .brand .sub{
-      color:rgba(255,255,255,.78);
-      font-size:14px;
+    header .sub{
+      margin-top:8px;
+      opacity:.9;
+      font-size: 14px;
+      font-weight: 650;
     }
-    .brand a{ color:#93c5fd; text-decoration:none; }
-    .brand a:hover{ text-decoration:underline; }
 
-    /* Layout */
     .wrap{
-      max-width:1200px;
-      margin:18px auto 70px;
-      padding:0 12px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
+      max-width: 1200px;
+      margin: 18px auto 90px;
+      padding: 0 14px;
     }
 
-    /* Desktop: grid + cart on right */
-    @media (min-width: 980px){
-      .wrap{
-        grid-template-columns: 1.4fr .6fr;
-        align-items:start;
-      }
-      .cart{
-        position:sticky;
-        top:110px;
-      }
-    }
-
-    /* Cards */
     .panel{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;
+      background: var(--card);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      overflow:hidden;
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-top: 14px;
     }
-    .panel .inner{ padding:14px; }
 
-    /* Filters */
-    .filters{
+    .grid-controls{
       display:grid;
-      gap:10px;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1.3fr .8fr .9fr;
+      gap: 10px;
+      align-items:start;
     }
-    @media (min-width: 720px){
-      .filters{
-        grid-template-columns: 1.4fr .9fr .7fr;
-        align-items:end;
-      }
+    @media (max-width: 980px){
+      .grid-controls{ grid-template-columns: 1fr; }
     }
 
     label{
-      font-size:13px;
-      color:var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--muted);
       display:block;
-      margin:0 0 6px;
-      font-weight:600;
+      margin: 6px 0 6px;
     }
     input, select, textarea{
       width:100%;
+      padding: 12px 12px;
       border:1px solid var(--border);
-      border-radius:12px;
-      padding:11px 12px;
-      background:#fff;              /* fusha të bardha */
-      color:var(--text);
-      outline:none;
-      font-size:15px;
+      border-radius: 12px;
+      font-size: 15px;
+      outline: none;
+      background:#fff;
     }
-    textarea{ min-height:72px; resize:vertical; }
-    input:focus, select:focus, textarea:focus{
-      border-color:#94a3b8;
-      box-shadow: 0 0 0 4px rgba(148,163,184,.25);
-    }
+    textarea{ min-height: 70px; resize: vertical; }
 
-    .metaRow{
+    .bar{
       display:flex;
-      justify-content:space-between;
+      justify-content: space-between;
       align-items:center;
-      gap:10px;
-      margin-top:10px;
-      color:var(--muted);
-      font-size:13px;
+      margin-top: 14px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .count{
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 900;
     }
     .status{
-      font-weight:700;
-      color:var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
     }
-    .status.ok{ color:var(--ok); }
-    .status.err{ color:var(--danger); }
+    .error{
+      display:none;
+      margin-top: 14px;
+      background: #fff;
+      border: 1px solid #fecaca;
+      border-left: 6px solid #b91c1c;
+      border-radius: 14px;
+      padding: 12px 12px;
+      font-weight: 900;
+      color:#7f1d1d;
+      white-space: pre-wrap;
+    }
 
-    /* Products grid */
-    .grid{
-      padding:14px;
+    /* Cards */
+    .cards{
       display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 14px;
     }
-    @media (min-width: 680px){
-      .grid{ grid-template-columns: 1fr 1fr; }
-    }
-    @media (min-width: 980px){
-      .grid{ grid-template-columns: 1fr 1fr 1fr; }
-    }
+    @media (max-width: 1020px){ .cards{grid-template-columns: repeat(2, minmax(0,1fr));} }
+    @media (max-width: 640px){ .cards{grid-template-columns: 1fr;} }
 
-    .product{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       overflow:hidden;
-      box-shadow: 0 10px 24px rgba(2,6,23,.06);
       display:flex;
       flex-direction:column;
       min-height: 100%;
     }
-    .pimg{
+    .img{
       width:100%;
-      height:210px;
-      background:#e5e7eb;
+      aspect-ratio: 16/10;
+      background: #e5e7eb;
       display:block;
-      object-fit:cover;
+      object-fit: cover;
     }
-    .pbody{ padding:12px 12px 12px; display:flex; flex-direction:column; gap:8px; }
-    .ptitle{
-      font-size:22px;
-      font-weight:900;
-      margin:0;
-      letter-spacing:.2px;
-      text-transform:none;
-    }
-    .details{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.45;
-    }
-    .details b{ color:#334155; }
-
-    .priceRow{
+    .content{
+      padding: 12px 12px 14px;
       display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:10px;
-      margin-top:2px;
+      flex-direction:column;
+      gap: 8px;
+      flex:1;
+    }
+    .name{
+      margin:0;
+      font-size: 20px;
+      font-weight: 950;
+    }
+    .meta{
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+    .price{
+      display:flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
     }
     .lek{
-      font-size:40px;
-      font-weight:1000;
-      color:var(--price);          /* çmimi i kuq */
-      letter-spacing:.3px;
+      color: var(--accent);
+      font-weight: 1000;
+      font-size: 26px;
     }
     .eur{
-      font-size:20px;
-      font-weight:900;
-      color:var(--price);          /* edhe euro me të kuqe (si te foto) */
-      opacity:.95;
-      white-space:nowrap;
+      color: #334155;
+      font-weight: 950;
+      font-size: 18px;
     }
-
     .desc{
       color:#334155;
-      font-size:14px;
+      font-size: 13px;
+      line-height:1.35;
+      font-weight: 650;
+      opacity:.95;
     }
-
-    .actions{
+    .buyrow{
       display:flex;
-      gap:10px;
+      gap: 10px;
       align-items:center;
-      margin-top:6px;
+      margin-top: 6px;
+      flex-wrap: wrap;
     }
-    .qty{
-      width:76px;
-      text-align:center;
-      font-weight:800;
-    }
-    .btn{
-      border:0;
-      border-radius:14px;
-      padding:12px 14px;
-      font-weight:900;
-      cursor:pointer;
-      transition: transform .05s ease, opacity .15s ease;
-      user-select:none;
-    }
-    .btn:active{ transform: scale(.99); }
+    .qty{ width: 90px; }
     .btnAdd{
       flex:1;
-      background:var(--btn);     /* butoni i zi */
-      color:var(--btnText);
-      font-size:15px;
-    }
-    .btnAdd:hover{ opacity:.92; }
-
-    /* Cart */
-    .cartHead{
-      padding:14px 14px 10px;
-      border-bottom:1px solid var(--border);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-    }
-    .cartHead h3{
-      margin:0;
-      font-size:22px;
-      font-weight:1000;
-    }
-    .badge{
-      background:var(--chip);
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:6px 10px;
-      font-weight:900;
-      font-size:13px;
-      color:#0f172a;
+      min-width: 160px;
+      background: #111827;
+      color: #fff;
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 12px;
+      font-weight: 1000;
+      cursor:pointer;
+      font-size: 15px;
     }
 
-    .cartInner{ padding:12px 14px 14px; }
-    .cartEmpty{ color:var(--muted); font-weight:700; margin:4px 0 10px; }
-
-    .cartList{
+    /* Kurs + Shportë në të njëjtën kolonë */
+    .rateCartCol{
       display:flex;
       flex-direction:column;
       gap:10px;
-      max-height: 340px;
-      overflow:auto;
-      padding-right:6px;
     }
-    .cartItem{
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:10px;
-      background:#fff;
+
+    /* SHPORTA sticky (rri fiks poshtë kursit) */
+    .cartbox{
+      background:#0b1220;
+      color:#fff;
+      border-radius: 16px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 16px 45px rgba(2,6,23,.18);
+    }
+    .rateCartCol .cartbox{
+      position: sticky;
+      top: 96px;                 /* poshtë header */
+      max-height: calc(100vh - 140px);
+      overflow: auto;
+      z-index: 40;
+    }
+
+    .cartbox h2{
+      margin: 4px 0 10px;
+      font-size: 16px;
+      font-weight: 1000;
+    }
+    .cartlist{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .cartitem{
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 10px;
       display:grid;
-      grid-template-columns: 1fr auto;
-      gap:8px;
+      grid-template-columns: 1fr 86px;
+      gap: 10px;
       align-items:start;
     }
-    .cartItem .name{ font-weight:1000; }
-    .cartItem .meta{ color:var(--muted); font-size:13px; margin-top:2px; }
-    .cartItem .right{
-      text-align:right;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      align-items:flex-end;
+    .cartitem .t{ font-weight: 1000; font-size: 13.5px; }
+    .cartitem .s{ margin-top: 4px; font-size: 12.5px; opacity:.9; }
+    .cartitem .q{ display:flex; flex-direction:column; gap: 8px; }
+    .cartitem input{
+      width: 100%;
+      padding: 10px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.10);
+      color:#fff;
+      font-weight: 1000;
+      text-align:center;
     }
-    .miniBtns{
-      display:flex;
-      gap:6px;
-      align-items:center;
-    }
-    .mini{
-      border:1px solid var(--border);
-      background:#fff;
-      border-radius:10px;
-      padding:6px 9px;
+    .btnDel{
+      width:100%;
+      border:0;
+      border-radius: 12px;
+      padding: 10px 10px;
       cursor:pointer;
-      font-weight:900;
+      font-weight: 1000;
+      background: rgba(244,63,94,.22);
+      color:#fff;
     }
-    .mini:hover{ background:#f8fafc; }
 
     .totals{
-      margin-top:12px;
-      border-top:1px solid var(--border);
-      padding-top:12px;
-      display:grid;
-      gap:6px;
-      font-weight:900;
-    }
-    .totals .row{
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.10);
       display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:baseline;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
     }
-    .totals .big{
-      font-size:22px;
-      color:var(--price);
+    .totals .big{ font-size: 20px; font-weight: 1100; }
+    .totals .small{ font-size: 14px; font-weight: 1000; opacity:.95; }
+
+    .note{ margin-top: 10px; }
+    .note textarea{
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      color:#fff;
     }
 
-    .cartBtns{
-      margin-top:12px;
-      display:grid;
-      gap:10px;
+    .cartActions{
+      display:flex;
+      gap: 10px;
+      margin-top: 10px;
     }
     .btnClear{
-      background:#fff;
-      border:1px solid var(--border);
-      color:#0f172a;
+      width: 100%;
+      background: rgba(255,255,255,.10);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.20);
+      border-radius: 14px;
+      padding: 12px 12px;
+      font-weight: 1100;
+      cursor:pointer;
+      font-size: 15px;
     }
-    .btnClear:hover{ background:#f8fafc; }
-
-    .btnWA{
+    .send{
+      margin-top: 10px;
+      width:100%;
       background:#16a34a;
       color:#fff;
-      font-size:15px;
+      border:0;
+      border-radius: 14px;
+      padding: 13px 12px;
+      font-weight: 1100;
+      cursor:pointer;
+      font-size: 16px;
     }
-    .btnWA:hover{ opacity:.92; }
-    .hint{
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.4;
-    }
+    .send:disabled{ opacity:.55; cursor:not-allowed; }
 
-    /* Footer bar */
     footer{
-      position:fixed;
+      position: fixed;
       left:0; right:0; bottom:0;
-      background:rgba(11,18,32,.98);
+      background: #111827;
       color:#fff;
-      padding:10px 12px;
+      padding: 10px 14px;
       text-align:center;
-      font-weight:800;
-      letter-spacing:.2px;
-      z-index:60;
+      font-weight: 1000;
+      z-index: 40;
     }
-    footer a{ color:#93c5fd; text-decoration:none; }
-    footer a:hover{ text-decoration:underline; }
-
-    /* Error box */
-    .errorBox{
-      border:1px solid #fecaca;
-      background:#fff1f2;
-      color:#7f1d1d;
-      border-radius:14px;
-      padding:10px 12px;
-      font-weight:800;
-      margin-top:10px;
-      display:none;
-    }
-    .errorBox.show{ display:block; }
   </style>
 </head>
 
 <body>
   <header>
-    <div class="brand">
-      <h1>Gjekaj Plants — Katalogu i Bimëve</h1>
-      <div class="sub">Dajç, Shkodër, Albania · Tel: <a href="tel:+355697232425">+355697232425</a></div>
-    </div>
+    <h1>Gjekaj Plants — Katalogu i Bimëve</h1>
+    <div class="sub">Dajç, Shkodër, Albania • Tel: +355697232425</div>
   </header>
 
-  <main class="wrap">
-    <!-- LEFT: filters + products -->
-    <section class="panel">
-      <div class="inner">
-        <div class="filters">
-          <div>
-            <label for="q">Kërko (emër / kategori / kod)</label>
-            <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." autocomplete="off" />
-          </div>
+  <div class="wrap">
+    <div id="err" class="error"></div>
 
-          <div>
-            <label for="cat">Kategori</label>
-            <select id="cat">
-              <option value="">Të gjitha kategoritë</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="rate">Kursi € → Lek</label>
-            <input id="rate" inputmode="numeric" value="97" />
-          </div>
+    <div class="panel">
+      <div class="grid-controls">
+        <div>
+          <label>Kërko (emër / kategori / kod)</label>
+          <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
         </div>
 
-        <div class="metaRow">
-          <div><span id="count">0</span> artikuj</div>
-          <div class="status" id="status">Duke u lidhur…</div>
+        <div>
+          <label>Kategori</label>
+          <select id="cat">
+            <option value="">Të gjitha kategoritë</option>
+          </select>
         </div>
 
-        <div class="errorBox" id="errBox"></div>
+        <div class="rateCartCol">
+          <div>
+            <label>Kursi € → Lek (1€ = 100)</label>
+            <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="100" />
+          </div>
+
+          <!-- SHPORTA poshtë kursit (sticky) -->
+          <div class="cartbox" id="cartBox">
+            <h2>Shporta</h2>
+            <div id="cartItems" class="cartlist"></div>
+
+            <div class="totals">
+              <div class="big" id="cartTotalLek">0 Lekë</div>
+              <div class="small" id="cartTotalEur">0.00 €</div>
+            </div>
+
+            <div class="note">
+              <label style="color: rgba(255,255,255,.85); font-weight:1000">Shënim (opsionale)</label>
+              <textarea id="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
+            </div>
+
+            <div class="cartActions">
+              <button id="clearCart" class="btnClear" type="button">Pastro shportën</button>
+            </div>
+
+            <button id="sendWA" class="send" disabled>Dërgo në WhatsApp</button>
+          </div>
+        </div>
       </div>
 
-      <div class="grid" id="grid"></div>
-    </section>
-
-    <!-- RIGHT: cart -->
-    <aside class="panel cart">
-      <div class="cartHead">
-        <h3>Shporta</h3>
-        <div class="badge"><span id="cartCount">0</span> produkte</div>
+      <div class="bar">
+        <div class="count" id="count">0 artikuj</div>
+        <div class="status" id="status">Duke u lidhur…</div>
       </div>
+    </div>
 
-      <div class="cartInner">
-        <div class="cartEmpty" id="cartEmpty">Shporta është bosh.</div>
+    <div class="cards" id="cards"></div>
+  </div>
 
-        <div class="cartList" id="cartList" style="display:none;"></div>
+  <footer>Gjekaj Plants • WhatsApp: 0697232425</footer>
 
-        <div class="totals">
-          <div class="row">
-            <div>Totali (Lek)</div>
-            <div class="big"><span id="totalLek">0</span> Lekë</div>
-          </div>
-          <div class="row">
-            <div>Totali (€)</div>
-            <div class="big"><span id="totalEur">0.00</span> €</div>
-          </div>
-        </div>
-
-        <div style="margin-top:10px;">
-          <label for="note">Shënim (opsionale)</label>
-          <textarea id="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale…"></textarea>
-          <div class="hint">Mesazhi do dërgohet në WhatsApp me listën e produkteve dhe totalin.</div>
-        </div>
-
-        <div class="cartBtns">
-          <button class="btn btnClear" id="clearBtn">Pastro shportën</button>
-          <button class="btn btnWA" id="waBtn">Dërgo në WhatsApp</button>
-        </div>
-      </div>
-    </aside>
-  </main>
-
-  <footer>
-    Gjekaj Plants • WhatsApp: <a href="https://wa.me/355697232425" target="_blank" rel="noreferrer">0697232425</a>
-  </footer>
-
-  <!-- Supabase UMD (v2) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    /*********
-     * CONFIG
-     *********/
+    // Supabase
     const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_Ll_tV3Hs9MmMO54DaDWGiQ_KRpED8xd";
     const TABLE_NAME = "products";
 
-    const WHATSAPP_PHONE = "355697232425"; // pa +, pa hapësira
+    // Kolonat
+    const COL_CATEGORY = "category";
+    const COL_CODE     = "code";
+    const COL_STOCK    = "stock";
+    const COL_PRICELEK = "price_lek";
 
-    /*********
-     * STATE
-     *********/
-    let ALL = [];
-    let FILTERED = [];
-    let CART = loadCart();
+    const NAME_KEYS = ["name","title","emri"];
+    const DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
+    const IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
 
+    // WhatsApp (pa +)
+    const WHATSAPP_NUMBER = "355697232425";
+
+    // UI
+    const elErr = document.getElementById("err");
+    const elCards = document.getElementById("cards");
+    const elCount = document.getElementById("count");
+    const elStatus = document.getElementById("status");
     const elQ = document.getElementById("q");
     const elCat = document.getElementById("cat");
     const elRate = document.getElementById("rate");
-    const elGrid = document.getElementById("grid");
-    const elCount = document.getElementById("count");
-    const elStatus = document.getElementById("status");
-    const elErrBox = document.getElementById("errBox");
 
-    const elCartCount = document.getElementById("cartCount");
-    const elCartEmpty = document.getElementById("cartEmpty");
-    const elCartList = document.getElementById("cartList");
-    const elTotalLek = document.getElementById("totalLek");
-    const elTotalEur = document.getElementById("totalEur");
-    const elNote = document.getElementById("note");
-    const elClearBtn = document.getElementById("clearBtn");
-    const elWaBtn = document.getElementById("waBtn");
+    const cartItemsEl = document.getElementById("cartItems");
+    const cartTotalLekEl = document.getElementById("cartTotalLek");
+    const cartTotalEurEl = document.getElementById("cartTotalEur");
+    const noteEl = document.getElementById("note");
+    const clearCartBtn = document.getElementById("clearCart");
+    const sendWA = document.getElementById("sendWA");
 
-    /*********
-     * HELPERS
-     *********/
     function showError(msg){
-      elErrBox.textContent = msg;
-      elErrBox.classList.add("show");
-      elStatus.textContent = "Gabim";
-      elStatus.classList.remove("ok");
-      elStatus.classList.add("err");
+      elErr.style.display = "block";
+      elErr.textContent = msg;
     }
     function clearError(){
-      elErrBox.textContent = "";
-      elErrBox.classList.remove("show");
-      elStatus.classList.remove("err");
+      elErr.style.display = "none";
+      elErr.textContent = "";
     }
-
-    function norm(str){
-      return (str ?? "").toString().trim().toLowerCase();
+    function firstExisting(row, keys){
+      for (const k of keys){
+        if (row && row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== "") return row[k];
+      }
+      return "";
     }
-
-    function toInt(x){
-      const n = Number(String(x).replace(",", "."));
+    function escapeHtml(s){
+      return String(s ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+    function toNumber(v){
+      if (v === null || v === undefined) return 0;
+      const s = String(v).replaceAll(".", "").replaceAll(",", ".").replace(/[^\d.]/g, "");
+      const n = Number(s);
       return Number.isFinite(n) ? n : 0;
     }
-
-    function euroFromLek(lek, rate){
-      const r = Math.max(1, toInt(rate));
-      return lek / r;
+    function formatLek(n){
+      const x = Math.round(n);
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+    function formatEuro(n){
+      return (Math.round(n * 100) / 100).toFixed(2);
     }
 
-    function fmtEur(x){
-      const n = Number(x);
-      if (!Number.isFinite(n)) return "0.00";
-      return n.toFixed(2);
-    }
+    // Data
+    let ALL = [];
+    let CART = {}; // {id: {row, qty}}
 
-    function safeText(s){
-      return (s ?? "").toString();
+    function saveCart(){
+      try{
+        localStorage.setItem("gjekaj_cart_v2", JSON.stringify({ cart: CART, note: noteEl.value || "" }));
+      }catch{}
     }
-
-    function escapeHtml(s){
-      return safeText(s).replace(/[&<>"']/g, (c) => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
-      }[c]));
-    }
-
     function loadCart(){
       try{
-        const raw = localStorage.getItem("gjekaj_cart_v1");
-        return raw ? JSON.parse(raw) : {};
-      }catch(e){
-        return {};
-      }
-    }
-    function saveCart(){
-      localStorage.setItem("gjekaj_cart_v1", JSON.stringify(CART));
+        const raw = localStorage.getItem("gjekaj_cart_v2");
+        if (!raw) return;
+        const obj = JSON.parse(raw);
+        CART = obj?.cart || {};
+        noteEl.value = obj?.note || "";
+      }catch{}
     }
 
-    function cartItems(){
-      // CART: { code: {code,name,price_lek,qty} }
-      return Object.values(CART || {});
-    }
-
-    function cartTotals(){
-      const rate = toInt(elRate.value);
-      let lek = 0;
-      let qty = 0;
-      for (const it of cartItems()){
-        qty += toInt(it.qty);
-        lek += toInt(it.price_lek) * toInt(it.qty);
-      }
-      return { lek, eur: euroFromLek(lek, rate), qty };
-    }
-
-    /*********
-     * RENDER: PRODUCTS
-     *********/
     function buildCategories(rows){
       const set = new Set();
       for (const r of rows){
-        const c = safeText(r.category).trim();
+        const c = (r?.[COL_CATEGORY] ?? "").toString().trim();
         if (c) set.add(c);
       }
       const cats = Array.from(set).sort((a,b)=>a.localeCompare(b));
-      // keep current selection
       const current = elCat.value;
-      elCat.innerHTML = <option value="">Të gjitha kategoritë</option> +
-        cats.map(c => <option value="${escapeHtml(c)}">${escapeHtml(c)}</option>).join("");
-      // restore if exists
-      if (current && cats.includes(current)) elCat.value = current;
+      elCat.innerHTML = <option value="">Të gjitha kategoritë</option> + cats.map(c => <option value="${escapeHtml(c)}">${escapeHtml(c)}</option>).join("");
+      if (cats.includes(current)) elCat.value = current;
     }
 
-    function applyFilters(){
-      const q = norm(elQ.value);
-      const cat = safeText(elCat.value).trim();
+    function calcTotals(){
+      const rate = Math.max(1, toNumber(elRate.value || 100));
+      let totalLek = 0;
+      for (const id of Object.keys(CART)){
+        const it = CART[id];
+        const priceLek = toNumber(it?.row?.[COL_PRICELEK]);
+        const qty = Math.max(1, toNumber(it?.qty || 1));
+        totalLek += priceLek * qty;
+      }
+      const totalEur = totalLek / rate;
 
-      FILTERED = ALL.filter(r => {
-        if (cat && safeText(r.category).trim() !== cat) return false;
+      cartTotalLekEl.textContent = ${formatLek(totalLek)} Lekë;
+      cartTotalEurEl.textContent = ${formatEuro(totalEur)} €;
 
-        if (!q) return true;
-
-        const hay = [
-          r.name, r.category, r.code, r.description
-        ].map(norm).join(" | ");
-
-        return hay.includes(q);
-      });
-
-      elCount.textContent = String(FILTERED.length);
-      renderProducts();
+      sendWA.disabled = totalLek <= 0;
+      saveCart();
+      return { totalLek, totalEur, rate };
     }
 
-    function renderProducts(){
-      const rate = toInt(elRate.value);
-
-      if (!FILTERED.length){
-        elGrid.innerHTML = "";
+    function renderCart(){
+      const ids = Object.keys(CART);
+      if (ids.length === 0){
+        cartItemsEl.innerHTML = <div style="opacity:.9;font-weight:900;">Shporta është bosh.</div>;
+        calcTotals();
         return;
       }
 
-      elGrid.innerHTML = FILTERED.map(r => {
-        const name = safeText(r.name);
-        const category = safeText(r.category);
-        const code = safeText(r.code);
-        const stock = toInt(r.stock);
-        const priceLek = toInt(r.price_lek);
-        const desc = safeText(r.description);
-        const photo = safeText(r.photo_url);
-
-        const eur = euroFromLek(priceLek, rate);
-
-        const imgHtml = photo
-          ? <img class="pimg" src="${escapeHtml(photo)}" alt="${escapeHtml(name)}" loading="lazy" />
-          : <div class="pimg"></div>;
+      cartItemsEl.innerHTML = ids.map(id => {
+        const it = CART[id];
+        const r = it.row || {};
+        const name = firstExisting(r, NAME_KEYS) || "(pa emër)";
+        const category = (r?.[COL_CATEGORY] ?? "").toString();
+        const code = (r?.[COL_CODE] ?? "").toString();
+        const priceLek = toNumber(r?.[COL_PRICELEK]);
+        const qty = Math.max(1, toNumber(it.qty || 1));
 
         return `
-          <article class="product">
-            ${imgHtml}
-            <div class="pbody">
-              <h2 class="ptitle">${escapeHtml(name || "(pa emër)")}</h2>
+          <div class="cartitem">
+            <div>
+              <div class="t">${escapeHtml(name)}</div>
+              <div class="s">
+                ${category ? Kategoria: <b>${escapeHtml(category)}</b><br> : ``}
+                ${code ? Kodi: <b>${escapeHtml(code)}</b><br> : ``}
+                Çmimi: <b>${formatLek(priceLek)} Lekë</b>
+              </div>
+            </div>
+            <div class="q">
+              <input type="number" min="1" step="1" value="${qty}" data-id="${escapeHtml(id)}" class="qtyInCart" />
+              <button class="btnDel" data-del="${escapeHtml(id)}">Hiq</button>
+            </div>
+          </div>
+        `;
+      }).join("");
 
-              <div class="details">
-                <div><b>Kategoria:</b> ${escapeHtml(category || "-")}</div>
-                <div><b>Kodi:</b> ${escapeHtml(code || "-")}</div>
-                <div><b>Stok:</b> ${escapeHtml(String(stock))}</div>
+      cartItemsEl.querySelectorAll(".qtyInCart").forEach(inp=>{
+        inp.addEventListener("input", ()=>{
+          const id = inp.getAttribute("data-id");
+          const v = Math.max(1, toNumber(inp.value || 1));
+          if (CART[id]) CART[id].qty = v;
+          calcTotals();
+        });
+      });
+      cartItemsEl.querySelectorAll("[data-del]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const id = btn.getAttribute("data-del");
+          delete CART[id];
+          renderCart();
+        });
+      });
+
+      calcTotals();
+    }
+
+    function addToCart(row, qty){
+      const id = String(row?.id ?? row?.[COL_CODE] ?? firstExisting(row, NAME_KEYS));
+      const q = Math.max(1, toNumber(qty || 1));
+
+      if (!CART[id]) CART[id] = { row, qty: q };
+      else CART[id].qty = Math.max(1, toNumber(CART[id].qty || 1) + q);
+
+      renderCart();
+    }
+
+    function renderProducts(){
+      clearError();
+
+      const q = elQ.value.trim().toLowerCase();
+      const cat = elCat.value.trim();
+      const rate = Math.max(1, toNumber(elRate.value || 100));
+
+      const filtered = ALL.filter(r => {
+        if (cat && String(r?.[COL_CATEGORY] ?? "").trim() !== cat) return false;
+        if (!q) return true;
+
+        const name = firstExisting(r, NAME_KEYS).toString().toLowerCase();
+        const category = (r?.[COL_CATEGORY] ?? "").toString().toLowerCase();
+        const code = (r?.[COL_CODE] ?? "").toString().toLowerCase();
+
+        return name.includes(q) || category.includes(q) || code.includes(q);
+      });
+
+      elCount.textContent = ${filtered.length} artikuj;
+
+      elCards.innerHTML = filtered.map(r => {
+        const name = firstExisting(r, NAME_KEYS) || "(pa emër)";
+        const desc = firstExisting(r, DESC_KEYS) || "";
+        const img = firstExisting(r, IMG_KEYS) || "";
+        const category = (r?.[COL_CATEGORY] ?? "").toString();
+        const code = (r?.[COL_CODE] ?? "").toString();
+        const stock = (r?.[COL_STOCK] ?? "").toString();
+
+        const priceLek = toNumber(r?.[COL_PRICELEK]);
+        const priceEur = priceLek / rate;
+
+        const imgTag = img
+          ? `<img class="img" src="${escapeHtml(img)}" alt="${escapeHtml(name)}" loading="lazy"
+               onerror="this.style.display='none'; this.parentNode.style.background='#e5e7eb';" />`
+          : <div class="img"></div>;
+
+        const pid = escapeHtml(String(r?.id ?? code ?? name));
+
+        return `
+          <article class="card">
+            ${imgTag}
+            <div class="content">
+              <h3 class="name">${escapeHtml(name)}</h3>
+
+              <div class="meta">
+                ${category ? Kategoria: <b>${escapeHtml(category)}</b><br> : ``}
+                ${code ? Kodi: <b>${escapeHtml(code)}</b><br> : ``}
+                ${stock ? Stok: <b>${escapeHtml(stock)}</b> : ``}
               </div>
 
-              <div class="priceRow">
-                <div class="lek">${escapeHtml(String(priceLek))} Lekë</div>
-                <div class="eur">${escapeHtml(fmtEur(eur))} €</div>
+              <div class="price">
+                <div class="lek">${formatLek(priceLek)} Lekë</div>
+                <div class="eur">${formatEuro(priceEur)} €</div>
               </div>
 
-              <div class="desc">${escapeHtml(desc)}</div>
+              ${desc ? <div class="desc">${escapeHtml(desc)}</div> : ``}
 
-              <div class="actions">
-                <input class="qty" type="number" min="1" value="1" id="qty_${escapeHtml(code)}" />
-                <button class="btn btnAdd" onclick="window.__addByCode('${escapeHtml(code)}')">Shto në shportë</button>
+              <div class="buyrow">
+                <input class="qty" type="number" min="1" step="1" value="1" id="qty_${pid}" />
+                <button class="btnAdd" data-add="${pid}">Shto në shportë</button>
               </div>
             </div>
           </article>
         `;
       }).join("");
+
+      elCards.querySelectorAll("[data-add]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const pid = btn.getAttribute("data-add");
+          const qtyEl = document.getElementById("qty_" + pid);
+          const qty = Math.max(1, toNumber(qtyEl?.value || 1));
+
+          const row = filtered.find(r=>{
+            const rid = String(r?.id ?? "");
+            const rcode = String(r?.[COL_CODE] ?? "");
+            const rname = String(firstExisting(r, NAME_KEYS) ?? "");
+            return (rid && rid === pid) || (rcode && rcode === pid) || (rname && rname === pid);
+          });
+
+          if (row) addToCart(row, qty);
+        });
+      });
+
+      calcTotals();
     }
 
-    /*********
-     * CART OPS
-     *********/
-    function addToCartByCode(code){
-      const row = ALL.find(r => safeText(r.code) === code);
-      if (!row) return;
-
-      const qtyEl = document.getElementById("qty_" + code);
-      const qty = Math.max(1, toInt(qtyEl ? qtyEl.value : 1));
-
-      const key = safeText(row.code);
-      if (!key) return;
-
-      if (!CART[key]){
-        CART[key] = {
-          code: key,
-          name: safeText(row.name),
-          category: safeText(row.category),
-          price_lek: toInt(row.price_lek),
-          qty: 0
-        };
-      }
-      CART[key].qty += qty;
-
-      saveCart();
-      renderCart();
-    }
-
-    function inc(code){
-      if (!CART[code]) return;
-      CART[code].qty += 1;
-      saveCart();
-      renderCart();
-    }
-    function dec(code){
-      if (!CART[code]) return;
-      CART[code].qty -= 1;
-      if (CART[code].qty <= 0) delete CART[code];
-      saveCart();
-      renderCart();
-    }
-    function remove(code){
-      if (!CART[code]) return;
-      delete CART[code];
-      saveCart();
-      renderCart();
-    }
-    function clearCart(){
-      CART = {};
-      saveCart();
-      renderCart();
-    }
-
-    function renderCart(){
-      const items = cartItems();
-      const totals = cartTotals();
-
-      elCartCount.textContent = String(totals.qty);
-      elTotalLek.textContent = String(totals.lek);
-      elTotalEur.textContent = fmtEur(totals.eur);
-
-      if (!items.length){
-        elCartEmpty.style.display = "block";
-        elCartList.style.display = "none";
-        elCartList.innerHTML = "";
-        return;
-      }
-
-      elCartEmpty.style.display = "none";
-      elCartList.style.display = "flex";
-
-      elCartList.innerHTML = items.map(it => {
-        const lineLek = toInt(it.price_lek) * toInt(it.qty);
-        return `
-          <div class="cartItem">
-            <div>
-              <div class="name">${escapeHtml(it.name || it.code)}</div>
-              <div class="meta">Kodi: ${escapeHtml(it.code)} · Sasia: ${escapeHtml(String(it.qty))}</div>
-              <div class="meta" style="margin-top:4px;">
-                ${escapeHtml(String(lineLek))} Lekë
-              </div>
-            </div>
-            <div class="right">
-              <div class="miniBtns">
-                <button class="mini" title="Ul" onclick="window.__dec('${escapeHtml(it.code)}')">−</button>
-                <button class="mini" title="Shto" onclick="window.__inc('${escapeHtml(it.code)}')">+</button>
-                <button class="mini" title="Hiq" onclick="window.__rm('${escapeHtml(it.code)}')">×</button>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function buildWhatsAppMessage(){
-      const items = cartItems();
-      const totals = cartTotals();
-      const rate = toInt(elRate.value);
-      const note = safeText(elNote.value).trim();
-
-      let msg = "📌 POROSI — Gjekaj Plants\n\n";
-      for (const it of items){
-        const lineLek = toInt(it.price_lek) * toInt(it.qty);
-        msg += • ${it.name} (Kodi ${it.code}) — ${it.qty} x ${it.price_lek} = ${lineLek} Lekë\n;
-      }
-      msg += \nTotali: ${totals.lek} Lekë (~${fmtEur(totals.eur)} €)\n;
-      msg += Kursi: 1€ = ${rate} Lek\n;
-      if (note) msg += \nShënim: ${note}\n;
-      msg += "\nFaleminderit!";
-
-      return msg;
-    }
-
-    function sendWhatsApp(){
-      const items = cartItems();
-      if (!items.length){
-        alert("Shporta është bosh. Shto produkte para se ta dërgosh.");
-        return;
-      }
-      const text = encodeURIComponent(buildWhatsAppMessage());
-      const url = https://wa.me/${WHATSAPP_PHONE}?text=${text};
-      window.open(url, "_blank");
-    }
-
-    /*********
-     * LOAD DATA (Supabase)
-     *********/
     async function load(){
       clearError();
-      elStatus.textContent = "Duke u lidhur…";
-      elStatus.classList.remove("ok");
-      elStatus.classList.remove("err");
-
-      // kontrollo librarinë supabase
-      if (!window.supabase || !window.supabase.createClient){
-        showError("Supabase library nuk u ngarkua. Kontrollo internetin ose bllokues (adblock).");
-        return;
-      }
-
-      // kontrollo URL + KEY
-      if (!SUPABASE_URL.includes("supabase.co") || !SUPABASE_ANON_KEY.startsWith("sb_")){
-        showError("Mungon SUPABASE_URL ose SUPABASE_ANON_KEY (publishable).");
-        return;
-      }
+      elStatus.textContent = "Duke lexuar nga Supabase…";
 
       try{
-        const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        const { data, error } = await client
-          .from(TABLE_NAME)
-          .select("name, category, code, stock, price_lek, description, photo_url")
-          .order("code", { ascending: true });
-
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const { data, error } = await supabase.from(TABLE_NAME).select("*");
         if (error) throw error;
 
         ALL = Array.isArray(data) ? data : [];
         buildCategories(ALL);
-        applyFilters();
-
+        renderProducts();
         elStatus.textContent = "Gati.";
-        elStatus.classList.add("ok");
       }catch(e){
-        console.error("Supabase fetch error:", e);
-        showError("Nuk po merr të dhëna nga Supabase. Kontrollo: RLS policy (SELECT për anon), emrin e tabelës 'products', dhe kolonat.");
+        console.error(e);
+        showError("Nuk u lidh me Supabase. Kontrollo RLS policy (SELECT për anon) dhe tabelën 'products'.\nMesazh: " + (e?.message || e));
+        elStatus.textContent = "Gabim";
       }
     }
 
-    /*********
-     * EVENTS
-     *********/
-    elQ.addEventListener("input", () => applyFilters());
-    elCat.addEventListener("change", () => applyFilters());
-    elRate.addEventListener("input", () => {
-      // re-render prices + totals
-      renderProducts();
+    function buildWhatsAppMessage(){
+      const { totalLek, totalEur, rate } = calcTotals();
+      const note = (noteEl.value || "").trim();
+      const lines = [];
+      lines.push("📌 Kërkesë nga Katalogu — Gjekaj Plants");
+      lines.push("");
+
+      for (const id of Object.keys(CART)){
+        const it = CART[id];
+        const r = it.row || {};
+        const name = firstExisting(r, NAME_KEYS) || "(pa emër)";
+        const code = (r?.[COL_CODE] ?? "").toString();
+        const priceLek = toNumber(r?.[COL_PRICELEK]);
+        const qty = Math.max(1, toNumber(it.qty || 1));
+        const subLek = priceLek * qty;
+        const subEur = subLek / rate;
+
+        lines.push(• ${name}${code ? " (Kodi: "+code+")" : ""});
+        lines.push(`  Sasia: ${qty} | Nën-total: ${formatLek(subLek)} Lekë (${formatEuro(subEur)} €)`);
+      }
+
+      lines.push("");
+      lines.push(Totali: ${formatLek(totalLek)} Lekë (${formatEuro(totalEur)} €));
+      lines.push(Kursi: 1€ = ${rate} Lek);
+
+      if (note){
+        lines.push("");
+        lines.push("Shënim:");
+        lines.push(note);
+      }
+      return lines.join("\n");
+    }
+
+    // Events
+    elQ.addEventListener("input", renderProducts);
+    elCat.addEventListener("change", renderProducts);
+    elRate.addEventListener("input", ()=>{ renderProducts(); renderCart(); });
+    noteEl.addEventListener("input", saveCart);
+
+    clearCartBtn.addEventListener("click", ()=>{
+      if (!confirm("Me e pastru shportën komplet?")) return;
+      CART = {};
+      noteEl.value = "";
       renderCart();
     });
 
-    elClearBtn.addEventListener("click", () => clearCart());
-    elWaBtn.addEventListener("click", () => sendWhatsApp());
+    sendWA.addEventListener("click", ()=>{
+      const msg = buildWhatsAppMessage();
+      const url = https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)};
+      window.open(url, "_blank");
+    });
 
-    // globals for onclick
-    window.__addByCode = addToCartByCode;
-    window.__inc = inc;
-    window.__dec = dec;
-    window.__rm = remove;
-
-    // init
+    // Start
+    loadCart();
     renderCart();
     load();
   </script>
