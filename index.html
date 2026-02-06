@@ -2,186 +2,308 @@
 <html lang="sq">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gjekaj Plants — Katalogu i Bimëve</title>
-  <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre. Katalog me kërkim dhe filtër. Porosit në WhatsApp." />
 
   <style>
-    body{margin:0;font-family:Arial,sans-serif;background:#f3f5f8;color:#0f172a}
-    header{background:#111827;color:#fff;padding:18px;text-align:center}
-    .wrap{max-width:1100px;margin:16px auto;padding:0 12px}
-    .panel{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px}
-    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    input,select{padding:10px;border:1px solid #e5e7eb;border-radius:10px;font-size:14px}
-    #q{flex:1;min-width:220px}
-    #cat{min-width:220px}
-    .status{margin-top:10px;font-weight:bold;color:#64748b}
-    .error{margin-top:10px;background:#fee2e2;border:1px solid #fecaca;border-left:6px solid #b91c1c;
-      color:#7f1d1d;border-radius:12px;padding:10px;display:none;white-space:pre-wrap}
-    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
-    @media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:600px){.cards{grid-template-columns:1fr}}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px}
-    .name{font-size:18px;font-weight:bold;margin:0 0 6px}
-    .meta{color:#64748b;font-size:13px;line-height:1.35}
-    .price{margin-top:8px;font-size:20px;font-weight:bold;color:#b91c1c}
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2e;
+      --muted:#9fb0d0;
+      --text:#e9eefc;
+      --accent:#19c37d;
+      --danger:#ff5a5f;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius:16px;
+    }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #0b0f19;
+      color: var(--text);
+    }
+    header{
+      background: linear-gradient(180deg,#0b1220, #070b12);
+      padding: 22px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .wrap{max-width: 1150px; margin:0 auto;}
+    h1{margin:0; font-size: 28px; font-weight: 800; text-align:center;}
+    .sub{margin-top:6px; text-align:center; color: var(--muted); font-size: 14px;}
+
+    .topbar{
+      display:grid;
+      grid-template-columns: 1fr 240px 160px;
+      gap:12px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      margin: 16px auto;
+      box-shadow: var(--shadow);
+    }
+    .topbar label{display:block; font-size:12px; color: var(--muted); margin-bottom:6px;}
+    input, select{
+      width:100%;
+      box-sizing:border-box;
+      padding:12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(10,15,25,.65);
+      color: var(--text);
+      outline:none;
+    }
+    .status{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .error{
+      margin: 12px auto;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,90,95,.35);
+      background: rgba(255,90,95,.10);
+      color: #ffd5d6;
+      display:none;
+      white-space: pre-wrap;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 14px auto 26px;
+    }
+    @media (max-width: 980px){
+      .topbar{grid-template-columns: 1fr; }
+      .grid{grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 560px){
+      .grid{grid-template-columns: 1fr;}
+    }
+
+    .card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .img{
+      width:100%;
+      height: 180px;
+      background: rgba(255,255,255,.04);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(255,255,255,.35);
+      font-size: 12px;
+    }
+    .img img{width:100%; height:100%; object-fit:cover; display:block;}
+    .pad{padding: 12px 12px 14px;}
+    .name{font-weight:800; font-size: 18px; margin: 2px 0 6px;}
+    .meta{color: var(--muted); font-size: 13px; line-height: 1.35;}
+    .priceRow{
+      margin-top:10px;
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .priceLek{font-weight:900; color:#ff4d4f; font-size: 22px;}
+    .priceEur{color: var(--muted); font-weight:700;}
+    .desc{margin-top:8px; color: rgba(233,238,252,.85); font-size: 13px;}
+
+    footer{
+      padding: 16px;
+      text-align:center;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.06);
+      background:#070b12;
+    }
   </style>
 </head>
 
 <body>
   <header>
-    <h2 style="margin:0">Gjekaj Plants — Katalogu i Bimëve</h2>
-    <div style="opacity:.9;margin-top:6px;font-size:13px">Dajç, Shkodër • Tel: +355697232425</div>
+    <div class="wrap">
+      <h1>Gjekaj Plants — Katalogu i Bimëve</h1>
+      <div class="sub">Dajç, Shkodër, Albania · Tel: +355697232425</div>
+    </div>
   </header>
 
-  <div class="wrap">
-    <div class="panel">
-      <div class="row">
-        <input id="q" placeholder="Kërko (emër / kategori / kod)..." />
+  <main class="wrap">
+    <div id="err" class="error"></div>
+
+    <section class="topbar">
+      <div>
+        <label>Kërko (emër / kategori / kod)</label>
+        <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
+      </div>
+      <div>
+        <label>Kategori</label>
         <select id="cat">
           <option value="">Të gjitha kategoritë</option>
         </select>
       </div>
+      <div>
+        <label>Kursi € → Lek (1€ =)</label>
+        <input id="rate" type="number" value="97" min="1" />
+      </div>
 
-      <div id="status" class="status">Duke u lidhur me Supabase…</div>
-      <div id="err" class="error"></div>
-    </div>
+      <div class="status" id="status">Duke u lidhur…</div>
+    </section>
 
-    <div id="cards" class="cards"></div>
-  </div>
+    <section class="grid" id="grid"></section>
+  </main>
 
-<script>
-  // ✅ SUPABASE SETTINGS
-  var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
-  var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
+  <footer>Gjekaj Plants · WhatsApp: 0697232425</footer>
 
-  var TABLE = "products"; // emri i tabelës
-  var ALL = [];
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-  var elQ = document.getElementById("q");
-  var elCat = document.getElementById("cat");
-  var elCards = document.getElementById("cards");
-  var elStatus = document.getElementById("status");
-  var elErr = document.getElementById("err");
+    // ====== SUPABASE (GATI) ======
+    const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
+    const TABLE = "products";
 
-  function showError(msg){
-    elErr.style.display = "block";
-    elErr.textContent = msg;
-  }
-  function clearError(){
-    elErr.style.display = "none";
-    elErr.textContent = "";
-  }
-  function esc(s){
-    s = (s===null || s===undefined) ? "" : String(s);
-    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-  }
+    // Kolonat (nëse ndonjë s’përputhet me tabelën tënde, më thuaj si quhet)
+    const COL_NAME = "name";
+    const COL_CATEGORY = "category";
+    const COL_CODE = "code";
+    const COL_STOCK = "stock";
+    const COL_PRICE_LEK = "price_lek";
+    const COL_DESC = "description";
+    const COL_IMAGE = "image_url";
 
-  function buildCategories(rows){
-    var map = {};
-    for (var i=0;i<rows.length;i++){
-      var c = rows[i] && rows[i].category ? String(rows[i].category).trim() : "";
-      if (c) map[c] = true;
+    const $ = (id) => document.getElementById(id);
+    const grid = $("grid");
+    const statusEl = $("status");
+    const errEl = $("err");
+    const qEl = $("q");
+    const catEl = $("cat");
+    const rateEl = $("rate");
+
+    function showError(msg){
+      errEl.style.display = "block";
+      errEl.textContent = msg;
     }
-    var cats = [];
-    for (var k in map) cats.push(k);
-    cats.sort();
-
-    var current = elCat.value;
-    var html = '<option value="">Të gjitha kategoritë</option>';
-    for (var j=0;j<cats.length;j++){
-      html += '<option value="'+esc(cats[j])+'">'+esc(cats[j])+'</option>';
+    function clearError(){
+      errEl.style.display = "none";
+      errEl.textContent = "";
     }
-    elCat.innerHTML = html;
-    if (current) elCat.value = current;
-  }
+    function lekToEur(lek){
+      const rate = Number(rateEl.value || 97);
+      if (!rate || !Number.isFinite(rate)) return "";
+      const eur = Number(lek)/rate;
+      if (!Number.isFinite(eur)) return "";
+      return eur.toFixed(2);
+    }
+    function normalize(v){ return (v ?? "").toString().toLowerCase().trim(); }
 
-  function render(){
-    clearError();
-    var q = (elQ.value || "").toLowerCase().trim();
-    var cat = (elCat.value || "").trim();
+    function escapeHtml(s){
+      return (s ?? "").toString()
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
 
-    var out = [];
-    for (var i=0;i<ALL.length;i++){
-      var r = ALL[i] || {};
-      var name = r.name ? String(r.name) : "";
-      var category = r.category ? String(r.category) : "";
-      var code = r.code ? String(r.code) : "";
-      if (cat && category !== cat) continue;
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    let allRows = [];
+
+    function render(){
+      const q = normalize(qEl.value);
+      const cat = catEl.value;
+
+      let rows = allRows.slice();
+      if (cat) rows = rows.filter(r => (r[COL_CATEGORY] ?? "") === cat);
 
       if (q){
-        var hay = (name+" "+category+" "+code).toLowerCase();
-        if (hay.indexOf(q) === -1) continue;
+        rows = rows.filter(r => {
+          const hay = [r[COL_NAME], r[COL_CATEGORY], r[COL_CODE], r[COL_DESC]]
+            .map(normalize).join(" ");
+          return hay.includes(q);
+        });
       }
-      out.push(r);
+
+      grid.innerHTML = "";
+      statusEl.textContent = rows.length ? Gati. (${rows.length} artikuj) : "0 artikuj";
+
+      for (const r of rows){
+        const name = r[COL_NAME] ?? "";
+        const category = r[COL_CATEGORY] ?? "";
+        const code = r[COL_CODE] ?? "";
+        const stock = r[COL_STOCK] ?? "";
+        const priceLek = r[COL_PRICE_LEK] ?? "";
+        const desc = r[COL_DESC] ?? "";
+        const img = r[COL_IMAGE];
+
+        const eur = priceLek !== "" ? lekToEur(priceLek) : "";
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="img">${img ? <img src="${img}" alt=""> : "Pa foto"}</div>
+          <div class="pad">
+            <div class="name">${escapeHtml(name)}</div>
+            <div class="meta">
+              Kategoria: ${escapeHtml(category)}<br>
+              Kodi: ${escapeHtml(code)}<br>
+              Stok: ${escapeHtml(stock)}
+            </div>
+            <div class="priceRow">
+              <div class="priceLek">${escapeHtml(priceLek)} Lekë</div>
+              ${eur ? <div class="priceEur">${escapeHtml(eur)} €</div> : ""}
+            </div>
+            ${desc ? <div class="desc">${escapeHtml(desc)}</div> : ""}
+          </div>
+        `;
+        grid.appendChild(card);
+      }
     }
 
-    var html = "";
-    for (var j=0;j<out.length;j++){
-      var p = out[j] || {};
-      html += '<div class="card">'
-        + '<p class="name">'+esc(p.name || "(pa emër)")+'</p>'
-        + '<div class="meta">'
-        + (p.category ? ('Kategoria: <b>'+esc(p.category)+'</b><br>') : '')
-        + (p.code ? ('Kodi: <b>'+esc(p.code)+'</b><br>') : '')
-        + (p.stock!==undefined && p.stock!==null ? ('Stok: <b>'+esc(p.stock)+'</b>') : '')
-        + '</div>'
-        + '<div class="price">'+esc(p.price_lek || 0)+' Lekë</div>'
-        + '</div>';
-    }
+    async function load(){
+      clearError();
+      statusEl.textContent = "Duke u lidhur…";
 
-    elCards.innerHTML = html || "<div style='padding:12px;color:#64748b;font-weight:bold'>Nuk ka produkte për këtë filtër.</div>";
-    elStatus.textContent = "Gati. (" + out.length + " artikuj)";
-  }
+      try{
+        const { data, error } = await supabase
+          .from(TABLE)
+          .select("*")
+          .order("id", { ascending: true });
 
-  function loadProducts(){
-    clearError();
-    elStatus.textContent = "Duke u lidhur me Supabase…";
+        if (error) throw error;
 
-    var url = SUPABASE_URL + "/rest/v1/" + TABLE + "?select=*";
+        allRows = Array.isArray(data) ? data : [];
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
-    xhr.setRequestHeader("apikey", SUPABASE_ANON_KEY);
-    xhr.setRequestHeader("Authorization", "Bearer " + SUPABASE_ANON_KEY);
-    xhr.setRequestHeader("Accept", "application/json");
+        const cats = [...new Set(allRows.map(r => r[COL_CATEGORY]).filter(Boolean))].sort();
+        catEl.innerHTML =
+          <option value="">Të gjitha kategoritë</option> +
+          cats.map(c => <option value="${escapeHtml(c)}">${escapeHtml(c)}</option>).join("");
 
-    xhr.onreadystatechange = function(){
-      if (xhr.readyState !== 4) return;
-
-      if (xhr.status >= 200 && xhr.status < 300){
-        try{
-          ALL = JSON.parse(xhr.responseText) || [];
-        }catch(e){
-          showError("Gabim te JSON: " + e);
-          elStatus.textContent = "Gabim";
-          return;
-        }
-
-        buildCategories(ALL);
         render();
-        return;
+      }catch(e){
+        console.error(e);
+        showError(
+          "Nuk u lidh me Supabase.\n" +
+          "Kontrollo: RLS SELECT për anon/public, tabela 'products', dhe që po përdoret ky URL.\n" +
+          "Mesazh: " + (e?.message || String(e))
+        );
+        statusEl.textContent = "Gabim lidhje.";
       }
+    }
 
-      // nëse ka gabim
-      var msg = "Gabim Supabase ("+xhr.status+").\n\n" + (xhr.responseText || "");
-      showError(msg);
-      elStatus.textContent = "Gabim";
-    };
+    qEl.addEventListener("input", render);
+    catEl.addEventListener("change", render);
+    rateEl.addEventListener("input", render);
 
-    xhr.onerror = function(){
-      showError("Gabim rrjeti. Kontrollo internetin / SSL / bllokime.");
-      elStatus.textContent = "Gabim";
-    };
-
-    xhr.send();
-  }
-
-  elQ.oninput = render;
-  elCat.onchange = render;
-
-  loadProducts();
-</script>
-
+    load();
+  </script>
 </body>
 </html>
