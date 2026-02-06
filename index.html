@@ -3,10 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gjekaj Plants — Katalogu i Bimëve</title>
+  <title>Gjekaj Plants — Katalogu i Bimëve | Fidane, Pemë dekorative, Shkurre</title>
 
-  <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre. Shiko katalogun, filtro sipas emrit/kategorisë. Dërgo kërkesën në WhatsApp +355697232425." />
-  <meta name="keywords" content="pemë dekorative, bimë dekorative, fidane, shkurre dekorative, Dajç Shkodër, katalog bimësh, Gjekaj Plants" />
+  <!-- ===== SEO bazë ===== -->
+  <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre. Shiko katalogun, filtro sipas emrit/kategorisë/kodit dhe dërgo porosinë në WhatsApp +355697232425." />
+  <meta name="keywords" content="Gjekaj Plants, katalog bimësh, pemë dekorative, bimë dekorative, fidane, fidanë në vazo, shkurre dekorative, Dajç, Shkodër, Albania, çmime bimësh, porosi fidane, plant nursery Shkoder" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="theme-color" content="#111827" />
+
+  <!-- ===== Canonical (ndryshoje me linkun tënd të saktë) ===== -->
+  <link rel="canonical" href="https://gjekaj-plants.github.io/gjekajplants/" />
+
+  <!-- ===== Open Graph / Facebook ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gjekaj Plants — Katalogu i Bimëve" />
+  <meta property="og:description" content="Shiko katalogun e bimëve dhe dërgo porosinë në WhatsApp." />
+  <meta property="og:url" content="https://gjekaj-plants.github.io/gjekajplants/" />
+  <!-- Nëse ke një foto logo/cover, vendose këtu -->
+  <!-- <meta property="og:image" content="https://gjekaj-plants.github.io/gjekajplants/og.jpg" /> -->
+
+  <!-- ===== Twitter ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gjekaj Plants — Katalogu i Bimëve" />
+  <meta name="twitter:description" content="Katalog bimësh, fidane dhe pemë dekorative. Porosi në WhatsApp." />
+  <!-- <meta name="twitter:image" content="https://gjekaj-plants.github.io/gjekajplants/og.jpg" /> -->
+
+  <!-- ===== Structured Data (Google) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "GardenStore",
+    "name": "Gjekaj Plants",
+    "description": "Katalog bimësh, fidane dhe pemë dekorative. Porosi në WhatsApp.",
+    "telephone": "+355697232425",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dajç",
+      "addressRegion": "Shkodër",
+      "addressCountry": "AL"
+    },
+    "url": "https://gjekaj-plants.github.io/gjekajplants/",
+    "sameAs": [
+      "https://wa.me/355697232425"
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -14,7 +55,7 @@
       --card:#ffffff;
       --text:#0f172a;
       --muted:#64748b;
-      --accent:#b91c1c;
+      --accent:#b91c1c; /* cmimet e kuqe */
       --border:#e5e7eb;
       --shadow: 0 10px 30px rgba(2,6,23,.08);
       --radius: 18px;
@@ -89,7 +130,7 @@
       border-radius: 12px;
       font-size: 15px;
       outline: none;
-      background:#fff;
+      background:#fff; /* fusha te bardha */
     }
     textarea{ min-height: 70px; resize: vertical; }
 
@@ -124,7 +165,6 @@
       white-space: pre-wrap;
     }
 
-    /* Cards */
     .cards{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -203,7 +243,7 @@
     .btnAdd{
       flex:1;
       min-width: 160px;
-      background: #111827;
+      background: #111827; /* butoni i zi */
       color: #fff;
       border: 0;
       border-radius: 14px;
@@ -213,14 +253,12 @@
       font-size: 15px;
     }
 
-    /* Kurs + Shportë në të njëjtën kolonë */
     .rateCartCol{
       display:flex;
       flex-direction:column;
       gap:10px;
     }
 
-    /* SHPORTA sticky (rri fiks poshtë kursit) */
     .cartbox{
       background:#0b1220;
       color:#fff;
@@ -231,7 +269,7 @@
     }
     .rateCartCol .cartbox{
       position: sticky;
-      top: 96px;                 /* poshtë header */
+      top: 96px;
       max-height: calc(100vh - 140px);
       overflow: auto;
       z-index: 40;
@@ -340,6 +378,8 @@
       font-weight: 1000;
       z-index: 40;
     }
+    footer a{ color:#93c5fd; text-decoration:none; }
+    footer a:hover{ text-decoration:underline; }
   </style>
 </head>
 
@@ -372,7 +412,6 @@
             <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="100" />
           </div>
 
-          <!-- SHPORTA poshtë kursit (sticky) -->
           <div class="cartbox" id="cartBox">
             <h2>Shporta</h2>
             <div id="cartItems" class="cartlist"></div>
@@ -405,16 +444,19 @@
     <div class="cards" id="cards"></div>
   </div>
 
-  <footer>Gjekaj Plants • WhatsApp: 0697232425</footer>
+  <footer>
+    Gjekaj Plants • WhatsApp:
+    <a href="https://wa.me/355697232425" target="_blank" rel="noreferrer">0697232425</a>
+  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- ✅ UMD build (kjo punon sigurt ne GitHub Pages) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
   <script>
-    // Supabase
     const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_Ll_tV3Hs9MmMO54DaDWGiQ_KRpED8xd";
     const TABLE_NAME = "products";
 
-    // Kolonat
     const COL_CATEGORY = "category";
     const COL_CODE     = "code";
     const COL_STOCK    = "stock";
@@ -424,10 +466,8 @@
     const DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
     const IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
 
-    // WhatsApp (pa +)
     const WHATSAPP_NUMBER = "355697232425";
 
-    // UI
     const elErr = document.getElementById("err");
     const elCards = document.getElementById("cards");
     const elCount = document.getElementById("count");
@@ -479,9 +519,8 @@
       return (Math.round(n * 100) / 100).toFixed(2);
     }
 
-    // Data
     let ALL = [];
-    let CART = {}; // {id: {row, qty}}
+    let CART = {};
 
     function saveCart(){
       try{
@@ -684,6 +723,10 @@
       elStatus.textContent = "Duke lexuar nga Supabase…";
 
       try{
+        if (!window.supabase || !window.supabase.createClient){
+          throw new Error("Supabase nuk u ngarkua (window.supabase mungon).");
+        }
+
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         const { data, error } = await supabase.from(TABLE_NAME).select("*");
         if (error) throw error;
@@ -732,7 +775,6 @@
       return lines.join("\n");
     }
 
-    // Events
     elQ.addEventListener("input", renderProducts);
     elCat.addEventListener("change", renderProducts);
     elRate.addEventListener("input", ()=>{ renderProducts(); renderCart(); });
@@ -751,7 +793,6 @@
       window.open(url, "_blank");
     });
 
-    // Start
     loadCart();
     renderCart();
     load();
