@@ -12,6 +12,7 @@
   <meta property="og:title" content="Gjekaj Plants — Katalogu i Bimëve Dekorative" />
   <meta property="og:description" content="Pamje e pemëve dekorative dhe bimëve. Zgjidh sasinë dhe dërgo kërkesën në WhatsApp." />
   <meta property="og:type" content="website" />
+  <!-- vendose URL e GitHub Pages (sipas screenshot): -->
   <meta property="og:url" content="https://gjekaj-plants.github.io/gjekajplants/" />
 
   <style>
@@ -25,14 +26,15 @@
       --radius: 18px;
       --accent:#b91c1c;
       --green:#16a34a;
-      --nav:#0b1220;
-      --nav2:#111827;
+      --offer:#dc2626;
+      --dark1:#0b1220;
+      --dark2:#111827;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
 
     header{
-      background: linear-gradient(180deg, var(--nav) 0%, var(--nav2) 100%);
+      background: linear-gradient(180deg, var(--dark1) 0%, var(--dark2) 100%);
       color:#fff;
       padding: 20px 14px 14px;
       position: sticky;
@@ -61,6 +63,17 @@
       margin-top:14px;
     }
 
+    /* Filtrat + Shporta si te tiiny: në PC 2 kolona, në mobile 1 kolonë */
+    .topGrid{
+      display:grid;
+      grid-template-columns: 1.6fr .9fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media (max-width:920px){
+      .topGrid{ grid-template-columns:1fr; }
+    }
+
     .grid-controls{
       display:grid;
       grid-template-columns: 1.2fr .8fr .6fr;
@@ -80,33 +93,18 @@
     .bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px;}
     .count,.status{font-size:13px;color:var(--muted);font-weight:900;}
 
-    /* Layout: products + cart on desktop */
-    .layout{
-      display:grid;
-      grid-template-columns: 1fr 360px; /* products | cart */
-      gap:14px;
-      margin-top:14px;
-      align-items:start;
-    }
-    @media (max-width:980px){
-      .layout{grid-template-columns:1fr;}
-    }
-
-    /* Cart sticky on desktop */
+    /* SHPORTA: sticky në PC (në të djathtë), në mobile rri normal poshtë filtrave */
     .cartSticky{
       position: sticky;
       top: 96px;
       z-index: 200;
     }
-    @media (max-width:980px){
-      .cartSticky{
-        position: static;
-        top:auto;
-      }
+    @media (max-width:920px){
+      .cartSticky{ position: relative; top: auto; }
     }
 
     .cart{
-      background: linear-gradient(180deg, var(--nav) 0%, var(--nav2) 100%);
+      background: linear-gradient(180deg, var(--dark1) 0%, var(--dark2) 100%);
       color:#fff;
       border-radius: 18px;
       box-shadow: var(--shadow);
@@ -172,11 +170,11 @@
       color:#fff;font-weight:1000;padding:12px 14px;border-radius:14px;cursor:pointer;
     }
 
-    /* Products grid */
     .cards{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap:14px;
+      margin-top:14px;
     }
     @media (max-width:960px){ .cards{grid-template-columns:repeat(2, minmax(0,1fr));} }
     @media (max-width:640px){ .cards{grid-template-columns:1fr;} }
@@ -187,54 +185,46 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
-      position:relative;
+      position: relative;
     }
     .img{width:100%;aspect-ratio:16/10;background:#e5e7eb;display:block;object-fit:cover;}
     .content{padding:12px 12px 14px;}
     .name{margin:0;font-size:20px;font-weight:1000;}
     .meta{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.35;font-weight:700;}
 
-    .priceBlock{margin-top:10px;display:flex;flex-direction:column;gap:6px;}
-    .row1{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
-    .oldLek{
-      color:#94a3b8;
-      font-weight:900;
-      font-size:16px;
-      text-decoration:line-through;
+    /* Çmimi: i vjetri sipër i prerë, i riu poshtë në të njëjtën madhësi si para */
+    .priceWrap{margin-top:10px;}
+    .oldRow{
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+      font-weight:900;color:#64748b;
     }
-    .newLek{color:var(--accent);font-weight:1000;font-size:26px;}
-    .eur{color:#334155;font-weight:900;font-size:18px;}
-
-    .offerRow{
-      display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:10px;
+    .oldPrice{
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      opacity:.95;
     }
-    .offerText{
-      color: var(--accent);
-      font-weight:1000;
-      font-size:18px;
-      letter-spacing:.2px;
-    }
-    .offerEur{
-      color: var(--accent);
-      font-weight:1000;
-      font-size:24px;
-      white-space:nowrap;
-    }
-
     .badge{
-      position:absolute;
-      top:12px;
-      right:12px;
-      background:#b91c1c;
-      color:#fff;
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:6px 10px;border-radius:999px;
+      background: var(--offer);
+      color:#fff;font-weight:1000;font-size:12px;
+    }
+
+    .nowRow{
+      display:flex;align-items:baseline;justify-content:space-between;
+      gap:10px;flex-wrap:nowrap;
+      margin-top:6px;
+    }
+    .lek{color:var(--accent);font-weight:1000;font-size:26px;white-space:nowrap;}
+    .eur{color:var(--offer);font-weight:1000;font-size:22px;white-space:nowrap;} /* € djathtas e madhe e kuqe */
+    .offerText{
+      margin-top:6px;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .offerLabel{
       font-weight:1000;
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      box-shadow: 0 10px 18px rgba(185,28,28,.22);
+      color: var(--offer);
+      letter-spacing:.2px;
     }
 
     .desc{margin-top:8px;color:#334155;font-size:13px;line-height:1.35;font-weight:650;opacity:.95;}
@@ -243,7 +233,7 @@
     .qty{width:90px;padding:12px;border:1px solid var(--border);border-radius:12px;font-weight:900;text-align:center;}
     .addbtn{
       flex:1;padding:12px 14px;border-radius:12px;border:0;font-weight:1000;
-      background:var(--nav);color:#fff;cursor:pointer;
+      background: var(--dark1);color:#fff;cursor:pointer;
     }
     .addbtn:hover{opacity:.92;}
     .addbtn:active{transform:translateY(1px);}
@@ -267,63 +257,64 @@
   <div class="wrap">
     <div id="err" class="error"></div>
 
-    <!-- FILTERAT -->
     <div class="panel">
-      <div class="grid-controls">
+      <div class="topGrid">
+        <!-- MAJTAS: FILTERAT + COUNT/STATUS -->
         <div>
-          <label>Kërko (emër / kategori / kod)</label>
-          <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
-        </div>
-
-        <div>
-          <label>Kategori</label>
-          <select id="cat">
-            <option value="">Të gjitha kategoritë</option>
-          </select>
-        </div>
-
-        <div>
-          <label>Kursi € → Lek (1€ = 97)</label>
-          <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="97" />
-        </div>
-      </div>
-
-      <div class="bar">
-        <div class="count" id="count">0 artikuj</div>
-        <div class="status" id="status">Duke u lidhur…</div>
-      </div>
-    </div>
-
-    <!-- LAYOUT: PRODUKTET + SHPORTA -->
-    <div class="layout">
-      <div class="cards" id="cards"></div>
-
-      <!-- SHPORTA DJATHTAS (desktop) / poshtë (mobile) -->
-      <div class="cartSticky">
-        <div class="cart">
-          <div class="cartHead">Shporta</div>
-          <div class="cartBody">
-            <div id="cartEmpty" class="cartEmpty">Shporta është bosh.</div>
-
-            <div class="totRow">
-              <div class="totLek" id="totLek">0 Lekë</div>
-              <div class="totEur" id="totEur">0.00 €</div>
+          <div class="grid-controls">
+            <div>
+              <label>Kërko (emër / kategori / kod)</label>
+              <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
             </div>
 
-            <div class="cartList" id="cartList"></div>
+            <div>
+              <label>Kategori</label>
+              <select id="cat">
+                <option value="">Të gjitha kategoritë</option>
+              </select>
+            </div>
 
-            <div class="noteLabel">Shënim (opsionale)</div>
-            <textarea id="note" class="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
+            <div>
+              <label>Kursi € → Lek (1€ = 97)</label>
+              <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="97" />
+            </div>
+          </div>
 
-            <div class="cartActions">
-              <button id="btnClear" class="btnGray" type="button">Pastro shportën</button>
-              <button id="btnWA" class="btnGreen" type="button" disabled>Dërgo në WhatsApp</button>
+          <div class="bar">
+            <div class="count" id="count">0 artikuj</div>
+            <div class="status" id="status">Duke u lidhur…</div>
+          </div>
+        </div>
+
+        <!-- DJATHTAS: SHPORTA (sticky) -->
+        <div class="cartSticky">
+          <div class="cart">
+            <div class="cartHead">Shporta</div>
+            <div class="cartBody">
+              <div id="cartEmpty" class="cartEmpty">Shporta është bosh.</div>
+
+              <div class="totRow">
+                <div class="totLek" id="totLek">0 Lekë</div>
+                <div class="totEur" id="totEur">0.00 €</div>
+              </div>
+
+              <div class="cartList" id="cartList"></div>
+
+              <div class="noteLabel">Shënim (opsionale)</div>
+              <textarea id="note" class="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
+
+              <div class="cartActions">
+                <button id="btnClear" class="btnGray" type="button">Pastro shportën</button>
+                <button id="btnWA" class="btnGreen" type="button" disabled>Dërgo në WhatsApp</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- PRODUKTET -->
+    <div class="cards" id="cards"></div>
   </div>
 
   <footer>Gjekaj Plants • WhatsApp: 0697232425</footer>
@@ -332,19 +323,29 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
-    // ✅ SUPABASE
+    // ✅ Këto janë të tuat (të vendosura)
     const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_Ll_tV3Hs9MmMO54DaDWGiQ_KRpED8xd";
     const TABLE_NAME = "products";
 
-    // ✅ Kolonat (si te tabela jote)
+    // Kolonat ekzistuese (si në tabelën tënde)
     const COL_CATEGORY = "category";
     const COL_CODE     = "code";
     const COL_STOCK    = "stock";
     const COL_PRICELEK = "price_lek";
-    const COL_OLDLEK   = "old_price_lek"; // <- për ofertat (opsionale)
 
-    // fallback keys
+    // ✅ Për OFERTË / çmimi i vjetër / -%  (opsionale në Supabase)
+    // Nëse i shton këto kolona, funksionon automatikisht:
+    // - price_old_lek (ose old_price_lek)  -> çmimi i vjetër
+    // - discount_percent (ose sale_percent) -> p.sh 20
+    // - offer_text (ose offer) -> p.sh "OFERTË"
+    const COL_OLD1 = "price_old_lek";
+    const COL_OLD2 = "old_price_lek";
+    const COL_DISC1 = "discount_percent";
+    const COL_DISC2 = "sale_percent";
+    const COL_OFFER1 = "offer_text";
+    const COL_OFFER2 = "offer";
+
     const NAME_KEYS = ["name","title","emri"];
     const DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
     const IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
@@ -401,8 +402,32 @@
       return (Math.round(n * 100) / 100).toFixed(2);
     }
 
+    function getOldPrice(row){
+      const a = toNumber(row?.[COL_OLD1]);
+      const b = toNumber(row?.[COL_OLD2]);
+      return a || b || 0;
+    }
+    function getDiscountPercent(row, oldLek, newLek){
+      const d1 = toNumber(row?.[COL_DISC1]);
+      const d2 = toNumber(row?.[COL_DISC2]);
+      const direct = d1 || d2 || 0;
+      if (direct > 0) return Math.round(direct);
+      if (oldLek > 0 && newLek > 0 && oldLek > newLek){
+        return Math.round((1 - (newLek/oldLek)) * 100);
+      }
+      return 0;
+    }
+    function getOfferText(row, hasDiscount){
+      const t = (row?.[COL_OFFER1] ?? row?.[COL_OFFER2] ?? "").toString().trim();
+      if (t) return t;
+      return hasDiscount ? "OFERTË" : "";
+    }
+
     let ALL = [];
     const CART = {};
+    let supabaseClient = null;
+    let realtimeSubscribed = false;
+    let lastReloadAt = 0;
 
     function buildCategories(rows){
       const set = new Set();
@@ -421,7 +446,7 @@
     }
 
     function renderCart(){
-      const rate = Math.max(1, toNumber(elRate.value || 97));
+      const rate = Math.max(1, toNumber(elRate.value || 100));
       const items = Object.values(CART);
 
       const totalLek = cartTotalLek();
@@ -496,7 +521,7 @@
     }
 
     function buildWhatsAppMessage(){
-      const rate = Math.max(1, toNumber(elRate.value || 97));
+      const rate = Math.max(1, toNumber(elRate.value || 100));
       const items = Object.values(CART);
       const totalLek = cartTotalLek();
       const totalEur = totalLek / rate;
@@ -539,19 +564,12 @@
     btnWA.addEventListener("click", sendToWhatsApp);
     btnClear.addEventListener("click", clearCart);
 
-    // ✅ ofertë kur old_price_lek > price_lek
-    function isOffer(row){
-      const oldL = toNumber(row?.[COL_OLDLEK]);
-      const newL = toNumber(row?.[COL_PRICELEK]);
-      return oldL > 0 && newL > 0 && oldL > newL;
-    }
-
     function render(){
       clearError();
 
       const q = elQ.value.trim().toLowerCase();
       const cat = elCat.value.trim();
-      const rate = Math.max(1, toNumber(elRate.value || 97));
+      const rate = Math.max(1, toNumber(elRate.value || 100));
 
       let filtered = ALL.filter(r => {
         if (cat && String(r?.[COL_CATEGORY] ?? "").trim() !== cat) return false;
@@ -562,12 +580,23 @@
         return name.includes(q) || category.includes(q) || code.includes(q);
       });
 
-      // ✅ renditje: ofertat në krye
-      filtered.sort((a,b)=>{
-        const oa = isOffer(a) ? 1 : 0;
-        const ob = isOffer(b) ? 1 : 0;
-        if (ob !== oa) return ob - oa;
-        return (firstExisting(a, NAME_KEYS)||"").localeCompare(firstExisting(b, NAME_KEYS)||"");
+      // ✅ Renditje: ofertat në krye
+      filtered.sort((a,b) => {
+        const aNew = toNumber(a?.[COL_PRICELEK]);
+        const bNew = toNumber(b?.[COL_PRICELEK]);
+        const aOld = getOldPrice(a);
+        const bOld = getOldPrice(b);
+        const aDisc = getDiscountPercent(a, aOld, aNew);
+        const bDisc = getDiscountPercent(b, bOld, bNew);
+
+        const aHas = (aDisc > 0) || (aOld > aNew && aOld > 0);
+        const bHas = (bDisc > 0) || (bOld > bNew && bOld > 0);
+
+        if (aHas !== bHas) return aHas ? -1 : 1;         // oferta lart
+        if (bDisc !== aDisc) return bDisc - aDisc;       // % më i madh lart
+        const an = firstExisting(a, NAME_KEYS).toString();
+        const bn = firstExisting(b, NAME_KEYS).toString();
+        return an.localeCompare(bn);
       });
 
       elCount.textContent = ${filtered.length} artikuj;
@@ -583,22 +612,34 @@
         const priceLek = toNumber(r?.[COL_PRICELEK]);
         const priceEur = priceLek / rate;
 
-        const oldLek = toNumber(r?.[COL_OLDLEK]);
-        const offer = isOffer(r);
+        const oldLek = getOldPrice(r);
+        const disc = getDiscountPercent(r, oldLek, priceLek);
+        const hasDiscount = (disc > 0) || (oldLek > priceLek && oldLek > 0);
+        const offerText = getOfferText(r, hasDiscount);
 
-        // ✅ FIXE -20% siç e do ti
-        const pctText = "-20%";
-
-        const safeId = q_${escapeHtml((code || String(r.id || Math.random())).replaceAll('.','_'))};
+        const safeId = q_${escapeHtml(code || String(r.id || Math.random()).replaceAll('.','_'))};
 
         const imgTag = img
           ? `<img class="img" src="${escapeHtml(img)}" alt="${escapeHtml(name)}" loading="lazy"
               onerror="this.style.display='none'; this.parentNode.style.background='#e5e7eb';" />`
           : <div class="img" style="background:#e5e7eb;"></div>;
 
+        const oldRow = hasDiscount && oldLek > 0
+          ? `<div class="oldRow">
+               <span class="oldPrice">${formatLek(oldLek)} Lekë</span>
+               ${disc > 0 ? <span class="badge">-${disc}%</span> : ``}
+             </div>`
+          : (hasDiscount && disc > 0 ? <div class="oldRow"><span class="badge">-${disc}%</span></div> : ``);
+
+        const offerLine = hasDiscount
+          ? `<div class="offerText">
+               <div class="offerLabel">${escapeHtml(offerText || "OFERTË")}</div>
+               <div></div>
+             </div>`
+          : ``;
+
         return `
           <article class="card">
-            ${offer ? <div class="badge">${pctText}</div> : ``}
             ${imgTag}
             <div class="content">
               <h3 class="name">${escapeHtml(name)}</h3>
@@ -608,27 +649,13 @@
                 ${stock ? Stok: <b>${escapeHtml(stock)}</b> : ``}
               </div>
 
-              <div class="priceBlock">
-                ${offer ? `
-                  <div class="row1">
-                    <div class="oldLek">${formatLek(oldLek)} Lekë</div>
-                  </div>
-
-                  <div class="row1">
-                    <div class="newLek">${formatLek(priceLek)} Lekë</div>
-                    <div class="eur">${formatEuro(priceEur)} €</div>
-                  </div>
-
-                  <div class="offerRow">
-                    <div class="offerText">OFERTË</div>
-                    <div class="offerEur">${formatEuro(priceEur)} €</div>
-                  </div>
-                ` : `
-                  <div class="row1">
-                    <div class="newLek">${formatLek(priceLek)} Lekë</div>
-                    <div class="eur">${formatEuro(priceEur)} €</div>
-                  </div>
-                `}
+              <div class="priceWrap">
+                ${oldRow}
+                <div class="nowRow">
+                  <div class="lek">${formatLek(priceLek)} Lekë</div>
+                  <div class="eur">${formatEuro(priceEur)} €</div>
+                </div>
+                ${offerLine}
               </div>
 
               ${desc ? <div class="desc">${escapeHtml(desc)}</div> : ``}
@@ -650,26 +677,60 @@
 
     window.__addByRow = (row, qty) => { try{ addToCart(row, qty); }catch(e){ console.error(e); } };
 
+    async function fetchProducts(){
+      // 1) supabase-js
+      const { data, error } = await supabaseClient.from(TABLE_NAME).select("*");
+      if (error) throw error;
+      ALL = Array.isArray(data) ? data : [];
+      buildCategories(ALL);
+      render();
+    }
+
+    function setupRealtime(){
+      if (realtimeSubscribed) return;
+      realtimeSubscribed = true;
+
+      // Reload me throttle (që mos të bëjë 100 herë)
+      const reload = async () => {
+        const now = Date.now();
+        if (now - lastReloadAt < 800) return;
+        lastReloadAt = now;
+        try{
+          await fetchProducts();
+          elStatus.textContent = "Gati.";
+        }catch(e){
+          console.error(e);
+        }
+      };
+
+      supabaseClient
+        .channel("public:products")
+        .on("postgres_changes",
+          { event: "*", schema: "public", table: TABLE_NAME },
+          () => reload()
+        )
+        .subscribe();
+    }
+
     async function load(){
       clearError();
       elStatus.textContent = "Duke lexuar nga Supabase…";
 
       try{
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        const { data, error } = await supabase.from(TABLE_NAME).select("*");
-        if (error) throw error;
-
-        ALL = Array.isArray(data) ? data : [];
-        buildCategories(ALL);
-        render();
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        await fetchProducts();
         elStatus.textContent = "Gati.";
+        setupRealtime(); // ✅ ndryshimet në Supabase dalin vetë (pa e rifresku faqe)
+        return;
       }catch(e){
         console.error(e);
         showError(
-          "Nuk u lidh me Supabase. Kontrollo: RLS policy SELECT për anon + çelësi anon key. " +
+          "Nuk u lexuan produktet nga Supabase. Kontrollo: RLS policy SELECT për anon, dhe key/URL. " +
           "Mesazh: " + (e?.message || e)
         );
         elStatus.textContent = "Gabim lidhjeje";
+        ALL = [];
+        render();
       }
     }
 
