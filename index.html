@@ -5,141 +5,101 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gjekaj Plants — Katalogu i Bimëve</title>
 
-  <meta name="description" content="Gjekaj Plants — pemë dekorative, bimë, fidane dhe shkurre në Dajç, Shkodër. Shiko katalogun, filtro sipas emrit/kategorisë/kodit dhe dërgo porosinë në WhatsApp." />
-  <meta name="keywords" content="Gjekaj Plants, katalog bimësh, pemë dekorative, bimë dekorative, fidane, shkurre dekorative, Dajç, Shkodër, çmime lek, çmime euro, porosi WhatsApp" />
+  <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre në Dajç, Shkodër. Katalog online dhe porosi në WhatsApp +355697232425." />
+  <meta name="keywords" content="pemë dekorative, bimë dekorative, fidane, shkurre dekorative, Dajç, Shkodër, Gjekaj Plants, katalog bimësh" />
 
-  <!-- Open Graph (për Facebook/WhatsApp preview) -->
   <meta property="og:title" content="Gjekaj Plants — Katalogu i Bimëve" />
-  <meta property="og:description" content="Pemë dekorative, bimë, fidane dhe shkurre. Kërko, filtro dhe dërgo porosinë në WhatsApp." />
+  <meta property="og:description" content="Zgjidh sasinë dhe dërgo kërkesën në WhatsApp." />
   <meta property="og:type" content="website" />
-
-  <!-- Theme color -->
-  <meta name="theme-color" content="#111827" />
 
   <style>
     :root{
-      --bg:#ffffff;              /* sfond i bardh */
+      --bg:#f3f5f8;
       --card:#ffffff;
       --text:#0f172a;
       --muted:#64748b;
-      --accent:#b91c1c;          /* cmimet te kuqe */
       --border:#e5e7eb;
       --shadow: 0 10px 30px rgba(2,6,23,.08);
       --radius: 18px;
+      --accent:#b91c1c; /* e kuqe për çmimet */
+      --dark:#111827;   /* e zezë për butonat */
+      --green:#16a34a;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
 
     header{
       background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
       color:#fff;
-      padding: 22px 16px 18px;
+      padding: 18px 14px 14px;
       position: sticky;
       top: 0;
-      z-index: 50;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      z-index: 1000;
       text-align:center;
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    header h1{
-      margin:0;
-      font-size: clamp(20px, 3.6vw, 32px);
-      font-weight: 900;
-      line-height: 1.15;
-    }
-    header .sub{
-      margin-top:8px;
-      opacity:.9;
-      font-size: 14px;
-      font-weight: 650;
-    }
+    header h1{margin:0;font-size:clamp(20px,3.4vw,32px);font-weight:900;line-height:1.1;}
+    header .sub{margin-top:6px;opacity:.92;font-size:14px;font-weight:800;}
 
-    .wrap{
-      max-width: 1200px;
-      margin: 18px auto 90px;
-      padding: 0 14px;
+    .wrap{max-width:1200px;margin:14px auto 90px;padding:0 14px;}
+
+    .error{
+      display:none;margin-top:14px;background:#fff;border:1px solid #fecaca;
+      border-left:6px solid #b91c1c;border-radius:14px;padding:12px 12px;
+      font-weight:900;color:#7f1d1d;white-space:pre-wrap;
     }
 
     .panel{
-      background: var(--card);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      padding: 14px;
-      margin-top: 14px;
+      background:var(--card);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+      padding:14px;
+      margin-top:14px;
     }
 
-    .grid-controls{
+    /* Layout: majtas produktet / djathtas shporta */
+    .layout{
       display:grid;
-      grid-template-columns: 1.3fr .8fr .9fr;
-      gap: 10px;
+      grid-template-columns: 1fr 360px;
+      gap: 14px;
       align-items:start;
     }
     @media (max-width: 980px){
-      .grid-controls{ grid-template-columns: 1fr; }
+      .layout{grid-template-columns:1fr;}
     }
 
-    label{
-      font-size: 12px;
-      font-weight: 900;
-      color: var(--muted);
-      display:block;
-      margin: 6px 0 6px;
+    /* Filterat lart (brenda kolonës majtas) */
+    .filters{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr .6fr;
+      gap:10px;
     }
+    @media (max-width: 980px){
+      .filters{grid-template-columns:1fr;}
+    }
+
+    label{font-size:12px;font-weight:900;color:var(--muted);display:block;margin:6px 0 6px;}
     input, select, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border:1px solid var(--border);
-      border-radius: 12px;
-      font-size: 15px;
-      outline: none;
-      background:#fff;
+      width:100%;padding:12px 12px;border:1px solid var(--border);border-radius:12px;
+      font-size:15px;outline:none;background:#fff;
     }
-    textarea{ min-height: 70px; resize: vertical; }
-
-    .bar{
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      margin-top: 14px;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .count{
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 900;
-    }
-    .status{
-      font-size: 13px;
-      font-weight: 900;
-      color: var(--muted);
-    }
-    .error{
-      display:none;
-      margin-top: 14px;
-      background: #fff;
-      border: 1px solid #fecaca;
-      border-left: 6px solid #b91c1c;
-      border-radius: 14px;
-      padding: 12px 12px;
-      font-weight: 900;
-      color:#7f1d1d;
-      white-space: pre-wrap;
+    input:focus, select:focus, textarea:focus{
+      border-color:#93c5fd;box-shadow:0 0 0 4px rgba(59,130,246,.12);
     }
 
+    .bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px;flex-wrap:wrap;}
+    .count,.status{font-size:13px;color:var(--muted);font-weight:900;}
+
+    /* Produktet */
     .cards{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 14px;
-      margin-top: 14px;
+      gap:14px;
+      margin-top:14px;
     }
-    @media (max-width: 1020px){ .cards{grid-template-columns: repeat(2, minmax(0,1fr));} }
-    @media (max-width: 640px){ .cards{grid-template-columns: 1fr;} }
+    @media (max-width:1100px){ .cards{grid-template-columns:repeat(2, minmax(0,1fr));} }
+    @media (max-width:640px){ .cards{grid-template-columns:1fr;} }
 
     .card{
       background: var(--card);
@@ -147,205 +107,131 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
+    }
+    .img{width:100%;aspect-ratio:16/10;background:#e5e7eb;display:block;object-fit:cover;}
+    .content{padding:12px 12px 14px;}
+    .name{margin:0;font-size:20px;font-weight:1000;}
+    .meta{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.35;font-weight:700;}
+    .price{margin-top:10px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+    .lek{color:var(--accent);font-weight:1000;font-size:26px;}
+    .eur{color:#334155;font-weight:900;font-size:18px;}
+    .desc{margin-top:8px;color:#334155;font-size:13px;line-height:1.35;font-weight:650;opacity:.95;}
+
+    .buyrow{display:flex;gap:10px;margin-top:12px;align-items:center;}
+    .qty{width:90px;padding:12px;border:1px solid var(--border);border-radius:12px;font-weight:900;text-align:center;}
+    .addbtn{
+      flex:1;padding:12px 14px;border-radius:12px;border:0;font-weight:1000;
+      background: var(--dark); color:#fff; cursor:pointer;
+    }
+    .addbtn:hover{opacity:.92;}
+    .addbtn:active{transform:translateY(1px);}
+
+    /* SHPORTA DJATHTAS (sticky) */
+    .cartSticky{
+      position: sticky;
+      top: 92px; /* poshtë header */
+      z-index: 300;
+    }
+    @media (max-width: 980px){
+      .cartSticky{ position: relative; top:auto; }
+    }
+
+    .cart{
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .cartHead{
+      padding:14px 14px 10px;
+      font-weight:1000;
+      font-size:20px;
       display:flex;
-      flex-direction:column;
-      min-height: 100%;
-    }
-    .img{
-      width:100%;
-      aspect-ratio: 16/10;
-      background: #e5e7eb;
-      display:block;
-      object-fit: cover;
-    }
-    .content{
-      padding: 12px 12px 14px;
-      display:flex;
-      flex-direction:column;
-      gap: 8px;
-      flex:1;
-    }
-    .name{
-      margin:0;
-      font-size: 20px;
-      font-weight: 950;
-      text-transform: none;
-    }
-    .meta{
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
-      font-weight: 700;
-    }
-    .price{
-      display:flex;
-      align-items: baseline;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .lek{
-      color: var(--accent);     /* e kuqe */
-      font-weight: 1000;
-      font-size: 26px;
-    }
-    .eur{
-      color: #111827;
-      font-weight: 950;
-      font-size: 18px;
-    }
-    .desc{
-      color:#334155;
-      font-size: 13px;
-      line-height:1.35;
-      font-weight: 650;
-      opacity:.95;
-    }
-    .buyrow{
-      display:flex;
-      gap: 10px;
+      justify-content:space-between;
       align-items:center;
-      margin-top: 6px;
-      flex-wrap: wrap;
-    }
-    .qty{ width: 90px; }
-
-    .btnAdd{
-      flex:1;
-      min-width: 160px;
-      background: #111827;      /* butoni i zi */
-      color: #fff;
-      border: 0;
-      border-radius: 14px;
-      padding: 12px 12px;
-      font-weight: 1000;
-      cursor:pointer;
-      font-size: 15px;
-    }
-
-    .rateCartCol{
-      display:flex;
-      flex-direction:column;
       gap:10px;
     }
+    .cartHead small{
+      font-weight:900;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .cartBody{padding:0 14px 14px;}
+    .cartEmpty{color:var(--muted);font-weight:900;margin:10px 0;}
 
-    .cartbox{
-      background:#0b1220;
-      color:#fff;
-      border-radius: 16px;
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 16px 45px rgba(2,6,23,.18);
+    .totRow{
+      display:flex;justify-content:space-between;gap:10px;align-items:baseline;
+      padding:10px 0 8px;border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);margin:10px 0 10px;
     }
-    .rateCartCol .cartbox{
-      position: sticky;
-      top: 96px;
-      max-height: calc(100vh - 140px);
-      overflow: auto;
-      z-index: 40;
-    }
+    .totLek{font-weight:1000;font-size:20px;color:var(--accent);}
+    .totEur{font-weight:1000;font-size:16px;color:#334155;}
 
-    .cartbox h2{
-      margin: 4px 0 10px;
-      font-size: 16px;
-      font-weight: 1000;
+    .cartList{
+      display:flex;flex-direction:column;gap:10px;
+      max-height: 320px;
+      overflow:auto;
+      padding-right:4px;
     }
-    .cartlist{
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-    .cartitem{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.08);
+    .cartItem{
+      background: #f8fafc;
+      border: 1px solid var(--border);
       border-radius: 14px;
       padding: 10px;
-      display:grid;
-      grid-template-columns: 1fr 86px;
-      gap: 10px;
-      align-items:start;
     }
-    .cartitem .t{ font-weight: 1000; font-size: 13.5px; }
-    .cartitem .s{ margin-top: 4px; font-size: 12.5px; opacity:.9; }
-    .cartitem .q{ display:flex; flex-direction:column; gap: 8px; }
-    .cartitem input{
-      width: 100%;
-      padding: 10px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.10);
-      color:#fff;
-      font-weight: 1000;
+    .ciTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
+    .ciName{font-weight:1000;line-height:1.15;font-size:14px;}
+    .ciMeta{color:var(--muted);font-weight:800;font-size:12px;margin-top:6px;line-height:1.3;}
+    .ciRight{display:flex;flex-direction:column;gap:8px;align-items:flex-end;min-width:120px;}
+    .ciQty{
+      width:78px;
+      border:1px solid var(--border);
+      color:var(--text);
       text-align:center;
+      font-weight:1000;
+      border-radius:12px;
+      padding:8px 8px;
+      outline:none;
+      background:#fff;
     }
-    .btnDel{
+    .ciBtn{
+      background: rgba(185,28,28,.10);
+      border:1px solid rgba(185,28,28,.25);
+      color:#7f1d1d;
+      font-weight:1000;
+      padding:8px 10px;border-radius:12px;cursor:pointer;
       width:100%;
-      border:0;
-      border-radius: 12px;
-      padding: 10px 10px;
-      cursor:pointer;
-      font-weight: 1000;
-      background: rgba(244,63,94,.22);
-      color:#fff;
     }
 
-    .totals{
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      display:flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .totals .big{ font-size: 20px; font-weight: 1100; }
-    .totals .small{ font-size: 14px; font-weight: 1000; opacity:.95; }
-
-    .note{ margin-top: 10px; }
-    .note textarea{
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.14);
-      color:#fff;
-    }
-
-    .cartActions{
-      display:flex;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .btnClear{
-      width: 100%;
-      background: rgba(255,255,255,.10);
-      color:#fff;
-      border:1px solid rgba(255,255,255,.20);
-      border-radius: 14px;
-      padding: 12px 12px;
-      font-weight: 1100;
-      cursor:pointer;
-      font-size: 15px;
-    }
-    .send{
-      margin-top: 10px;
+    .noteLabel{font-weight:900;color:var(--muted);margin:10px 0 6px;font-size:13px;}
+    .note{
       width:100%;
-      background:#16a34a;
-      color:#fff;
-      border:0;
-      border-radius: 14px;
-      padding: 13px 12px;
-      font-weight: 1100;
-      cursor:pointer;
-      font-size: 16px;
+      min-height:70px;
+      border-radius:14px;
+      padding:10px 10px;
+      resize:vertical;
     }
-    .send:disabled{ opacity:.55; cursor:not-allowed; }
+
+    .cartActions{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
+    .btnGreen{
+      background: var(--green);border:0;color:#fff;font-weight:1000;
+      padding:12px 14px;border-radius:14px;cursor:pointer;
+      font-size:15px;
+    }
+    .btnGreen[disabled]{opacity:.45;cursor:not-allowed;}
+    .btnGray{
+      background: #fff;
+      border:1px solid var(--border);
+      color:var(--text);
+      font-weight:1000;
+      padding:12px 14px;border-radius:14px;cursor:pointer;
+      font-size:15px;
+    }
 
     footer{
-      position: fixed;
-      left:0; right:0; bottom:0;
-      background: #111827;
-      color:#fff;
-      padding: 10px 14px;
-      text-align:center;
-      font-weight: 1000;
-      z-index: 40;
+      position:fixed;left:0;right:0;bottom:0;background:#111827;color:#fff;
+      padding:12px 14px;text-align:center;font-weight:1000;z-index:2000;
     }
   </style>
 </head>
@@ -353,409 +239,275 @@
 <body>
   <header>
     <h1>Gjekaj Plants — Katalogu i Bimëve</h1>
-    <div class="sub">Dajç, Shkodër, Albania • Tel: +355697232425</div>
+    <div class="sub">Dajç, Shkodër, Albania • Tel / WhatsApp: +355697232425</div>
   </header>
 
   <div class="wrap">
     <div id="err" class="error"></div>
 
-    <div class="panel">
-      <div class="grid-controls">
-        <div>
-          <label>Kërko (emër / kategori / kod)</label>
-          <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
-        </div>
+    <div class="layout">
 
-        <div>
-          <label>Kategori</label>
-          <select id="cat">
-            <option value="">Të gjitha kategoritë</option>
-          </select>
-        </div>
+      <!-- MAJTAS: FILTER + PRODUKTET -->
+      <div>
+        <div class="panel">
+          <div class="filters">
+            <div>
+              <label>Kërko (emër / kategori / kod)</label>
+              <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
+            </div>
 
-        <div class="rateCartCol">
-          <div>
-            <label>Kursi € → Lek (1€ = 97)</label>
-            <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="97" />
+            <div>
+              <label>Kategori</label>
+              <select id="cat">
+                <option value="">Të gjitha kategoritë</option>
+              </select>
+            </div>
+
+            <div>
+              <label>Kursi € → Lek (1€ = 100)</label>
+              <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="100" />
+            </div>
           </div>
 
-          <div class="cartbox" id="cartBox">
-            <h2>Shporta</h2>
-            <div id="cartItems" class="cartlist"></div>
+          <div class="bar">
+            <div class="count" id="count">0 artikuj</div>
+            <div class="status" id="status">Duke u lidhur…</div>
+          </div>
+        </div>
 
-            <div class="totals">
-              <div class="big" id="cartTotalLek">0 Lekë</div>
-              <div class="small" id="cartTotalEur">0.00 €</div>
+        <div class="cards" id="cards"></div>
+      </div>
+
+      <!-- DJATHTAS: SHPORTA -->
+      <div class="cartSticky">
+        <div class="cart">
+          <div class="cartHead">
+            <div>Shporta</div>
+            <small id="cartCount">0 artikuj</small>
+          </div>
+
+          <div class="cartBody">
+            <div id="cartEmpty" class="cartEmpty">Shporta është bosh.</div>
+
+            <div class="totRow">
+              <div class="totLek" id="totLek">0 Lekë</div>
+              <div class="totEur" id="totEur">0.00 €</div>
             </div>
 
-            <div class="note">
-              <label style="color: rgba(255,255,255,.85); font-weight:1000">Shënim (opsionale)</label>
-              <textarea id="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
-            </div>
+            <div class="cartList" id="cartList"></div>
+
+            <div class="noteLabel">Shënim (opsionale)</div>
+            <textarea id="note" class="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
 
             <div class="cartActions">
-              <button id="clearCart" class="btnClear" type="button">Pastro shportën</button>
+              <button id="btnClear" class="btnGray" type="button">Pastro shportën</button>
+              <button id="btnWA" class="btnGreen" type="button" disabled>Dërgo kërkesën në WhatsApp</button>
             </div>
-
-            <button id="sendWA" class="send" disabled>Dërgo në WhatsApp</button>
           </div>
         </div>
       </div>
 
-      <div class="bar">
-        <div class="count" id="count">0 artikuj</div>
-        <div class="status" id="status">Duke u lidhur…</div>
-      </div>
     </div>
-
-    <div class="cards" id="cards"></div>
   </div>
 
-  <footer>Gjekaj Plants • WhatsApp: 0697232425</footer>
+  <footer>Gjekaj Plants • WhatsApp: +355 69 723 2425</footer>
+
+  <!-- Supabase JS (v2) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
     // =========================
-    //  SUPABASE (REST / PostgREST) – pa librari
+    //  SUPABASE (me ANON KEY legacy që më dërgove)
     // =========================
-    var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
-    // ⚠️ VENDOS KETU "Anon Key (Legacy)" (jo sb_publishable)
-    var SUPABASE_ANON_KEY = sb_publishable_Ll_tV3Hs9MmMO54DaDWGiQ_KRpED8xd;
-    var TABLE_NAME = "products";
-    var SCHEMA = "public";
+    const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
+    const TABLE_NAME = "products";
 
-    // Kolonat
-    var COL_CATEGORY = "category";
-    var COL_CODE     = "code";
-    var COL_STOCK    = "stock";
-    var COL_PRICELEK = "price_lek";
+    // Kolonat (siç i ke)
+    const COL_CATEGORY = "category";
+    const COL_CODE     = "code";
+    const COL_STOCK    = "stock";
+    const COL_PRICELEK = "price_lek";
 
-    var NAME_KEYS = ["name","title","emri"];
-    var DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
-    var IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
+    // fushat opsionale
+    const NAME_KEYS = ["name","title","emri"];
+    const DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
+    const IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
 
-    var WHATSAPP_NUMBER = "355697232425"; // pa +
+    // WhatsApp (pa +)
+    const WA_NUMBER = "355697232425";
 
     // UI
-    var elErr = document.getElementById("err");
-    var elCards = document.getElementById("cards");
-    var elCount = document.getElementById("count");
-    var elStatus = document.getElementById("status");
-    var elQ = document.getElementById("q");
-    var elCat = document.getElementById("cat");
-    var elRate = document.getElementById("rate");
+    const elErr = document.getElementById("err");
+    const elCards = document.getElementById("cards");
+    const elCount = document.getElementById("count");
+    const elStatus = document.getElementById("status");
+    const elQ = document.getElementById("q");
+    const elCat = document.getElementById("cat");
+    const elRate = document.getElementById("rate");
 
-    var cartItemsEl = document.getElementById("cartItems");
-    var cartTotalLekEl = document.getElementById("cartTotalLek");
-    var cartTotalEurEl = document.getElementById("cartTotalEur");
-    var noteEl = document.getElementById("note");
-    var clearCartBtn = document.getElementById("clearCart");
-    var sendWA = document.getElementById("sendWA");
+    const elCartEmpty = document.getElementById("cartEmpty");
+    const elCartList = document.getElementById("cartList");
+    const elTotLek = document.getElementById("totLek");
+    const elTotEur = document.getElementById("totEur");
+    const elCartCount = document.getElementById("cartCount");
+    const elNote = document.getElementById("note");
+    const btnWA = document.getElementById("btnWA");
+    const btnClear = document.getElementById("btnClear");
 
-    function showError(msg){
-      elErr.style.display = "block";
-      elErr.textContent = msg;
-    }
-    function clearError(){
-      elErr.style.display = "none";
-      elErr.textContent = "";
+    function showError(msg){ elErr.style.display="block"; elErr.textContent=msg; }
+    function clearError(){ elErr.style.display="none"; elErr.textContent=""; }
+
+    function escapeHtml(s){
+      return String(s ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
     }
     function firstExisting(row, keys){
-      for (var i=0;i<keys.length;i++){
-        var k = keys[i];
-        if (row && row[k] !== undefined && row[k] !== null && String(row[k]).replace(/^\s+|\s+$/g,'') !== "") return row[k];
+      for (const k of keys){
+        if (row && row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== "") return row[k];
       }
       return "";
     }
-    function escapeHtml(s){
-      s = String(s === undefined || s === null ? "" : s);
-      return s
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-    }
     function toNumber(v){
       if (v === null || v === undefined) return 0;
-      var s = String(v);
-      s = s.replace(/\./g,"").replace(/,/g,".");
-      s = s.replace(/[^\d.]/g,"");
-      var n = Number(s);
-      return isFinite(n) ? n : 0;
+      const s = String(v).replaceAll(".", "").replaceAll(",", ".").replace(/[^\d.]/g, "");
+      const n = Number(s);
+      return Number.isFinite(n) ? n : 0;
     }
     function formatLek(n){
-      var x = Math.round(n);
-      return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      const x = Math.round(n);
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
     function formatEuro(n){
       return (Math.round(n * 100) / 100).toFixed(2);
     }
 
-    // Data
-    var ALL = [];
-    var CART = {}; // {id: {row, qty}}
-
-    function saveCart(){
-      try{
-        localStorage.setItem("gjekaj_cart_v3", JSON.stringify({ cart: CART, note: noteEl.value || "" }));
-      }catch(e){}
-    }
-    function loadCart(){
-      try{
-        var raw = localStorage.getItem("gjekaj_cart_v3");
-        if (!raw) return;
-        var obj = JSON.parse(raw);
-        CART = (obj && obj.cart) ? obj.cart : {};
-        noteEl.value = (obj && obj.note) ? obj.note : "";
-      }catch(e){}
-    }
+    let ALL = [];
+    const CART = {};
 
     function buildCategories(rows){
-      var set = {};
-      for (var i=0;i<rows.length;i++){
-        var r = rows[i];
-        var c = (r && r[COL_CATEGORY]) ? String(r[COL_CATEGORY]).replace(/^\s+|\s+$/g,'') : "";
-        if (c) set[c] = true;
+      const set = new Set();
+      for (const r of rows){
+        const c = (r?.[COL_CATEGORY] ?? "").toString().trim();
+        if (c) set.add(c);
       }
-      var cats = [];
-      for (var k in set) cats.push(k);
-      cats.sort(function(a,b){ return a.localeCompare(b); });
-
-      var current = elCat.value;
-      var html = '<option value="">Të gjitha kategoritë</option>';
-      for (var j=0;j<cats.length;j++){
-        html += '<option value="'+escapeHtml(cats[j])+'">'+escapeHtml(cats[j])+'</option>';
-      }
-      elCat.innerHTML = html;
-      // ruaj selection nqs ekziston
-      for (var t=0;t<cats.length;t++){
-        if (cats[t] === current) { elCat.value = current; break; }
-      }
+      const cats = Array.from(set).sort((a,b)=>a.localeCompare(b));
+      const current = elCat.value;
+      elCat.innerHTML = <option value="">Të gjitha kategoritë</option> + cats.map(c => <option value="${escapeHtml(c)}">${escapeHtml(c)}</option>).join("");
+      if (cats.includes(current)) elCat.value = current;
     }
 
-    function calcTotals(){
-      var rate = Math.max(1, toNumber(elRate.value || 97));
-      var totalLek = 0;
-
-      for (var id in CART){
-        if (!CART.hasOwnProperty(id)) continue;
-        var it = CART[id];
-        var priceLek = toNumber(it && it.row ? it.row[COL_PRICELEK] : 0);
-        var qty = Math.max(1, toNumber(it.qty || 1));
-        totalLek += priceLek * qty;
-      }
-      var totalEur = totalLek / rate;
-
-      cartTotalLekEl.textContent = formatLek(totalLek) + " Lekë";
-      cartTotalEurEl.textContent = formatEuro(totalEur) + " €";
-
-      sendWA.disabled = totalLek <= 0;
-      saveCart();
-      return { totalLek: totalLek, totalEur: totalEur, rate: rate };
+    function cartTotalLek(){
+      return Object.values(CART).reduce((s,it)=> s + (it.priceLek * it.qty), 0);
     }
 
     function renderCart(){
-      var ids = [];
-      for (var id in CART){ if (CART.hasOwnProperty(id)) ids.push(id); }
+      const rate = Math.max(1, toNumber(elRate.value || 100));
+      const items = Object.values(CART);
 
-      if (ids.length === 0){
-        cartItemsEl.innerHTML = '<div style="opacity:.9;font-weight:900;">Shporta është bosh.</div>';
-        calcTotals();
+      elCartCount.textContent = ${items.length} artikuj;
+
+      const totalLek = cartTotalLek();
+      const totalEur = totalLek / rate;
+
+      elTotLek.textContent = ${formatLek(totalLek)} Lekë;
+      elTotEur.textContent = ${formatEuro(totalEur)} €;
+
+      if (items.length === 0){
+        elCartEmpty.style.display = "block";
+        elCartList.innerHTML = "";
+        btnWA.disabled = true;
         return;
       }
 
-      var out = "";
-      for (var i=0;i<ids.length;i++){
-        var cid = ids[i];
-        var it = CART[cid];
-        var r = it.row || {};
-        var name = firstExisting(r, NAME_KEYS) || "(pa emër)";
-        var category = r[COL_CATEGORY] ? String(r[COL_CATEGORY]) : "";
-        var code = r[COL_CODE] ? String(r[COL_CODE]) : "";
-        var priceLek = toNumber(r[COL_PRICELEK]);
-        var qty = Math.max(1, toNumber(it.qty || 1));
+      elCartEmpty.style.display = "none";
+      btnWA.disabled = false;
 
-        out += ''
-          + '<div class="cartitem">'
-          + '  <div>'
-          + '    <div class="t">'+escapeHtml(name)+'</div>'
-          + '    <div class="s">'
-          + (category ? 'Kategoria: <b>'+escapeHtml(category)+'</b><br>' : '')
-          + (code ? 'Kodi: <b>'+escapeHtml(code)+'</b><br>' : '')
-          + 'Çmimi: <b>'+formatLek(priceLek)+' Lekë</b>'
-          + '    </div>'
-          + '  </div>'
-          + '  <div class="q">'
-          + '    <input type="number" min="1" step="1" value="'+qty+'" data-id="'+escapeHtml(cid)+'" class="qtyInCart" />'
-          + '    <button class="btnDel" data-del="'+escapeHtml(cid)+'">Hiq</button>'
-          + '  </div>'
-          + '</div>';
-      }
-      cartItemsEl.innerHTML = out;
+      elCartList.innerHTML = items.map(it => {
+        const subLek = it.priceLek * it.qty;
+        const subEur = subLek / rate;
 
-      var inps = cartItemsEl.querySelectorAll(".qtyInCart");
-      for (var a=0;a<inps.length;a++){
-        (function(inp){
-          inp.addEventListener("input", function(){
-            var id = inp.getAttribute("data-id");
-            var v = Math.max(1, toNumber(inp.value || 1));
-            if (CART[id]) CART[id].qty = v;
-            calcTotals();
-          });
-        })(inps[a]);
-      }
-
-      var dels = cartItemsEl.querySelectorAll("[data-del]");
-      for (var b=0;b<dels.length;b++){
-        (function(btn){
-          btn.addEventListener("click", function(){
-            var id = btn.getAttribute("data-del");
-            try{ delete CART[id]; }catch(e){}
-            renderCart();
-          });
-        })(dels[b]);
-      }
-
-      calcTotals();
+        return `
+          <div class="cartItem">
+            <div class="ciTop">
+              <div>
+                <div class="ciName">${escapeHtml(it.name)}</div>
+                <div class="ciMeta">
+                  ${it.category ? Kategoria: <b>${escapeHtml(it.category)}</b><br> : ``}
+                  ${it.code ? Kodi: <b>${escapeHtml(it.code)}</b><br> : ``}
+                  Çmimi: <b>${formatLek(it.priceLek)} Lekë</b> (${formatEuro(it.priceLek / rate)} €)<br>
+                  Nën-total: <b>${formatLek(subLek)} Lekë</b> (${formatEuro(subEur)} €)
+                </div>
+              </div>
+              <div class="ciRight">
+                <input class="ciQty" type="number" min="1" step="1" value="${it.qty}"
+                  onchange="window.__setCartQty('${escapeHtml(it.codeKey)}', this.value)" />
+                <button class="ciBtn" type="button" onclick="window.__removeCart('${escapeHtml(it.codeKey)}')">Hiq</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
     }
 
-    function addToCart(row, qty){
-      var id = String((row && row.id) ? row.id : (row && row[COL_CODE]) ? row[COL_CODE] : firstExisting(row, NAME_KEYS));
-      var q = Math.max(1, toNumber(qty || 1));
+    function setCartQty(codeKey, qty){
+      qty = Math.max(0, Math.floor(toNumber(qty)));
+      if (!CART[codeKey]) return;
+      if (qty === 0) delete CART[codeKey];
+      else CART[codeKey].qty = qty;
+      renderCart();
+    }
+    window.__setCartQty = (codeKey, qty) => setCartQty(codeKey, qty);
+    window.__removeCart = (codeKey) => { delete CART[String(codeKey)]; renderCart(); };
 
-      if (!CART[id]) CART[id] = { row: row, qty: q };
-      else CART[id].qty = Math.max(1, toNumber(CART[id].qty || 1) + q);
+    function addToCart(item, qty){
+      qty = Math.max(1, Math.floor(toNumber(qty)));
+      const code = String(item?.[COL_CODE] ?? item.code ?? item.id ?? "").trim();
+      const codeKey = code || String(item?.id ?? Math.random());
+      const name = firstExisting(item, NAME_KEYS) || "(pa emër)";
+      const category = (item?.[COL_CATEGORY] ?? "").toString();
+      const priceLek = toNumber(item?.[COL_PRICELEK]);
+
+      if (!CART[codeKey]) CART[codeKey] = { codeKey, code, name, category, priceLek, qty };
+      else CART[codeKey].qty += qty;
 
       renderCart();
     }
 
-    function renderProducts(){
-      clearError();
-
-      var q = String(elQ.value || "").replace(/^\s+|\s+$/g,'').toLowerCase();
-      var cat = String(elCat.value || "").replace(/^\s+|\s+$/g,'');
-      var rate = Math.max(1, toNumber(elRate.value || 97));
-
-      var filtered = [];
-      for (var i=0;i<ALL.length;i++){
-        var r = ALL[i];
-
-        if (cat && String(r[COL_CATEGORY] || "").replace(/^\s+|\s+$/g,'') !== cat) continue;
-
-        if (!q){
-          filtered.push(r);
-          continue;
-        }
-
-        var name = String(firstExisting(r, NAME_KEYS) || "").toLowerCase();
-        var category = String(r[COL_CATEGORY] || "").toLowerCase();
-        var code = String(r[COL_CODE] || "").toLowerCase();
-
-        if (name.indexOf(q) !== -1 || category.indexOf(q) !== -1 || code.indexOf(q) !== -1){
-          filtered.push(r);
-        }
-      }
-
-      elCount.textContent = filtered.length + " artikuj";
-
-      var html = "";
-      for (var j=0;j<filtered.length;j++){
-        var row = filtered[j];
-        var name2 = firstExisting(row, NAME_KEYS) || "(pa emër)";
-        var desc = firstExisting(row, DESC_KEYS) || "";
-        var img = firstExisting(row, IMG_KEYS) || "";
-        var category2 = row[COL_CATEGORY] ? String(row[COL_CATEGORY]) : "";
-        var code2 = row[COL_CODE] ? String(row[COL_CODE]) : "";
-        var stock = row[COL_STOCK] ? String(row[COL_STOCK]) : "";
-
-        var priceLek = toNumber(row[COL_PRICELEK]);
-        var priceEur = priceLek / rate;
-
-        var pid = escapeHtml(String((row && row.id) ? row.id : (code2 ? code2 : name2)));
-
-        var imgTag = img
-          ? '<img class="img" src="'+escapeHtml(img)+'" alt="'+escapeHtml(name2)+'" loading="lazy" onerror="this.style.display=\'none\'; this.parentNode.style.background=\'#e5e7eb\';" />'
-          : '<div class="img"></div>';
-
-        html += ''
-          + '<article class="card">'
-          + imgTag
-          + '<div class="content">'
-          + '  <h3 class="name">'+escapeHtml(name2)+'</h3>'
-          + '  <div class="meta">'
-          + (category2 ? 'Kategoria: <b>'+escapeHtml(category2)+'</b><br>' : '')
-          + (code2 ? 'Kodi: <b>'+escapeHtml(code2)+'</b><br>' : '')
-          + (stock ? 'Stok: <b>'+escapeHtml(stock)+'</b>' : '')
-          + '  </div>'
-          + '  <div class="price">'
-          + '    <div class="lek">'+formatLek(priceLek)+' Lekë</div>'
-          + '    <div class="eur">'+formatEuro(priceEur)+' €</div>'
-          + '  </div>'
-          + (desc ? '<div class="desc">'+escapeHtml(desc)+'</div>' : '')
-          + '  <div class="buyrow">'
-          + '    <input class="qty" type="number" min="1" step="1" value="1" id="qty_'+pid+'" />'
-          + '    <button class="btnAdd" data-add="'+pid+'">Shto në shportë</button>'
-          + '  </div>'
-          + '</div>'
-          + '</article>';
-      }
-
-      elCards.innerHTML = html;
-
-      var btns = elCards.querySelectorAll("[data-add]");
-      for (var k=0;k<btns.length;k++){
-        (function(btn){
-          btn.addEventListener("click", function(){
-            var pid = btn.getAttribute("data-add");
-            var qtyEl = document.getElementById("qty_" + pid);
-            var qty = Math.max(1, toNumber(qtyEl ? qtyEl.value : 1));
-
-            var row = null;
-            for (var i=0;i<filtered.length;i++){
-              var r = filtered[i];
-              var rid = String(r.id || "");
-              var rcode = String(r[COL_CODE] || "");
-              var rname = String(firstExisting(r, NAME_KEYS) || "");
-              if ((rid && rid === pid) || (rcode && rcode === pid) || (rname && rname === pid)){
-                row = r; break;
-              }
-            }
-            if (row) addToCart(row, qty);
-          });
-        })(btns[k]);
-      }
-
-      calcTotals();
+    function clearCart(){
+      for (const k of Object.keys(CART)) delete CART[k];
+      elNote.value = "";
+      renderCart();
     }
 
     function buildWhatsAppMessage(){
-      var totals = calcTotals();
-      var totalLek = totals.totalLek, totalEur = totals.totalEur, rate = totals.rate;
-      var note = String(noteEl.value || "").replace(/^\s+|\s+$/g,'');
+      const rate = Math.max(1, toNumber(elRate.value || 100));
+      const items = Object.values(CART);
+      const totalLek = cartTotalLek();
+      const totalEur = totalLek / rate;
 
-      var lines = [];
-      lines.push("📌 Kërkesë nga Katalogu — Gjekaj Plants");
+      const lines = [];
+      lines.push("Përshëndetje, dua të porosis:");
       lines.push("");
 
-      for (var id in CART){
-        if (!CART.hasOwnProperty(id)) continue;
-        var it = CART[id];
-        var r = it.row || {};
-        var name = firstExisting(r, NAME_KEYS) || "(pa emër)";
-        var code = r[COL_CODE] ? String(r[COL_CODE]) : "";
-        var priceLek = toNumber(r[COL_PRICELEK]);
-        var qty = Math.max(1, toNumber(it.qty || 1));
-        var subLek = priceLek * qty;
-        var subEur = subLek / rate;
-
-        lines.push("• " + name + (code ? " (Kodi: " + code + ")" : ""));
-        lines.push("  Sasia: " + qty + " | Nën-total: " + formatLek(subLek) + " Lekë (" + formatEuro(subEur) + " €)");
+      for (const it of items){
+        const subLek = it.priceLek * it.qty;
+        const subEur = subLek / rate;
+        lines.push(• ${it.name}${it.code ? " (Kodi: " + it.code + ")" : ""});
+        if (it.category) lines.push(`  Kategoria: ${it.category}`);
+        lines.push(`  Sasia: ${it.qty}`);
+        lines.push(`  Nën-total: ${formatLek(subLek)} Lekë (${formatEuro(subEur)} €)`);
+        lines.push("");
       }
 
-      lines.push("");
-      lines.push("Totali: " + formatLek(totalLek) + " Lekë (" + formatEuro(totalEur) + " €)");
-      lines.push("Kursi: 1€ = " + rate + " Lek");
+      lines.push(TOTALI: ${formatLek(totalLek)} Lekë (${formatEuro(totalEur)} €));
+      lines.push(Kursi: 1€ = ${rate} Lek);
 
+      const note = (elNote.value || "").trim();
       if (note){
         lines.push("");
         lines.push("Shënim:");
@@ -764,77 +516,153 @@
       return lines.join("\n");
     }
 
-    // =========================
-    //  LOAD from Supabase REST
-    // =========================
-    function supabaseRestUrl(){
-      // PostgREST endpoint
-      // shembull: https://xxx.supabase.co/rest/v1/products?select=*
-      return SUPABASE_URL + "/rest/v1/" + encodeURIComponent(TABLE_NAME) + "?select=*";
+    function sendToWhatsApp(){
+      const items = Object.values(CART);
+      if (items.length === 0) return;
+      const text = buildWhatsAppMessage();
+      const url = https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)};
+      window.open(url, "_blank");
     }
 
-    function load(){
+    function renderProducts(){
+      clearError();
+
+      const q = elQ.value.trim().toLowerCase();
+      const cat = elCat.value.trim();
+      const rate = Math.max(1, toNumber(elRate.value || 100));
+
+      const filtered = ALL.filter(r => {
+        if (cat && String(r?.[COL_CATEGORY] ?? "").trim() !== cat) return false;
+        if (!q) return true;
+        const name = firstExisting(r, NAME_KEYS).toString().toLowerCase();
+        const category = (r?.[COL_CATEGORY] ?? "").toString().toLowerCase();
+        const code = (r?.[COL_CODE] ?? "").toString().toLowerCase();
+        return name.includes(q) || category.includes(q) || code.includes(q);
+      });
+
+      elCount.textContent = ${filtered.length} artikuj;
+
+      elCards.innerHTML = filtered.map((r, idx) => {
+        const name = firstExisting(r, NAME_KEYS) || "(pa emër)";
+        const desc = firstExisting(r, DESC_KEYS) || "";
+        const img = firstExisting(r, IMG_KEYS) || "";
+        const category = (r?.[COL_CATEGORY] ?? "").toString();
+        const code = (r?.[COL_CODE] ?? "").toString();
+        const stock = (r?.[COL_STOCK] ?? "").toString();
+
+        const priceLek = toNumber(r?.[COL_PRICELEK]);
+        const priceEur = priceLek / rate;
+
+        const qtyId = qty_${idx};
+
+        const imgTag = img
+          ? `<img class="img" src="${escapeHtml(img)}" alt="${escapeHtml(name)}" loading="lazy"
+              onerror="this.style.display='none'; this.parentNode.style.background='#e5e7eb';" />`
+          : <div class="img"></div>;
+
+        return `
+          <article class="card">
+            ${imgTag}
+            <div class="content">
+              <h3 class="name">${escapeHtml(name)}</h3>
+
+              <div class="meta">
+                ${category ? Kategoria: <b>${escapeHtml(category)}</b><br> : ``}
+                ${code ? Kodi: <b>${escapeHtml(code)}</b><br> : ``}
+                ${stock ? Stok: <b>${escapeHtml(stock)}</b> : ``}
+              </div>
+
+              <div class="price">
+                <div class="lek">${formatLek(priceLek)} Lekë</div>
+                <div class="eur">${formatEuro(priceEur)} €</div>
+              </div>
+
+              ${desc ? <div class="desc">${escapeHtml(desc)}</div> : ``}
+
+              <div class="buyrow">
+                <input class="qty" id="${qtyId}" type="number" min="1" step="1" value="1" />
+                <button class="addbtn" type="button"
+                  onclick="window.__addToCart(${idx}, document.getElementById('${qtyId}').value)">
+                  Shto në shportë
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      window.__addToCart = (i, qty) => {
+        const row = filtered[i];
+        if (row) addToCart(row, qty);
+      };
+
+      renderCart();
+    }
+
+    async function load(){
       clearError();
       elStatus.textContent = "Duke lexuar nga Supabase…";
 
-      if (!SUPABASE_ANON_KEY || SUPABASE_ANON_KEY.indexOf("VENDOS_") === 0){
-        showError("sb_publishable_Ll_tV3Hs9MmMO54DaDWGiQ_KRpED8xd (Legacy) te variabla SUPABASE_ANON_KEY dhe bëj commit në GitHub.");
-        elStatus.textContent = "Gabim";
-        return;
-      }
+      // 1) supabase-js
+      try{
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const { data, error } = await supabase.from(TABLE_NAME).select("*");
+        if (error) throw error;
 
-      var url = supabaseRestUrl();
-
-      fetch(url, {
-        method: "GET",
-        headers: {
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": "Bearer " + SUPABASE_ANON_KEY,
-          "Accept": "application/json"
-        }
-      })
-      .then(function(res){
-        if (!res.ok){
-          return res.text().then(function(t){
-            throw new Error("HTTP " + res.status + " — " + t);
-          });
-        }
-        return res.json();
-      })
-      .then(function(data){
         ALL = Array.isArray(data) ? data : [];
         buildCategories(ALL);
         renderProducts();
         elStatus.textContent = "Gati.";
-      })
-      .catch(function(e){
-        showError("Nuk u lidhe me Supabase.\nKontrollo:\n1) RLS policy SELECT për anon/public\n2) TABLE: public.products\n3) Key: përdor Anon Key (Legacy)\n\nMesazh: " + (e && e.message ? e.message : e));
+        return;
+      }catch(e){
+        console.warn("Supabase-js dështoi, po provoj REST…", e);
+      }
+
+      // 2) fallback REST (shumë i dobishëm në GitHub Pages)
+      try{
+        const url = ${SUPABASE_URL}/rest/v1/${encodeURIComponent(TABLE_NAME)}?select=*;
+        const res = await fetch(url, {
+          method: "GET",
+          headers: {
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: Bearer ${SUPABASE_ANON_KEY},
+            Accept: "application/json"
+          }
+        });
+
+        if (!res.ok){
+          const t = await res.text().catch(()=> "");
+          throw new Error(HTTP ${res.status} ${res.statusText}${t ? (" — " + t.slice(0,200)) : ""});
+        }
+
+        const data = await res.json();
+        ALL = Array.isArray(data) ? data : [];
+        buildCategories(ALL);
+        renderProducts();
+        elStatus.textContent = "Gati.";
+      }catch(e){
+        console.error(e);
+        showError(
+          "NUK u lidh me Supabase.\n\n" +
+          "Kontrollo këto 3 gjëra:\n" +
+          "1) RLS policy: duhet SELECT për anon\n" +
+          "2) tabela quhet 'products'\n" +
+          "3) kolona e çmimit quhet 'price_lek'\n\n" +
+          "Mesazh: " + (e?.message || e)
+        );
         elStatus.textContent = "Gabim";
-      });
+      }
     }
 
     // Events
     elQ.addEventListener("input", renderProducts);
     elCat.addEventListener("change", renderProducts);
-    elRate.addEventListener("input", function(){ renderProducts(); renderCart(); });
-    noteEl.addEventListener("input", saveCart);
+    elRate.addEventListener("input", () => { renderProducts(); renderCart(); });
 
-    clearCartBtn.addEventListener("click", function(){
-      if (!confirm("Me e pastru shportën komplet?")) return;
-      CART = {};
-      noteEl.value = "";
-      renderCart();
-    });
-
-    sendWA.addEventListener("click", function(){
-      var msg = buildWhatsAppMessage();
-      var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
-      window.open(url, "_blank");
-    });
+    btnWA.addEventListener("click", sendToWhatsApp);
+    btnClear.addEventListener("click", clearCart);
 
     // Start
-    loadCart();
-    renderCart();
     load();
   </script>
 </body>
