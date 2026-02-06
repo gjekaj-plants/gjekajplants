@@ -3,59 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gjekaj Plants — Katalogu i Bimëve | Fidane, Pemë dekorative, Shkurre</title>
+  <title>Gjekaj Plants — Katalogu i Bimëve</title>
 
-  <!-- ===== SEO bazë ===== -->
-  <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre. Shiko katalogun, filtro sipas emrit/kategorisë/kodit dhe dërgo porosinë në WhatsApp +355697232425." />
-  <meta name="keywords" content="Gjekaj Plants, katalog bimësh, pemë dekorative, bimë dekorative, fidane, fidanë në vazo, shkurre dekorative, Dajç, Shkodër, Albania, çmime bimësh, porosi fidane, plant nursery Shkoder" />
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <meta name="theme-color" content="#111827" />
+  <!-- SEO -->
+  <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre. Shiko katalogun, filtro sipas emrit/kategorisë/kodit dhe dërgo kërkesën në WhatsApp +355697232425." />
+  <meta name="keywords" content="Gjekaj Plants, katalog bimësh, bimë dekorative, pemë dekorative, fidane, shkurre, Dajç, Shkodër, nursery, plants Albania, katalpa, palma, cipres, dekorative" />
+  <meta name="robots" content="index,follow" />
 
-  <!-- ===== Canonical (ndryshoje me linkun tënd të saktë) ===== -->
+  <!-- Canonical (ndrysho vetëm nëse e ndryshon url) -->
   <link rel="canonical" href="https://gjekaj-plants.github.io/gjekajplants/" />
 
-  <!-- ===== Open Graph / Facebook ===== -->
-  <meta property="og:type" content="website" />
+  <!-- Open Graph -->
   <meta property="og:title" content="Gjekaj Plants — Katalogu i Bimëve" />
-  <meta property="og:description" content="Shiko katalogun e bimëve dhe dërgo porosinë në WhatsApp." />
+  <meta property="og:description" content="Shiko katalogun e bimëve dhe dërgo kërkesën në WhatsApp." />
+  <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gjekaj-plants.github.io/gjekajplants/" />
-  <!-- Nëse ke një foto logo/cover, vendose këtu -->
-  <!-- <meta property="og:image" content="https://gjekaj-plants.github.io/gjekajplants/og.jpg" /> -->
-
-  <!-- ===== Twitter ===== -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Gjekaj Plants — Katalogu i Bimëve" />
-  <meta name="twitter:description" content="Katalog bimësh, fidane dhe pemë dekorative. Porosi në WhatsApp." />
-  <!-- <meta name="twitter:image" content="https://gjekaj-plants.github.io/gjekajplants/og.jpg" /> -->
-
-  <!-- ===== Structured Data (Google) ===== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "GardenStore",
-    "name": "Gjekaj Plants",
-    "description": "Katalog bimësh, fidane dhe pemë dekorative. Porosi në WhatsApp.",
-    "telephone": "+355697232425",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Dajç",
-      "addressRegion": "Shkodër",
-      "addressCountry": "AL"
-    },
-    "url": "https://gjekaj-plants.github.io/gjekajplants/",
-    "sameAs": [
-      "https://wa.me/355697232425"
-    ]
-  }
-  </script>
 
   <style>
     :root{
-      --bg:#f3f5f8;
+      --bg:#ffffff;        /* sfond i bardhë */
       --card:#ffffff;
       --text:#0f172a;
       --muted:#64748b;
-      --accent:#b91c1c; /* cmimet e kuqe */
+      --accent:#b91c1c;    /* çmimet të kuqe */
       --border:#e5e7eb;
       --shadow: 0 10px 30px rgba(2,6,23,.08);
       --radius: 18px;
@@ -130,7 +100,7 @@
       border-radius: 12px;
       font-size: 15px;
       outline: none;
-      background:#fff; /* fusha te bardha */
+      background:#fff;
     }
     textarea{ min-height: 70px; resize: vertical; }
 
@@ -165,6 +135,7 @@
       white-space: pre-wrap;
     }
 
+    /* Cards */
     .cards{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -240,10 +211,12 @@
       flex-wrap: wrap;
     }
     .qty{ width: 90px; }
+
+    /* Butoni i zi */
     .btnAdd{
       flex:1;
       min-width: 160px;
-      background: #111827; /* butoni i zi */
+      background: #111827;
       color: #fff;
       border: 0;
       border-radius: 14px;
@@ -253,12 +226,14 @@
       font-size: 15px;
     }
 
+    /* Kurs + Shportë */
     .rateCartCol{
       display:flex;
       flex-direction:column;
       gap:10px;
     }
 
+    /* SHPORTA sticky */
     .cartbox{
       background:#0b1220;
       color:#fff;
@@ -378,8 +353,6 @@
       font-weight: 1000;
       z-index: 40;
     }
-    footer a{ color:#93c5fd; text-decoration:none; }
-    footer a:hover{ text-decoration:underline; }
   </style>
 </head>
 
@@ -408,8 +381,8 @@
 
         <div class="rateCartCol">
           <div>
-            <label>Kursi € → Lek (1€ = 100)</label>
-            <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="100" />
+            <label>Kursi € → Lek (1€ = 97)</label>
+            <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="97" />
           </div>
 
           <div class="cartbox" id="cartBox">
@@ -444,19 +417,18 @@
     <div class="cards" id="cards"></div>
   </div>
 
-  <footer>
-    Gjekaj Plants • WhatsApp:
-    <a href="https://wa.me/355697232425" target="_blank" rel="noreferrer">0697232425</a>
-  </footer>
+  <footer>Gjekaj Plants • WhatsApp: 0697232425</footer>
 
-  <!-- ✅ UMD build (kjo punon sigurt ne GitHub Pages) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <!-- ✅ E RËNDËSISHME: UMD build që krijon window.supabase -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 
   <script>
+    // Supabase
     const SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_Ll_tV3Hs9MmMO54DaDWGiQ_KRpED8xd";
     const TABLE_NAME = "products";
 
+    // Kolonat
     const COL_CATEGORY = "category";
     const COL_CODE     = "code";
     const COL_STOCK    = "stock";
@@ -466,8 +438,10 @@
     const DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
     const IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
 
+    // WhatsApp (pa +)
     const WHATSAPP_NUMBER = "355697232425";
 
+    // UI
     const elErr = document.getElementById("err");
     const elCards = document.getElementById("cards");
     const elCount = document.getElementById("count");
@@ -520,7 +494,7 @@
     }
 
     let ALL = [];
-    let CART = {};
+    let CART = {}; // {id: {row, qty}}
 
     function saveCart(){
       try{
@@ -550,7 +524,7 @@
     }
 
     function calcTotals(){
-      const rate = Math.max(1, toNumber(elRate.value || 100));
+      const rate = Math.max(1, toNumber(elRate.value || 97));
       let totalLek = 0;
       for (const id of Object.keys(CART)){
         const it = CART[id];
@@ -637,7 +611,7 @@
 
       const q = elQ.value.trim().toLowerCase();
       const cat = elCat.value.trim();
-      const rate = Math.max(1, toNumber(elRate.value || 100));
+      const rate = Math.max(1, toNumber(elRate.value || 97));
 
       const filtered = ALL.filter(r => {
         if (cat && String(r?.[COL_CATEGORY] ?? "").trim() !== cat) return false;
@@ -723,8 +697,9 @@
       elStatus.textContent = "Duke lexuar nga Supabase…";
 
       try{
-        if (!window.supabase || !window.supabase.createClient){
-          throw new Error("Supabase nuk u ngarkua (window.supabase mungon).");
+        // Nëse supabase library s’u ngarkua, ndalo menjëherë
+        if (!window.supabase || typeof window.supabase.createClient !== "function") {
+          throw new Error("Supabase library nuk u ngarkua. Kontrollo script URL (supabase.min.js) ose bllokim nga browser/rrjeti.");
         }
 
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -737,7 +712,7 @@
         elStatus.textContent = "Gati.";
       }catch(e){
         console.error(e);
-        showError("Nuk u lidh me Supabase. Kontrollo RLS policy (SELECT për anon) dhe tabelën 'products'.\nMesazh: " + (e?.message || e));
+        showError("Nuk u lidh me Supabase.\nKontrollo:\n1) RLS policy (SELECT për anon)\n2) tabelën 'products'\n3) CORS (nëse e ke kufizuar)\n\nMesazh: " + (e?.message || e));
         elStatus.textContent = "Gabim";
       }
     }
@@ -775,6 +750,7 @@
       return lines.join("\n");
     }
 
+    // Events
     elQ.addEventListener("input", renderProducts);
     elCat.addEventListener("change", renderProducts);
     elRate.addEventListener("input", ()=>{ renderProducts(); renderCart(); });
@@ -793,9 +769,12 @@
       window.open(url, "_blank");
     });
 
+    // Start
     loadCart();
     renderCart();
-    load();
+
+    // Prit pak që script i supabase me defer të ngarkohet
+    window.addEventListener("load", load);
   </script>
 </body>
 </html>
