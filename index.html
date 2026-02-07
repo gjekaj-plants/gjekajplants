@@ -4,145 +4,65 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gjekaj Plants — Katalogu i Bimëve</title>
-  <meta name="description" content="Gjekaj Plants — Pemë dekorative, bimë, fidane dhe shkurre. Katalog me kërkim dhe filtër. Porosit në WhatsApp." />
 
   <style>
     :root{
-      --bg:#f3f5f8;
-      --card:#ffffff;
-      --text:#0f172a;
-      --muted:#64748b;
-      --border:#e5e7eb;
-      --accent:#b91c1c;
-      --dark:#0b1220;
+      --bg:#f3f5f8; --card:#fff; --text:#0f172a; --muted:#64748b;
+      --border:#e5e7eb; --accent:#b91c1c; --dark:#111827;
       --radius:14px;
-      --shadow: 0 10px 26px rgba(2,6,23,.08);
     }
-    *{box-sizing:border-box}
     body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
-    header{background:#111827;color:#fff;padding:18px;text-align:center}
-    .wrap{max-width:1200px;margin:16px auto;padding:0 12px}
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 320px;
-      gap:12px;
-      align-items:start;
-    }
-    @media(max-width:980px){
-      .grid{grid-template-columns:1fr}
-    }
-
-    .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow)}
-    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    label{display:block;font-size:12px;font-weight:bold;color:var(--muted);margin:6px 0}
-    input,select,textarea{padding:10px;border:1px solid var(--border);border-radius:10px;font-size:14px;background:#fff;width:100%}
-    textarea{min-height:70px;resize:vertical}
-
-    #q{flex:1;min-width:220px}
-    #cat{min-width:220px}
-    .mini{width:120px}
-
+    header{background:var(--dark);color:#fff;padding:18px;text-align:center}
+    .wrap{max-width:1200px;margin:16px auto 90px;padding:0 12px}
+    .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
+    .col{flex:1;min-width:220px}
+    label{display:block;font-size:12px;font-weight:800;color:var(--muted);margin:0 0 6px}
+    input,select{width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;font-size:14px}
     .status{margin-top:10px;font-weight:bold;color:var(--muted)}
-    .error{margin-top:10px;background:#fee2e2;border:1px solid #fecaca;border-left:6px solid #b91c1c;
+    .error{margin-top:10px;background:#fee2e2;border:1px solid #fecaca;border-left:6px solid var(--accent);
       color:#7f1d1d;border-radius:12px;padding:10px;display:none;white-space:pre-wrap}
 
-    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
     @media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:600px){.cards{grid-template-columns:1fr}}
 
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-    .img{
-      width:100%;
-      aspect-ratio: 16/10;
-      object-fit:cover;
-      display:block;
-      background:#e5e7eb;
-    }
-    .cardBody{padding:12px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+    .img{width:100%;height:200px;background:#e5e7eb;display:block;object-fit:cover}
+    .c{padding:12px}
     .name{font-size:18px;font-weight:bold;margin:0 0 6px}
     .meta{color:var(--muted);font-size:13px;line-height:1.35}
-    .priceRow{margin-top:8px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
-    .lek{font-size:20px;font-weight:bold;color:var(--accent)}
-    .eur{font-size:14px;font-weight:bold;color:#334155}
+    .price{margin-top:8px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+    .lek{font-size:20px;font-weight:900;color:var(--accent)}
+    .eur{font-size:14px;font-weight:800;color:#334155}
 
-    .buyrow{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
+    .buy{margin-top:10px;display:flex;gap:10px;align-items:center}
     .qty{width:90px}
-    .btnAdd{
-      flex:1;min-width:160px;
-      background:#111827;color:#fff;border:0;border-radius:10px;
-      padding:10px 12px;font-weight:bold;cursor:pointer
-    }
+    .btn{flex:1;padding:10px;border:0;border-radius:10px;background:var(--dark);color:#fff;font-weight:800;cursor:pointer}
 
     /* CART */
     .cart{
-      background:var(--dark);
-      color:#fff;
-      border-radius:14px;
-      padding:12px;
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: 0 16px 45px rgba(2,6,23,.18);
-      position: sticky;
-      top: 12px;
+      position:fixed; right:12px; bottom:12px; width:320px; max-width: calc(100vw - 24px);
+      background:var(--dark); color:#fff; border-radius:16px; padding:12px;
+      box-shadow:0 18px 50px rgba(2,6,23,.22); border:1px solid rgba(255,255,255,.08);
     }
-    @media(max-width:980px){
-      .cart{position:static}
-    }
-    .cart h3{margin:0 0 10px;font-size:16px}
-    .cartList{display:flex;flex-direction:column;gap:10px}
-    .cartEmpty{opacity:.9;font-weight:bold}
-    .cartItem{
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:12px;
-      padding:10px;
-      display:grid;
-      grid-template-columns: 1fr 92px;
-      gap:10px;
-      align-items:start;
-    }
-    .cartItem .t{font-weight:bold;font-size:13px}
-    .cartItem .s{margin-top:4px;font-size:12px;opacity:.95;line-height:1.3}
-    .cartItem input{
-      width:100%;
-      padding:8px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.10);
-      color:#fff;
-      font-weight:bold;
-      text-align:center;
-    }
-    .btnDel{
-      width:100%;
-      margin-top:8px;
-      background:rgba(244,63,94,.22);
-      border:0;border-radius:10px;
-      padding:8px;font-weight:bold;color:#fff;cursor:pointer
-    }
-    .totals{
-      margin-top:12px;
-      padding-top:10px;
-      border-top:1px solid rgba(255,255,255,.12);
-      display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap
-    }
-    .totLek{font-size:18px;font-weight:900}
-    .totEur{font-size:13px;font-weight:900;opacity:.95}
-    .btnRow{display:flex;gap:10px;margin-top:10px}
-    .btnClear{
-      flex:1;
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.18);
-      color:#fff;border-radius:10px;
-      padding:10px;font-weight:bold;cursor:pointer
-    }
-    .btnWA{
-      width:100%;
-      margin-top:10px;
-      background:#16a34a;color:#fff;border:0;border-radius:10px;
-      padding:12px;font-weight:bold;cursor:pointer;font-size:15px
-    }
-    .btnWA:disabled{opacity:.6;cursor:not-allowed}
+    .cart h3{margin:0 0 8px;font-size:16px}
+    .cartSmall{opacity:.85;font-size:12px;font-weight:700;margin:0 0 10px}
+    .cartList{display:flex;flex-direction:column;gap:10px;max-height:40vh;overflow:auto}
+    .cartItem{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:10px}
+    .cartItem .t{font-weight:900;font-size:13px}
+    .cartItem .s{opacity:.9;font-size:12px;margin-top:4px}
+    .cartItem .row2{display:flex;gap:8px;margin-top:8px}
+    .cartItem input{width:70px;padding:8px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.10);color:#fff;font-weight:900}
+    .del{flex:1;border:0;border-radius:10px;padding:8px;background:rgba(244,63,94,.22);color:#fff;font-weight:900;cursor:pointer}
+
+    .tot{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+    .tot .big{font-size:18px;font-weight:1000}
+    .tot .small{font-size:13px;font-weight:900;opacity:.95}
+    .cartActions{display:flex;gap:10px;margin-top:10px}
+    .clear{flex:1;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;border-radius:12px;padding:10px;font-weight:900;cursor:pointer}
+    .wa{flex:1;border:0;background:#16a34a;color:#fff;border-radius:12px;padding:10px;font-weight:1000;cursor:pointer}
+    .wa:disabled{opacity:.55;cursor:not-allowed}
   </style>
 </head>
 
@@ -153,67 +73,57 @@
   </header>
 
   <div class="wrap">
-    <div class="grid">
-      <!-- LEFT -->
-      <div>
-        <div class="panel">
-          <div class="row">
-            <div style="flex:1;min-width:220px">
-              <label>Kërko (emër / kategori / kod)</label>
-              <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
-            </div>
-
-            <div style="min-width:220px">
-              <label>Kategori</label>
-              <select id="cat">
-                <option value="">Të gjitha kategoritë</option>
-              </select>
-            </div>
-
-            <div style="width:140px">
-              <label>Kurs € → Lek</label>
-              <input id="rate" class="mini" type="number" min="1" step="1" value="97" />
-            </div>
-          </div>
-
-          <div id="status" class="status">Duke u lidhur me Supabase…</div>
-          <div id="err" class="error"></div>
+    <div class="panel">
+      <div class="row">
+        <div class="col">
+          <label>Kërko (emër / kategori / kod)</label>
+          <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
         </div>
 
-        <div id="cards" class="cards"></div>
+        <div class="col">
+          <label>Kategori</label>
+          <select id="cat">
+            <option value="">Të gjitha kategoritë</option>
+          </select>
+        </div>
+
+        <div class="col" style="max-width:240px">
+          <label>Kursi € → Lek (1€ = ?)</label>
+          <input id="rate" type="number" min="1" step="1" value="97" />
+        </div>
       </div>
 
-      <!-- RIGHT: CART -->
-      <aside class="cart">
-        <h3>Shporta</h3>
-        <div id="cartItems" class="cartList"></div>
+      <div id="status" class="status">Duke u lidhur me Supabase…</div>
+      <div id="err" class="error"></div>
+    </div>
 
-        <div class="totals">
-          <div class="totLek" id="totLek">0 Lekë</div>
-          <div class="totEur" id="totEur">0.00 €</div>
-        </div>
+    <div id="cards" class="cards"></div>
+  </div>
 
-        <div style="margin-top:10px">
-          <label style="color:rgba(255,255,255,.85)">Shënim (opsionale)</label>
-          <textarea id="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
-        </div>
+  <!-- CART -->
+  <div class="cart">
+    <h3>Shporta</h3>
+    <div class="cartSmall" id="cartCount">0 artikuj</div>
+    <div class="cartList" id="cartItems">Bosh.</div>
 
-        <div class="btnRow">
-          <button class="btnClear" id="clearCart" type="button">Pastro</button>
-        </div>
+    <div class="tot">
+      <div class="big" id="totalLek">0 Lekë</div>
+      <div class="small" id="totalEur">0.00 €</div>
+    </div>
 
-        <button class="btnWA" id="sendWA" disabled>Dërgo në WhatsApp</button>
-      </aside>
+    <div class="cartActions">
+      <button class="clear" id="clearCart" type="button">Pastro</button>
+      <button class="wa" id="sendWA" type="button" disabled>Dërgo WA</button>
     </div>
   </div>
 
 <script>
-  // ✅ SUPABASE SETTINGS
+  // ✅ SUPABASE SETTINGS (ngjit eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rkçelësin tënd këtu)
   var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
-  var SUPABASE_ANON_KEY = "VENDOS_KETU_ANON_KEY"; // <-- vendos ANON KEY këtu
+  var SUPABASE_ANON_KEY = "VENDOS_ANON_KEY_KETU";
   var TABLE = "products";
 
-  // WhatsApp (pa +)
+  // ✅ WhatsApp (pa +)
   var WHATSAPP_NUMBER = "355697232425";
 
   var ALL = [];
@@ -226,264 +136,235 @@
   var elStatus = document.getElementById("status");
   var elErr = document.getElementById("err");
 
-  var cartItemsEl = document.getElementById("cartItems");
-  var totLekEl = document.getElementById("totLek");
-  var totEurEl = document.getElementById("totEur");
-  var noteEl = document.getElementById("note");
+  var cartItems = document.getElementById("cartItems");
+  var cartCount = document.getElementById("cartCount");
+  var totalLek = document.getElementById("totalLek");
+  var totalEur = document.getElementById("totalEur");
   var clearCartBtn = document.getElementById("clearCart");
   var sendWABtn = document.getElementById("sendWA");
 
-  function showError(msg){
-    elErr.style.display = "block";
-    elErr.textContent = msg;
-  }
-  function clearError(){
-    elErr.style.display = "none";
-    elErr.textContent = "";
-  }
+  function showError(msg){ elErr.style.display="block"; elErr.textContent=msg; }
+  function clearError(){ elErr.style.display="none"; elErr.textContent=""; }
+
   function esc(s){
     s = (s===null || s===undefined) ? "" : String(s);
-    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
   }
+
   function toNum(v){
-    if(v===null || v===undefined) return 0;
+    if(v===null||v===undefined) return 0;
     var s = String(v).replace(/\./g,"").replace(",",".").replace(/[^\d.]/g,"");
     var n = Number(s);
     return isFinite(n) ? n : 0;
   }
+
   function fmtLek(n){
     n = Math.round(n);
     return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
-  function fmtEur(n){
-    return (Math.round(n*100)/100).toFixed(2);
-  }
-  function getRate(){
-    var r = Math.max(1, toNum(elRate.value || 97));
-    return r;
-  }
 
-  function pickImg(row){
-    return row.photo_url || row.image_url || row.img_url || row.foto || row.photo || row.image || "";
-  }
-
-  function saveCart(){
-    try{
-      localStorage.setItem("gjekaj_cart_min_v1", JSON.stringify({cart:CART, note: noteEl.value || ""}));
-    }catch(e){}
-  }
-  function loadCart(){
-    try{
-      var raw = localStorage.getItem("gjekaj_cart_min_v1");
-      if(!raw) return;
-      var obj = JSON.parse(raw);
-      CART = obj && obj.cart ? obj.cart : {};
-      noteEl.value = obj && obj.note ? obj.note : "";
-    }catch(e){}
+  function getImg(p){
+    // provo disa emra kolone tipike
+    return p.photo_url || p.image_url || p.img_url || p.photo || p.image || p.foto || p.url_photo || p.url_image || "";
   }
 
   function buildCategories(rows){
     var map = {};
-    for (var i=0;i<rows.length;i++){
+    for(var i=0;i<rows.length;i++){
       var c = rows[i] && rows[i].category ? String(rows[i].category).trim() : "";
-      if (c) map[c] = true;
+      if(c) map[c]=true;
     }
     var cats = [];
-    for (var k in map) cats.push(k);
+    for(var k in map) cats.push(k);
     cats.sort();
 
     var current = elCat.value;
     var html = '<option value="">Të gjitha kategoritë</option>';
-    for (var j=0;j<cats.length;j++){
+    for(var j=0;j<cats.length;j++){
       html += '<option value="'+esc(cats[j])+'">'+esc(cats[j])+'</option>';
     }
     elCat.innerHTML = html;
-    if (current) elCat.value = current;
-  }
-
-  function calcTotals(){
-    var rate = getRate();
-    var totalLek = 0;
-    for (var id in CART){
-      var it = CART[id];
-      var priceLek = toNum(it.row && it.row.price_lek);
-      var qty = Math.max(1, toNum(it.qty || 1));
-      totalLek += priceLek * qty;
-    }
-    var totalEur = totalLek / rate;
-
-    totLekEl.textContent = fmtLek(totalLek) + " Lekë";
-    totEurEl.textContent = fmtEur(totalEur) + " €";
-
-    sendWABtn.disabled = totalLek <= 0;
-    saveCart();
-    return {totalLek: totalLek, totalEur: totalEur, rate: rate};
-  }
-
-  function renderCart(){
-    var ids = [];
-    for (var id in CART) ids.push(id);
-
-    if (ids.length === 0){
-      cartItemsEl.innerHTML = '<div class="cartEmpty">Shporta është bosh.</div>';
-      calcTotals();
-      return;
-    }
-
-    var html = "";
-    for (var i=0;i<ids.length;i++){
-      var id = ids[i];
-      var it = CART[id];
-      var r = it.row || {};
-      var name = r.name || "(pa emër)";
-      var code = r.code ? String(r.code) : "";
-      var cat = r.category ? String(r.category) : "";
-      var priceLek = toNum(r.price_lek);
-      var qty = Math.max(1, toNum(it.qty || 1));
-
-      html += ''
-      + '<div class="cartItem">'
-      + '  <div>'
-      + '    <div class="t">'+esc(name)+'</div>'
-      + '    <div class="s">'
-      + (cat ? ('Kategoria: <b>'+esc(cat)+'</b><br>') : '')
-      + (code ? ('Kodi: <b>'+esc(code)+'</b><br>') : '')
-      + 'Çmimi: <b>'+fmtLek(priceLek)+' Lekë</b>'
-      + '    </div>'
-      + '  </div>'
-      + '  <div>'
-      + '    <input type="number" min="1" step="1" value="'+qty+'" data-qty="'+esc(id)+'" />'
-      + '    <button class="btnDel" data-del="'+esc(id)+'">Hiq</button>'
-      + '  </div>'
-      + '</div>';
-    }
-    cartItemsEl.innerHTML = html;
-
-    // qty change
-    var qtyInputs = cartItemsEl.querySelectorAll("input[data-qty]");
-    for (var q=0;q<qtyInputs.length;q++){
-      qtyInputs[q].addEventListener("input", function(){
-        var id = this.getAttribute("data-qty");
-        var v = Math.max(1, toNum(this.value || 1));
-        if (CART[id]) CART[id].qty = v;
-        calcTotals();
-      });
-    }
-    // delete
-    var delBtns = cartItemsEl.querySelectorAll("button[data-del]");
-    for (var d=0;d<delBtns.length;d++){
-      delBtns[d].addEventListener("click", function(){
-        var id = this.getAttribute("data-del");
-        delete CART[id];
-        renderCart();
-      });
-    }
-
-    calcTotals();
-  }
-
-  function addToCart(row, qty){
-    var id = String(row.id || row.code || row.name || Math.random());
-    qty = Math.max(1, toNum(qty || 1));
-    if (!CART[id]) CART[id] = {row: row, qty: qty};
-    else CART[id].qty = Math.max(1, toNum(CART[id].qty || 1) + qty);
-    renderCart();
+    if(current) elCat.value = current;
   }
 
   function render(){
     clearError();
-    var q = (elQ.value || "").toLowerCase().trim();
-    var cat = (elCat.value || "").trim();
-    var rate = getRate();
+    var q = (elQ.value||"").toLowerCase().trim();
+    var cat = (elCat.value||"").trim();
+    var rate = Math.max(1, toNum(elRate.value||97));
 
     var out = [];
-    for (var i=0;i<ALL.length;i++){
+    for(var i=0;i<ALL.length;i++){
       var r = ALL[i] || {};
       var name = r.name ? String(r.name) : "";
       var category = r.category ? String(r.category) : "";
       var code = r.code ? String(r.code) : "";
 
-      if (cat && category !== cat) continue;
-
-      if (q){
+      if(cat && category !== cat) continue;
+      if(q){
         var hay = (name+" "+category+" "+code).toLowerCase();
-        if (hay.indexOf(q) === -1) continue;
+        if(hay.indexOf(q) === -1) continue;
       }
       out.push(r);
     }
 
     var html = "";
-    for (var j=0;j<out.length;j++){
+    for(var j=0;j<out.length;j++){
       var p = out[j] || {};
-      var priceLek = toNum(p.price_lek);
-      var priceEur = priceLek / rate;
+      var img = getImg(p);
+      var lek = toNum(p.price_lek || 0);
+      var eur = lek / rate;
 
-      var img = pickImg(p);
-      var imgHtml = img
-        ? '<img class="img" src="'+esc(img)+'" alt="'+esc(p.name || "produkt")+'" loading="lazy" onerror="this.style.display=\'none\'" />'
-        : '<div class="img"></div>';
-
-      var pid = String(p.id || p.code || p.name || j);
-
-      html += ''
-      + '<div class="card">'
-      +   imgHtml
-      + ' <div class="cardBody">'
-      + '  <p class="name">'+esc(p.name || "(pa emër)")+'</p>'
-      + '  <div class="meta">'
-      + (p.category ? ('Kategoria: <b>'+esc(p.category)+'</b><br>') : '')
-      + (p.code ? ('Kodi: <b>'+esc(p.code)+'</b><br>') : '')
-      + ((p.stock!==undefined && p.stock!==null) ? ('Stok: <b>'+esc(p.stock)+'</b>') : '')
-      + '  </div>'
-      + '  <div class="priceRow">'
-      + '    <div class="lek">'+fmtLek(priceLek)+' Lekë</div>'
-      + '    <div class="eur">'+fmtEur(priceEur)+' €</div>'
-      + '  </div>'
-      + '  <div class="buyrow">'
-      + '    <input class="qty" type="number" min="1" step="1" value="1" id="qty_'+esc(pid)+'" />'
-      + '    <button class="btnAdd" data-add="'+esc(pid)+'">Shto në shportë</button>'
-      + '  </div>'
-      + ' </div>'
-      + '</div>';
+      html += '<div class="card">'
+        + (img ? '<img class="img" src="'+esc(img)+'" alt="'+esc(p.name||"")+'" loading="lazy" onerror="this.style.display=\'none\';" />' : '')
+        + '<div class="c">'
+        +   '<p class="name">'+esc(p.name || "(pa emër)")+'</p>'
+        +   '<div class="meta">'
+        +     (p.category ? ('Kategoria: <b>'+esc(p.category)+'</b><br>') : '')
+        +     (p.code ? ('Kodi: <b>'+esc(p.code)+'</b><br>') : '')
+        +     (p.stock!==undefined && p.stock!==null ? ('Stok: <b>'+esc(p.stock)+'</b>') : '')
+        +   '</div>'
+        +   '<div class="price"><span class="lek">'+fmtLek(lek)+' Lekë</span> <span class="eur">('+eur.toFixed(2)+' €)</span></div>'
+        +   '<div class="buy">'
+        +     '<input class="qty" type="number" min="1" step="1" value="1" id="qty_'+p.id+'">'
+        +     '<button class="btn" type="button" onclick="addToCart('+p.id+')">Shto në shportë</button>'
+        +   '</div>'
+        + '</div>'
+        + '</div>';
     }
 
     elCards.innerHTML = html || "<div style='padding:12px;color:#64748b;font-weight:bold'>Nuk ka produkte për këtë filtër.</div>";
     elStatus.textContent = "Gati. (" + out.length + " artikuj)";
-
-    // bind add buttons
-    var btns = elCards.querySelectorAll("button[data-add]");
-    for (var b=0;b<btns.length;b++){
-      btns[b].addEventListener("click", function(){
-        var pid = this.getAttribute("data-add");
-        var qtyEl = document.getElementById("qty_" + pid);
-        var qty = Math.max(1, toNum(qtyEl ? qtyEl.value : 1));
-
-        // gjej row
-        var row = null;
-        for (var i=0;i<out.length;i++){
-          var r = out[i] || {};
-          var rid = String(r.id || "");
-          var rcode = String(r.code || "");
-          var rname = String(r.name || "");
-          if ((rid && rid === pid) || (rcode && rcode === pid) || (rname && rname === pid)) { row = r; break; }
-        }
-        if (row) addToCart(row, qty);
-      });
-    }
   }
+
+  function saveCart(){
+    try{ localStorage.setItem("gjekaj_cart", JSON.stringify(CART)); }catch(e){}
+  }
+  function loadCart(){
+    try{
+      var raw = localStorage.getItem("gjekaj_cart");
+      if(raw) CART = JSON.parse(raw) || {};
+    }catch(e){ CART = {}; }
+  }
+
+  function cartTotals(){
+    var rate = Math.max(1, toNum(elRate.value||97));
+    var sum = 0;
+    var count = 0;
+    for(var id in CART){
+      var it = CART[id];
+      var lek = toNum(it.row.price_lek||0);
+      var qty = Math.max(1, toNum(it.qty||1));
+      sum += lek * qty;
+      count += qty;
+    }
+    cartCount.textContent = count + " artikuj";
+    totalLek.textContent = fmtLek(sum) + " Lekë";
+    totalEur.textContent = (sum / rate).toFixed(2) + " €";
+    sendWABtn.disabled = sum <= 0;
+    saveCart();
+    return {sum:sum, rate:rate};
+  }
+
+  function renderCart(){
+    var ids = [];
+    for(var id in CART) ids.push(id);
+
+    if(ids.length === 0){
+      cartItems.innerHTML = "Bosh.";
+      cartTotals();
+      return;
+    }
+
+    var html = "";
+    for(var i=0;i<ids.length;i++){
+      var id = ids[i];
+      var it = CART[id];
+      var p = it.row || {};
+      var qty = Math.max(1, toNum(it.qty||1));
+      var lek = toNum(p.price_lek||0);
+
+      html += '<div class="cartItem">'
+        + '<div class="t">'+esc(p.name||"(pa emër)")+'</div>'
+        + '<div class="s">'+(p.code?('Kodi: <b>'+esc(p.code)+'</b><br>'):'')+'Çmimi: <b>'+fmtLek(lek)+' Lekë</b></div>'
+        + '<div class="row2">'
+        +   '<input type="number" min="1" step="1" value="'+qty+'" oninput="setQty(\''+esc(id)+'\', this.value)">'
+        +   '<button class="del" type="button" onclick="removeItem(\''+esc(id)+'\')">Hiq</button>'
+        + '</div>'
+        + '</div>';
+    }
+
+    cartItems.innerHTML = html;
+    cartTotals();
+  }
+
+  // këto funksione duhen globale për onclick
+  window.addToCart = function(pid){
+    var row = null;
+    for(var i=0;i<ALL.length;i++){
+      if(String(ALL[i].id) === String(pid)){ row = ALL[i]; break; }
+    }
+    if(!row) return;
+
+    var qtyEl = document.getElementById("qty_"+pid);
+    var q = Math.max(1, toNum(qtyEl ? qtyEl.value : 1));
+
+    var id = String(row.id);
+    if(!CART[id]) CART[id] = { row: row, qty: q };
+    else CART[id].qty = Math.max(1, toNum(CART[id].qty||1) + q);
+
+    renderCart();
+  };
+
+  window.setQty = function(id, v){
+    if(!CART[id]) return;
+    CART[id].qty = Math.max(1, toNum(v||1));
+    renderCart();
+  };
+
+  window.removeItem = function(id){
+    delete CART[id];
+    renderCart();
+  };
+
+  function buildWhatsAppText(){
+    var t = cartTotals();
+    var lines = [];
+    lines.push("📌 Kërkesë nga Katalogu — Gjekaj Plants");
+    lines.push("");
+
+    for(var id in CART){
+      var it = CART[id];
+      var p = it.row || {};
+      var qty = Math.max(1, toNum(it.qty||1));
+      var lek = toNum(p.price_lek||0);
+      lines.push("• "+(p.name||"(pa emër)")+(p.code?(" (Kodi: "+p.code+")"):""));
+      lines.push("  Sasia: "+qty+" | Nën-total: "+fmtLek(lek*qty)+" Lekë");
+    }
+
+    lines.push("");
+    lines.push("Totali: "+fmtLek(t.sum)+" Lekë");
+    lines.push("Kursi: 1€ = "+t.rate+" Lek");
+    return lines.join("\n");
+  }
+
+  clearCartBtn.addEventListener("click", function(){
+    if(!confirm("Me e pastru shportën komplet?")) return;
+    CART = {};
+    renderCart();
+  });
+
+  sendWABtn.addEventListener("click", function(){
+    var msg = buildWhatsAppText();
+    var url = "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg);
+    window.open(url, "_blank");
+  });
 
   function loadProducts(){
     clearError();
     elStatus.textContent = "Duke u lidhur me Supabase…";
 
-    if (!SUPABASE_ANON_KEY || SUPABASE_ANON_KEY === "VENDOS_KETU_ANON_KEY"){
-   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk (te kodi).");
-      elStatus.textContent = "Gabim";
-      return;
-    }
-
     var url = SUPABASE_URL + "/rest/v1/" + TABLE + "?select=*";
-
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
     xhr.setRequestHeader("apikey", SUPABASE_ANON_KEY);
@@ -491,24 +372,21 @@
     xhr.setRequestHeader("Accept", "application/json");
 
     xhr.onreadystatechange = function(){
-      if (xhr.readyState !== 4) return;
+      if(xhr.readyState !== 4) return;
 
-      if (xhr.status >= 200 && xhr.status < 300){
-        try{
-          ALL = JSON.parse(xhr.responseText) || [];
-        }catch(e){
+      if(xhr.status >= 200 && xhr.status < 300){
+        try{ ALL = JSON.parse(xhr.responseText) || []; }
+        catch(e){
           showError("Gabim te JSON: " + e);
           elStatus.textContent = "Gabim";
           return;
         }
         buildCategories(ALL);
         render();
-        elStatus.textContent = "Gati. (" + ALL.length + " artikuj)";
         return;
       }
 
-      var msg = "Gabim Supabase ("+xhr.status+").\n\n" + (xhr.responseText || "");
-      showError(msg);
+      showError("Gabim Supabase ("+xhr.status+").\n\n" + (xhr.responseText || ""));
       elStatus.textContent = "Gabim";
     };
 
@@ -520,60 +398,12 @@
     xhr.send();
   }
 
-  function buildWhatsAppMessage(){
-    var t = calcTotals();
-    var rate = t.rate;
-    var lines = [];
-    lines.push("📌 Porosi nga Katalogu — Gjekaj Plants");
-    lines.push("");
-
-    for (var id in CART){
-      var it = CART[id];
-      var r = it.row || {};
-      var name = r.name || "(pa emër)";
-      var code = r.code ? String(r.code) : "";
-      var priceLek = toNum(r.price_lek);
-      var qty = Math.max(1, toNum(it.qty || 1));
-      var subLek = priceLek * qty;
-      var subEur = subLek / rate;
-
-      lines.push("• " + name + (code ? (" (Kodi: " + code + ")") : ""));
-      lines.push("  Sasia: " + qty + " | Nën-total: " + fmtLek(subLek) + " Lekë (" + fmtEur(subEur) + " €)");
-    }
-
-    lines.push("");
-    lines.push("Totali: " + fmtLek(t.totalLek) + " Lekë (" + fmtEur(t.totalEur) + " €)");
-    lines.push("Kursi: 1€ = " + rate + " Lek");
-
-    var note = (noteEl.value || "").trim();
-    if (note){
-      lines.push("");
-      lines.push("Shënim:");
-      lines.push(note);
-    }
-    return lines.join("\n");
-  }
-
-  // EVENTS
+  // Events
   elQ.oninput = render;
   elCat.onchange = render;
   elRate.oninput = function(){ render(); renderCart(); };
-  noteEl.oninput = saveCart;
 
-  clearCartBtn.onclick = function(){
-    if(!confirm("Me e pastru shportën komplet?")) return;
-    CART = {};
-    noteEl.value = "";
-    renderCart();
-  };
-
-  sendWABtn.onclick = function(){
-    var msg = buildWhatsAppMessage();
-    var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
-    window.open(url, "_blank");
-  };
-
-  // START
+  // Start
   loadCart();
   renderCart();
   loadProducts();
