@@ -4,13 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- ✅ SEO (SHTUAR) -->
   <title>Fidan & Pemë Dekorative në Dajç, Shkodër | Gjekaj Plants</title>
   <meta name="description" content="Gjekaj Plants në Dajç, Shkodër – fidan dekorative, pemë dekorative, lule dekorative, shkurre dhe bimë për oborr e kopësht. Shiko katalogun online dhe porosit në WhatsApp." />
-  <meta name="keywords" content="fidan dekorative, pemë dekorative, lule dekorative, fidan Dajç, fidan Shkodër, pemë dekorative Dajç, pemë dekorative Shkodër, bimë dekorative, fidane pemësh, kopshtari Shkodër, Gjekaj Plants" />
+  <meta name="keywords" content="fidan dekorative,pemë dekorative,lule dekorative,fidan Dajç,fidan Shkodër,pemë dekorative Dajç,pemë dekorative Shkodër,bimë dekorative,fidane pemësh,kopshtari Shkodër,Gjekaj Plants" />
   <meta name="author" content="Gjekaj Plants, Dajç Shkodër" />
   <meta name="robots" content="index, follow" />
   <meta name="language" content="sq" />
+
+  <!-- Open Graph (për shpërndarje në FB/WhatsApp) -->
+  <meta property="og:title" content="Fidan & Pemë Dekorative në Dajç, Shkodër | Gjekaj Plants" />
+  <meta property="og:description" content="Katalog online me fidan dekorative, pemë dekorative, lule dekorative dhe bimë për oborr e kopësht. Porosit në WhatsApp." />
+  <meta property="og:type" content="website" />
 
   <style>
     :root{
@@ -23,6 +27,7 @@
       --shadow: 0 10px 30px rgba(2,6,23,.08);
       --radius: 18px;
       --dark:#0b1220;
+      --green:#16a34a;
     }
     *{box-sizing:border-box}
     body{
@@ -44,7 +49,7 @@
     }
     header h1{
       margin:0;
-      font-size: clamp(20px, 3.6vw, 32px);
+      font-size: 26px;
       font-weight: 900;
       line-height: 1.15;
     }
@@ -61,6 +66,16 @@
       padding: 0 14px;
     }
 
+    .seo{
+      max-width:1100px;
+      margin: 16px auto 6px;
+      padding: 0 2px;
+      color:#334155;
+      font-size:14px;
+    }
+    .seo h2{margin:0 0 8px;font-size:18px}
+    .seo p{margin:0 0 10px;line-height:1.45}
+
     .panel{
       background: var(--card);
       border: 1px solid var(--border);
@@ -73,7 +88,7 @@
     .grid-controls{
       display:grid;
       grid-template-columns: 1.3fr .8fr .9fr;
-      gap: 10px;
+      grid-gap: 10px;
       align-items:start;
     }
     @media (max-width: 980px){
@@ -103,7 +118,7 @@
       justify-content: space-between;
       align-items:center;
       margin-top: 14px;
-      gap: 10px;
+      grid-gap: 10px;
       flex-wrap: wrap;
     }
     .count{
@@ -133,7 +148,7 @@
     .cards{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 14px;
+      grid-gap: 14px;
       margin-top: 14px;
     }
     @media (max-width: 1020px){ .cards{grid-template-columns: repeat(2, minmax(0,1fr));} }
@@ -151,34 +166,70 @@
     }
     .img{
       width:100%;
-      aspect-ratio: 16/10;
+      height: 0;
+      padding-top: 62.5%; /* 16/10 */
       background: #e5e7eb;
-      display:block;
-      object-fit: cover;
+      position: relative;
+      overflow:hidden;
     }
+    .img img{
+      position:absolute;
+      top:0;left:0;right:0;bottom:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
     .content{
       padding: 12px 12px 14px;
       display:flex;
       flex-direction:column;
-      gap: 8px;
+      grid-gap: 8px;
       flex:1;
+    }
+    .nameRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      grid-gap:10px;
+      flex-wrap:wrap;
     }
     .name{
       margin:0;
       font-size: 20px;
       font-weight: 950;
     }
+    .badgeOffer{
+      display:inline-block;
+      background: var(--green);
+      color:#fff;
+      font-weight: 1000;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      letter-spacing:.3px;
+    }
+
     .meta{
       color: var(--muted);
       font-size: 13px;
       line-height: 1.35;
       font-weight: 700;
     }
+
     .price{
       display:flex;
       align-items: baseline;
-      gap: 10px;
+      justify-content:space-between;
+      grid-gap: 10px;
       flex-wrap: wrap;
+    }
+    .priceLeft{
+      display:flex;
+      align-items:baseline;
+      grid-gap:10px;
+      flex-wrap:wrap;
     }
     .lek{
       color: var(--accent);
@@ -190,6 +241,20 @@
       font-weight: 950;
       font-size: 18px;
     }
+    .oldPrice{
+      color:#64748b;
+      font-weight:900;
+      font-size: 14px;
+      text-decoration: line-through;
+      opacity:.95;
+    }
+    .discountPct{
+      color: var(--green);
+      font-weight: 1000;
+      font-size: 14px;
+      white-space:nowrap;
+    }
+
     .desc{
       color:#334155;
       font-size: 13px;
@@ -197,9 +262,10 @@
       font-weight: 650;
       opacity:.95;
     }
+
     .buyrow{
       display:flex;
-      gap: 10px;
+      grid-gap: 10px;
       align-items:center;
       margin-top: 6px;
       flex-wrap: wrap;
@@ -221,7 +287,24 @@
     .rateCartCol{
       display:flex;
       flex-direction:column;
-      gap:10px;
+      grid-gap:10px;
+    }
+
+    /* Kursi vetëm shfaqje */
+    .rateWrap{
+      display:flex;
+      align-items:center;
+      grid-gap:8px;
+    }
+    .rateWrap input{
+      flex:1;
+      background:#f8fafc;
+    }
+    .rateNote{
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--muted);
+      white-space:nowrap;
     }
 
     /* CART sticky */
@@ -248,7 +331,7 @@
     .cartlist{
       display:flex;
       flex-direction:column;
-      gap: 10px;
+      grid-gap: 10px;
     }
     .cartitem{
       background: rgba(255,255,255,.06);
@@ -257,12 +340,12 @@
       padding: 10px;
       display:grid;
       grid-template-columns: 1fr 86px;
-      gap: 10px;
+      grid-gap: 10px;
       align-items:start;
     }
     .cartitem .t{ font-weight: 1000; font-size: 13.5px; }
     .cartitem .s{ margin-top: 4px; font-size: 12.5px; opacity:.9; }
-    .cartitem .q{ display:flex; flex-direction:column; gap: 8px; }
+    .cartitem .q{ display:flex; flex-direction:column; grid-gap: 8px; }
     .cartitem input{
       width: 100%;
       padding: 10px 10px;
@@ -291,7 +374,7 @@
       display:flex;
       align-items: baseline;
       justify-content: space-between;
-      gap: 10px;
+      grid-gap: 10px;
     }
     .totals .big{ font-size: 20px; font-weight: 1100; }
     .totals .small{ font-size: 14px; font-weight: 1000; opacity:.95; }
@@ -305,7 +388,7 @@
 
     .cartActions{
       display:flex;
-      gap: 10px;
+      grid-gap: 10px;
       margin-top: 10px;
     }
     .btnClear{
@@ -352,15 +435,16 @@
     <div class="sub">Dajç, Shkodër, Albania • Tel: +355697232425</div>
   </header>
 
-  <!-- ✅ SEO tekst (SHTUAR) -->
-  <section style="max-width:1100px;margin:20px auto;padding:0 12px;color:#334155;font-size:14px">
-    <h2>Fidan dhe Pemë Dekorative në Dajç, Shkodër Albania </h2>
-    <p>
-      Gjekaj Plants ofron fidanë, pemë, lule dhe shkurre dekorative për oborre dhe kopshte. Katalogu ynë përfshin një gamë të gjerë bimësh dekorative, me mundësi transporti dhe shërbim profesional të rregullimit dhe mbjelljes për vila, hotele dhe resorte. 
-    </p>
-  </section>
-
   <div class="wrap">
+    <section class="seo">
+      <h2>Fidan dhe Pemë Dekorative në Dajç, Shkodër</h2>
+      <p>
+        Gjekaj Plants ofron fidan dekorative, pemë dekorative, lule dekorative dhe bimë për oborr
+        dhe kopshte në zonën e Dajçit dhe Shkodrës. Katalogu ynë përfshin fidane pemësh,
+        shkurre dekorative dhe bimë sezonale.
+      </p>
+    </section>
+
     <div id="err" class="error"></div>
 
     <div class="panel">
@@ -379,8 +463,11 @@
 
         <div class="rateCartCol">
           <div>
-            <label>Kursi € → Lek (1€ = 97)</label>
-            <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="97" />
+            <label>Kursi € → Lek (vetëm shfaqje)</label>
+            <div class="rateWrap">
+              <input id="rate" type="number" value="97" readonly disabled />
+              <div class="rateNote">default</div>
+            </div>
           </div>
 
           <div class="cartbox" id="cartBox">
@@ -419,25 +506,31 @@
 
   <script>
     // =========================
-    // ✅ SUPABASE SETTINGS
+    // ✅ SUPABASE SETTINGS (vendos vetëm çelësin)
     // =========================
-    var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
+var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
   var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
-    var TABLE = "products";
 
     // WhatsApp (pa +)
     var WHATSAPP_NUMBER = "355697232425";
 
-    // Kolonat (siç i ke në tabelë)
+    // Kolonat bazë
     var COL_CATEGORY = "category";
     var COL_CODE     = "code";
     var COL_STOCK    = "stock";
     var COL_PRICELEK = "price_lek";
 
-    // Foto (provo këto fusha derisa të përputhet me tabelën tënde)
+    // ✅ Për OFERTË: ruaje cmimin e vjetër në NJË kolonë (p.sh. old_price_lek)
+    // Mund t’i quash si të duash — kodi provon këto emra:
+    var OLD_PRICE_KEYS = ["old_price_lek","price_old_lek","old_price","price_old","old_lek","oldprice_lek"];
+
+    // Foto / Emër / Përshkrim (kodi i provon me radhë)
     var IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
     var NAME_KEYS = ["name","title","emri"];
     var DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
+
+    // Kursi (vetëm shfaqje)
+    var DEFAULT_RATE = 97;
 
     // UI
     var elErr = document.getElementById("err");
@@ -455,6 +548,7 @@
     var clearCartBtn = document.getElementById("clearCart");
     var sendWA = document.getElementById("sendWA");
 
+    // Helpers (ES5)
     function showError(msg){
       elErr.style.display = "block";
       elErr.textContent = msg;
@@ -464,32 +558,44 @@
       elErr.textContent = "";
     }
     function escapeHtml(s){
-      return String(s ?? "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+      s = (s === null || s === undefined) ? "" : String(s);
+      return s
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
     }
     function firstExisting(row, keys){
-      for (var i=0;i<keys.length;i++){
-        var k = keys[i];
-        if (row && row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== "") return row[k];
+      var i, k, v;
+      for (i=0;i<keys.length;i++){
+        k = keys[i];
+        v = row ? row[k] : null;
+        if (v !== undefined && v !== null && String(v).replace(/^\s+|\s+$/g,"") !== "") return v;
       }
       return "";
     }
     function toNumber(v){
       if (v === null || v === undefined) return 0;
-      var s = String(v).replaceAll(".", "").replaceAll(",", ".").replace(/[^\d.]/g, "");
+      var s = String(v);
+      // hiq pika si ndarës mijëshe, kthe presjen në pikë
+      s = s.replace(/\./g,"").replace(/,/g,".");
+      s = s.replace(/[^\d.]/g,"");
       var n = Number(s);
-      return Number.isFinite(n) ? n : 0;
+      return (isFinite(n) ? n : 0);
     }
     function formatLek(n){
       var x = Math.round(n);
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      var s = String(x);
+      return s.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
     function formatEuro(n){
-      return (Math.round(n * 100) / 100).toFixed(2);
+      var x = Math.round(n * 100) / 100;
+      var s = x.toFixed(2);
+      return s;
+    }
+    function safeTrim(s){
+      return String(s || "").replace(/^\s+|\s+$/g,"");
     }
 
     // Data
@@ -513,32 +619,42 @@
 
     function buildCategories(rows){
       var set = {};
-      for (var i=0;i<rows.length;i++){
-        var r = rows[i] || {};
-        var c = (r[COL_CATEGORY] ?? "").toString().trim();
+      var i, r, c;
+      for (i=0;i<rows.length;i++){
+        r = rows[i] || {};
+        c = safeTrim(r[COL_CATEGORY]);
         if (c) set[c] = true;
       }
-      var cats = Object.keys(set).sort(function(a,b){ return a.localeCompare(b); });
-      var current = elCat.value;
+      var cats = [];
+      for (c in set) if (set.hasOwnProperty(c)) cats.push(c);
+      cats.sort(function(a,b){ return a.localeCompare(b); });
 
+      var current = elCat.value;
       var html = '<option value="">Të gjitha kategoritë</option>';
-      for (var j=0;j<cats.length;j++){
-        html += '<option value="'+escapeHtml(cats[j])+'">'+escapeHtml(cats[j])+'</option>';
+      for (i=0;i<cats.length;i++){
+        html += '<option value="'+escapeHtml(cats[i])+'">'+escapeHtml(cats[i])+'</option>';
       }
       elCat.innerHTML = html;
-      if (current && cats.indexOf(current) !== -1) elCat.value = current;
+      if (current) elCat.value = current;
+    }
+
+    function getOldPriceLek(row){
+      var v = firstExisting(row, OLD_PRICE_KEYS);
+      var n = toNumber(v);
+      return n;
     }
 
     function calcTotals(){
-      var rate = Math.max(1, toNumber(elRate.value || 97));
+      var rate = DEFAULT_RATE;
       var totalLek = 0;
+      var id, it, priceLek, qty;
 
-      Object.keys(CART).forEach(function(id){
-        var it = CART[id];
-        var priceLek = toNumber(it && it.row ? it.row[COL_PRICELEK] : 0);
-        var qty = Math.max(1, toNumber(it && it.qty ? it.qty : 1));
+      for (id in CART) if (CART.hasOwnProperty(id)){
+        it = CART[id];
+        priceLek = toNumber(it && it.row ? it.row[COL_PRICELEK] : 0);
+        qty = Math.max(1, toNumber(it && it.qty ? it.qty : 1));
         totalLek += priceLek * qty;
-      });
+      }
 
       var totalEur = totalLek / rate;
       cartTotalLekEl.textContent = formatLek(totalLek) + " Lekë";
@@ -550,7 +666,10 @@
     }
 
     function renderCart(){
-      var ids = Object.keys(CART);
+      var ids = [];
+      var id;
+      for (id in CART) if (CART.hasOwnProperty(id)) ids.push(id);
+
       if (ids.length === 0){
         cartItemsEl.innerHTML = '<div style="opacity:.9;font-weight:900;">Shporta është bosh.</div>';
         calcTotals();
@@ -558,15 +677,16 @@
       }
 
       var html = "";
-      for (var i=0;i<ids.length;i++){
-        var id = ids[i];
-        var it = CART[id];
-        var r = it.row || {};
-        var name = firstExisting(r, NAME_KEYS) || "(pa emër)";
-        var category = (r[COL_CATEGORY] ?? "").toString();
-        var code = (r[COL_CODE] ?? "").toString();
-        var priceLek = toNumber(r[COL_PRICELEK]);
-        var qty = Math.max(1, toNumber(it.qty || 1));
+      var i, it, r, name, category, code, priceLek, qty;
+      for (i=0;i<ids.length;i++){
+        id = ids[i];
+        it = CART[id];
+        r = it.row || {};
+        name = firstExisting(r, NAME_KEYS) || "(pa emër)";
+        category = safeTrim(r[COL_CATEGORY]);
+        code = safeTrim(r[COL_CODE]);
+        priceLek = toNumber(r[COL_PRICELEK]);
+        qty = Math.max(1, toNumber(it.qty || 1));
 
         html += ''
           + '<div class="cartitem">'
@@ -586,27 +706,34 @@
       }
       cartItemsEl.innerHTML = html;
 
-      Array.prototype.forEach.call(cartItemsEl.querySelectorAll(".qtyInCart"), function(inp){
-        inp.addEventListener("input", function(){
-          var id = inp.getAttribute("data-id");
-          var v = Math.max(1, toNumber(inp.value || 1));
-          if (CART[id]) CART[id].qty = v;
-          calcTotals();
-        });
-      });
-      Array.prototype.forEach.call(cartItemsEl.querySelectorAll("[data-del]"), function(btn){
-        btn.addEventListener("click", function(){
-          var id = btn.getAttribute("data-del");
-          delete CART[id];
-          renderCart();
-        });
-      });
+      var inputs = cartItemsEl.querySelectorAll(".qtyInCart");
+      for (i=0;i<inputs.length;i++){
+        (function(inp){
+          inp.addEventListener("input", function(){
+            var pid = inp.getAttribute("data-id");
+            var v = Math.max(1, toNumber(inp.value || 1));
+            if (CART[pid]) CART[pid].qty = v;
+            calcTotals();
+          });
+        })(inputs[i]);
+      }
+
+      var dels = cartItemsEl.querySelectorAll("[data-del]");
+      for (i=0;i<dels.length;i++){
+        (function(btn){
+          btn.addEventListener("click", function(){
+            var pid = btn.getAttribute("data-del");
+            delete CART[pid];
+            renderCart();
+          });
+        })(dels[i]);
+      }
 
       calcTotals();
     }
 
     function addToCart(row, qty){
-      var id = String(row.id ?? row[COL_CODE] ?? firstExisting(row, NAME_KEYS));
+      var id = String(row.id || row[COL_CODE] || firstExisting(row, NAME_KEYS));
       var q = Math.max(1, toNumber(qty || 1));
       if (!CART[id]) CART[id] = { row: row, qty: q };
       else CART[id].qty = Math.max(1, toNumber(CART[id].qty || 1) + q);
@@ -615,53 +742,86 @@
 
     function renderProducts(){
       clearError();
-      var q = (elQ.value || "").trim().toLowerCase();
-      var cat = (elCat.value || "").trim();
-      var rate = Math.max(1, toNumber(elRate.value || 97));
 
-      var filtered = ALL.filter(function(r){
-        if (cat && String(r[COL_CATEGORY] ?? "").trim() !== cat) return false;
-        if (!q) return true;
+      var q = safeTrim(elQ.value).toLowerCase();
+      var cat = safeTrim(elCat.value);
+      var rate = DEFAULT_RATE;
 
-        var name = String(firstExisting(r, NAME_KEYS) || "").toLowerCase();
-        var category = String(r[COL_CATEGORY] ?? "").toLowerCase();
-        var code = String(r[COL_CODE] ?? "").toLowerCase();
-        return name.indexOf(q) !== -1 || category.indexOf(q) !== -1 || code.indexOf(q) !== -1;
-      });
+      // filtro
+      var filtered = [];
+      var i, r, name, category, code, hay;
+      for (i=0;i<ALL.length;i++){
+        r = ALL[i] || {};
+        category = safeTrim(r[COL_CATEGORY]);
+        if (cat && category !== cat) continue;
+
+        if (q){
+          name = String(firstExisting(r, NAME_KEYS) || "").toLowerCase();
+          code = String(r[COL_CODE] || "").toLowerCase();
+          hay = (name + " " + category.toLowerCase() + " " + code);
+          if (hay.indexOf(q) === -1) continue;
+        }
+        filtered.push(r);
+      }
 
       elCount.textContent = filtered.length + " artikuj";
 
+      // render
       var html = "";
-      for (var i=0;i<filtered.length;i++){
-        var r = filtered[i];
-        var name = firstExisting(r, NAME_KEYS) || "(pa emër)";
-        var desc = firstExisting(r, DESC_KEYS) || "";
-        var img = firstExisting(r, IMG_KEYS) || "";
-        var category = String(r[COL_CATEGORY] ?? "");
-        var code = String(r[COL_CODE] ?? "");
-        var stock = String(r[COL_STOCK] ?? "");
-        var priceLek = toNumber(r[COL_PRICELEK]);
-        var priceEur = priceLek / rate;
+      var desc, img, stock, priceLek, priceEur, oldLek, oldEur, hasOffer, pct;
+      for (i=0;i<filtered.length;i++){
+        r = filtered[i] || {};
+        name = firstExisting(r, NAME_KEYS) || "(pa emër)";
+        desc = firstExisting(r, DESC_KEYS) || "";
+        img = firstExisting(r, IMG_KEYS) || "";
+        category = safeTrim(r[COL_CATEGORY]);
+        code = safeTrim(r[COL_CODE]);
+        stock = safeTrim(r[COL_STOCK]);
 
-        var imgTag = img
-          ? '<img class="img" src="'+escapeHtml(img)+'" alt="'+escapeHtml(name)+'" loading="lazy" onerror="this.style.display=\'none\'; this.parentNode.style.background=\'#e5e7eb\';" />'
-          : '<div class="img"></div>';
+        priceLek = toNumber(r[COL_PRICELEK]);
+        priceEur = priceLek / rate;
 
-        var pid = escapeHtml(String(r.id ?? code ?? name));
+        // OFERTË: vetëm nëse ke old_price_lek (ose alternativat) dhe është > cmimi i ri
+        oldLek = getOldPriceLek(r);
+        hasOffer = (oldLek > 0 && oldLek > priceLek);
+        oldEur = oldLek / rate;
+
+        pct = 0;
+        if (hasOffer){
+          pct = Math.round(((oldLek - priceLek) / oldLek) * 100);
+          if (pct < 1) pct = 1;
+          if (pct > 99) pct = 99;
+        }
+
+        var imgHtml = '';
+        if (img){
+          imgHtml = '<div class="img"><img src="'+escapeHtml(img)+'" alt="'+escapeHtml(name)+'" loading="lazy" onerror="this.parentNode.style.background=\'#e5e7eb\'; this.style.display=\'none\';" /></div>';
+        } else {
+          imgHtml = '<div class="img"></div>';
+        }
+
+        var pid = escapeHtml(String(r.id || code || name));
 
         html += ''
           + '<article class="card">'
-          +   imgTag
+          +   imgHtml
           + ' <div class="content">'
-          + '   <h3 class="name">'+escapeHtml(name)+'</h3>'
+          + '   <div class="nameRow">'
+          + '     <h3 class="name">'+escapeHtml(name)+'</h3>'
+          +       (hasOffer ? '<span class="badgeOffer">OFERTË</span>' : '')
+          + '   </div>'
           + '   <div class="meta">'
           +     (category ? ('Kategoria: <b>'+escapeHtml(category)+'</b><br>') : '')
           +     (code ? ('Kodi: <b>'+escapeHtml(code)+'</b><br>') : '')
           +     (stock ? ('Stok: <b>'+escapeHtml(stock)+'</b>') : '')
           + '   </div>'
           + '   <div class="price">'
-          + '     <div class="lek">'+formatLek(priceLek)+' Lekë</div>'
-          + '     <div class="eur">'+formatEuro(priceEur)+' €</div>'
+          + '     <div class="priceLeft">'
+          + '       <div class="lek">'+formatLek(priceLek)+' Lekë</div>'
+          + '       <div class="eur">'+formatEuro(priceEur)+' €</div>'
+          +         (hasOffer ? ('<div class="oldPrice">'+formatLek(oldLek)+' Lekë ('+formatEuro(oldEur)+' €)</div>') : '')
+          + '     </div>'
+          +       (hasOffer ? ('<div class="discountPct">(ulje '+pct+'%)</div>') : '')
           + '   </div>'
           +     (desc ? ('<div class="desc">'+escapeHtml(desc)+'</div>') : '')
           + '   <div class="buyrow">'
@@ -671,51 +831,59 @@
           + ' </div>'
           + '</article>';
       }
-      elCards.innerHTML = html;
 
-      Array.prototype.forEach.call(elCards.querySelectorAll("[data-add]"), function(btn){
-        btn.addEventListener("click", function(){
-          var pid = btn.getAttribute("data-add");
-          var qtyEl = document.getElementById("qty_" + pid);
-          var qty = Math.max(1, toNumber(qtyEl && qtyEl.value ? qtyEl.value : 1));
+      elCards.innerHTML = html || "<div style='padding:12px;color:#64748b;font-weight:bold'>Nuk ka produkte për këtë filtër.</div>";
 
-          var row = null;
-          for (var i=0;i<filtered.length;i++){
-            var r = filtered[i];
-            var rid = String(r.id ?? "");
-            var rcode = String(r[COL_CODE] ?? "");
-            var rname = String(firstExisting(r, NAME_KEYS) ?? "");
-            if ((rid && rid === pid) || (rcode && rcode === pid) || (rname && rname === pid)){
-              row = r; break;
+      // bind add buttons
+      var btns = elCards.querySelectorAll("[data-add]");
+      for (i=0;i<btns.length;i++){
+        (function(btn){
+          btn.addEventListener("click", function(){
+            var pid = btn.getAttribute("data-add");
+            var qtyEl = document.getElementById("qty_" + pid);
+            var qty = Math.max(1, toNumber(qtyEl ? qtyEl.value : 1));
+
+            // gjej rreshtin e duhur
+            var row = null;
+            var j, rr, rid, rcode, rname;
+            for (j=0;j<filtered.length;j++){
+              rr = filtered[j];
+              rid = String(rr.id || "");
+              rcode = String(rr[COL_CODE] || "");
+              rname = String(firstExisting(rr, NAME_KEYS) || "");
+              if ((rid && rid === pid) || (rcode && rcode === pid) || (rname && rname === pid)){
+                row = rr; break;
+              }
             }
-          }
-          if (row) addToCart(row, qty);
-        });
-      });
+            if (row) addToCart(row, qty);
+          });
+        })(btns[i]);
+      }
 
       calcTotals();
     }
 
     function buildWhatsAppMessage(){
       var t = calcTotals();
-      var note = (noteEl.value || "").trim();
+      var note = safeTrim(noteEl.value);
       var lines = [];
       lines.push("📌 Kërkesë nga Katalogu — Gjekaj Plants");
       lines.push("");
 
-      Object.keys(CART).forEach(function(id){
-        var it = CART[id];
-        var r = it.row || {};
-        var name = firstExisting(r, NAME_KEYS) || "(pa emër)";
-        var code = String(r[COL_CODE] ?? "");
-        var priceLek = toNumber(r[COL_PRICELEK]);
-        var qty = Math.max(1, toNumber(it.qty || 1));
-        var subLek = priceLek * qty;
-        var subEur = subLek / t.rate;
+      var id, it, r, name, code, priceLek, qty, subLek, subEur;
+      for (id in CART) if (CART.hasOwnProperty(id)){
+        it = CART[id];
+        r = it.row || {};
+        name = firstExisting(r, NAME_KEYS) || "(pa emër)";
+        code = safeTrim(r[COL_CODE]);
+        priceLek = toNumber(r[COL_PRICELEK]);
+        qty = Math.max(1, toNumber(it.qty || 1));
+        subLek = priceLek * qty;
+        subEur = subLek / t.rate;
 
         lines.push("• " + name + (code ? " (Kodi: " + code + ")" : ""));
         lines.push("  Sasia: " + qty + " | Nën-total: " + formatLek(subLek) + " Lekë (" + formatEuro(subEur) + " €)");
-      });
+      }
 
       lines.push("");
       lines.push("Totali: " + formatLek(t.totalLek) + " Lekë (" + formatEuro(t.totalEur) + " €)");
@@ -733,13 +901,18 @@
       clearError();
       elStatus.textContent = "Duke lexuar nga Supabase…";
 
-      if (!SUPABASE_ANON_KEY || SUPABASE_ANON_KEY.indexOf("VENDOS_ANON_KEY_KETU") !== -1){
-        showError("S’ke vendosur ANON KEY.\nHap kodin dhe vendos çelësin që fillon me eyJ... te SUPABASE_ANON_KEY.");
+      // vendos kursin default (vetëm shfaqje)
+      elRate.value = DEFAULT_RATE;
+
+      if (!SUPABASE_ANON_KEY || SUPABASE_ANON_KEY === "VENDOS_ANON_KEY_KETU"){
+        showError("S’ke vendosur ANON KEY.\nVendos çelësin që fillon me eyJ... te SUPABASE_ANON_KEY.");
         elStatus.textContent = "Gabim";
         return;
       }
 
+      // REST endpoint
       var url = SUPABASE_URL + "/rest/v1/" + encodeURIComponent(TABLE) + "?select=*";
+
       var xhr = new XMLHttpRequest();
       xhr.open("GET", url, true);
       xhr.setRequestHeader("apikey", SUPABASE_ANON_KEY);
@@ -782,7 +955,6 @@
     // Events
     elQ.addEventListener("input", renderProducts);
     elCat.addEventListener("change", renderProducts);
-    elRate.addEventListener("input", function(){ renderProducts(); renderCart(); });
     noteEl.addEventListener("input", saveCart);
 
     clearCartBtn.addEventListener("click", function(){
