@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- ✅ SEO (SHTUAR) -->
+  <!-- ✅ SEO (Google) -->
   <title>Fidan & Pemë Dekorative në Dajç, Shkodër | Gjekaj Plants</title>
   <meta name="description" content="Gjekaj Plants në Dajç, Shkodër – fidan dekorative, pemë dekorative, lule dekorative, shkurre dhe bimë për oborr e kopësht. Shiko katalogun online dhe porosit në WhatsApp." />
   <meta name="keywords" content="fidan dekorative, pemë dekorative, lule dekorative, fidan Dajç, fidan Shkodër, pemë dekorative Dajç, pemë dekorative Shkodër, bimë dekorative, fidane pemësh, kopshtari Shkodër, Gjekaj Plants" />
@@ -12,17 +12,21 @@
   <meta name="robots" content="index, follow" />
   <meta name="language" content="sq" />
 
+  <!-- ✅ (Opsionale) Nëse ke Search Console verification, vendose këtu -->
+  <!-- <meta name="google-site-verification" content="VENDOS_KODIN_KETU" /> -->
+
   <style>
     :root{
       --bg:#f3f5f8;
       --card:#ffffff;
       --text:#0f172a;
       --muted:#64748b;
-      --accent:#b91c1c;
+      --accent:#b91c1c;  /* cmimi i ri (kuqe) */
       --border:#e5e7eb;
       --shadow: 0 10px 30px rgba(2,6,23,.08);
       --radius: 18px;
       --dark:#0b1220;
+      --green:#16a34a;
     }
     *{box-sizing:border-box}
     body{
@@ -163,23 +167,56 @@
       gap: 8px;
       flex:1;
     }
+
+    /* ✅ EMRI + OFERTË (jeshile, e madhe, në të njëjtën vijë) */
+    .nameRow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
     .name{
       margin:0;
       font-size: 20px;
       font-weight: 950;
     }
+    .offerTag{
+      display:inline-flex;
+      align-items:center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(22,163,74,.14);
+      border: 1px solid rgba(22,163,74,.35);
+      color: var(--green);
+      font-weight: 1000;
+      letter-spacing: .3px;
+      font-size: 14px;
+      line-height: 1;
+    }
+
     .meta{
       color: var(--muted);
       font-size: 13px;
       line-height: 1.35;
       font-weight: 700;
     }
-    .price{
+
+    /* ✅ CMIMI: rresht me cmimin e ri + ulje% në të njëjtën vijë */
+    .priceRow{
       display:flex;
-      align-items: baseline;
+      align-items:baseline;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+    .priceLeft{
+      display:flex;
+      align-items:baseline;
       gap: 10px;
       flex-wrap: wrap;
     }
+
     .lek{
       color: var(--accent);
       font-weight: 1000;
@@ -190,6 +227,32 @@
       font-weight: 950;
       font-size: 18px;
     }
+
+    /* cmimi i vjeter: siper, me i vogel, me vije */
+    .oldPrice{
+      font-size: 14px;
+      font-weight: 950;
+      color: #64748b;
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: rgba(185,28,28,.55);
+    }
+
+    /* badge ulje% në të njëjtën vijë me cmimin e ri */
+    .discPct{
+      display:inline-flex;
+      align-items:center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(185,28,28,.10);
+      border: 1px solid rgba(185,28,28,.25);
+      color: #b91c1c;
+      font-weight: 1000;
+      font-size: 13px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
     .desc{
       color:#334155;
       font-size: 13px;
@@ -352,11 +415,12 @@
     <div class="sub">Dajç, Shkodër, Albania • Tel: +355697232425</div>
   </header>
 
-  <!-- ✅ SEO tekst (SHTUAR) -->
-  <section style="max-width:1100px;margin:20px auto;padding:0 12px;color:#334155;font-size:14px">
-    <h2>Fidan dhe Pemë Dekorative në Dajç, Shkodër Albania </h2>
-    <p>
-      Gjekaj Plants ofron fidanë, pemë, lule dhe shkurre dekorative për oborre dhe kopshte. Katalogu ynë përfshin një gamë të gjerë bimësh dekorative, me mundësi transporti dhe shërbim profesional të rregullimit dhe mbjelljes për vila, hotele dhe resorte. 
+  <!-- ✅ SEO tekst (indeksohet nga Google) -->
+  <section style="max-width:1200px;margin:16px auto 0;padding:0 14px;color:#334155;font-size:14px">
+    <h2 style="margin:0 0 6px">Fidan dhe Pemë Dekorative në Dajç, Shkodër</h2>
+    <p style="margin:0;line-height:1.5">
+      Gjekaj Plants ofron fidan dekorative, pemë dekorative, lule dekorative dhe bimë për oborr dhe kopshte në zonën e Dajçit dhe Shkodrës.
+      Shiko katalogun online, zgjidh sasinë dhe dërgo porosinë në WhatsApp.
     </p>
   </section>
 
@@ -378,9 +442,13 @@
         </div>
 
         <div class="rateCartCol">
+          <!-- ✅ Kursi: vetëm shfaqet (readonly) -->
           <div>
-            <label>Kursi € → Lek (1€ = 97)</label>
-            <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="97" />
+            <label>Kursi € → Lek (vetëm shfaqje)</label>
+            <div style="display:flex;gap:10px;align-items:center">
+              <input id="rate" type="number" value="97" readonly style="opacity:.85" />
+              <span id="rateSrc" style="font-size:12px;color:var(--muted);font-weight:900">default</span>
+            </div>
           </div>
 
           <div class="cartbox" id="cartBox">
@@ -421,9 +489,13 @@
     // =========================
     // ✅ SUPABASE SETTINGS
     // =========================
-    var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
+ var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
   var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
-    var TABLE = "products";
+
+    // ✅ Kursi (nëse s’ke proxy, mbetet DEFAULT)
+    var DEFAULT_RATE = 97;
+    // Nëse bën Cloudflare Worker proxy, vendos URL këtu:
+    var RATE_PROXY_URL = ""; // p.sh. "https://emri-yt.worker.dev"
 
     // WhatsApp (pa +)
     var WHATSAPP_NUMBER = "355697232425";
@@ -434,7 +506,11 @@
     var COL_STOCK    = "stock";
     var COL_PRICELEK = "price_lek";
 
-    // Foto (provo këto fusha derisa të përputhet me tabelën tënde)
+    // ✅ ULJE (cmimi i vjeter) - vendos NJË nga këto kolona në Supabase:
+    // price_old_lek  (rekomanduar)  ose  old_price_lek  ose  previous_price_lek
+    var OLD_PRICE_KEYS = ["price_old_lek","old_price_lek","previous_price_lek","price_before_lek"];
+
+    // Foto / Emër / Përshkrim (siç i ke)
     var IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
     var NAME_KEYS = ["name","title","emri"];
     var DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
@@ -447,6 +523,7 @@
     var elQ = document.getElementById("q");
     var elCat = document.getElementById("cat");
     var elRate = document.getElementById("rate");
+    var elRateSrc = document.getElementById("rateSrc");
 
     var cartItemsEl = document.getElementById("cartItems");
     var cartTotalLekEl = document.getElementById("cartTotalLek");
@@ -492,6 +569,20 @@
       return (Math.round(n * 100) / 100).toFixed(2);
     }
 
+    function getOldPriceLek(row){
+      for (var i=0;i<OLD_PRICE_KEYS.length;i++){
+        var k = OLD_PRICE_KEYS[i];
+        var v = toNumber(row && row[k]);
+        if (v > 0) return v;
+      }
+      return 0;
+    }
+
+    function computeDiscountPct(oldLek, newLek){
+      if (!(oldLek > 0) || !(newLek > 0) || newLek >= oldLek) return 0;
+      return Math.round(((oldLek - newLek) / oldLek) * 100);
+    }
+
     // Data
     var ALL = [];
     var CART = {}; // {id: {row, qty}}
@@ -530,7 +621,7 @@
     }
 
     function calcTotals(){
-      var rate = Math.max(1, toNumber(elRate.value || 97));
+      var rate = Math.max(1, toNumber(elRate.value || DEFAULT_RATE));
       var totalLek = 0;
 
       Object.keys(CART).forEach(function(id){
@@ -617,7 +708,7 @@
       clearError();
       var q = (elQ.value || "").trim().toLowerCase();
       var cat = (elCat.value || "").trim();
-      var rate = Math.max(1, toNumber(elRate.value || 97));
+      var rate = Math.max(1, toNumber(elRate.value || DEFAULT_RATE));
 
       var filtered = ALL.filter(function(r){
         if (cat && String(r[COL_CATEGORY] ?? "").trim() !== cat) return false;
@@ -640,11 +731,17 @@
         var category = String(r[COL_CATEGORY] ?? "");
         var code = String(r[COL_CODE] ?? "");
         var stock = String(r[COL_STOCK] ?? "");
+
         var priceLek = toNumber(r[COL_PRICELEK]);
         var priceEur = priceLek / rate;
 
+        // ✅ ULJE logic
+        var oldLek = getOldPriceLek(r);
+        var discPct = computeDiscountPct(oldLek, priceLek);
+        var hasOffer = discPct > 0;
+
         var imgTag = img
-          ? '<img class="img" src="'+escapeHtml(img)+'" alt="'+escapeHtml(name)+'" loading="lazy" onerror="this.style.display=\'none\'; this.parentNode.style.background=\'#e5e7eb\';" />'
+          ? '<img class="img" src="'+escapeHtml(img)+'" alt="'+escapeHtml(name)+'" loading="lazy" onerror="this.style.display=\\'none\\'; this.parentNode.style.background=\\'#e5e7eb\\';" />'
           : '<div class="img"></div>';
 
         var pid = escapeHtml(String(r.id ?? code ?? name));
@@ -653,21 +750,37 @@
           + '<article class="card">'
           +   imgTag
           + ' <div class="content">'
-          + '   <h3 class="name">'+escapeHtml(name)+'</h3>'
+
+          + '   <div class="nameRow">'
+          + '     <h3 class="name">'+escapeHtml(name)+'</h3>'
+          +       (hasOffer ? '<span class="offerTag">OFERTË</span>' : '')
+          + '   </div>'
+
           + '   <div class="meta">'
           +     (category ? ('Kategoria: <b>'+escapeHtml(category)+'</b><br>') : '')
           +     (code ? ('Kodi: <b>'+escapeHtml(code)+'</b><br>') : '')
           +     (stock ? ('Stok: <b>'+escapeHtml(stock)+'</b>') : '')
           + '   </div>'
-          + '   <div class="price">'
-          + '     <div class="lek">'+formatLek(priceLek)+' Lekë</div>'
-          + '     <div class="eur">'+formatEuro(priceEur)+' €</div>'
+
+          // cmimi vjeter (me vije, me i vogel) mbi cmimin e ri
+          +   (hasOffer ? ('<div class="oldPrice">'+formatLek(oldLek)+' Lekë</div>') : '')
+
+          // cmimi i ri + euro + ulje% ne vije te drejt
+          + '   <div class="priceRow">'
+          + '     <div class="priceLeft">'
+          + '       <div class="lek">'+formatLek(priceLek)+' Lekë</div>'
+          + '       <div class="eur">'+formatEuro(priceEur)+' €</div>'
+          + '     </div>'
+          +       (hasOffer ? ('<div class="discPct">Ulje '+discPct+'%</div>') : '')
           + '   </div>'
+
           +     (desc ? ('<div class="desc">'+escapeHtml(desc)+'</div>') : '')
+
           + '   <div class="buyrow">'
           + '     <input class="qty" type="number" min="1" step="1" value="1" id="qty_'+pid+'" />'
           + '     <button class="btnAdd" data-add="'+pid+'">Shto në shportë</button>'
           + '   </div>'
+
           + ' </div>'
           + '</article>';
       }
@@ -729,6 +842,32 @@
       return lines.join("\n");
     }
 
+    function setRateUI(value, note){
+      var v = Math.max(1, Number(value) || DEFAULT_RATE);
+      elRate.value = String(v);
+      if (elRateSrc) elRateSrc.textContent = note || "";
+    }
+
+    async function loadRate(){
+      // default
+      setRateUI(DEFAULT_RATE, "default");
+
+      // nëse s’ke proxy, mos bëj gjë tjetër
+      if (!RATE_PROXY_URL) return;
+
+      try{
+        var r = await fetch(RATE_PROXY_URL, { method: "GET" });
+        var j = await r.json();
+        if (j && j.ok && j.lek_per_eur){
+          setRateUI(j.lek_per_eur, "live");
+          renderProducts();
+          renderCart();
+        }
+      }catch(e){
+        // mbetet default
+      }
+    }
+
     function loadProducts(){
       clearError();
       elStatus.textContent = "Duke lexuar nga Supabase…";
@@ -782,7 +921,6 @@
     // Events
     elQ.addEventListener("input", renderProducts);
     elCat.addEventListener("change", renderProducts);
-    elRate.addEventListener("input", function(){ renderProducts(); renderCart(); });
     noteEl.addEventListener("input", saveCart);
 
     clearCartBtn.addEventListener("click", function(){
@@ -801,6 +939,7 @@
     // Start
     loadCart();
     renderCart();
+    loadRate();      // (default ose live nese vendos proxy URL)
     loadProducts();
   </script>
 </body>
