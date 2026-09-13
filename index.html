@@ -48,6 +48,26 @@
       font-weight: 900;
       line-height: 1.15;
     }
+
+    header .header-top{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:20px;
+    }
+
+    header .website-link{
+      color:#fff;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    header .website-link:hover{
+      text-decoration:underline;
+    }
+
     header .sub{
       margin-top:8px;
       opacity:.9;
@@ -348,7 +368,14 @@
 
 <body>
   <header>
-    <h1>Gjekaj Plants — Katalogu i Bimëve</h1>
+    <div class="header-top">
+      <h1>Gjekaj Plants — Katalogu i Bimëve</h1>
+      <a
+        class="website-link"
+        href="https://ornamentaltreesalbaniagjekajplants.com/"
+      >Website</a>
+    </div>
+
     <div class="sub">Dajç, Shkodër, Albania • Tel: +355697232425</div>
   </header>
 
@@ -422,7 +449,7 @@
     // ✅ SUPABASE SETTINGS
     // =========================
     var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
-    var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
+    var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJIUzI1NiIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
     var TABLE = "products";
 
     // WhatsApp (pa +)
