@@ -1,10 +1,10 @@
+```html
 <!doctype html>
 <html lang="sq">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- ✅ SEO (SHTUAR) -->
   <title>Fidan & Pemë Dekorative në Dajç, Shkodër | Gjekaj Plants</title>
   <meta name="description" content="Gjekaj Plants në Dajç, Shkodër – fidan dekorative, pemë dekorative, lule dekorative, shkurre dhe bimë për oborr e kopësht. Shiko katalogun online dhe porosit në WhatsApp." />
   <meta name="keywords" content="fidan dekorative, pemë dekorative, lule dekorative, fidan Dajç, fidan Shkodër, pemë dekorative Dajç, pemë dekorative Shkodër, bimë dekorative, fidane pemësh, kopshtari Shkodër, Gjekaj Plants" />
@@ -20,202 +20,261 @@
       --muted:#64748b;
       --accent:#b91c1c;
       --border:#e5e7eb;
-      --shadow: 0 10px 30px rgba(2,6,23,.08);
-      --radius: 18px;
+      --shadow:0 10px 30px rgba(2,6,23,.08);
+      --radius:18px;
       --dark:#0b1220;
     }
-    *{box-sizing:border-box}
+
+    *{
+      box-sizing:border-box;
+    }
+
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
     }
 
     header{
-      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
+      background:linear-gradient(180deg,#0b1220 0%,#111827 100%);
       color:#fff;
-      padding: 22px 16px 18px;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding:22px 16px 18px;
+      position:sticky;
+      top:0;
+      z-index:50;
+      border-bottom:1px solid rgba(255,255,255,.08);
       text-align:center;
     }
+
     header h1{
       margin:0;
-      font-size: clamp(20px, 3.6vw, 32px);
-      font-weight: 900;
-      line-height: 1.15;
+      font-size:clamp(20px,3.6vw,32px);
+      font-weight:900;
+      line-height:1.15;
     }
+
     header .sub{
       margin-top:8px;
       opacity:.9;
-      font-size: 14px;
-      font-weight: 650;
+      font-size:14px;
+      font-weight:650;
+    }
+
+    .back-button{
+      display:inline-block;
+      margin-top:14px;
+      padding:10px 20px;
+      background:#ffffff;
+      color:#111827;
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:900;
+      font-size:14px;
+      transition:.2s;
+    }
+
+    .back-button:hover{
+      transform:translateY(-2px);
+      opacity:.9;
     }
 
     .wrap{
-      max-width: 1200px;
-      margin: 18px auto 90px;
-      padding: 0 14px;
+      max-width:1200px;
+      margin:18px auto 90px;
+      padding:0 14px;
     }
 
     .panel{
-      background: var(--card);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      padding: 14px;
-      margin-top: 14px;
+      background:var(--card);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+      padding:14px;
+      margin-top:14px;
     }
 
     .grid-controls{
       display:grid;
-      grid-template-columns: 1.3fr .8fr .9fr;
-      gap: 10px;
+      grid-template-columns:1.3fr .8fr .9fr;
+      gap:10px;
       align-items:start;
     }
-    @media (max-width: 980px){
-      .grid-controls{ grid-template-columns: 1fr; }
+
+    @media(max-width:980px){
+      .grid-controls{
+        grid-template-columns:1fr;
+      }
     }
 
     label{
-      font-size: 12px;
-      font-weight: 900;
-      color: var(--muted);
+      font-size:12px;
+      font-weight:900;
+      color:var(--muted);
       display:block;
-      margin: 6px 0 6px;
+      margin:6px 0;
     }
-    input, select, textarea{
+
+    input,
+    select,
+    textarea{
       width:100%;
-      padding: 12px 12px;
+      padding:12px;
       border:1px solid var(--border);
-      border-radius: 12px;
-      font-size: 15px;
-      outline: none;
+      border-radius:12px;
+      font-size:15px;
+      outline:none;
       background:#fff;
     }
-    textarea{ min-height: 70px; resize: vertical; }
+
+    textarea{
+      min-height:70px;
+      resize:vertical;
+    }
 
     .bar{
       display:flex;
-      justify-content: space-between;
+      justify-content:space-between;
       align-items:center;
-      margin-top: 14px;
-      gap: 10px;
-      flex-wrap: wrap;
+      margin-top:14px;
+      gap:10px;
+      flex-wrap:wrap;
     }
+
     .count{
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 900;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:900;
     }
+
     .status{
-      font-size: 13px;
-      font-weight: 900;
-      color: var(--muted);
+      font-size:13px;
+      font-weight:900;
+      color:var(--muted);
     }
+
     .error{
       display:none;
-      margin-top: 14px;
-      background: #fff;
-      border: 1px solid #fecaca;
-      border-left: 6px solid #b91c1c;
-      border-radius: 14px;
-      padding: 12px 12px;
-      font-weight: 900;
+      margin-top:14px;
+      background:#fff;
+      border:1px solid #fecaca;
+      border-left:6px solid #b91c1c;
+      border-radius:14px;
+      padding:12px;
+      font-weight:900;
       color:#7f1d1d;
-      white-space: pre-wrap;
+      white-space:pre-wrap;
     }
 
-    /* Cards */
     .cards{
       display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 14px;
-      margin-top: 14px;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      margin-top:14px;
     }
-    @media (max-width: 1020px){ .cards{grid-template-columns: repeat(2, minmax(0,1fr));} }
-    @media (max-width: 640px){ .cards{grid-template-columns: 1fr;} }
+
+    @media(max-width:1020px){
+      .cards{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media(max-width:640px){
+      .cards{
+        grid-template-columns:1fr;
+      }
+    }
 
     .card{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
       overflow:hidden;
       display:flex;
       flex-direction:column;
-      min-height: 100%;
+      min-height:100%;
     }
+
     .img{
       width:100%;
-      aspect-ratio: 16/10;
-      background: #e5e7eb;
+      aspect-ratio:16/10;
+      background:#e5e7eb;
       display:block;
-      object-fit: cover;
+      object-fit:cover;
     }
+
     .content{
-      padding: 12px 12px 14px;
+      padding:12px 12px 14px;
       display:flex;
       flex-direction:column;
-      gap: 8px;
+      gap:8px;
       flex:1;
     }
+
     .name{
       margin:0;
-      font-size: 20px;
-      font-weight: 950;
+      font-size:20px;
+      font-weight:950;
     }
+
     .meta{
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
-      font-weight: 700;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+      font-weight:700;
     }
+
     .price{
       display:flex;
-      align-items: baseline;
-      gap: 10px;
-      flex-wrap: wrap;
+      align-items:baseline;
+      gap:10px;
+      flex-wrap:wrap;
     }
+
     .lek{
-      color: var(--accent);
-      font-weight: 1000;
-      font-size: 26px;
+      color:var(--accent);
+      font-weight:1000;
+      font-size:26px;
     }
+
     .eur{
-      color: #334155;
-      font-weight: 950;
-      font-size: 18px;
+      color:#334155;
+      font-weight:950;
+      font-size:18px;
     }
+
     .desc{
       color:#334155;
-      font-size: 13px;
+      font-size:13px;
       line-height:1.35;
-      font-weight: 650;
+      font-weight:650;
       opacity:.95;
     }
+
     .buyrow{
       display:flex;
-      gap: 10px;
+      gap:10px;
       align-items:center;
-      margin-top: 6px;
-      flex-wrap: wrap;
+      margin-top:6px;
+      flex-wrap:wrap;
     }
-    .qty{ width: 90px; }
+
+    .qty{
+      width:90px;
+    }
+
     .btnAdd{
       flex:1;
-      min-width: 160px;
-      background: #111827;
-      color: #fff;
-      border: 0;
-      border-radius: 14px;
-      padding: 12px 12px;
-      font-weight: 1000;
+      min-width:160px;
+      background:#111827;
+      color:#fff;
+      border:0;
+      border-radius:14px;
+      padding:12px;
+      font-weight:1000;
       cursor:pointer;
-      font-size: 15px;
+      font-size:15px;
     }
 
     .rateCartCol{
@@ -224,585 +283,943 @@
       gap:10px;
     }
 
-    /* CART sticky */
     .cartbox{
-      background: var(--dark);
+      background:var(--dark);
       color:#fff;
-      border-radius: 16px;
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 16px 45px rgba(2,6,23,.18);
+      border-radius:16px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 16px 45px rgba(2,6,23,.18);
     }
+
     .rateCartCol .cartbox{
-      position: sticky;
-      top: 96px;
-      max-height: calc(100vh - 140px);
-      overflow: auto;
-      z-index: 40;
+      position:sticky;
+      top:96px;
+      max-height:calc(100vh - 140px);
+      overflow:auto;
+      z-index:40;
     }
+
     .cartbox h2{
-      margin: 4px 0 10px;
-      font-size: 16px;
-      font-weight: 1000;
+      margin:4px 0 10px;
+      font-size:16px;
+      font-weight:1000;
     }
+
     .cartlist{
       display:flex;
       flex-direction:column;
-      gap: 10px;
+      gap:10px;
     }
+
     .cartitem{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px;
-      padding: 10px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      padding:10px;
       display:grid;
-      grid-template-columns: 1fr 86px;
-      gap: 10px;
+      grid-template-columns:1fr 86px;
+      gap:10px;
       align-items:start;
     }
-    .cartitem .t{ font-weight: 1000; font-size: 13.5px; }
-    .cartitem .s{ margin-top: 4px; font-size: 12.5px; opacity:.9; }
-    .cartitem .q{ display:flex; flex-direction:column; gap: 8px; }
+
+    .cartitem .t{
+      font-weight:1000;
+      font-size:13.5px;
+    }
+
+    .cartitem .s{
+      margin-top:4px;
+      font-size:12.5px;
+      opacity:.9;
+    }
+
+    .cartitem .q{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
     .cartitem input{
-      width: 100%;
-      padding: 10px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.10);
+      width:100%;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.10);
       color:#fff;
-      font-weight: 1000;
+      font-weight:1000;
       text-align:center;
     }
+
     .btnDel{
       width:100%;
       border:0;
-      border-radius: 12px;
-      padding: 10px 10px;
+      border-radius:12px;
+      padding:10px;
       cursor:pointer;
-      font-weight: 1000;
-      background: rgba(244,63,94,.22);
+      font-weight:1000;
+      background:rgba(244,63,94,.22);
       color:#fff;
     }
 
     .totals{
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(255,255,255,.10);
+      margin-top:12px;
+      padding-top:10px;
+      border-top:1px solid rgba(255,255,255,.10);
       display:flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 10px;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:10px;
     }
-    .totals .big{ font-size: 20px; font-weight: 1100; }
-    .totals .small{ font-size: 14px; font-weight: 1000; opacity:.95; }
 
-    .note{ margin-top: 10px; }
+    .totals .big{
+      font-size:20px;
+      font-weight:1100;
+    }
+
+    .totals .small{
+      font-size:14px;
+      font-weight:1000;
+      opacity:.95;
+    }
+
+    .note{
+      margin-top:10px;
+    }
+
     .note textarea{
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
       color:#fff;
     }
 
     .cartActions{
       display:flex;
-      gap: 10px;
-      margin-top: 10px;
+      gap:10px;
+      margin-top:10px;
     }
+
     .btnClear{
-      width: 100%;
-      background: rgba(255,255,255,.10);
+      width:100%;
+      background:rgba(255,255,255,.10);
       color:#fff;
       border:1px solid rgba(255,255,255,.20);
-      border-radius: 14px;
-      padding: 12px 12px;
-      font-weight: 1100;
+      border-radius:14px;
+      padding:12px;
+      font-weight:1100;
       cursor:pointer;
-      font-size: 15px;
+      font-size:15px;
     }
+
     .send{
-      margin-top: 10px;
+      margin-top:10px;
       width:100%;
       background:#16a34a;
       color:#fff;
       border:0;
-      border-radius: 14px;
-      padding: 13px 12px;
-      font-weight: 1100;
+      border-radius:14px;
+      padding:13px 12px;
+      font-weight:1100;
       cursor:pointer;
-      font-size: 16px;
+      font-size:16px;
     }
-    .send:disabled{ opacity:.55; cursor:not-allowed; }
+
+    .send:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
 
     footer{
-      position: fixed;
-      left:0; right:0; bottom:0;
-      background: #111827;
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      background:#111827;
       color:#fff;
-      padding: 10px 14px;
+      padding:10px 14px;
       text-align:center;
-      font-weight: 1000;
-      z-index: 40;
+      font-weight:1000;
+      z-index:40;
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Gjekaj Plants — Katalogu i Bimëve</h1>
-    <div class="sub">Dajç, Shkodër, Albania • Tel: +355697232425</div>
-  </header>
 
-  <!-- ✅ SEO tekst (SHTUAR) -->
-  <section style="max-width:1100px;margin:20px auto;padding:0 12px;color:#334155;font-size:14px">
-    <h2>Fidan dhe Pemë Dekorative në Dajç, Shkodër Albania </h2>
-    <p>
-      Gjekaj Plants ofron fidanë, pemë, lule dhe shkurre dekorative për oborre dhe kopshte. Katalogu ynë përfshin një gamë të gjerë bimësh dekorative, me mundësi transporti dhe shërbim profesional të rregullimit dhe mbjelljes për vila, hotele dhe resorte. 
-    </p>
-  </section>
+<header>
+  <h1>Gjekaj Plants — Katalogu i Bimëve</h1>
 
-  <div class="wrap">
-    <div id="err" class="error"></div>
-
-    <div class="panel">
-      <div class="grid-controls">
-        <div>
-          <label>Kërko (emër / kategori / kod)</label>
-          <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
-        </div>
-
-        <div>
-          <label>Kategori</label>
-          <select id="cat">
-            <option value="">Të gjitha kategoritë</option>
-          </select>
-        </div>
-
-        <div class="rateCartCol">
-          <div>
-            <label>Kursi € → Lek (1€ = 90)</label>
-            <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="90" />
-          </div>
-
-          <div class="cartbox" id="cartBox">
-            <h2>Shporta</h2>
-            <div id="cartItems" class="cartlist"></div>
-
-            <div class="totals">
-              <div class="big" id="cartTotalLek">0 Lekë</div>
-              <div class="small" id="cartTotalEur">0.00 €</div>
-            </div>
-
-            <div class="note">
-              <label style="color: rgba(255,255,255,.85); font-weight:1000">Shënim (opsionale)</label>
-              <textarea id="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
-            </div>
-
-            <div class="cartActions">
-              <button id="clearCart" class="btnClear" type="button">Pastro shportën</button>
-            </div>
-
-            <button id="sendWA" class="send" disabled>Bej porosi ne WhatsApp</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="bar">
-        <div class="count" id="count">0 artikuj</div>
-        <div class="status" id="status">Duke u lidhur…</div>
-      </div>
-    </div>
-
-    <div class="cards" id="cards"></div>
+  <div class="sub">
+    Dajç, Shkodër, Albania • Tel: +355697232425
   </div>
 
-  <footer>Gjekaj Plants • WhatsApp: 0697232425</footer>
+  <!-- Kthim te faqja kryesore -->
+  <a
+    href="https://ornamentaltreesalbaniagjekajplants.com/"
+    class="back-button"
+  >
+    ← Back to Website
+  </a>
+</header>
 
-  <script>
-    // =========================
-    // ✅ SUPABASE SETTINGS
-    // =========================
-    var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
-    var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
-    var TABLE = "products";
+<section style="max-width:1100px;margin:20px auto;padding:0 12px;color:#334155;font-size:14px">
 
-    // WhatsApp (pa +)
-    var WHATSAPP_NUMBER = "355697232425";
+  <h2>Fidan dhe Pemë Dekorative në Dajç, Shkodër Albania</h2>
 
-    // Kolonat (siç i ke në tabelë)
-    var COL_CATEGORY = "category";
-    var COL_CODE     = "code";
-    var COL_STOCK    = "stock";
-    var COL_PRICELEK = "price_lek";
+  <p>
+    Gjekaj Plants ofron fidanë, pemë, lule dhe shkurre dekorative për
+    oborre dhe kopshte. Katalogu ynë përfshin një gamë të gjerë bimësh
+    dekorative, me mundësi transporti dhe shërbim profesional të
+    rregullimit dhe mbjelljes për vila, hotele dhe resorte.
+  </p>
 
-    // Foto (provo këto fusha derisa të përputhet me tabelën tënde)
-    var IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
-    var NAME_KEYS = ["name","title","emri"];
-    var DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
+</section>
 
-    // UI
-    var elErr = document.getElementById("err");
-    var elCards = document.getElementById("cards");
-    var elCount = document.getElementById("count");
-    var elStatus = document.getElementById("status");
-    var elQ = document.getElementById("q");
-    var elCat = document.getElementById("cat");
-    var elRate = document.getElementById("rate");
+<div class="wrap">
 
-    var cartItemsEl = document.getElementById("cartItems");
-    var cartTotalLekEl = document.getElementById("cartTotalLek");
-    var cartTotalEurEl = document.getElementById("cartTotalEur");
-    var noteEl = document.getElementById("note");
-    var clearCartBtn = document.getElementById("clearCart");
-    var sendWA = document.getElementById("sendWA");
+  <div id="err" class="error"></div>
 
-    function showError(msg){
-      elErr.style.display = "block";
-      elErr.textContent = msg;
-    }
-    function clearError(){
-      elErr.style.display = "none";
-      elErr.textContent = "";
-    }
-    function escapeHtml(s){
-      return String(s ?? "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-    }
-    function firstExisting(row, keys){
-      for (var i=0;i<keys.length;i++){
-        var k = keys[i];
-        if (row && row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== "") return row[k];
-      }
-      return "";
-    }
-    function toNumber(v){
-      if (v === null || v === undefined) return 0;
-      var s = String(v).replaceAll(".", "").replaceAll(",", ".").replace(/[^\d.]/g, "");
-      var n = Number(s);
-      return Number.isFinite(n) ? n : 0;
-    }
-    function formatLek(n){
-      var x = Math.round(n);
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    }
-    function formatEuro(n){
-      return (Math.round(n * 100) / 100).toFixed(2);
-    }
+  <div class="panel">
 
-    // Data
-    var ALL = [];
-    var CART = {}; // {id: {row, qty}}
+    <div class="grid-controls">
 
-    function saveCart(){
-      try{
-        localStorage.setItem("gjekaj_cart_final", JSON.stringify({ cart: CART, note: noteEl.value || "" }));
-      }catch(e){}
-    }
-    function loadCart(){
-      try{
-        var raw = localStorage.getItem("gjekaj_cart_final");
-        if (!raw) return;
-        var obj = JSON.parse(raw);
-        CART = (obj && obj.cart) ? obj.cart : {};
-        noteEl.value = (obj && obj.note) ? obj.note : "";
-      }catch(e){}
-    }
+      <div>
+        <label>Kërko (emër / kategori / kod)</label>
+        <input
+          id="q"
+          placeholder="p.sh. cipresus, 019, dekorative..."
+        />
+      </div>
 
-    function buildCategories(rows){
-      var set = {};
-      for (var i=0;i<rows.length;i++){
-        var r = rows[i] || {};
-        var c = (r[COL_CATEGORY] ?? "").toString().trim();
-        if (c) set[c] = true;
-      }
-      var cats = Object.keys(set).sort(function(a,b){ return a.localeCompare(b); });
-      var current = elCat.value;
+      <div>
+        <label>Kategori</label>
+        <select id="cat">
+          <option value="">Të gjitha kategoritë</option>
+        </select>
+      </div>
 
-      var html = '<option value="">Të gjitha kategoritë</option>';
-      for (var j=0;j<cats.length;j++){
-        html += '<option value="'+escapeHtml(cats[j])+'">'+escapeHtml(cats[j])+'</option>';
-      }
-      elCat.innerHTML = html;
-      if (current && cats.indexOf(current) !== -1) elCat.value = current;
-    }
+      <div class="rateCartCol">
 
-    function calcTotals(){
-      var rate = Math.max(1, toNumber(elRate.value || 90));
-      var totalLek = 0;
+        <div>
+          <label>Kursi € → Lek (1€ = 90)</label>
+          <input
+            id="rate"
+            type="number"
+            inputmode="numeric"
+            min="1"
+            step="1"
+            value="90"
+          />
+        </div>
 
-      Object.keys(CART).forEach(function(id){
-        var it = CART[id];
-        var priceLek = toNumber(it && it.row ? it.row[COL_PRICELEK] : 0);
-        var qty = Math.max(1, toNumber(it && it.qty ? it.qty : 1));
-        totalLek += priceLek * qty;
-      });
+        <div class="cartbox" id="cartBox">
 
-      var totalEur = totalLek / rate;
-      cartTotalLekEl.textContent = formatLek(totalLek) + " Lekë";
-      cartTotalEurEl.textContent = formatEuro(totalEur) + " €";
-      sendWA.disabled = totalLek <= 0;
+          <h2>Shporta</h2>
 
-      saveCart();
-      return { totalLek: totalLek, totalEur: totalEur, rate: rate };
-    }
+          <div id="cartItems" class="cartlist"></div>
 
-    function renderCart(){
-      var ids = Object.keys(CART);
-      if (ids.length === 0){
-        cartItemsEl.innerHTML = '<div style="opacity:.9;font-weight:900;">Shporta është bosh.</div>';
-        calcTotals();
-        return;
-      }
+          <div class="totals">
+            <div class="big" id="cartTotalLek">0 Lekë</div>
+            <div class="small" id="cartTotalEur">0.00 €</div>
+          </div>
 
-      var html = "";
-      for (var i=0;i<ids.length;i++){
-        var id = ids[i];
-        var it = CART[id];
-        var r = it.row || {};
-        var name = firstExisting(r, NAME_KEYS) || "(pa emër)";
-        var category = (r[COL_CATEGORY] ?? "").toString();
-        var code = (r[COL_CODE] ?? "").toString();
-        var priceLek = toNumber(r[COL_PRICELEK]);
-        var priceEur = priceLek / Math.max(1, toNumber(elRate.value || 90));
-        var qty = Math.max(1, toNumber(it.qty || 1));
+          <div class="note">
 
-        html += ''
-          + '<div class="cartitem">'
-          + '  <div>'
-          + '    <div class="t">'+escapeHtml(name)+'</div>'
-          + '    <div class="s">'
-          + (category ? ('Kategoria: <b>'+escapeHtml(category)+'</b><br>') : '')
-          + (code ? ('Kodi: <b>'+escapeHtml(code)+'</b><br>') : '')
-          + 'Çmimi: <b>'+formatEuro(priceEur)+' €</b> ('+formatLek(priceLek)+' Lekë)'
-          + '    </div>'
-          + '  </div>'
-          + '  <div class="q">'
-          + '    <input type="number" min="1" step="1" value="'+qty+'" data-id="'+escapeHtml(id)+'" class="qtyInCart" />'
-          + '    <button class="btnDel" data-del="'+escapeHtml(id)+'">Hiq</button>'
-          + '  </div>'
-          + '</div>';
-      }
-      cartItemsEl.innerHTML = html;
+            <label style="color:rgba(255,255,255,.85);font-weight:1000">
+              Shënim (opsionale)
+            </label>
 
-      Array.prototype.forEach.call(cartItemsEl.querySelectorAll(".qtyInCart"), function(inp){
-        inp.addEventListener("input", function(){
-          var id = inp.getAttribute("data-id");
-          var v = Math.max(1, toNumber(inp.value || 1));
-          if (CART[id]) CART[id].qty = v;
-          calcTotals();
-        });
-      });
-      Array.prototype.forEach.call(cartItemsEl.querySelectorAll("[data-del]"), function(btn){
-        btn.addEventListener("click", function(){
-          var id = btn.getAttribute("data-del");
-          delete CART[id];
-          renderCart();
-        });
-      });
+            <textarea
+              id="note"
+              placeholder="p.sh. dërgesë / orari / kërkesa speciale..."
+            ></textarea>
 
-      calcTotals();
-    }
+          </div>
 
-    function addToCart(row, qty){
-      var id = String(row.id ?? row[COL_CODE] ?? firstExisting(row, NAME_KEYS));
-      var q = Math.max(1, toNumber(qty || 1));
-      if (!CART[id]) CART[id] = { row: row, qty: q };
-      else CART[id].qty = Math.max(1, toNumber(CART[id].qty || 1) + q);
-      renderCart();
-    }
+          <div class="cartActions">
 
-    function renderProducts(){
-      clearError();
-      var q = (elQ.value || "").trim().toLowerCase();
-      var cat = (elCat.value || "").trim();
-      var rate = Math.max(1, toNumber(elRate.value || 90));
+            <button
+              id="clearCart"
+              class="btnClear"
+              type="button"
+            >
+              Pastro shportën
+            </button>
 
-      var filtered = ALL.filter(function(r){
-        if (cat && String(r[COL_CATEGORY] ?? "").trim() !== cat) return false;
-        if (!q) return true;
+          </div>
 
-        var name = String(firstExisting(r, NAME_KEYS) || "").toLowerCase();
-        var category = String(r[COL_CATEGORY] ?? "").toLowerCase();
-        var code = String(r[COL_CODE] ?? "").toLowerCase();
-        return name.indexOf(q) !== -1 || category.indexOf(q) !== -1 || code.indexOf(q) !== -1;
-      });
+          <button
+            id="sendWA"
+            class="send"
+            disabled
+          >
+            Bej porosi ne WhatsApp
+          </button>
 
-      elCount.textContent = filtered.length + " artikuj";
+        </div>
 
-      var html = "";
-      for (var i=0;i<filtered.length;i++){
-        var r = filtered[i];
-        var name = firstExisting(r, NAME_KEYS) || "(pa emër)";
-        var desc = firstExisting(r, DESC_KEYS) || "";
-        var img = firstExisting(r, IMG_KEYS) || "";
-        var category = String(r[COL_CATEGORY] ?? "");
-        var code = String(r[COL_CODE] ?? "");
-        var stock = String(r[COL_STOCK] ?? "");
-        var priceLek = toNumber(r[COL_PRICELEK]);
-        var priceEur = priceLek / rate;
+      </div>
 
-        var imgTag = img
-          ? '<img class="img" src="'+escapeHtml(img)+'" alt="'+escapeHtml(name)+'" loading="lazy" onerror="this.style.display=\'none\'; this.parentNode.style.background=\'#e5e7eb\';" />'
-          : '<div class="img"></div>';
+    </div>
 
-        var pid = escapeHtml(String(r.id ?? code ?? name));
+    <div class="bar">
 
-        html += ''
-          + '<article class="card">'
-          +   imgTag
-          + ' <div class="content">'
-          + '   <h3 class="name">'+escapeHtml(name)+'</h3>'
-          + '   <div class="meta">'
-          +     (category ? ('Kategoria: <b>'+escapeHtml(category)+'</b><br>') : '')
-          +     (code ? ('Kodi: <b>'+escapeHtml(code)+'</b><br>') : '')
-          +     (stock ? ('Stok: <b>'+escapeHtml(stock)+'</b>') : '')
-          + '   </div>'
-          + '   <div class="price">'
-          + '     <div class="lek">'+formatEuro(priceEur)+' €</div>'
-          + '     <div class="eur">'+formatLek(priceLek)+' Lekë</div>'
-          + '   </div>'
-          +     (desc ? ('<div class="desc">'+escapeHtml(desc)+'</div>') : '')
-          + '   <div class="buyrow">'
-          + '     <input class="qty" type="number" min="1" step="1" value="1" id="qty_'+pid+'" />'
-          + '     <button class="btnAdd" data-add="'+pid+'">Shto në shportë</button>'
-          + '   </div>'
-          + ' </div>'
-          + '</article>';
-      }
-      elCards.innerHTML = html;
+      <div class="count" id="count">
+        0 artikuj
+      </div>
 
-      Array.prototype.forEach.call(elCards.querySelectorAll("[data-add]"), function(btn){
-        btn.addEventListener("click", function(){
-          var pid = btn.getAttribute("data-add");
-          var qtyEl = document.getElementById("qty_" + pid);
-          var qty = Math.max(1, toNumber(qtyEl && qtyEl.value ? qtyEl.value : 1));
+      <div class="status" id="status">
+        Duke u lidhur…
+      </div>
 
-          var row = null;
-          for (var i=0;i<filtered.length;i++){
-            var r = filtered[i];
-            var rid = String(r.id ?? "");
-            var rcode = String(r[COL_CODE] ?? "");
-            var rname = String(firstExisting(r, NAME_KEYS) ?? "");
-            if ((rid && rid === pid) || (rcode && rcode === pid) || (rname && rname === pid)){
-              row = r; break;
-            }
-          }
-          if (row) addToCart(row, qty);
-        });
-      });
+    </div>
 
-      calcTotals();
-    }
+  </div>
 
-    function buildWhatsAppMessage(){
-      var t = calcTotals();
-      var note = (noteEl.value || "").trim();
-      var lines = [];
-      lines.push("📌 Kërkesë nga Katalogu — Gjekaj Plants");
-      lines.push("");
+  <div class="cards" id="cards"></div>
 
-      Object.keys(CART).forEach(function(id){
-        var it = CART[id];
-        var r = it.row || {};
-        var name = firstExisting(r, NAME_KEYS) || "(pa emër)";
-        var code = String(r[COL_CODE] ?? "");
-        var priceLek = toNumber(r[COL_PRICELEK]);
-        var qty = Math.max(1, toNumber(it.qty || 1));
-        var subLek = priceLek * qty;
-        var subEur = subLek / t.rate;
+</div>
 
-        lines.push("• " + name + (code ? " (Kodi: " + code + ")" : ""));
-        lines.push("  Sasia: " + qty + " | Nën-total: " + formatEuro(subEur) + " € (" + formatLek(subLek) + " Lekë)");
-      });
+<footer>
+  Gjekaj Plants • WhatsApp: 0697232425
+</footer>
 
-      lines.push("");
-      lines.push("Totali: " + formatEuro(t.totalEur) + " € (" + formatLek(t.totalLek) + " Lekë)");
-      lines.push("Kursi: 1€ = " + t.rate + " Lek");
+<script>
 
-      if (note){
-        lines.push("");
-        lines.push("Shënim:");
-        lines.push(note);
-      }
-      return lines.join("\n");
-    }
+  // =========================
+  // SUPABASE SETTINGS
+  // =========================
 
-    function loadProducts(){
-      clearError();
-      elStatus.textContent = "Duke lexuar nga Supabase…";
+  var SUPABASE_URL =
+    "https://oehcfyfjlwvlqowjezwg.supabase.co";
 
-      if (!SUPABASE_ANON_KEY || SUPABASE_ANON_KEY.indexOf("VENDOS_ANON_KEY_KETU") !== -1){
-        showError("S’ke vendosur ANON KEY.\nHap kodin dhe vendos çelësin që fillon me eyJ... te SUPABASE_ANON_KEY.");
-        elStatus.textContent = "Gabim";
-        return;
+  var SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
+
+  var TABLE = "products";
+
+  var WHATSAPP_NUMBER = "355697232425";
+
+  var COL_CATEGORY = "category";
+  var COL_CODE     = "code";
+  var COL_STOCK    = "stock";
+  var COL_PRICELEK = "price_lek";
+
+  var IMG_KEYS = [
+    "photo_url",
+    "image_url",
+    "img_url",
+    "photo",
+    "image",
+    "foto",
+    "url_photo",
+    "url_image"
+  ];
+
+  var NAME_KEYS = [
+    "name",
+    "title",
+    "emri"
+  ];
+
+  var DESC_KEYS = [
+    "description",
+    "desc",
+    "pershkrimi",
+    "pershkrim"
+  ];
+
+  // UI
+
+  var elErr =
+    document.getElementById("err");
+
+  var elCards =
+    document.getElementById("cards");
+
+  var elCount =
+    document.getElementById("count");
+
+  var elStatus =
+    document.getElementById("status");
+
+  var elQ =
+    document.getElementById("q");
+
+  var elCat =
+    document.getElementById("cat");
+
+  var elRate =
+    document.getElementById("rate");
+
+  var cartItemsEl =
+    document.getElementById("cartItems");
+
+  var cartTotalLekEl =
+    document.getElementById("cartTotalLek");
+
+  var cartTotalEurEl =
+    document.getElementById("cartTotalEur");
+
+  var noteEl =
+    document.getElementById("note");
+
+  var clearCartBtn =
+    document.getElementById("clearCart");
+
+  var sendWA =
+    document.getElementById("sendWA");
+
+
+  function showError(msg){
+
+    elErr.style.display = "block";
+
+    elErr.textContent = msg;
+
+  }
+
+
+  function clearError(){
+
+    elErr.style.display = "none";
+
+    elErr.textContent = "";
+
+  }
+
+
+  function escapeHtml(s){
+
+    return String(s ?? "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+
+  }
+
+
+  function firstExisting(row,keys){
+
+    for(var i=0;i<keys.length;i++){
+
+      var k = keys[i];
+
+      if(
+        row &&
+        row[k] !== undefined &&
+        row[k] !== null &&
+        String(row[k]).trim() !== ""
+      ){
+
+        return row[k];
+
       }
 
-      var url = SUPABASE_URL + "/rest/v1/" + encodeURIComponent(TABLE) + "?select=*";
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", url, true);
-      xhr.setRequestHeader("apikey", SUPABASE_ANON_KEY);
-      xhr.setRequestHeader("Authorization", "Bearer " + SUPABASE_ANON_KEY);
-      xhr.setRequestHeader("Accept", "application/json");
+    }
 
-      xhr.onreadystatechange = function(){
-        if (xhr.readyState !== 4) return;
+    return "";
 
-        if (xhr.status >= 200 && xhr.status < 300){
-          try{
-            ALL = JSON.parse(xhr.responseText) || [];
-          }catch(e){
-            showError("Gabim te JSON: " + e);
-            elStatus.textContent = "Gabim";
-            return;
-          }
-          buildCategories(ALL);
-          renderProducts();
-          elStatus.textContent = "Gati.";
-          return;
-        }
+  }
 
-        showError(
-          "Gabim Supabase ("+xhr.status+").\n\n" +
-          (xhr.responseText || "") +
-          "\n\nKontrollo: RLS SELECT për anon/public te tabela products."
+
+  function toNumber(v){
+
+    if(v === null || v === undefined)
+      return 0;
+
+    var s =
+      String(v)
+      .replaceAll(".","")
+      .replaceAll(",",".")
+      .replace(/[^\d.]/g,"");
+
+    var n = Number(s);
+
+    return Number.isFinite(n) ? n : 0;
+
+  }
+
+
+  function formatLek(n){
+
+    var x = Math.round(n);
+
+    return x.toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g,".");
+
+  }
+
+
+  function formatEuro(n){
+
+    return (
+      Math.round(n * 100) / 100
+    ).toFixed(2);
+
+  }
+
+
+  var ALL = [];
+
+  var CART = {};
+
+
+  function saveCart(){
+
+    try{
+
+      localStorage.setItem(
+        "gjekaj_cart_final",
+        JSON.stringify({
+          cart:CART,
+          note:noteEl.value || ""
+        })
+      );
+
+    }catch(e){}
+
+  }
+
+
+  function loadCart(){
+
+    try{
+
+      var raw =
+        localStorage.getItem(
+          "gjekaj_cart_final"
         );
-        elStatus.textContent = "Gabim";
-      };
 
-      xhr.onerror = function(){
-        showError("Gabim rrjeti. Kontrollo internetin / SSL / bllokime.");
-        elStatus.textContent = "Gabim";
-      };
+      if(!raw)
+        return;
 
-      xhr.send();
+      var obj =
+        JSON.parse(raw);
+
+      CART =
+        obj && obj.cart
+          ? obj.cart
+          : {};
+
+      noteEl.value =
+        obj && obj.note
+          ? obj.note
+          : "";
+
+    }catch(e){}
+
+  }
+
+
+  function buildCategories(rows){
+
+    var set = {};
+
+    for(
+      var i=0;
+      i<rows.length;
+      i++
+    ){
+
+      var r = rows[i] || {};
+
+      var c =
+        (r[COL_CATEGORY] ?? "")
+        .toString()
+        .trim();
+
+      if(c)
+        set[c] = true;
+
     }
 
-    // Events
-    elQ.addEventListener("input", renderProducts);
-    elCat.addEventListener("change", renderProducts);
-    elRate.addEventListener("input", function(){ renderProducts(); renderCart(); });
-    noteEl.addEventListener("input", saveCart);
+    var cats =
+      Object.keys(set).sort(
+        function(a,b){
+          return a.localeCompare(b);
+        }
+      );
 
-    clearCartBtn.addEventListener("click", function(){
-      if (!confirm("Me e pastru shportën komplet?")) return;
-      CART = {};
-      noteEl.value = "";
-      renderCart();
-    });
+    var current =
+      elCat.value;
 
-    sendWA.addEventListener("click", function(){
-      var msg = buildWhatsAppMessage();
-      var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
-      window.open(url, "_blank");
-    });
+    var html =
+      '<option value="">Të gjitha kategoritë</option>';
 
-    // Start
-    loadCart();
+    for(
+      var j=0;
+      j<cats.length;
+      j++
+    ){
+
+      html +=
+        '<option value="' +
+        escapeHtml(cats[j]) +
+        '">' +
+        escapeHtml(cats[j]) +
+        '</option>';
+
+    }
+
+    elCat.innerHTML = html;
+
+    if(
+      current &&
+      cats.indexOf(current) !== -1
+    ){
+
+      elCat.value = current;
+
+    }
+
+  }
+
+
+  function calcTotals(){
+
+    var rate =
+      Math.max(
+        1,
+        toNumber(
+          elRate.value || 90
+        )
+      );
+
+    var totalLek = 0;
+
+    Object.keys(CART)
+      .forEach(function(id){
+
+        var it = CART[id];
+
+        var priceLek =
+          toNumber(
+            it && it.row
+              ? it.row[COL_PRICELEK]
+              : 0
+          );
+
+        var qty =
+          Math.max(
+            1,
+            toNumber(
+              it && it.qty
+                ? it.qty
+                : 1
+            )
+          );
+
+        totalLek +=
+          priceLek * qty;
+
+      });
+
+
+    var totalEur =
+      totalLek / rate;
+
+    cartTotalLekEl.textContent =
+      formatLek(totalLek) +
+      " Lekë";
+
+    cartTotalEurEl.textContent =
+      formatEuro(totalEur) +
+      " €";
+
+    sendWA.disabled =
+      totalLek <= 0;
+
+    saveCart();
+
+    return {
+      totalLek:totalLek,
+      totalEur:totalEur,
+      rate:rate
+    };
+
+  }
+
+
+  function renderCart(){
+
+    var ids =
+      Object.keys(CART);
+
+    if(ids.length === 0){
+
+      cartItemsEl.innerHTML =
+        '<div style="opacity:.9;font-weight:900;">' +
+        'Shporta është bosh.' +
+        '</div>';
+
+      calcTotals();
+
+      return;
+
+    }
+
+
+    var html = "";
+
+
+    for(
+      var i=0;
+      i<ids.length;
+      i++
+    ){
+
+      var id =
+        ids[i];
+
+      var it =
+        CART[id];
+
+      var r =
+        it.row || {};
+
+      var name =
+        firstExisting(
+          r,
+          NAME_KEYS
+        ) || "(pa emër)";
+
+      var category =
+        (r[COL_CATEGORY] ?? "")
+        .toString();
+
+      var code =
+        (r[COL_CODE] ?? "")
+        .toString();
+
+      var priceLek =
+        toNumber(
+          r[COL_PRICELEK]
+        );
+
+      var priceEur =
+        priceLek /
+        Math.max(
+          1,
+          toNumber(
+            elRate.value || 90
+          )
+        );
+
+      var qty =
+        Math.max(
+          1,
+          toNumber(
+            it.qty || 1
+          )
+        );
+
+
+      html +=
+        '<div class="cartitem">' +
+
+        '<div>' +
+
+        '<div class="t">' +
+        escapeHtml(name) +
+        '</div>' +
+
+        '<div class="s">' +
+
+        (
+          category
+          ? (
+            'Kategoria: <b>' +
+            escapeHtml(category) +
+            '</b><br>'
+          )
+          : ''
+        ) +
+
+        (
+          code
+          ? (
+            'Kodi: <b>' +
+            escapeHtml(code) +
+            '</b><br>'
+          )
+          : ''
+        ) +
+
+        'Çmimi: <b>' +
+        formatEuro(priceEur) +
+        ' €</b> (' +
+        formatLek(priceLek) +
+        ' Lekë)' +
+
+        '</div>' +
+
+        '</div>' +
+
+        '<div class="q">' +
+
+        '<input type="number" min="1" step="1" value="' +
+        qty +
+        '" data-id="' +
+        escapeHtml(id) +
+        '" class="qtyInCart" />' +
+
+        '<button class="btnDel" data-del="' +
+        escapeHtml(id) +
+        '">Hiq</button>' +
+
+        '</div>' +
+
+        '</div>';
+
+    }
+
+
+    cartItemsEl.innerHTML =
+      html;
+
+
+    Array.prototype.forEach.call(
+      cartItemsEl.querySelectorAll(
+        ".qtyInCart"
+      ),
+      function(inp){
+
+        inp.addEventListener(
+          "input",
+          function(){
+
+            var id =
+              inp.getAttribute(
+                "data-id"
+              );
+
+            var v =
+              Math.max(
+                1,
+                toNumber(
+                  inp.value || 1
+                )
+              );
+
+            if(CART[id])
+              CART[id].qty = v;
+
+            calcTotals();
+
+          }
+        );
+
+      }
+    );
+
+
+    Array.prototype.forEach.call(
+      cartItemsEl.querySelectorAll(
+        "[data-del]"
+      ),
+      function(btn){
+
+        btn.addEventListener(
+          "click",
+          function(){
+
+            var id =
+              btn.getAttribute(
+                "data-del"
+              );
+
+            delete CART[id];
+
+            renderCart();
+
+          }
+        );
+
+      }
+    );
+
+
+    calcTotals();
+
+  }
+
+
+  function addToCart(row,qty){
+
+    var id =
+      String(
+        row.id ??
+        row[COL_CODE] ??
+        firstExisting(
+          row,
+          NAME_KEYS
+        )
+      );
+
+    var q =
+      Math.max(
+        1,
+        toNumber(qty || 1)
+      );
+
+    if(!CART[id]){
+
+      CART[id] = {
+        row:row,
+        qty:q
+      };
+
+    }else{
+
+      CART[id].qty =
+        Math.max(
+          1,
+          toNumber(
+            CART[id].qty || 1
+          ) + q
+        );
+
+    }
+
     renderCart();
-    loadProducts();
-  </script>
-</body>
-</html>
+
+  }
+
+
+  function renderProducts(){
+
+    clearError();
+
+    var q =
+      (elQ.value || "")
+      .trim()
+      .toLowerCase();
+
+    var cat =
+      (elCat.value || "")
+      .trim();
+
+    var rate =
+      Math.max(
+        1,
+        toNumber(
+          elRate.value || 90
+        )
+      );
+
+
+    var filtered =
+      ALL.filter(
+        function(r){
+
+          if(
+            cat &&
+            String(
+              r[COL_CATEGORY] ?? ""
+            ).trim() !== cat
+          )
+            ret
+```
