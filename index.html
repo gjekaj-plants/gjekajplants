@@ -1,10 +1,10 @@
-```html
 <!doctype html>
 <html lang="sq">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- ✅ SEO (SHTUAR) -->
   <title>Fidan & Pemë Dekorative në Dajç, Shkodër | Gjekaj Plants</title>
   <meta name="description" content="Gjekaj Plants në Dajç, Shkodër – fidan dekorative, pemë dekorative, lule dekorative, shkurre dhe bimë për oborr e kopësht. Shiko katalogun online dhe porosit në WhatsApp." />
   <meta name="keywords" content="fidan dekorative, pemë dekorative, lule dekorative, fidan Dajç, fidan Shkodër, pemë dekorative Dajç, pemë dekorative Shkodër, bimë dekorative, fidane pemësh, kopshtari Shkodër, Gjekaj Plants" />
@@ -27,11 +27,8 @@
   --shadow-hover:0 20px 55px rgba(20,45,30,.14);
   --radius:20px;
 }
-
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
-
 body{
   margin:0;
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
@@ -40,10 +37,8 @@ body{
     linear-gradient(180deg,#f8faf8 0%,var(--bg) 100%);
   color:var(--text);
 }
-
 button,input,select,textarea{font:inherit}
 button{transition:.2s ease}
-
 header{
   background:
     linear-gradient(135deg,rgba(10,32,20,.98),rgba(20,83,45,.96)),
@@ -57,27 +52,8 @@ header{
   box-shadow:0 8px 30px rgba(0,0,0,.12);
 }
 
-header h1{
-  max-width:1200px;
-  margin:0 auto;
-  font-size:clamp(24px,4vw,38px);
-  font-weight:900;
-  line-height:1.1;
-  letter-spacing:-.8px;
-  padding-right:180px;
-}
-
-header .sub{
-  max-width:1200px;
-  margin:10px auto 0;
-  opacity:.86;
-  font-size:14px;
-  font-weight:650;
-  padding-right:180px;
-}
-
 /* =========================
-   LANGUAGE SWITCHER
+   GJUHËT - SHTUAR
    ========================= */
 
 .lang-switcher{
@@ -113,18 +89,27 @@ header .sub{
   border-color:#fff;
 }
 
-.wrap{
-  max-width:1240px;
-  margin:24px auto 100px;
-  padding:0 16px
+header h1{
+  max-width:1200px;
+  margin:0 auto;
+  font-size:clamp(24px,4vw,38px);
+  font-weight:900;
+  line-height:1.1;
+  letter-spacing:-.8px;
 }
-
+header .sub{
+  max-width:1200px;
+  margin:10px auto 0;
+  opacity:.86;
+  font-size:14px;
+  font-weight:650;
+}
+.wrap{max-width:1240px;margin:24px auto 100px;padding:0 16px}
 .hero{
   max-width:1240px;
   margin:24px auto 0;
   padding:0 16px;
 }
-
 .hero-inner{
   background:linear-gradient(135deg,#ffffff,#f0f8f2);
   border:1px solid var(--border);
@@ -132,27 +117,9 @@ header .sub{
   padding:28px;
   box-shadow:var(--shadow);
 }
-
-.hero h2{
-  margin:0 0 8px;
-  font-size:clamp(22px,3vw,32px);
-  letter-spacing:-.5px
-}
-
-.hero p{
-  margin:0;
-  color:var(--muted);
-  line-height:1.65;
-  max-width:900px
-}
-
-.badges{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:16px
-}
-
+.hero h2{margin:0 0 8px;font-size:clamp(22px,3vw,32px);letter-spacing:-.5px}
+.hero p{margin:0;color:var(--muted);line-height:1.65;max-width:900px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .badge{
   background:var(--accent-soft);
   color:#166534;
@@ -162,7 +129,6 @@ header .sub{
   font-size:12px;
   font-weight:800;
 }
-
 .panel{
   background:rgba(255,255,255,.9);
   border:1px solid var(--border);
@@ -172,20 +138,13 @@ header .sub{
   margin-top:18px;
   backdrop-filter:blur(10px);
 }
-
 .grid-controls{
   display:grid;
   grid-template-columns:minmax(240px,1.5fr) minmax(180px,.8fr) minmax(280px,.95fr);
   gap:14px;
   align-items:start;
 }
-
-@media(max-width:980px){
-  .grid-controls{
-    grid-template-columns:1fr
-  }
-}
-
+@media(max-width:980px){.grid-controls{grid-template-columns:1fr}}
 label{
   font-size:11px;
   text-transform:uppercase;
@@ -195,7 +154,6 @@ label{
   display:block;
   margin:5px 0 7px;
 }
-
 input,select,textarea{
   width:100%;
   padding:12px 13px;
@@ -207,17 +165,11 @@ input,select,textarea{
   color:var(--text);
   transition:border-color .2s,box-shadow .2s;
 }
-
 input:focus,select:focus,textarea:focus{
   border-color:#4ade80;
   box-shadow:0 0 0 4px rgba(34,197,94,.12);
 }
-
-textarea{
-  min-height:76px;
-  resize:vertical
-}
-
+textarea{min-height:76px;resize:vertical}
 .bar{
   display:flex;
   justify-content:space-between;
@@ -226,29 +178,14 @@ textarea{
   gap:10px;
   flex-wrap:wrap;
 }
-
-.count,.status{
-  font-size:13px;
-  font-weight:800;
-  color:var(--muted)
-}
-
-.status{
-  display:inline-flex;
-  align-items:center;
-  gap:7px
-}
-
+.count,.status{font-size:13px;font-weight:800;color:var(--muted)}
+.status{display:inline-flex;align-items:center;gap:7px}
 .status:before{
   content:"";
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#22c55e;
-  display:inline-block;
+  width:8px;height:8px;border-radius:50%;
+  background:#22c55e;display:inline-block;
   box-shadow:0 0 0 4px rgba(34,197,94,.12);
 }
-
 .error{
   display:none;
   margin-top:14px;
@@ -261,26 +198,14 @@ textarea{
   color:#7f1d1d;
   white-space:pre-wrap;
 }
-
 .cards{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
   margin-top:18px;
 }
-
-@media(max-width:1020px){
-  .cards{
-    grid-template-columns:repeat(2,minmax(0,1fr))
-  }
-}
-
-@media(max-width:640px){
-  .cards{
-    grid-template-columns:1fr
-  }
-}
-
+@media(max-width:1020px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
 .card{
   background:var(--card);
   border:1px solid var(--border);
@@ -292,13 +217,7 @@ textarea{
   min-height:100%;
   transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
 }
-
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:var(--shadow-hover);
-  border-color:#cde5d3
-}
-
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:#cde5d3}
 .img{
   width:100%;
   aspect-ratio:16/10;
@@ -306,408 +225,145 @@ textarea{
   display:block;
   object-fit:cover;
 }
-
-.content{
-  padding:16px 16px 17px;
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-  flex:1
-}
-
-.name{
-  margin:0;
-  font-size:20px;
-  font-weight:900;
-  letter-spacing:-.2px
-}
-
-.meta{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.5;
-  font-weight:700
-}
-
-.price{
-  display:flex;
-  align-items:baseline;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:2px
-}
-
-.lek{
-  color:var(--accent);
-  font-weight:950;
-  font-size:25px
-}
-
-.eur{
-  color:#334155;
-  font-weight:850;
-  font-size:16px
-}
-
-.desc{
-  color:#46564d;
-  font-size:13px;
-  line-height:1.5;
-  font-weight:600
-}
-
-.buyrow{
-  display:flex;
-  gap:9px;
-  align-items:center;
-  margin-top:auto;
-  padding-top:5px;
-  flex-wrap:wrap
-}
-
-.qty{
-  width:82px
-}
-
+.content{padding:16px 16px 17px;display:flex;flex-direction:column;gap:9px;flex:1}
+.name{margin:0;font-size:20px;font-weight:900;letter-spacing:-.2px}
+.meta{color:var(--muted);font-size:12px;line-height:1.5;font-weight:700}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:2px}
+.lek{color:var(--accent);font-weight:950;font-size:25px}
+.eur{color:#334155;font-weight:850;font-size:16px}
+.desc{color:#46564d;font-size:13px;line-height:1.5;font-weight:600}
+.buyrow{display:flex;gap:9px;align-items:center;margin-top:auto;padding-top:5px;flex-wrap:wrap}
+.qty{width:82px}
 .btnAdd{
-  flex:1;
-  min-width:150px;
-  background:var(--dark);
-  color:#fff;
-  border:0;
-  border-radius:13px;
-  padding:12px;
-  font-weight:900;
-  cursor:pointer;
-  font-size:14px;
+  flex:1;min-width:150px;background:var(--dark);color:#fff;border:0;
+  border-radius:13px;padding:12px;font-weight:900;cursor:pointer;font-size:14px;
 }
-
-.btnAdd:hover{
-  background:#173d26;
-  transform:translateY(-1px)
-}
-
-.rateCartCol{
-  display:flex;
-  flex-direction:column;
-  gap:12px
-}
-
+.btnAdd:hover{background:#173d26;transform:translateY(-1px)}
+.rateCartCol{display:flex;flex-direction:column;gap:12px}
 .cartbox{
   background:linear-gradient(160deg,#102218,#163a25);
-  color:#fff;
-  border-radius:18px;
-  padding:14px;
+  color:#fff;border-radius:18px;padding:14px;
   border:1px solid rgba(255,255,255,.09);
   box-shadow:0 16px 45px rgba(2,25,12,.18);
 }
-
 .rateCartCol .cartbox{
-  position:sticky;
-  top:118px;
-  max-height:calc(100vh - 145px);
-  overflow:auto;
-  z-index:40;
+  position:sticky;top:118px;max-height:calc(100vh - 145px);
+  overflow:auto;z-index:40;
 }
-
-.cartbox h2{
-  margin:3px 0 11px;
-  font-size:16px;
-  font-weight:900
-}
-
-.cartlist{
-  display:flex;
-  flex-direction:column;
-  gap:9px
-}
-
+.cartbox h2{margin:3px 0 11px;font-size:16px;font-weight:900}
+.cartlist{display:flex;flex-direction:column;gap:9px}
 .cartitem{
   background:rgba(255,255,255,.07);
   border:1px solid rgba(255,255,255,.09);
-  border-radius:13px;
-  padding:10px;
-  display:grid;
-  grid-template-columns:1fr 82px;
-  gap:9px;
-  align-items:start;
+  border-radius:13px;padding:10px;
+  display:grid;grid-template-columns:1fr 82px;gap:9px;align-items:start;
 }
-
-.cartitem .t{
-  font-weight:900;
-  font-size:13px
-}
-
-.cartitem .s{
-  margin-top:4px;
-  font-size:11.5px;
-  opacity:.88;
-  line-height:1.45
-}
-
-.cartitem .q{
-  display:flex;
-  flex-direction:column;
-  gap:7px
-}
-
+.cartitem .t{font-weight:900;font-size:13px}
+.cartitem .s{margin-top:4px;font-size:11.5px;opacity:.88;line-height:1.45}
+.cartitem .q{display:flex;flex-direction:column;gap:7px}
 .cartitem input{
-  width:100%;
-  padding:9px;
-  border-radius:10px;
+  width:100%;padding:9px;border-radius:10px;
   border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.1);
-  color:#fff;
-  font-weight:900;
-  text-align:center;
+  background:rgba(255,255,255,.1);color:#fff;font-weight:900;text-align:center;
 }
-
 .btnDel{
-  width:100%;
-  border:0;
-  border-radius:10px;
-  padding:8px;
-  cursor:pointer;
-  font-weight:850;
-  background:rgba(244,63,94,.2);
-  color:#fff;
+  width:100%;border:0;border-radius:10px;padding:8px;
+  cursor:pointer;font-weight:850;background:rgba(244,63,94,.2);color:#fff;
 }
-
-.btnDel:hover{
-  background:rgba(244,63,94,.34)
-}
-
+.btnDel:hover{background:rgba(244,63,94,.34)}
 .totals{
-  margin-top:12px;
-  padding-top:11px;
-  border-top:1px solid rgba(255,255,255,.1);
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:10px
+  margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:baseline;justify-content:space-between;gap:10px
 }
-
-.totals .big{
-  font-size:20px;
-  font-weight:950
-}
-
-.totals .small{
-  font-size:13px;
-  font-weight:850;
-  opacity:.9
-}
-
-.note{
-  margin-top:10px
-}
-
-.note textarea{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.14);
-  color:#fff
-}
-
-.note textarea::placeholder{
-  color:rgba(255,255,255,.58)
-}
-
-.cartActions{
-  display:flex;
-  gap:10px;
-  margin-top:10px
-}
-
+.totals .big{font-size:20px;font-weight:950}
+.totals .small{font-size:13px;font-weight:850;opacity:.9}
+.note{margin-top:10px}
+.note textarea{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff}
+.note textarea::placeholder{color:rgba(255,255,255,.58)}
+.cartActions{display:flex;gap:10px;margin-top:10px}
 .btnClear{
-  width:100%;
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:12px;
-  padding:11px;
-  font-weight:900;
-  cursor:pointer;
-  font-size:14px
+  width:100%;background:rgba(255,255,255,.08);color:#fff;
+  border:1px solid rgba(255,255,255,.18);border-radius:12px;
+  padding:11px; font-weight:900;cursor:pointer;font-size:14px
 }
-
-.btnClear:hover{
-  background:rgba(255,255,255,.14)
-}
-
+.btnClear:hover{background:rgba(255,255,255,.14)}
 .send{
-  margin-top:9px;
-  width:100%;
-  background:#22c55e;
-  color:#052e16;
-  border:0;
-  border-radius:13px;
-  padding:13px;
-  font-weight:950;
-  cursor:pointer;
-  font-size:15px
+  margin-top:9px;width:100%;background:#22c55e;color:#052e16;
+  border:0;border-radius:13px;padding:13px;font-weight:950;cursor:pointer;font-size:15px
 }
-
-.send:hover:not(:disabled){
-  background:#4ade80;
-  transform:translateY(-1px)
-}
-
-.send:disabled{
-  opacity:.5;
-  cursor:not-allowed
-}
-
+.send:hover:not(:disabled){background:#4ade80;transform:translateY(-1px)}
+.send:disabled{opacity:.5;cursor:not-allowed}
 footer{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  background:rgba(16,34,24,.96);
-  color:#fff;
-  padding:9px 14px;
-  text-align:center;
-  font-size:12px;
-  font-weight:850;
-  z-index:40;
+  position:fixed;left:0;right:0;bottom:0;
+  background:rgba(16,34,24,.96);color:#fff;padding:9px 14px;
+  text-align:center;font-size:12px;font-weight:850;z-index:40;
   backdrop-filter:blur(10px)
 }
-
 @media(max-width:640px){
-  header{
-    padding:58px 15px 20px
-  }
+  header{padding:24px 15px 20px}
+  .hero{margin-top:14px}
+  .hero-inner{padding:20px}
+  .wrap{margin-top:14px;padding:0 12px}
+  .panel{padding:13px}
+  .rateCartCol .cartbox{position:relative;top:auto;max-height:none}
+  .cards{gap:14px}
 
-  header h1,
-  header .sub{
-    padding-right:0
-  }
-
-  header h1{
-    font-size:25px
-  }
-
-  .hero{
-    margin-top:14px
-  }
-
-  .hero-inner{
-    padding:20px
-  }
-
-  .wrap{
-    margin-top:14px;
-    padding:0 12px
-  }
-
-  .panel{
-    padding:13px
-  }
-
-  .rateCartCol .cartbox{
-    position:relative;
-    top:auto;
-    max-height:none
-  }
-
-  .cards{
-    gap:14px
-  }
-
+  /* vetëm për butonat e gjuhës */
   .lang-switcher{
     top:10px;
-    right:10px
+    right:10px;
   }
-
   .lang-btn{
     padding:6px 8px;
-    font-size:11px
+    font-size:11px;
   }
 }
 </style>
 </head>
 
 <body>
-
   <header>
 
-    <!-- LANGUAGE SWITCHER -->
+    <!-- =========================
+         ZGJEDHJA E GJUHËS
+         ========================= -->
     <div class="lang-switcher">
-      <button class="lang-btn" id="langEN" type="button">
-        🇺🇸 English
-      </button>
-
-      <button class="lang-btn active" id="langSQ" type="button">
-        🇦🇱 Shqip
-      </button>
+      <button class="lang-btn" id="langEN" type="button">🇺🇸 English</button>
+      <button class="lang-btn active" id="langSQ" type="button">🇦🇱 Shqip</button>
     </div>
 
-    <h1 data-i18n="headerTitle">
-      Gjekaj Plants — Katalogu i bimeve në Dajç, Shkodër Albania
-    </h1>
-
-    <div class="sub" data-i18n="headerSub">
-      Dajç, Shkodër, Albania • Tel: +355697232425
-    </div>
-
+    <h1 id="headerTitle">Gjekaj Plants — Katalogu i bimeve në Dajç, Shkodër Albania</h1>
+    <div class="sub" id="headerSub">Dajç, Shkodër, Albania • Tel: +355697232425</div>
   </header>
 
   <section class="hero">
     <div class="hero-inner">
-
-      <h2 data-i18n="heroTitle">
-        Gjelbërim që i jep jetë hapësirës tuaj 🌿
-      </h2>
-
-      <p data-i18n="heroText">
-        Fidanë, pemë, lule dhe shkurre dekorative për oborre, kopshte, vila, hotele dhe resorte. Zgjidhni produktet, shtojini në shportë dhe dërgoni kërkesën direkt në WhatsApp.
-      </p>
+      <h2 id="heroTitle">Gjelbërim që i jep jetë hapësirës tuaj 🌿</h2>
+      <p id="heroText">Fidanë, pemë, lule dhe shkurre dekorative për oborre, kopshte, vila, hotele dhe resorte. Zgjidhni produktet, shtojini në shportë dhe dërgoni kërkesën direkt në WhatsApp.</p>
 
       <div class="badges">
-        <span class="badge" data-i18n="badgePlants">
-          🌱 Fidanë dekorativë
-        </span>
-
-        <span class="badge" data-i18n="badgeTransport">
-          🚚 Transport
-        </span>
-
-        <span class="badge" data-i18n="badgePlanting">
-          🪴 Mbjellje &amp; sistemim
-        </span>
-
-        <span class="badge" data-i18n="badgeWhatsApp">
-          💬 Porosi në WhatsApp
-        </span>
+        <span class="badge" id="badgePlants">🌱 Fidanë dekorativë</span>
+        <span class="badge" id="badgeTransport">🚚 Transport</span>
+        <span class="badge" id="badgePlanting">🪴 Mbjellje &amp; sistemim</span>
+        <span class="badge" id="badgeWhatsApp">💬 Porosi në WhatsApp</span>
       </div>
-
     </div>
+  </section>
   </section>
 
   <div class="wrap">
-
     <div id="err" class="error"></div>
 
     <div class="panel">
-
       <div class="grid-controls">
 
         <div>
-          <label data-i18n="searchLabel">
-            Kërko (emër / kategori / kod)
-          </label>
-
-          <input
-            id="q"
-            data-i18n-placeholder="searchPlaceholder"
-            placeholder="p.sh. cipresus, 019, dekorative..."
-          />
+          <label id="searchLabel">Kërko (emër / kategori / kod)</label>
+          <input id="q" placeholder="p.sh. cipresus, 019, dekorative..." />
         </div>
 
         <div>
-          <label data-i18n="categoryLabel">
-            Kategori
-          </label>
-
+          <label id="categoryLabel">Kategori</label>
           <select id="cat">
             <option value="">Të gjitha kategoritë</option>
           </select>
@@ -716,153 +372,70 @@ footer{
         <div class="rateCartCol">
 
           <div>
-            <label data-i18n="rateLabel">
-              Kursi € → Lek (1€ = 90)
-            </label>
-
-            <input
-              id="rate"
-              type="number"
-              inputmode="numeric"
-              min="1"
-              step="1"
-              value="90"
-            />
+            <label id="rateLabel">Kursi € → Lek (1€ = 90)</label>
+            <input id="rate" type="number" inputmode="numeric" min="1" step="1" value="90" />
           </div>
 
           <div class="cartbox" id="cartBox">
 
-            <h2 data-i18n="cartTitle">
-              Shporta
-            </h2>
+            <h2 id="cartTitle">Shporta</h2>
 
             <div id="cartItems" class="cartlist"></div>
 
             <div class="totals">
-              <div class="big" id="cartTotalLek">
-                0 Lekë
-              </div>
-
-              <div class="small" id="cartTotalEur">
-                0.00 €
-              </div>
+              <div class="big" id="cartTotalLek">0 Lekë</div>
+              <div class="small" id="cartTotalEur">0.00 €</div>
             </div>
 
             <div class="note">
-
-              <label
-                data-i18n="noteLabel"
-                style="color: rgba(255,255,255,.85); font-weight:1000"
-              >
-                Shënim (opsionale)
-              </label>
-
-              <textarea
-                id="note"
-                data-i18n-placeholder="notePlaceholder"
-                placeholder="p.sh. dërgesë / orari / kërkesa speciale..."
-              ></textarea>
-
+              <label id="noteLabel" style="color: rgba(255,255,255,.85); font-weight:1000">Shënim (opsionale)</label>
+              <textarea id="note" placeholder="p.sh. dërgesë / orari / kërkesa speciale..."></textarea>
             </div>
 
             <div class="cartActions">
-
-              <button
-                id="clearCart"
-                class="btnClear"
-                type="button"
-                data-i18n="clearCart"
-              >
-                Pastro shportën
-              </button>
-
+              <button id="clearCart" class="btnClear" type="button">Pastro shportën</button>
             </div>
 
-            <button
-              id="sendWA"
-              class="send"
-              disabled
-              data-i18n="sendWhatsApp"
-            >
-              Dërgo kërkesën në WhatsApp
-            </button>
+            <button id="sendWA" class="send" disabled>Dërgo kërkesën në WhatsApp</button>
 
           </div>
-
         </div>
-
       </div>
 
       <div class="bar">
-
-        <div class="count" id="count">
-          0 artikuj
-        </div>
-
-        <div class="status" id="status">
-          Po lidhemi me katalogun…
-        </div>
-
+        <div class="count" id="count">0 artikuj</div>
+        <div class="status" id="status">Po lidhemi me katalogun…</div>
       </div>
-
     </div>
 
     <div class="cards" id="cards"></div>
-
   </div>
 
-  <footer data-i18n="footer">
-    Gjekaj Plants • WhatsApp: 0697232425
-  </footer>
+  <footer id="footer">Gjekaj Plants • WhatsApp: 0697232425</footer>
 
   <script>
-
     // =========================
-    // SUPABASE SETTINGS
+    // ✅ SUPABASE SETTINGS
     // =========================
-
     var SUPABASE_URL = "https://oehcfyfjlwvlqowjezwg.supabase.co";
-
-    var SUPABASE_ANON_KEY = ""eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
-
+    var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk";
     var TABLE = "products";
 
+    // WhatsApp (pa +)
     var WHATSAPP_NUMBER = "355697232425";
 
+    // Kolonat (siç i ke në tabelë)
     var COL_CATEGORY = "category";
     var COL_CODE     = "code";
     var COL_STOCK    = "stock";
     var COL_PRICELEK = "price_lek";
 
-    var IMG_KEYS = [
-      "photo_url",
-      "image_url",
-      "img_url",
-      "photo",
-      "image",
-      "foto",
-      "url_photo",
-      "url_image"
-    ];
+    // Foto (provo këto fusha derisa të përputhet me tabelën tënde)
+    var IMG_KEYS  = ["photo_url","image_url","img_url","photo","image","foto","url_photo","url_image"];
+    var NAME_KEYS = ["name","title","emri"];
+    var DESC_KEYS = ["description","desc","pershkrimi","pershkrim"];
 
-    var NAME_KEYS = [
-      "name",
-      "title",
-      "emri"
-    ];
-
-    var DESC_KEYS = [
-      "description",
-      "desc",
-      "pershkrimi",
-      "pershkrim"
-    ];
-
-
-    // =========================
     // UI
-    // =========================
-
     var elErr = document.getElementById("err");
     var elCards = document.getElementById("cards");
     var elCount = document.getElementById("count");
@@ -880,265 +453,131 @@ footer{
 
 
     // =========================
-    // LANGUAGE SYSTEM
+    // GJUHËT - SHTUAR
     // =========================
 
-    var currentLang =
-      localStorage.getItem("gjekaj_language") || "sq";
+    var currentLang = localStorage.getItem("gjekaj_language") || "sq";
 
     var translations = {
 
       sq: {
+        headerTitle: "Gjekaj Plants — Katalogu i bimeve në Dajç, Shkodër Albania",
+        headerSub: "Dajç, Shkodër, Albania • Tel: +355697232425",
 
-        headerTitle:
-          "Gjekaj Plants — Katalogu i bimeve në Dajç, Shkodër Albania",
+        heroTitle: "Gjelbërim që i jep jetë hapësirës tuaj 🌿",
+        heroText: "Fidanë, pemë, lule dhe shkurre dekorative për oborre, kopshte, vila, hotele dhe resorte. Zgjidhni produktet, shtojini në shportë dhe dërgoni kërkesën direkt në WhatsApp.",
 
-        headerSub:
-          "Dajç, Shkodër, Albania • Tel: +355697232425",
+        badgePlants: "🌱 Fidanë dekorativë",
+        badgeTransport: "🚚 Transport",
+        badgePlanting: "🪴 Mbjellje & sistemim",
+        badgeWhatsApp: "💬 Porosi në WhatsApp",
 
-        heroTitle:
-          "Gjelbërim që i jep jetë hapësirës tuaj 🌿",
+        searchLabel: "Kërko (emër / kategori / kod)",
+        searchPlaceholder: "p.sh. cipresus, 019, dekorative...",
 
-        heroText:
-          "Fidanë, pemë, lule dhe shkurre dekorative për oborre, kopshte, vila, hotele dhe resorte. Zgjidhni produktet, shtojini në shportë dhe dërgoni kërkesën direkt në WhatsApp.",
+        categoryLabel: "Kategori",
+        allCategories: "Të gjitha kategoritë",
 
-        badgePlants:
-          "🌱 Fidanë dekorativë",
+        rateLabel: "Kursi € → Lek (1€ = 90)",
 
-        badgeTransport:
-          "🚚 Transport",
+        cartTitle: "Shporta",
+        emptyCart: "Shporta është bosh.",
 
-        badgePlanting:
-          "🪴 Mbjellje & sistemim",
+        noteLabel: "Shënim (opsionale)",
+        notePlaceholder: "p.sh. dërgesë / orari / kërkesa speciale...",
 
-        badgeWhatsApp:
-          "💬 Porosi në WhatsApp",
+        clearCart: "Pastro shportën",
+        sendWhatsApp: "Dërgo kërkesën në WhatsApp",
 
-        searchLabel:
-          "Kërko (emër / kategori / kod)",
+        count: "artikuj",
+        ready: "Gati.",
+        loading: "Po lidhemi me katalogun…",
+        loadingSupabase: "Duke lexuar nga Supabase…",
+        error: "Gabim",
 
-        searchPlaceholder:
-          "p.sh. cipresus, 019, dekorative...",
+        category: "Kategoria",
+        code: "Kodi",
+        stock: "Stok",
+        price: "Çmimi",
+        quantity: "Sasia",
+        subtotal: "Nën-total",
+        remove: "Hiq",
+        addToCart: "Shto në shportë",
 
-        categoryLabel:
-          "Kategori",
+        footer: "Gjekaj Plants • WhatsApp: 0697232425",
 
-        allCategories:
-          "Të gjitha kategoritë",
+        clearConfirm: "Me e pastru shportën komplet?",
 
-        rateLabel:
-          "Kursi € → Lek (1€ = 90)",
+        whatsappTitle: "📌 Kërkesë nga Katalogu — Gjekaj Plants",
+        total: "Totali",
+        exchangeRate: "Kursi",
+        note: "Shënim:",
+        noName: "(pa emër)",
 
-        cartTitle:
-          "Shporta",
-
-        emptyCart:
-          "Shporta është bosh.",
-
-        noteLabel:
-          "Shënim (opsionale)",
-
-        notePlaceholder:
-          "p.sh. dërgesë / orari / kërkesa speciale...",
-
-        clearCart:
-          "Pastro shportën",
-
-        sendWhatsApp:
-          "Dërgo kërkesën në WhatsApp",
-
-        count:
-          "artikuj",
-
-        ready:
-          "Gati.",
-
-        loading:
-          "Po lidhemi me katalogun…",
-
-        loadingSupabase:
-          "Duke lexuar nga Supabase…",
-
-        error:
-          "Gabim",
-
-        category:
-          "Kategoria",
-
-        code:
-          "Kodi",
-
-        stock:
-          "Stok",
-
-        price:
-          "Çmimi",
-
-        quantity:
-          "Sasia",
-
-        remove:
-          "Hiq",
-
-        addToCart:
-          "Shto në shportë",
-
-        footer:
-          "Gjekaj Plants • WhatsApp: 0697232425",
-
-        clearConfirm:
-          "Me e pastru shportën komplet?",
-
-        whatsappTitle:
-          "📌 Kërkesë nga Katalogu — Gjekaj Plants",
-
-        total:
-          "Totali",
-
-        exchangeRate:
-          "Kursi",
-
-        note:
-          "Shënim:",
-
-        noName:
-          "(pa emër)",
-
-        categoryLabelShort:
-          "Kategoria",
-
-        codeLabelShort:
-          "Kodi",
-
-        stockLabelShort:
-          "Stok"
+        missingKey: "S’ke vendosur ANON KEY.\nHap kodin dhe vendos çelësin që fillon me eyJ... te SUPABASE_ANON_KEY.",
+        jsonError: "Gabim te JSON: ",
+        networkError: "Gabim rrjeti. Kontrollo internetin / SSL / bllokime.",
+        rlsError: "Kontrollo: RLS SELECT për anon/public te tabela products."
       },
 
-
       en: {
+        headerTitle: "Gjekaj Plants — Plant Catalogue in Dajç, Shkodër Albania",
+        headerSub: "Dajç, Shkodër, Albania • Tel: +355697232425",
 
-        headerTitle:
-          "Gjekaj Plants — Plant Catalogue in Dajç, Shkodër Albania",
+        heroTitle: "Greenery that brings life to your space 🌿",
+        heroText: "Decorative plants, trees, flowers and shrubs for yards, gardens, villas, hotels and resorts. Choose your products, add them to the cart and send your request directly via WhatsApp.",
 
-        headerSub:
-          "Dajç, Shkodër, Albania • Tel: +355697232425",
+        badgePlants: "🌱 Decorative plants",
+        badgeTransport: "🚚 Delivery",
+        badgePlanting: "🪴 Planting & landscaping",
+        badgeWhatsApp: "💬 Order via WhatsApp",
 
-        heroTitle:
-          "Greenery that brings life to your space 🌿",
+        searchLabel: "Search (name / category / code)",
+        searchPlaceholder: "e.g. cypress, 019, decorative...",
 
-        heroText:
-          "Decorative plants, trees, flowers and shrubs for yards, gardens, villas, hotels and resorts. Choose your products, add them to the cart and send your request directly via WhatsApp.",
+        categoryLabel: "Category",
+        allCategories: "All categories",
 
-        badgePlants:
-          "🌱 Decorative plants",
+        rateLabel: "€ → Lek exchange rate (1€ = 90)",
 
-        badgeTransport:
-          "🚚 Delivery",
+        cartTitle: "Shopping cart",
+        emptyCart: "Your cart is empty.",
 
-        badgePlanting:
-          "🪴 Planting & landscaping",
+        noteLabel: "Note (optional)",
+        notePlaceholder: "e.g. delivery / time / special request...",
 
-        badgeWhatsApp:
-          "💬 Order via WhatsApp",
+        clearCart: "Clear cart",
+        sendWhatsApp: "Send request via WhatsApp",
 
-        searchLabel:
-          "Search (name / category / code)",
+        count: "items",
+        ready: "Ready.",
+        loading: "Connecting to catalogue…",
+        loadingSupabase: "Loading from Supabase…",
+        error: "Error",
 
-        searchPlaceholder:
-          "e.g. cypress, 019, decorative...",
+        category: "Category",
+        code: "Code",
+        stock: "Stock",
+        price: "Price",
+        quantity: "Quantity",
+        subtotal: "Subtotal",
+        remove: "Remove",
+        addToCart: "Add to cart",
 
-        categoryLabel:
-          "Category",
+        footer: "Gjekaj Plants • WhatsApp: 0697232425",
 
-        allCategories:
-          "All categories",
+        clearConfirm: "Clear the entire cart?",
 
-        rateLabel:
-          "€ → Lek exchange rate (1€ = 90)",
+        whatsappTitle: "📌 Catalogue Request — Gjekaj Plants",
+        total: "Total",
+        exchangeRate: "Exchange rate",
+        note: "Note:",
+        noName: "(no name)",
 
-        cartTitle:
-          "Shopping cart",
-
-        emptyCart:
-          "Your cart is empty.",
-
-        noteLabel:
-          "Note (optional)",
-
-        notePlaceholder:
-          "e.g. delivery / time / special request...",
-
-        clearCart:
-          "Clear cart",
-
-        sendWhatsApp:
-          "Send request via WhatsApp",
-
-        count:
-          "items",
-
-        ready:
-          "Ready.",
-
-        loading:
-          "Connecting to catalogue…",
-
-        loadingSupabase:
-          "Loading from Supabase…",
-
-        error:
-          "Error",
-
-        category:
-          "Category",
-
-        code:
-          "Code",
-
-        stock:
-          "Stock",
-
-        price:
-          "Price",
-
-        quantity:
-          "Quantity",
-
-        remove:
-          "Remove",
-
-        addToCart:
-          "Add to cart",
-
-        footer:
-          "Gjekaj Plants • WhatsApp: 0697232425",
-
-        clearConfirm:
-          "Clear the entire cart?",
-
-        whatsappTitle:
-          "📌 Catalogue Request — Gjekaj Plants",
-
-        total:
-          "Total",
-
-        exchangeRate:
-          "Exchange rate",
-
-        note:
-          "Note:",
-
-        noName:
-          "(no name)",
-
-        categoryLabelShort:
-          "Category",
-
-        codeLabelShort:
-          "Code",
-
-        stockLabelShort:
-          "Stock"
+        missingKey: "The ANON KEY is missing.\nOpen the code and enter the key starting with eyJ... in SUPABASE_ANON_KEY.",
+        jsonError: "JSON error: ",
+        networkError: "Network error. Check internet / SSL / blocking.",
+        rlsError: "Check: RLS SELECT for anon/public on the products table."
       }
 
     };
@@ -1153,636 +592,298 @@ footer{
 
       document.documentElement.lang = currentLang;
 
-      document.querySelectorAll("[data-i18n]").forEach(function(el){
+      document.getElementById("headerTitle").textContent = t("headerTitle");
+      document.getElementById("headerSub").textContent = t("headerSub");
 
-        var key = el.getAttribute("data-i18n");
+      document.getElementById("heroTitle").textContent = t("heroTitle");
+      document.getElementById("heroText").textContent = t("heroText");
 
-        if (
-          translations[currentLang][key] !== undefined
-        ){
-          el.textContent =
-            translations[currentLang][key];
-        }
+      document.getElementById("badgePlants").textContent = t("badgePlants");
+      document.getElementById("badgeTransport").textContent = t("badgeTransport");
+      document.getElementById("badgePlanting").textContent = t("badgePlanting");
+      document.getElementById("badgeWhatsApp").textContent = t("badgeWhatsApp");
 
-      });
+      document.getElementById("searchLabel").textContent = t("searchLabel");
+      document.getElementById("q").placeholder = t("searchPlaceholder");
 
+      document.getElementById("categoryLabel").textContent = t("categoryLabel");
 
-      document.querySelectorAll(
-        "[data-i18n-placeholder]"
-      ).forEach(function(el){
+      document.getElementById("rateLabel").textContent = t("rateLabel");
 
-        var key =
-          el.getAttribute("data-i18n-placeholder");
+      document.getElementById("cartTitle").textContent = t("cartTitle");
 
-        if (
-          translations[currentLang][key] !== undefined
-        ){
-          el.placeholder =
-            translations[currentLang][key];
-        }
+      document.getElementById("noteLabel").textContent = t("noteLabel");
+      document.getElementById("note").placeholder = t("notePlaceholder");
 
-      });
+      document.getElementById("clearCart").textContent = t("clearCart");
+      document.getElementById("sendWA").textContent = t("sendWhatsApp");
 
+      document.getElementById("footer").textContent = t("footer");
 
-      document.getElementById("langEN")
-        .classList.toggle(
-          "active",
-          currentLang === "en"
-        );
+      document.getElementById("langEN").classList.toggle("active", currentLang === "en");
+      document.getElementById("langSQ").classList.toggle("active", currentLang === "sq");
 
-      document.getElementById("langSQ")
-        .classList.toggle(
-          "active",
-          currentLang === "sq"
-        );
-
-
-      localStorage.setItem(
-        "gjekaj_language",
-        currentLang
-      );
-
+      localStorage.setItem("gjekaj_language", currentLang);
 
       buildCategories(ALL);
       renderProducts();
       renderCart();
-
     }
 
 
-    document.getElementById("langEN")
-      .addEventListener("click", function(){
-
-        currentLang = "en";
-        applyLanguage();
-
-      });
+    document.getElementById("langEN").addEventListener("click", function(){
+      currentLang = "en";
+      applyLanguage();
+    });
 
 
-    document.getElementById("langSQ")
-      .addEventListener("click", function(){
-
-        currentLang = "sq";
-        applyLanguage();
-
-      });
+    document.getElementById("langSQ").addEventListener("click", function(){
+      currentLang = "sq";
+      applyLanguage();
+    });
 
 
     // =========================
-    // GENERAL FUNCTIONS
+    // FUNKSIONET ORIGJINALE
     // =========================
 
     function showError(msg){
-
       elErr.style.display = "block";
       elErr.textContent = msg;
-
     }
-
 
     function clearError(){
-
       elErr.style.display = "none";
       elErr.textContent = "";
-
     }
 
-
     function escapeHtml(s){
-
       return String(s ?? "")
         .replaceAll("&","&amp;")
         .replaceAll("<","&lt;")
         .replaceAll(">","&gt;")
         .replaceAll('"',"&quot;")
         .replaceAll("'","&#039;");
-
     }
-
 
     function firstExisting(row, keys){
-
-      for (
-        var i=0;
-        i<keys.length;
-        i++
-      ){
-
+      for (var i=0;i<keys.length;i++){
         var k = keys[i];
-
-        if (
-          row &&
-          row[k] !== undefined &&
-          row[k] !== null &&
-          String(row[k]).trim() !== ""
-        ){
-          return row[k];
-        }
-
+        if (row && row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== "") return row[k];
       }
-
       return "";
-
     }
-
 
     function toNumber(v){
-
-      if (
-        v === null ||
-        v === undefined
-      ){
-        return 0;
-      }
-
-      var s =
-        String(v)
-          .replaceAll(".", "")
-          .replaceAll(",", ".")
-          .replace(/[^\d.]/g, "");
-
+      if (v === null || v === undefined) return 0;
+      var s = String(v).replaceAll(".", "").replaceAll(",", ".").replace(/[^\d.]/g, "");
       var n = Number(s);
-
-      return Number.isFinite(n)
-        ? n
-        : 0;
-
+      return Number.isFinite(n) ? n : 0;
     }
-
 
     function formatLek(n){
-
       var x = Math.round(n);
-
-      return x
-        .toString()
-        .replace(
-          /\B(?=(\d{3})+(?!\d))/g,
-          "."
-        );
-
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-
 
     function formatEuro(n){
-
-      return (
-        Math.round(n * 100) / 100
-      ).toFixed(2);
-
+      return (Math.round(n * 100) / 100).toFixed(2);
     }
 
-
-    // =========================
-    // DATA
-    // =========================
-
+    // Data
     var ALL = [];
-
-    var CART = {};
-
-
-    // =========================
-    // CART STORAGE
-    // =========================
+    var CART = {}; // {id: {row, qty}}
 
     function saveCart(){
-
       try{
-
-        localStorage.setItem(
-          "gjekaj_cart_final",
-          JSON.stringify({
-            cart:CART,
-            note:noteEl.value || ""
-          })
-        );
-
+        localStorage.setItem("gjekaj_cart_final", JSON.stringify({ cart: CART, note: noteEl.value || "" }));
       }catch(e){}
-
     }
-
 
     function loadCart(){
-
       try{
-
-        var raw =
-          localStorage.getItem(
-            "gjekaj_cart_final"
-          );
-
+        var raw = localStorage.getItem("gjekaj_cart_final");
         if (!raw) return;
-
-        var obj =
-          JSON.parse(raw);
-
-        CART =
-          obj && obj.cart
-            ? obj.cart
-            : {};
-
-        noteEl.value =
-          obj && obj.note
-            ? obj.note
-            : "";
-
+        var obj = JSON.parse(raw);
+        CART = (obj && obj.cart) ? obj.cart : {};
+        noteEl.value = (obj && obj.note) ? obj.note : "";
       }catch(e){}
-
     }
 
-
-    // =========================
-    // CATEGORIES
-    // =========================
-
     function buildCategories(rows){
-
       var set = {};
 
-      for (
-        var i=0;
-        i<rows.length;
-        i++
-      ){
-
+      for (var i=0;i<rows.length;i++){
         var r = rows[i] || {};
-
-        var c =
-          (r[COL_CATEGORY] ?? "")
-            .toString()
-            .trim();
-
-        if (c){
-          set[c] = true;
-        }
-
+        var c = (r[COL_CATEGORY] ?? "").toString().trim();
+        if (c) set[c] = true;
       }
 
+      var cats = Object.keys(set).sort(function(a,b){
+        return a.localeCompare(b);
+      });
 
-      var cats =
-        Object.keys(set).sort(
-          function(a,b){
-            return a.localeCompare(b);
-          }
-        );
-
-
-      var current =
-        elCat.value;
-
+      var current = elCat.value;
 
       var html =
         '<option value="">' +
-        escapeHtml(
-          t("allCategories")
-        ) +
+        escapeHtml(t("allCategories")) +
         '</option>';
 
-
-      for (
-        var j=0;
-        j<cats.length;
-        j++
-      ){
-
-        html +=
-          '<option value="' +
-          escapeHtml(cats[j]) +
-          '">' +
-          escapeHtml(cats[j]) +
-          '</option>';
-
+      for (var j=0;j<cats.length;j++){
+        html += '<option value="'+escapeHtml(cats[j])+'">'+escapeHtml(cats[j])+'</option>';
       }
-
 
       elCat.innerHTML = html;
 
-
-      if (
-        current &&
-        cats.indexOf(current) !== -1
-      ){
+      if (current && cats.indexOf(current) !== -1){
         elCat.value = current;
       }
-
     }
 
-
-    // =========================
-    // TOTALS
-    // =========================
-
     function calcTotals(){
-
-      var rate =
-        Math.max(
-          1,
-          toNumber(
-            elRate.value || 90
-          )
-        );
-
-
+      var rate = Math.max(1, toNumber(elRate.value || 90));
       var totalLek = 0;
 
+      Object.keys(CART).forEach(function(id){
+        var it = CART[id];
+        var priceLek = toNumber(it && it.row ? it.row[COL_PRICELEK] : 0);
+        var qty = Math.max(1, toNumber(it && it.qty ? it.qty : 1));
+        totalLek += priceLek * qty;
+      });
 
-      Object.keys(CART)
-        .forEach(function(id){
+      var totalEur = totalLek / rate;
 
-          var it = CART[id];
+      cartTotalLekEl.textContent = formatLek(totalLek) + " Lekë";
+      cartTotalEurEl.textContent = formatEuro(totalEur) + " €";
 
-          var priceLek =
-            toNumber(
-              it && it.row
-                ? it.row[COL_PRICELEK]
-                : 0
-            );
-
-          var qty =
-            Math.max(
-              1,
-              toNumber(
-                it && it.qty
-                  ? it.qty
-                  : 1
-              )
-            );
-
-
-          totalLek +=
-            priceLek * qty;
-
-        });
-
-
-      var totalEur =
-        totalLek / rate;
-
-
-      cartTotalLekEl.textContent =
-        formatLek(totalLek) +
-        " Lekë";
-
-
-      cartTotalEurEl.textContent =
-        formatEuro(totalEur) +
-        " €";
-
-
-      sendWA.disabled =
-        totalLek <= 0;
-
+      sendWA.disabled = totalLek <= 0;
 
       saveCart();
 
-
       return {
-        totalLek:totalLek,
-        totalEur:totalEur,
-        rate:rate
+        totalLek: totalLek,
+        totalEur: totalEur,
+        rate: rate
       };
-
     }
-
-
-    // =========================
-    // RENDER CART
-    // =========================
 
     function renderCart(){
 
-      var ids =
-        Object.keys(CART);
-
+      var ids = Object.keys(CART);
 
       if (ids.length === 0){
 
         cartItemsEl.innerHTML =
           '<div style="opacity:.9;font-weight:900;">' +
-          escapeHtml(
-            t("emptyCart")
-          ) +
+          escapeHtml(t("emptyCart")) +
           '</div>';
 
         calcTotals();
-
         return;
-
       }
-
 
       var html = "";
 
+      for (var i=0;i<ids.length;i++){
 
-      for (
-        var i=0;
-        i<ids.length;
-        i++
-      ){
-
-        var id =
-          ids[i];
-
-        var it =
-          CART[id];
-
-        var r =
-          it.row || {};
-
+        var id = ids[i];
+        var it = CART[id];
+        var r = it.row || {};
 
         var name =
-          firstExisting(
-            r,
-            NAME_KEYS
-          ) ||
+          firstExisting(r, NAME_KEYS) ||
           t("noName");
 
-
         var category =
-          (r[COL_CATEGORY] ?? "")
-            .toString();
-
+          (r[COL_CATEGORY] ?? "").toString();
 
         var code =
-          (r[COL_CODE] ?? "")
-            .toString();
-
+          (r[COL_CODE] ?? "").toString();
 
         var priceLek =
-          toNumber(
-            r[COL_PRICELEK]
-          );
-
+          toNumber(r[COL_PRICELEK]);
 
         var priceEur =
           priceLek /
-          Math.max(
-            1,
-            toNumber(
-              elRate.value || 90
-            )
-          );
-
+          Math.max(1, toNumber(elRate.value || 90));
 
         var qty =
-          Math.max(
-            1,
-            toNumber(
-              it.qty || 1
-            )
-          );
+          Math.max(1, toNumber(it.qty || 1));
 
-
-        html +=
-          '<div class="cartitem">' +
-
-          '  <div>' +
-
-          '    <div class="t">' +
-          escapeHtml(name) +
-          '</div>' +
-
-          '    <div class="s">' +
-
-          (
-            category
-              ? (
-                escapeHtml(
-                  t("category")
-                ) +
-                ': <b>' +
-                escapeHtml(category) +
-                '</b><br>'
-              )
-              : ''
-          ) +
-
-          (
-            code
-              ? (
-                escapeHtml(
-                  t("code")
-                ) +
-                ': <b>' +
-                escapeHtml(code) +
-                '</b><br>'
-              )
-              : ''
-          ) +
-
-          escapeHtml(
-            t("price")
-          ) +
-          ': <b>' +
-          formatEuro(priceEur) +
-          ' €</b> (' +
-          formatLek(priceLek) +
-          ' Lekë)' +
-
-          '    </div>' +
-
-          '  </div>' +
-
-          '  <div class="q">' +
-
-          '    <input type="number" min="1" step="1" value="' +
-          qty +
-          '" data-id="' +
-          escapeHtml(id) +
-          '" class="qtyInCart" />' +
-
-          '    <button class="btnDel" data-del="' +
-          escapeHtml(id) +
-          '">' +
-          escapeHtml(
-            t("remove")
-          ) +
-          '</button>' +
-
-          '  </div>' +
-
-          '</div>';
-
+        html += ''
+          + '<div class="cartitem">'
+          + '  <div>'
+          + '    <div class="t">'+escapeHtml(name)+'</div>'
+          + '    <div class="s">'
+          + (category ? (
+              escapeHtml(t("category")) +
+              ': <b>'+escapeHtml(category)+'</b><br>'
+            ) : '')
+          + (code ? (
+              escapeHtml(t("code")) +
+              ': <b>'+escapeHtml(code)+'</b><br>'
+            ) : '')
+          + escapeHtml(t("price")) +
+            ': <b>'+formatEuro(priceEur)+' €</b> ('+
+            formatLek(priceLek)+' Lekë)'
+          + '    </div>'
+          + '  </div>'
+          + '  <div class="q">'
+          + '    <input type="number" min="1" step="1" value="'+qty+'" data-id="'+escapeHtml(id)+'" class="qtyInCart" />'
+          + '    <button class="btnDel" data-del="'+escapeHtml(id)+'">'+
+              escapeHtml(t("remove"))+
+            '</button>'
+          + '  </div>'
+          + '</div>';
       }
 
-
-      cartItemsEl.innerHTML =
-        html;
-
+      cartItemsEl.innerHTML = html;
 
       Array.prototype.forEach.call(
-        cartItemsEl.querySelectorAll(
-          ".qtyInCart"
-        ),
+        cartItemsEl.querySelectorAll(".qtyInCart"),
         function(inp){
 
-          inp.addEventListener(
-            "input",
-            function(){
+          inp.addEventListener("input", function(){
 
-              var id =
-                inp.getAttribute(
-                  "data-id"
-                );
+            var id = inp.getAttribute("data-id");
 
-              var v =
-                Math.max(
-                  1,
-                  toNumber(
-                    inp.value || 1
-                  )
-                );
+            var v =
+              Math.max(
+                1,
+                toNumber(inp.value || 1)
+              );
 
-
-              if (CART[id]){
-                CART[id].qty = v;
-              }
-
-
-              calcTotals();
-
+            if (CART[id]){
+              CART[id].qty = v;
             }
-          );
+
+            calcTotals();
+          });
 
         }
       );
-
 
       Array.prototype.forEach.call(
-        cartItemsEl.querySelectorAll(
-          "[data-del]"
-        ),
+        cartItemsEl.querySelectorAll("[data-del]"),
         function(btn){
 
-          btn.addEventListener(
-            "click",
-            function(){
+          btn.addEventListener("click", function(){
 
-              var id =
-                btn.getAttribute(
-                  "data-del"
-                );
+            var id =
+              btn.getAttribute("data-del");
 
-              delete CART[id];
+            delete CART[id];
 
-              renderCart();
+            renderCart();
 
-            }
-          );
+          });
 
         }
       );
 
-
       calcTotals();
-
     }
-
-
-    // =========================
-    // ADD TO CART
-    // =========================
 
     function addToCart(row, qty){
 
@@ -1790,75 +891,49 @@ footer{
         String(
           row.id ??
           row[COL_CODE] ??
-          firstExisting(
-            row,
-            NAME_KEYS
-          )
+          firstExisting(row, NAME_KEYS)
         );
-
 
       var q =
         Math.max(
           1,
-          toNumber(
-            qty || 1
-          )
+          toNumber(qty || 1)
         );
 
-
       if (!CART[id]){
-
         CART[id] = {
-          row:row,
-          qty:q
+          row: row,
+          qty: q
         };
-
       }else{
-
         CART[id].qty =
           Math.max(
             1,
-            toNumber(
-              CART[id].qty || 1
-            ) + q
+            toNumber(CART[id].qty || 1) + q
           );
-
       }
 
-
       renderCart();
-
     }
-
-
-    // =========================
-    // RENDER PRODUCTS
-    // =========================
 
     function renderProducts(){
 
       clearError();
-
 
       var q =
         (elQ.value || "")
           .trim()
           .toLowerCase();
 
-
       var cat =
         (elCat.value || "")
           .trim();
 
-
       var rate =
         Math.max(
           1,
-          toNumber(
-            elRate.value || 90
-          )
+          toNumber(elRate.value || 90)
         );
-
 
       var filtered =
         ALL.filter(function(r){
@@ -1872,124 +947,76 @@ footer{
             return false;
           }
 
-
-          if (!q){
-            return true;
-          }
-
+          if (!q) return true;
 
           var name =
             String(
-              firstExisting(
-                r,
-                NAME_KEYS
-              ) || ""
+              firstExisting(r, NAME_KEYS) || ""
             ).toLowerCase();
-
 
           var category =
             String(
               r[COL_CATEGORY] ?? ""
             ).toLowerCase();
 
-
           var code =
             String(
               r[COL_CODE] ?? ""
             ).toLowerCase();
-
 
           return (
             name.indexOf(q) !== -1 ||
             category.indexOf(q) !== -1 ||
             code.indexOf(q) !== -1
           );
-
         });
-
 
       elCount.textContent =
         filtered.length +
         " " +
         t("count");
 
-
       var html = "";
 
+      for (var i=0;i<filtered.length;i++){
 
-      for (
-        var i=0;
-        i<filtered.length;
-        i++
-      ){
-
-        var r =
-          filtered[i];
-
+        var r = filtered[i];
 
         var name =
-          firstExisting(
-            r,
-            NAME_KEYS
-          ) ||
+          firstExisting(r, NAME_KEYS) ||
           t("noName");
 
-
         var desc =
-          firstExisting(
-            r,
-            DESC_KEYS
-          ) ||
+          firstExisting(r, DESC_KEYS) ||
           "";
-
 
         var img =
-          firstExisting(
-            r,
-            IMG_KEYS
-          ) ||
+          firstExisting(r, IMG_KEYS) ||
           "";
 
-
         var category =
-          String(
-            r[COL_CATEGORY] ?? ""
-          );
-
+          String(r[COL_CATEGORY] ?? "");
 
         var code =
-          String(
-            r[COL_CODE] ?? ""
-          );
-
+          String(r[COL_CODE] ?? "");
 
         var stock =
-          String(
-            r[COL_STOCK] ?? ""
-          );
-
+          String(r[COL_STOCK] ?? "");
 
         var priceLek =
-          toNumber(
-            r[COL_PRICELEK]
-          );
-
+          toNumber(r[COL_PRICELEK]);
 
         var priceEur =
           priceLek / rate;
 
-
         var imgTag =
           img
-            ? (
-              '<img class="img" src="' +
-              escapeHtml(img) +
-              '" alt="' +
-              escapeHtml(name) +
+            ? '<img class="img" src="'+
+              escapeHtml(img)+
+              '" alt="'+
+              escapeHtml(name)+
               '" loading="lazy" onerror="this.style.display=\'none\'; this.parentNode.style.background=\'#e5e7eb\';" />'
-            )
             : '<div class="img"></div>';
-
 
         var pid =
           escapeHtml(
@@ -2000,209 +1027,139 @@ footer{
             )
           );
 
-
-        html +=
-
-          '<article class="card">' +
-
-          imgTag +
-
-          ' <div class="content">' +
-
-          '   <h3 class="name">' +
-          escapeHtml(name) +
-          '</h3>' +
-
-          '   <div class="meta">' +
-
-          (
-            category
-              ? (
-                escapeHtml(
-                  t("category")
-                ) +
-                ': <b>' +
-                escapeHtml(category) +
-                '</b><br>'
+        html += ''
+          + '<article class="card">'
+          +   imgTag
+          + ' <div class="content">'
+          + '   <h3 class="name">'+
+              escapeHtml(name)+
+            '</h3>'
+          + '   <div class="meta">'
+          +     (
+                category
+                  ? (
+                    escapeHtml(t("category")) +
+                    ': <b>'+
+                    escapeHtml(category)+
+                    '</b><br>'
+                  )
+                  : ''
               )
-              : ''
-          ) +
-
-          (
-            code
-              ? (
-                escapeHtml(
-                  t("code")
-                ) +
-                ': <b>' +
-                escapeHtml(code) +
-                '</b><br>'
+          +     (
+                code
+                  ? (
+                    escapeHtml(t("code")) +
+                    ': <b>'+
+                    escapeHtml(code)+
+                    '</b><br>'
+                  )
+                  : ''
               )
-              : ''
-          ) +
-
-          (
-            stock
-              ? (
-                escapeHtml(
-                  t("stock")
-                ) +
-                ': <b>' +
-                escapeHtml(stock) +
-                '</b>'
+          +     (
+                stock
+                  ? (
+                    escapeHtml(t("stock")) +
+                    ': <b>'+
+                    escapeHtml(stock)+
+                    '</b>'
+                  )
+                  : ''
               )
-              : ''
-          ) +
-
-          '   </div>' +
-
-          '   <div class="price">' +
-
-          '     <div class="lek">' +
-          formatEuro(priceEur) +
-          ' €</div>' +
-
-          '     <div class="eur">' +
-          formatLek(priceLek) +
-          ' Lekë</div>' +
-
-          '   </div>' +
-
-          (
-            desc
-              ? (
-                '<div class="desc">' +
-                escapeHtml(desc) +
-                '</div>'
+          + '   </div>'
+          + '   <div class="price">'
+          + '     <div class="lek">'+
+              formatEuro(priceEur)+
+              ' €</div>'
+          + '     <div class="eur">'+
+              formatLek(priceLek)+
+              ' Lekë</div>'
+          + '   </div>'
+          +     (
+                desc
+                  ? (
+                    '<div class="desc">'+
+                    escapeHtml(desc)+
+                    '</div>'
+                  )
+                  : ''
               )
-              : ''
-          ) +
-
-          '   <div class="buyrow">' +
-
-          '     <input class="qty" type="number" min="1" step="1" value="1" id="qty_' +
-          pid +
-          '" />' +
-
-          '     <button class="btnAdd" data-add="' +
-          pid +
-          '">' +
-          escapeHtml(
-            t("addToCart")
-          ) +
-          '</button>' +
-
-          '   </div>' +
-
-          ' </div>' +
-
-          '</article>';
-
+          + '   <div class="buyrow">'
+          + '     <input class="qty" type="number" min="1" step="1" value="1" id="qty_'+pid+'" />'
+          + '     <button class="btnAdd" data-add="'+pid+'">'+
+              escapeHtml(t("addToCart"))+
+            '</button>'
+          + '   </div>'
+          + ' </div>'
+          + '</article>';
       }
 
-
-      elCards.innerHTML =
-        html;
-
+      elCards.innerHTML = html;
 
       Array.prototype.forEach.call(
-        elCards.querySelectorAll(
-          "[data-add]"
-        ),
+        elCards.querySelectorAll("[data-add]"),
         function(btn){
 
-          btn.addEventListener(
-            "click",
-            function(){
+          btn.addEventListener("click", function(){
 
-              var pid =
-                btn.getAttribute(
-                  "data-add"
+            var pid =
+              btn.getAttribute("data-add");
+
+            var qtyEl =
+              document.getElementById(
+                "qty_" + pid
+              );
+
+            var qty =
+              Math.max(
+                1,
+                toNumber(
+                  qtyEl && qtyEl.value
+                    ? qtyEl.value
+                    : 1
+                )
+              );
+
+            var row = null;
+
+            for (var i=0;i<filtered.length;i++){
+
+              var r = filtered[i];
+
+              var rid =
+                String(r.id ?? "");
+
+              var rcode =
+                String(r[COL_CODE] ?? "");
+
+              var rname =
+                String(
+                  firstExisting(
+                    r,
+                    NAME_KEYS
+                  ) ?? ""
                 );
 
-
-              var qtyEl =
-                document.getElementById(
-                  "qty_" + pid
-                );
-
-
-              var qty =
-                Math.max(
-                  1,
-                  toNumber(
-                    qtyEl &&
-                    qtyEl.value
-                      ? qtyEl.value
-                      : 1
-                  )
-                );
-
-
-              var row = null;
-
-
-              for (
-                var i=0;
-                i<filtered.length;
-                i++
+              if (
+                (rid && rid === pid) ||
+                (rcode && rcode === pid) ||
+                (rname && rname === pid)
               ){
 
-                var r =
-                  filtered[i];
-
-
-                var rid =
-                  String(
-                    r.id ?? ""
-                  );
-
-
-                var rcode =
-                  String(
-                    r[COL_CODE] ?? ""
-                  );
-
-
-                var rname =
-                  String(
-                    firstExisting(
-                      r,
-                      NAME_KEYS
-                    ) ?? ""
-                  );
-
-
-                if (
-                  (rid && rid === pid) ||
-                  (rcode && rcode === pid) ||
-                  (rname && rname === pid)
-                ){
-
-                  row = r;
-                  break;
-
-                }
-
+                row = r;
+                break;
               }
-
-
-              if (row){
-                addToCart(
-                  row,
-                  qty
-                );
-              }
-
             }
-          );
+
+            if (row){
+              addToCart(row, qty);
+            }
+
+          });
 
         }
       );
 
-
       calcTotals();
-
     }
 
 
@@ -2215,119 +1172,87 @@ footer{
       var totals =
         calcTotals();
 
-
       var note =
-        (noteEl.value || "")
-          .trim();
-
+        (noteEl.value || "").trim();
 
       var lines = [];
-
 
       lines.push(
         t("whatsappTitle")
       );
 
-
       lines.push("");
 
+      Object.keys(CART).forEach(function(id){
 
-      Object.keys(CART)
-        .forEach(function(id){
+        var it = CART[id];
+        var r = it.row || {};
 
-          var it =
-            CART[id];
+        var name =
+          firstExisting(
+            r,
+            NAME_KEYS
+          ) ||
+          t("noName");
 
-          var r =
-            it.row || {};
+        var code =
+          String(r[COL_CODE] ?? "");
 
+        var priceLek =
+          toNumber(r[COL_PRICELEK]);
 
-          var name =
-            firstExisting(
-              r,
-              NAME_KEYS
-            ) ||
-            t("noName");
-
-
-          var code =
-            String(
-              r[COL_CODE] ?? ""
-            );
-
-
-          var priceLek =
-            toNumber(
-              r[COL_PRICELEK]
-            );
-
-
-          var qty =
-            Math.max(
-              1,
-              toNumber(
-                it.qty || 1
-              )
-            );
-
-
-          var subLek =
-            priceLek * qty;
-
-
-          var subEur =
-            subLek /
-            totals.rate;
-
-
-          lines.push(
-            "• " +
-            name +
-            (
-              code
-                ? " (" +
-                  t("code") +
-                  ": " +
-                  code +
-                  ")"
-                : ""
-            )
+        var qty =
+          Math.max(
+            1,
+            toNumber(it.qty || 1)
           );
 
+        var subLek =
+          priceLek * qty;
 
-          lines.push(
-            "  " +
-            t("quantity") +
-            ": " +
-            qty +
-            " | " +
-            t("total") +
-            ": " +
-            formatEuro(subEur) +
-            " € (" +
-            formatLek(subLek) +
-            " Lekë)"
-          );
+        var subEur =
+          subLek / totals.rate;
 
-        });
+        lines.push(
+          "• " +
+          name +
+          (
+            code
+              ? " (" +
+                t("code") +
+                ": " +
+                code +
+                ")"
+              : ""
+          )
+        );
 
+        lines.push(
+          "  " +
+          t("quantity") +
+          ": " +
+          qty +
+          " | " +
+          t("subtotal") +
+          ": " +
+          formatEuro(subEur) +
+          " € (" +
+          formatLek(subLek) +
+          " Lekë)"
+        );
+
+      });
 
       lines.push("");
-
 
       lines.push(
         t("total") +
         ": " +
-        formatEuro(
-          totals.totalEur
-        ) +
+        formatEuro(totals.totalEur) +
         " € (" +
-        formatLek(
-          totals.totalLek
-        ) +
+        formatLek(totals.totalLek) +
         " Lekë)"
       );
-
 
       lines.push(
         t("exchangeRate") +
@@ -2335,7 +1260,6 @@ footer{
         totals.rate +
         " Lek"
       );
-
 
       if (note){
 
@@ -2345,15 +1269,10 @@ footer{
           t("note")
         );
 
-        lines.push(
-          note
-        );
-
+        lines.push(note);
       }
 
-
       return lines.join("\n");
-
     }
 
 
@@ -2368,7 +1287,6 @@ footer{
       elStatus.textContent =
         t("loadingSupabase");
 
-
       if (
         !SUPABASE_ANON_KEY ||
         SUPABASE_ANON_KEY.indexOf(
@@ -2377,17 +1295,14 @@ footer{
       ){
 
         showError(
-          "S’ke vendosur ANON KEY.\n" +
-          "Hap kodin dhe vendos çelësin që fillon me eyJ... te SUPABASE_ANON_KEY."
+          t("missingKey")
         );
 
         elStatus.textContent =
           t("error");
 
         return;
-
       }
-
 
       var url =
         SUPABASE_URL +
@@ -2395,10 +1310,8 @@ footer{
         encodeURIComponent(TABLE) +
         "?select=*";
 
-
       var xhr =
         new XMLHttpRequest();
-
 
       xhr.open(
         "GET",
@@ -2406,12 +1319,10 @@ footer{
         true
       );
 
-
       xhr.setRequestHeader(
         "apikey",
         SUPABASE_ANON_KEY
       );
-
 
       xhr.setRequestHeader(
         "Authorization",
@@ -2419,12 +1330,10 @@ footer{
         SUPABASE_ANON_KEY
       );
 
-
       xhr.setRequestHeader(
         "Accept",
         "application/json"
       );
-
 
       xhr.onreadystatechange =
         function(){
@@ -2434,7 +1343,6 @@ footer{
           ){
             return;
           }
-
 
           if (
             xhr.status >= 200 &&
@@ -2451,7 +1359,7 @@ footer{
             }catch(e){
 
               showError(
-                "Gabim te JSON: " +
+                t("jsonError") +
                 e
               );
 
@@ -2459,71 +1367,51 @@ footer{
                 t("error");
 
               return;
-
             }
 
-
             buildCategories(ALL);
-
             renderProducts();
 
             elStatus.textContent =
               t("ready");
 
             return;
-
           }
 
-
           showError(
-
-            "Gabim Supabase (" +
-            xhr.status +
-            ").\n\n" +
-
-            (
-              xhr.responseText || ""
-            ) +
-
-            "\n\n" +
-
             (
               currentLang === "en"
-                ? "Check: RLS SELECT for anon/public on the products table."
-                : "Kontrollo: RLS SELECT për anon/public te tabela products."
-            )
-
+                ? "Supabase error ("
+                : "Gabim Supabase ("
+            ) +
+            xhr.status +
+            ").\n\n" +
+            (xhr.responseText || "") +
+            "\n\n" +
+            t("rlsError")
           );
-
 
           elStatus.textContent =
             t("error");
-
         };
-
 
       xhr.onerror =
         function(){
 
           showError(
-            currentLang === "en"
-              ? "Network error. Check internet / SSL / blocking."
-              : "Gabim rrjeti. Kontrollo internetin / SSL / bllokime."
+            t("networkError")
           );
 
           elStatus.textContent =
             t("error");
-
         };
 
-
       xhr.send();
-
     }
 
 
     // =========================
-    // EVENTS
+    // Events
     // =========================
 
     elQ.addEventListener(
@@ -2531,29 +1419,23 @@ footer{
       renderProducts
     );
 
-
     elCat.addEventListener(
       "change",
       renderProducts
     );
 
-
     elRate.addEventListener(
       "input",
       function(){
-
         renderProducts();
         renderCart();
-
       }
     );
-
 
     noteEl.addEventListener(
       "input",
       saveCart
     );
-
 
     clearCartBtn.addEventListener(
       "click",
@@ -2567,16 +1449,12 @@ footer{
           return;
         }
 
-
         CART = {};
-
         noteEl.value = "";
 
         renderCart();
-
       }
     );
-
 
     sendWA.addEventListener(
       "click",
@@ -2585,25 +1463,22 @@ footer{
         var msg =
           buildWhatsAppMessage();
 
-
         var url =
           "https://wa.me/" +
           WHATSAPP_NUMBER +
           "?text=" +
           encodeURIComponent(msg);
 
-
         window.open(
           url,
           "_blank"
         );
-
       }
     );
 
 
     // =========================
-    // START
+    // Start
     // =========================
 
     applyLanguage();
@@ -2615,7 +1490,5 @@ footer{
     loadProducts();
 
   </script>
-
 </body>
 </html>
-```
