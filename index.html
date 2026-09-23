@@ -1192,21 +1192,30 @@ footer{
             if (!row) return;
 
             var name = firstExisting(row, NAME_KEYS) || t("noName");
-            var url = window.location.href.split("#")[0];
+            var category = String(row[COL_CATEGORY] ?? "");
+            var code = String(row[COL_CODE] ?? "");
+            var priceLek = toNumber(row[COL_PRICELEK]);
+            var priceEur = priceLek / Math.max(1, toNumber(elRate.value || 90));
+            var url = window.location.href.split("#")[0] + "#product=" + encodeURIComponent(pid);
+
+            var shareText = name;
+            if (category) shareText += "\n" + t("category") + ": " + category;
+            if (code) shareText += "\n" + t("code") + ": " + code;
+            if (priceLek) shareText += "\n" + t("price") + ": " + formatEuro(priceEur) + " € (" + formatLek(priceLek) + " Lekë)";
 
             try{
               if (navigator.share){
                 await navigator.share({
                   title: name + " — Gjekaj Plants",
-                  text: name,
+                  text: shareText,
                   url: url
                 });
               }else if (navigator.clipboard){
-                await navigator.clipboard.writeText(url);
-                alert(currentLang === "en" ? "Link copied." : "Linku u kopjua.");
+                await navigator.clipboard.writeText(shareText + "\n" + url);
+                alert(currentLang === "en" ? "Article link copied." : "Linku i artikullit u kopjua.");
               }else{
                 window.prompt(
-                  currentLang === "en" ? "Copy this link:" : "Kopjo këtë link:",
+                  currentLang === "en" ? "Copy this article link:" : "Kopjo linkun e këtij artikulli:",
                   url
                 );
               }
