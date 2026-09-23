@@ -232,6 +232,12 @@ textarea{min-height:76px;resize:vertical}
 .lek{color:var(--accent);font-weight:950;font-size:25px}
 .eur{color:#334155;font-weight:850;font-size:16px}
 .desc{color:#46564d;font-size:13px;line-height:1.5;font-weight:600}
+.shareRow{display:flex;justify-content:flex-end;margin-top:1px}
+.btnShare{
+  border:0;background:transparent;color:var(--accent);padding:3px 0;
+  font-weight:900;cursor:pointer;font-size:13px;
+}
+.btnShare:hover{text-decoration:underline}
 .buyrow{display:flex;gap:9px;align-items:center;margin-top:auto;padding-top:5px;flex-wrap:wrap}
 .qty{width:82px}
 .btnAdd{
@@ -503,6 +509,7 @@ footer{
         subtotal: "Nën-total",
         remove: "Hiq",
         addToCart: "Shto në shportë",
+        share: "Shpërndaj",
 
         footer: "Gjekaj Plants • WhatsApp: 0697232425",
 
@@ -563,6 +570,7 @@ footer{
         subtotal: "Subtotal",
         remove: "Remove",
         addToCart: "Add to cart",
+        share: "Share",
 
         footer: "Gjekaj Plants • WhatsApp: 0697232425",
 
@@ -1154,6 +1162,60 @@ footer{
               addToCart(row, qty);
             }
 
+          });
+
+        }
+      );
+
+      Array.prototype.forEach.call(
+        elCards.querySelectorAll("[data-share]"),
+        function(btn){
+
+          btn.addEventListener("click", async function(){
+
+            var pid = btn.getAttribute("data-share");
+            var row = null;
+
+            for (var i=0;i<filtered.length;i++){
+
+              var r = filtered[i];
+
+              var rid = String(r.id ?? "");
+              var rcode = String(r[COL_CODE] ?? "");
+              var rname = String(firstExisting(r, NAME_KEYS) ?? "");
+
+              if (
+                (rid && rid === pid) ||
+                (rcode && rcode === pid) ||
+                (rname && rname === pid)
+              ){
+                row = r;
+                break;
+              }
+            }
+
+            if (!row) return;
+
+            var name = firstExisting(row, NAME_KEYS) || t("noName");
+            var url = window.location.href.split("#")[0];
+
+            try{
+              if (navigator.share){
+                await navigator.share({
+                  title: name + " — Gjekaj Plants",
+                  text: name,
+                  url: url
+                });
+              }else if (navigator.clipboard){
+                await navigator.clipboard.writeText(url);
+                alert(currentLang === "en" ? "Link copied." : "Linku u kopjua.");
+              }else{
+                window.prompt(
+                  currentLang === "en" ? "Copy this link:" : "Kopjo këtë link:",
+                  url
+                );
+              }
+            }catch(e){}
           });
 
         }
