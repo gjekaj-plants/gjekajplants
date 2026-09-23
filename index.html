@@ -232,11 +232,7 @@ textarea{min-height:76px;resize:vertical}
 .lek{color:var(--accent);font-weight:950;font-size:25px}
 .eur{color:#334155;font-weight:850;font-size:16px}
 .desc{color:#46564d;font-size:13px;line-height:1.5;font-weight:600}
-.shareRow{display:flex;justify-content:flex-end;margin-top:1px}
-.btnShare{
-  border:0;background:transparent;color:var(--accent);padding:3px 0;
-  font-weight:900;cursor:pointer;font-size:13px;
-}
+.btnShare{display:block;margin:0 0 0 auto;border:0;background:transparent;color:var(--accent);padding:2px 0;font-weight:900;cursor:pointer;font-size:13px}
 .btnShare:hover{text-decoration:underline}
 .buyrow{display:flex;gap:9px;align-items:center;margin-top:auto;padding-top:5px;flex-wrap:wrap}
 .qty{width:82px}
@@ -1091,6 +1087,9 @@ footer{
                   )
                   : ''
               )
+          + '   <button class="btnShare" type="button" data-share="'+pid+'">'+
+                escapeHtml(t("share"))+
+            '</button>'
           + '   <div class="buyrow">'
           + '     <input class="qty" type="number" min="1" step="1" value="1" id="qty_'+pid+'" />'
           + '     <button class="btnAdd" data-add="'+pid+'">'+
@@ -1170,16 +1169,12 @@ footer{
       Array.prototype.forEach.call(
         elCards.querySelectorAll("[data-share]"),
         function(btn){
-
           btn.addEventListener("click", async function(){
-
             var pid = btn.getAttribute("data-share");
             var row = null;
 
             for (var i=0;i<filtered.length;i++){
-
               var r = filtered[i];
-
               var rid = String(r.id ?? "");
               var rcode = String(r[COL_CODE] ?? "");
               var rname = String(firstExisting(r, NAME_KEYS) ?? "");
@@ -1217,7 +1212,6 @@ footer{
               }
             }catch(e){}
           });
-
         }
       );
 
