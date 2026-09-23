@@ -1227,6 +1227,28 @@ footer{
       calcTotals();
     }
 
+    function openSharedProduct(){
+      var hash = window.location.hash || "";
+      if (hash.indexOf("#product=") !== 0) return;
+
+      var pid = decodeURIComponent(hash.substring("#product=".length));
+      var buttons = elCards.querySelectorAll("[data-share]");
+
+      for (var i=0;i<buttons.length;i++){
+        if (buttons[i].getAttribute("data-share") === pid){
+          var card = buttons[i].closest(".card");
+          if (card){
+            setTimeout(function(){
+              card.scrollIntoView({behavior:"smooth", block:"center"});
+            }, 100);
+          }
+          break;
+        }
+      }
+    }
+
+    window.addEventListener("hashchange", openSharedProduct);
+
 
     // =========================
     // WHATSAPP
@@ -1436,6 +1458,7 @@ footer{
 
             buildCategories(ALL);
             renderProducts();
+            openSharedProduct();
 
             elStatus.textContent =
               t("ready");
