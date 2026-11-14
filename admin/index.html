@@ -19,9 +19,9 @@ async function checkAuth(){
  const {data:{user},error:authError}=await db.auth.getUser();
  let allowed=false;
  if(user&&!authError){
-  const r=await db.from('site_admins').select('user_id').eq('user_id',user.id).maybeSingle();
-  allowed=!r.error&&!!r.data;
-  if(r.error)msg('Kontrollo SQL-in e administratorëve në Supabase: '+r.error.message,true);
+  const r=await db.rpc('is_site_admin');
+  allowed=!r.error&&r.data===true;
+  if(r.error)msg('Kontrolli i administratorit dështoi: '+r.error.message,true);
  }
  if(user&&!allowed&&!authError){await db.auth.signOut();msg('Kjo llogari nuk është autorizuar si administrator.',true)}
  $('login').style.display=allowed?'none':'block';$('app').style.display=allowed?'block':'none';$('logout').style.display=allowed?'block':'none';
@@ -43,7 +43,12 @@ $('adminForm').onsubmit=async e=>{
  e.preventDefault();const uid=$('adminUid').value.trim().toLowerCase();
  if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(uid)){msg('Shkruaj një User UID të vlefshëm.',true);return}
  $('addAdmin').disabled=true;
- try{const r=await db.from('site_admins').insert({user_id:uid});if(r.error)throw r.error;$('adminUid').value='';await loadAdmins();msg('Administratori u shtua.')}catch(err){msg('Nuk u shtua administratori: '+err.message,true)}finally{$('addAdmin').disabled=false}
+ try{
+  const r=await db.functions.invoke('add-site-admin',{body:{user_id:uid}});
+  if(r.error){let detail=r.error.message;try{const body=await r.error.context?.json();detail=body?.error||detail}catch{}throw Error(detail)}
+  if(!r.data?.ok)throw Error(r.data?.error||'Përgjigje e papritur nga Supabase.');
+  $('adminUid').value='';await loadAdmins();msg('Administratori u shtua me sukses.');
+ }catch(err){msg('Nuk u shtua administratori: '+err.message,true)}finally{$('addAdmin').disabled=false}
 };
 async function removeAdmin(uid){
  if(uid===OWNER_UID){msg('Administratori kryesor nuk mund të fshihet.',true);return}
