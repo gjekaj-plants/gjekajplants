@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="sq"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Administrimi | Gjekaj Plants</title>
+<style>
+:root{font-family:Inter,system-ui,Arial,sans-serif;color:#14231b;background:#f6f8f6}*{box-sizing:border-box}body{margin:0}header{background:#102218;color:white;padding:20px}header>div{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}main{max-width:1100px;margin:25px auto;padding:0 15px}.panel{background:white;border:1px solid #e1e9e3;border-radius:17px;padding:20px;margin-bottom:18px;box-shadow:0 10px 28px #1022180b}input,textarea,select,button{font:inherit}input,textarea,select{width:100%;padding:11px;border:1px solid #cbd5ce;border-radius:9px}label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}button{cursor:pointer;background:#15803d;border:0;border-radius:9px;padding:11px 15px;color:white;font-weight:700}button.secondary{background:#334155}button.danger{background:#b91c1c}button:disabled{opacity:.55;cursor:not-allowed}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.item{border:1px solid #e1e9e3;padding:13px;border-radius:12px;display:flex;gap:12px}.item img{width:90px;height:90px;object-fit:cover;border-radius:8px;background:#e5e7eb}.item .details{flex:1;min-width:0}.item p{margin:5px 0;color:#64746a;font-size:13px}.thumbs{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.thumb{width:100px}.thumb img{width:100px;height:80px;object-fit:cover;border-radius:8px}.thumb button{width:100%;font-size:12px;padding:7px}.muted{color:#64746a}.error{color:#b91c1c;white-space:pre-wrap}.success{color:#166534}#app,#logout{display:none}.admin-row{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #e1e9e3;padding:10px 0;overflow-wrap:anywhere}.admin-row:last-child{border-bottom:0}@media(max-width:650px){.grid,.items{grid-template-columns:1fr}header>div{align-items:flex-start}.item{flex-direction:column}}
+
+/* Photo management */
+.thumb{width:126px;background:#0c1510;border:1px solid #3b5142;border-radius:12px;padding:8px}
+.thumb img{width:100%;height:94px}
+.thumb label{display:flex;align-items:center;gap:6px;margin:8px 0;font-size:12px;cursor:pointer}
+.thumb input[type=checkbox]{width:auto;accent-color:#2c9b58}
+#photoManager{display:none;margin-top:14px}
+#photoManager .toolbar{margin-top:9px}
+/* Dark professional theme */
+:root{color-scheme:dark;color:#e8f0eb;background:#090e0c;font-family:Inter,system-ui,Arial,sans-serif}
+body{background:radial-gradient(ellipse at top,#14271c 0,#090e0c 58%);min-height:100vh}
+header{background:#0d1712;border-bottom:1px solid #273b2f;padding:17px 20px}
+header strong{font-size:16px;letter-spacing:.2px}
+main{max-width:1050px;margin:30px auto}
+.panel{background:#121d17;border:1px solid #2a3b30;box-shadow:0 18px 50px #0005;border-radius:16px;padding:23px}
+.panel h2{margin:0 0 14px;font-size:21px;color:#f0faf2}
+label{color:#d4e3d9}
+input,textarea,select{background:#0c1510;color:#eef8f0;border:1px solid #3b5142;outline:none}
+input:focus,textarea:focus,select:focus{border-color:#52ba78;box-shadow:0 0 0 3px #52ba7824}
+input::placeholder{color:#87998b}
+button{background:#2c9b58;color:#fff;transition:background .15s}
+button:hover:not(:disabled){background:#237e48}
+button.secondary{background:#30463a}button.secondary:hover:not(:disabled){background:#3b5a49}
+button.danger{background:#a83139}button.danger:hover:not(:disabled){background:#8f262f}
+.muted,.item p{color:#a5b9aa}
+.item{background:#0e1711;border-color:#2b3f31}
+.admin-row{border-color:#2b3f31}
+#login{max-width:385px;margin:clamp(40px,10vh,110px) auto 0;padding:30px 28px}
+#login h2{text-align:center;font-size:22px;margin-bottom:8px}
+#login .muted{text-align:center;font-size:13px;line-height:1.6;margin-bottom:23px}
+#login label{font-size:12px;margin-top:14px}
+#login input{padding:10px 12px;font-size:14px}
+#login .toolbar{margin-top:22px}#login button{width:100%;padding:12px}
+#message{max-width:650px;margin:12px auto;text-align:center}
+@media(max-width:500px){#login{margin:42px 12px 0;padding:24px 20px}}
+
+.thumb .primary-btn{background:#30463a;width:100%;margin:5px 0}.thumb .primary-btn.active{background:#227a47}.thumb button.danger{width:100%;margin-top:5px}.thumb .muted{font-size:11px;overflow-wrap:anywhere}
+/* Kartat e produkteve: më të mëdha dhe më të lexueshme */
+.items{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.item{padding:20px;gap:18px;min-height:205px;align-items:flex-start;border-radius:16px}
+.item img{width:165px;height:165px;flex-shrink:0;border-radius:12px}
+.item .details strong{font-size:19px;line-height:1.35;display:block}
+.item .details p{font-size:15px;line-height:1.5;margin:10px 0}
+.item .toolbar{margin-top:18px}
+.item .toolbar button{padding:11px 17px;font-size:14px}
+@media(max-width:900px){.items{grid-template-columns:1fr}}
+@media(max-width:480px){.item{padding:16px;gap:14px;min-height:0}.item img{width:100%;height:220px}.item .details{width:100%}}
+</style></head><body><header><div><strong>🌿 Gjekaj Plants — Administrimi</strong><button id="logout" class="secondary">Dil</button></div></header><main>
+<section id="login" class="panel"><h2>Hyrja e administratorit</h2><p class="muted">Hyr me përdoruesin e krijuar në Supabase Auth. Vetëm administratori i autorizuar mund të bëjë ndryshime.</p><form id="loginForm"><label>Username ose email</label><input id="email" type="text" autocomplete="username" required><label>Fjalëkalimi</label><input id="password" type="password" autocomplete="current-password" required><div class="toolbar"><button type="submit">Hyr</button></div></form></section>
+<div id="app"><section class="panel"><h2 id="formTitle">Shto produkt</h2><form id="productForm"><div class="grid"><div><label>Emri *</label><input id="name" required maxlength="200"></div><div><label>Kategoria</label><input id="category" maxlength="150"></div><div><label>Kodi</label><input id="code" maxlength="100"></div><div><label>Çmimi (Lekë)</label><input id="price_lek" type="number" min="0" step="1" value="0"></div><div><label>Stoku</label><input id="stock" type="number" min="0" step="1" value="0"></div></div><label>Përshkrimi</label><textarea id="description" rows="3"></textarea><label for="photos">Fotot e produktit — Scegli file (mund të zgjedhësh disa)</label><input id="photos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple><p class="muted">Maksimumi 8 MB për foto. Fotoja e parë që zgjedh përdoret si fotografia kryesore e produktit.</p><div id="photoManager"><strong>Fotot ekzistuese</strong><p class="muted">Përzgjidh foto për fshirje ose cakto fotografinë kryesore. Fotot e vjetra lexohen nga photo_url; fshirja e tyre heq vetëm lidhjen nga produkti, jo skedarin në Storage.</p><div id="thumbs" class="thumbs"></div><div class="toolbar"><button type="button" id="deleteSelectedPhotos" class="danger" disabled>Fshi fotot e përzgjedhura</button></div></div><div class="toolbar"><button id="save" type="submit">Ruaj produktin</button><button type="button" id="cancel" class="secondary">Anulo modifikimin</button></div></form></section><section id="adminsPanel" class="panel" style="display:none"><h2>Administratorët</h2><p class="muted">Vetëm administratori kryesor mund ta shohë këtë listë. Fshirja e një administratori e fshin përfundimisht edhe llogarinë e tij në Supabase Authentication. Administratori kryesor nuk mund të fshihet.</p><div class="toolbar"><button type="button" id="toggleAdmins" class="secondary" aria-expanded="false">Shiko administratorët</button><button type="button" id="toggleAddAdmin" aria-expanded="false">+ Shto administrator</button></div><form id="adminForm" style="display:none;max-width:460px;margin-top:16px"><label for="adminUsername">Username</label><input id="adminUsername" type="text" autocomplete="off" minlength="3" maxlength="30" pattern="[a-zA-Z0-9_]{3,30}" placeholder="" required><label for="adminPassword">Fjalëkalimi</label><input id="adminPassword" type="password" autocomplete="new-password" minlength="12" maxlength="128" placeholder="Të paktën 12 karaktere" required><div class="toolbar"><button id="addAdmin" type="submit">Krijo administratorin</button><button type="button" id="cancelAddAdmin" class="secondary">Anulo</button></div></form><div id="adminList" style="display:none;margin-top:14px"></div></section><section class="panel"><h2>Produktet</h2><input id="search" placeholder="Kërko sipas emrit ose kodit"><p id="count" class="muted"></p><div id="items" class="items"></div></section></div><p id="message" role="status" aria-live="polite"></p></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+'use strict';
+const SUPABASE_URL='https://oehcfyfjlwvlqowjezwg.supabase.co';
+const ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laGNmeWZqbHd2bHFvd2plendnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNTU4NDEsImV4cCI6MjA4NTYzMTg0MX0.J3veeWRfwHhJOoMwBHwA2qQdQiXdqzGORDn8j0hR7Rk';
+const OWNER_UID='24c2e9d1-b47a-49f6-bfb9-b4de01adba42';
+const db=window.supabase.createClient(SUPABASE_URL,ANON);const $=id=>document.getElementById(id);let products=[],editing=null,photos=[],selectedPhotoIds=new Set();
+const msg=(s,err=false)=>{$('message').textContent=s;$('message').className=err?'error':'success'};
+function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function photoUrl(p){return p?.photo_url||p?.image_url||p?.image||''}
+async function checkAuth(){
+ const {data:{user},error:authError}=await db.auth.getUser();
+ let allowed=false;
+ if(user&&!authError){
+  const r=await db.rpc('is_site_admin');
+  allowed=!r.error&&r.data===true;
+  if(r.error)msg('Kontrolli i administratorit dështoi: '+r.error.message,true);
+ }
+ if(user&&!allowed&&!authError){await db.auth.signOut();msg('Kjo llogari nuk është autorizuar si administrator.',true)}
+ $('login').style.display=allowed?'none':'block';$('app').style.display=allowed?'block':'none';$('logout').style.display=allowed?'block':'none';
+ $('adminsPanel').style.display=allowed&&user.id===OWNER_UID?'block':'none';
+ if(allowed){await loadProducts();if(user.id===OWNER_UID)await loadAdmins()}
+}
+async function loadAdmins(){
+ const r=await db.from('site_admins').select('user_id,created_at').order('created_at',{ascending:true});
+ if(r.error){msg('Nuk u lexuan administratorët: '+r.error.message,true);return}
+ const el=$('adminList');el.replaceChildren();
+ for(const a of r.data||[]){
+  const row=document.createElement('div');row.className='admin-row';
+  const label=document.createElement('span');label.textContent=a.user_id+(a.user_id===OWNER_UID?' (kryesor)':'');row.append(label);
+  if(a.user_id!==OWNER_UID){const b=document.createElement('button');b.className='danger';b.type='button';b.textContent='Fshi administratorin';b.onclick=()=>removeAdmin(a.user_id);row.append(b)}
+  el.append(row)
+ }
+}
+$('toggleAdmins').onclick=async()=>{const list=$('adminList');const show=list.style.display==='none';list.style.display=show?'block':'none';$('toggleAdmins').textContent=show?'Fshih administratorët':'Shiko administratorët';$('toggleAdmins').setAttribute('aria-expanded',String(show));if(show)await loadAdmins()};
+$('toggleAddAdmin').onclick=()=>{const form=$('adminForm');const show=form.style.display==='none';form.style.display=show?'block':'none';$('toggleAddAdmin').setAttribute('aria-expanded',String(show));if(show)$('adminUsername').focus()};
+$('cancelAddAdmin').onclick=()=>{$('adminForm').style.display='none';$('toggleAddAdmin').setAttribute('aria-expanded','false');$('adminForm').reset()};
+$('adminForm').onsubmit=async e=>{
+ e.preventDefault();
+ const username=$('adminUsername').value.trim().toLowerCase();
+ const password=$('adminPassword').value;
+ if(!/^[a-z0-9_]{3,30}$/.test(username)){msg('Username duhet të ketë 3–30 shkronja, numra ose _.',true);return}
+ if(password.length<12||password.length>128){msg('Fjalëkalimi duhet të ketë 12–128 karaktere.',true);return}
+ const {data:{user},error:authError}=await db.auth.getUser();
+ if(authError||!user||user.id!==OWNER_UID){msg('Vetëm administratori kryesor mund të shtojë administratorë.',true);return}
+ $('addAdmin').disabled=true;
+ try{
+  const r=await db.functions.invoke('create-site-admin',{body:{username,password}});
+  if(r.error){let detail=r.error.message;try{const body=await r.error.context?.json();detail=body?.error||detail}catch{}throw Error(detail)}
+  if(!r.data?.ok)throw Error(r.data?.error||'Përgjigje e papritur nga Supabase.');
+  $('adminForm').reset();$('adminForm').style.display='none';$('toggleAddAdmin').setAttribute('aria-expanded','false');
+  await loadAdmins();msg('Administratori '+username+' u krijua me sukses.');
+ }catch(err){msg('Nuk u krijua administratori: '+err.message,true)}finally{$('addAdmin').disabled=false}
+};
+async function removeAdmin(uid){
+ if(uid===OWNER_UID){msg('Administratori kryesor nuk mund të fshihet.',true);return}
+ if(!confirm('A je i sigurt që dëshiron ta fshish PËRFUNDIMISHT këtë administrator? Llogaria e tij në Supabase Authentication do të fshihet dhe ky veprim nuk mund të zhbëhet.'))return;
+ const {data:{user}}=await db.auth.getUser();
+ if(!user||user.id!==OWNER_UID){msg('Vetëm administratori kryesor mund të fshijë administratorë.',true);return}
+ msg('Duke fshirë llogarinë përfundimisht...');
+ const r=await db.functions.invoke('delete-site-admin',{body:{user_id:uid}});
+ if(r.error){let detail=r.error.message;try{const body=await r.error.context?.json();detail=body?.error||detail}catch{}msg('Fshirja dështoi: '+detail,true);return}
+ if(!r.data?.ok){msg('Fshirja dështoi: '+(r.data?.error||'Përgjigje e papritur'),true);return}
+ await loadAdmins();msg('Administratori u fshi përfundimisht nga Supabase Authentication.');
+}
+$('loginForm').onsubmit=async e=>{e.preventDefault();msg('Duke u identifikuar...');const {error}=await db.auth.signInWithPassword({email:($('email').value.trim().includes('@')?$('email').value.trim():$('email').value.trim().toLowerCase()+'@admin.gjekajplants.invalid'),password:$('password').value});if(error){msg(error.message,true);return}await checkAuth()};
+$('logout').onclick=async()=>{await db.auth.signOut();reset();msg('Dole nga paneli.');await checkAuth()};
+async function loadProducts(){const r=await db.from('products').select('*').order('id',{ascending:false});if(r.error){msg('Nuk u lexuan produktet: '+r.error.message,true);return}products=r.data||[];renderList()}
+function renderList(){const q=$('search').value.trim().toLowerCase();const arr=products.filter(p=>(String(p.name??p.title??'')+' '+String(p.code??'')).toLowerCase().includes(q));$('count').textContent=arr.length+' produkte';$('items').innerHTML=arr.map(p=>`<div class="item">${photoUrl(p)?`<img src="${safe(photoUrl(p))}" alt="">`:''}<div class="details"><strong>${safe(p.name??p.title??'(pa emër)')}</strong><p>${safe(p.code??'')} · ${safe(p.category??'')} · ${safe(p.price_lek??0)} Lekë</p><div class="toolbar"><button data-edit="${safe(p.id)}" type="button">Modifiko</button><button class="danger" data-delete="${safe(p.id)}" type="button">Fshi</button></div></div></div>`).join('');$('items').querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>edit(b.dataset.edit));$('items').querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>removeProduct(b.dataset.delete))}
+$('search').oninput=renderList;
+async function loadPhotos(id){const r=await db.from('product_images').select('*').eq('product_id',String(id)).order('sort_order');if(r.error){msg('Gabim në fotot: '+r.error.message,true);return []}return r.data||[]}
+async function edit(id){
+ const p=products.find(p=>String(p.id)===String(id));if(!p)return;
+ editing=p.id;selectedPhotoIds.clear();
+ for(const key of ['name','category','code','price_lek','stock','description'])$(key).value=p[key]??'';
+ $('photos').value='';$('formTitle').textContent='Modifiko produktin';
+ photos=await loadPhotos(id);
+  // Older products have their only photo in products.photo_url, not product_images.
+  const legacyUrl=String(p.photo_url||'').trim();
+  if(legacyUrl&&!photos.some(x=>x.url===legacyUrl))photos.unshift({id:'legacy:'+String(id),url:legacyUrl,legacy:true});
+  renderPhotos();window.scrollTo({top:0,behavior:'smooth'});
+}
+function renderPhotos(){
+ $('photoManager').style.display=editing===null?'none':'block';
+ const container=$('thumbs');container.replaceChildren();
+ const product=products.find(x=>String(x.id)===String(editing));
+ for(const p of photos){
+  const id=String(p.id),tile=document.createElement('div');tile.className='thumb';
+  const img=document.createElement('img');img.src=p.url;img.alt='Foto ekzistuese e produktit';img.loading='lazy';tile.append(img);
+  const primary=document.createElement('button');primary.type='button';primary.className='primary-btn';
+  const active=p.url===product?.photo_url;primary.textContent=active?'✓ Foto kryesore':'Bëje kryesore';
+  if(active)primary.classList.add('active');
+  primary.onclick=()=>setPrimaryPhoto(p.url);tile.append(primary);
+  if(p.legacy){const info=document.createElement('div');info.className='muted';info.textContent='Foto e vjetër (photo_url)';tile.append(info)}
+  const label=document.createElement('label'),check=document.createElement('input');
+  check.type='checkbox';check.checked=selectedPhotoIds.has(id);
+  check.onchange=()=>{if(check.checked)selectedPhotoIds.add(id);else selectedPhotoIds.delete(id);updatePhotoSelection()};
+  label.append(check,document.createTextNode('Përzgjidh foton'));tile.append(label);
+  const button=document.createElement('button');button.type='button';button.className='danger';button.textContent='Fshi këtë foto';
+  button.onclick=()=>removePhotos([id]);tile.append(button);container.append(tile);
+ }
+ if(editing!==null&&!photos.length){const note=document.createElement('p');note.className='muted';note.textContent='Nuk ka foto të ruajtura për këtë produkt.';container.append(note)}
+ updatePhotoSelection();
+}
+function updatePhotoSelection(){
+ const count=selectedPhotoIds.size;
+ $('deleteSelectedPhotos').disabled=count===0;
+ $('deleteSelectedPhotos').textContent=count?`Fshi ${count} foto të përzgjedhura`:'Fshi fotot e përzgjedhura';
+}
+async function setPrimaryPhoto(url){
+ if(editing===null)return;
+ const r=await db.from('products').update({photo_url:url}).eq('id',editing).select('id').single();
+ if(r.error){msg('Nuk u ndryshua fotoja kryesore: '+r.error.message,true);return}
+ const p=products.find(x=>String(x.id)===String(editing));if(p)p.photo_url=url;
+ renderPhotos();renderList();msg('Fotografia kryesore u ndryshua.');
+}
+$('deleteSelectedPhotos').onclick=()=>removePhotos([...selectedPhotoIds]);
+async function removePhotos(ids){
+ if(!ids.length||editing===null)return;
+ if(!confirm(`Të hiqen ${ids.length} fotografi? Për fotot e vjetra hiqet vetëm lidhja, jo skedari në Storage.`))return;
+ $('deleteSelectedPhotos').disabled=true;
+ let removed=0;const errors=[];
+ for(const id of ids){
+  const p=photos.find(x=>String(x.id)===String(id));if(!p)continue;
+  const product=products.find(x=>String(x.id)===String(editing));
+  const isPrimary=product?.photo_url===p.url;
+  if(p.legacy){
+   // Never delete an old Storage file whose URL may be reused by other products.
+   if(isPrimary){const next=photos.find(x=>String(x.id)!==id)?.url||null;
+    const r=await db.from('products').update({photo_url:next}).eq('id',editing).select('id').single();
+    if(r.error){errors.push(r.error.message);continue}if(product)product.photo_url=next;
+   }
+  }else{
+   // Update the primary URL first so it never points at a deleted image.
+   if(isPrimary){const next=photos.find(x=>String(x.id)!==id)?.url||null;
+    const r=await db.from('products').update({photo_url:next}).eq('id',editing).select('id').single();
+    if(r.error){errors.push(r.error.message);continue}if(product)product.photo_url=next;
+   }
+   const r=await db.from('product_images').delete().eq('id',p.id).eq('product_id',editing).select('id');
+   if(r.error||!r.data?.length){errors.push(r.error?.message||'Fotografia nuk u fshi nga tabela.');continue}
+   // Storage files are kept to avoid accidentally deleting shared images.
+  }
+  photos=photos.filter(x=>String(x.id)!==id);selectedPhotoIds.delete(id);removed++;
+ }
+ renderPhotos();renderList();
+ msg(errors.length?`U hoqën ${removed} foto. Probleme: ${errors.join('; ')}`:`U hoqën ${removed} foto nga produkti. Skedarët në Storage nuk u fshinë.`,errors.length>0);
+}
+function reset(){editing=null;photos=[];selectedPhotoIds.clear();$('productForm').reset();$('price_lek').value='0';$('stock').value='0';$('formTitle').textContent='Shto produkt';renderPhotos()};$('cancel').onclick=reset;
+async function uploadFiles(productId,files){for(const file of files){if(!['image/jpeg','image/png','image/webp','image/gif'].includes(file.type)||file.size>8*1024*1024)throw Error('Foto e pavlefshme ose mbi 8 MB: '+file.name);const ext=file.name.split('.').pop().toLowerCase();const path=String(productId)+'/'+crypto.randomUUID()+'.'+ext;const up=await db.storage.from('product-images').upload(path,file,{contentType:file.type,upsert:false});if(up.error)throw Error(up.error.message);const url=db.storage.from('product-images').getPublicUrl(path).data.publicUrl;const row=await db.from('product_images').insert({product_id:String(productId),url,storage_path:path,sort_order:photos.length}).select().single();if(row.error)throw Error(row.error.message);photos.push(row.data)}}
+$('productForm').onsubmit=async e=>{e.preventDefault();$('save').disabled=true;msg('Duke ruajtur...');try{const fields={name:$('name').value.trim(),category:$('category').value.trim(),code:$('code').value.trim(),price_lek:Number($('price_lek').value||0),stock:Number($('stock').value||0),photo_url:editing!==null?(products.find(p=>String(p.id)===String(editing))?.photo_url||null):null,description:$('description').value.trim()};if(!fields.name)throw Error('Shkruaj emrin e produktit.');let r;if(editing!==null){r=await db.from('products').update(fields).eq('id',editing).select().single()}else{r=await db.from('products').insert(fields).select().single()}if(r.error)throw Error(r.error.message);const id=r.data.id;if(editing===null)photos=[];const selectedFiles=Array.from($('photos').files);const previousPhotoCount=photos.length;await uploadFiles(id,selectedFiles);if(selectedFiles.length&&photos.length>previousPhotoCount&&!fields.photo_url){const p=await db.from('products').update({photo_url:photos[previousPhotoCount].url}).eq('id',id);if(p.error)throw Error(p.error.message)}reset();await loadProducts();msg('Produkti u ruajt me sukses.')}catch(err){msg('Gabim: '+err.message+' (nëse produkti u krijua, kontrolloje listën përpara se ta provosh përsëri)',true);await loadProducts()}finally{$('save').disabled=false}};
+async function removeProduct(id){if(!confirm('A je i sigurt që dëshiron ta fshish produktin?'))return;const r=await db.from('products').delete().eq('id',id);if(r.error){msg('Gabim: '+r.error.message,true);return}if(String(editing)===String(id))reset();await loadProducts();msg('Produkti u fshi. Fotot e ruajtura në Storage mund të kërkojnë pastrim të veçantë.')}
+checkAuth().catch(e=>msg(e.message,true));
+</script></body></html>
