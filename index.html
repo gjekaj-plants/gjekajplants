@@ -813,6 +813,8 @@ footer{
               grouped[id].push(String(p.url));
             });
             PRODUCT_IMAGES = grouped;
+            // The image request is asynchronous; update the catalog once it finishes.
+            if (ALL.length) renderProducts();
           }catch(e){console.warn("Gabim në leximin e fotografive:",e)}
         }else{
           console.warn("Fotografitë shtesë nuk janë publike (kontrollo RLS SELECT te product_images):", xhr.status);
@@ -1707,6 +1709,8 @@ footer{
     loadCart();
 
     renderCart();
+
+    loadProductImages();
 
     loadProducts();
 
