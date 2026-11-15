@@ -82,12 +82,12 @@ async function checkAuth(){
  if(allowed){await loadProducts();if(user.id===OWNER_UID)await loadAdmins()}
 }
 async function loadAdmins(){
- const r=await db.from('site_admins').select('user_id,created_at').order('created_at',{ascending:true});
- if(r.error){msg('Nuk u lexuan administratorët: '+r.error.message,true);return}
+ const r=await db.rpc('list_site_admin_usernames');
+ if(r.error){msg('Nuk u lexuan username-t: '+r.error.message+'. Ekzekuto fillimisht skedarin SQL në Supabase.',true);return}
  const el=$('adminList');el.replaceChildren();
  for(const a of r.data||[]){
   const row=document.createElement('div');row.className='admin-row';
-  const label=document.createElement('span');label.textContent=a.user_id+(a.user_id===OWNER_UID?' (kryesor)':'');row.append(label);
+  const label=document.createElement('span');label.textContent=a.user_id===OWNER_UID?'Administratori kryesor':(a.username||'Username i panjohur');row.append(label);
   if(a.user_id!==OWNER_UID){const b=document.createElement('button');b.className='danger';b.type='button';b.textContent='Fshi administratorin';b.onclick=()=>removeAdmin(a.user_id);row.append(b)}
   el.append(row)
  }
