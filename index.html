@@ -320,6 +320,22 @@ footer{
     font-size:11px;
   }
 }
+
+/* Galeria e fotografive të produkteve */
+.product-photo-button{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in;text-align:left}
+.product-photo-button:focus-visible{outline:4px solid #22c55e;outline-offset:-4px}
+.product-photo-button .img{pointer-events:none}
+.gallery-modal[hidden]{display:none!important}
+.gallery-modal{position:fixed;inset:0;z-index:1000;background:rgba(4,13,8,.94);display:flex;align-items:center;justify-content:center;padding:55px 64px 70px}
+.gallery-dialog{width:min(100%,1100px);height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.gallery-image{max-width:100%;max-height:calc(100% - 58px);object-fit:contain;border-radius:10px}
+.gallery-caption{color:white;text-align:center;font-size:14px;font-weight:700}
+.gallery-close,.gallery-prev,.gallery-next{position:absolute;border:1px solid rgba(255,255,255,.35);background:rgba(16,34,24,.8);color:#fff;border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:25px;display:grid;place-items:center}
+.gallery-close{top:12px;right:14px}.gallery-prev{left:12px;top:50%;transform:translateY(-50%)}.gallery-next{right:12px;top:50%;transform:translateY(-50%)}
+.gallery-close:hover,.gallery-prev:hover,.gallery-next:hover{background:#15803d}
+.gallery-prev[hidden],.gallery-next[hidden]{display:none}
+@media(max-width:640px){.gallery-modal{padding:65px 48px 70px}.gallery-prev{left:3px}.gallery-next{right:3px}.gallery-prev,.gallery-next{width:40px;height:40px}}
+
 </style>
 </head>
 
@@ -411,6 +427,17 @@ footer{
     </div>
 
     <div class="cards" id="cards"></div>
+  </div>
+
+
+  <div id="galleryModal" class="gallery-modal" role="dialog" aria-modal="true" aria-label="Galeria e fotografive" hidden>
+    <button id="galleryClose" class="gallery-close" type="button" aria-label="Mbyll galerinë">×</button>
+    <button id="galleryPrev" class="gallery-prev" type="button" aria-label="Fotoja e mëparshme">‹</button>
+    <div class="gallery-dialog">
+      <img id="galleryImage" class="gallery-image" alt="Fotografi produkti" />
+      <div id="galleryCaption" class="gallery-caption" aria-live="polite"></div>
+    </div>
+    <button id="galleryNext" class="gallery-next" type="button" aria-label="Fotoja tjetër">›</button>
   </div>
 
   <footer id="footer">Gjekaj Plants • WhatsApp: 0697232425</footer>
@@ -697,6 +724,104 @@ footer{
     // Data
     var ALL = [];
     var CART = {}; // {id: {row, qty}}
+
+    // Fotografitë shtesë sipas product_id (nga public.product_images).
+    var PRODUCT_IMAGES = {};
+    var galleryPhotos = [];
+    var galleryIndex = 0;
+    var galleryLastFocus = null;
+    var galleryModal = document.getElementById("galleryModal");
+    var galleryImage = document.getElementById("galleryImage");
+    var galleryCaption = document.getElementById("galleryCaption");
+    var galleryPrev = document.getElementById("galleryPrev");
+    var galleryNext = document.getElementById("galleryNext");
+    var galleryClose = document.getElementById("galleryClose");
+
+    function getProductPhotos(row){
+      var primary = String(firstExisting(row, IMG_KEYS) || "").trim();
+      var extra = PRODUCT_IMAGES[String(row.id)] || [];
+      var result = [];
+      [primary].concat(extra).forEach(function(url){
+        if (typeof url === "string" && /^https?:\/\//i.test(url.trim()) && result.indexOf(url.trim()) === -1) result.push(url.trim());
+      });
+      return result;
+    }
+
+    function drawGallery(){
+      if (!galleryPhotos.length) return;
+      galleryImage.src = galleryPhotos[galleryIndex];
+      galleryCaption.textContent = (currentLang === "en" ? "Photo " : "Foto ") + (galleryIndex + 1) + " / " + galleryPhotos.length;
+      galleryPrev.hidden = galleryPhotos.length < 2;
+      galleryNext.hidden = galleryPhotos.length < 2;
+    }
+    function openGallery(row){
+      galleryPhotos = getProductPhotos(row);
+      if (!galleryPhotos.length) return;
+      galleryIndex = 0;
+      galleryLastFocus = document.activeElement;
+      galleryModal.hidden = false;
+      document.body.style.overflow = "hidden";
+      galleryImage.alt = String(firstExisting(row, NAME_KEYS) || "Fotografi produkti");
+      drawGallery();
+      galleryClose.focus();
+    }
+    function closeGallery(){
+      galleryModal.hidden = true;
+      document.body.style.overflow = "";
+      galleryImage.removeAttribute("src");
+      if (galleryLastFocus && galleryLastFocus.isConnected) galleryLastFocus.focus();
+    }
+    function stepGallery(direction){
+      if (!galleryPhotos.length) return;
+      galleryIndex = (galleryIndex + direction + galleryPhotos.length) % galleryPhotos.length;
+      drawGallery();
+    }
+    galleryClose.addEventListener("click", closeGallery);
+    galleryPrev.addEventListener("click", function(){stepGallery(-1)});
+    galleryNext.addEventListener("click", function(){stepGallery(1)});
+    galleryModal.addEventListener("click", function(e){if(e.target === galleryModal) closeGallery()});
+    document.addEventListener("keydown", function(e){
+      if (galleryModal.hidden) return;
+      if (e.key === "Escape") closeGallery();
+      if (e.key === "ArrowLeft") stepGallery(-1);
+      if (e.key === "ArrowRight") stepGallery(1);
+      if (e.key === "Tab") {
+        var focusable = [galleryClose, galleryPrev, galleryNext].filter(function(b){return !b.hidden});
+        var index = focusable.indexOf(document.activeElement);
+        if (e.shiftKey && index <= 0){e.preventDefault();focusable[focusable.length-1].focus()}
+        else if (!e.shiftKey && index === focusable.length-1){e.preventDefault();focusable[0].focus()}
+      }
+    });
+
+    // REST pa SDK shtesë: faqja publike lexon vetëm të dhëna të lejuara nga RLS.
+    function loadProductImages(){
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", SUPABASE_URL + "/rest/v1/product_images?select=product_id,url,sort_order&order=sort_order.asc&limit=10000", true);
+      xhr.setRequestHeader("apikey", SUPABASE_ANON_KEY);
+      xhr.setRequestHeader("Authorization", "Bearer " + SUPABASE_ANON_KEY);
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.onreadystatechange = function(){
+        if (xhr.readyState !== 4) return;
+        if (xhr.status >= 200 && xhr.status < 300){
+          try{
+            var rows = JSON.parse(xhr.responseText) || [];
+            var grouped = {};
+            rows.forEach(function(p){
+              if (!p || p.product_id == null || !p.url) return;
+              var id = String(p.product_id);
+              if (!grouped[id]) grouped[id] = [];
+              grouped[id].push(String(p.url));
+            });
+            PRODUCT_IMAGES = grouped;
+          }catch(e){console.warn("Gabim në leximin e fotografive:",e)}
+        }else{
+          console.warn("Fotografitë shtesë nuk janë publike (kontrollo RLS SELECT te product_images):", xhr.status);
+        }
+      };
+      xhr.onerror = function(){console.warn("Nuk u lexuan fotografitë shtesë")};
+      xhr.send();
+    }
+
 
     function saveCart(){
       try{
@@ -1015,11 +1140,11 @@ footer{
 
         var imgTag =
           img
-            ? '<img class="img" src="'+
+            ? '<button class="product-photo-button" type="button" data-gallery="'+escapeHtml(String(r.id ?? ""))+'" aria-label="'+escapeHtml(currentLang === "en" ? "Open product photos" : "Hap fotografitë e produktit")+'"><img class="img" src="'+
               escapeHtml(img)+
               '" alt="'+
               escapeHtml(name)+
-              '" loading="lazy" onerror="this.style.display=\'none\'; this.parentNode.style.background=\'#e5e7eb\';" />'
+              '" loading="lazy" onerror="this.style.display=\'none\'; this.parentNode.style.background=\'#e5e7eb\';" /></button>'
             : '<div class="img"></div>';
 
         var pid =
@@ -1101,6 +1226,14 @@ footer{
       }
 
       elCards.innerHTML = html;
+
+      Array.prototype.forEach.call(elCards.querySelectorAll("[data-gallery]"), function(btn){
+        btn.addEventListener("click", function(){
+          var id = btn.getAttribute("data-gallery");
+          var row = filtered.find(function(r){return String(r.id) === id});
+          if (row) openGallery(row);
+        });
+      });
 
       Array.prototype.forEach.call(
         elCards.querySelectorAll("[data-add]"),
